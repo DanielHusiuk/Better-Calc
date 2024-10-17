@@ -51,8 +51,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func layoutCollection() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 20
-        layout.sectionInset = UIEdgeInsets(top: 30, left: 25, bottom: 10, right: 25)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView?.register(ButtonCell.self, forCellWithReuseIdentifier: "buttonCell")
@@ -92,7 +90,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: 150)
+        let numberOfItemsPerRow: CGFloat = 2
+        let spacingBetweenCells: CGFloat = 20
+        
+        let totalSpacing = (2 * spacingBetweenCells) + ((numberOfItemsPerRow - 1) * spacingBetweenCells) // Загальні відступи
+        let width = (collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow // Ширина cells
+        
+        return CGSize(width: width, height: width) // Cells будуть квадратними
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let spacing: CGFloat = 20
+        return UIEdgeInsets(top: 30, left: spacing, bottom: 10, right: spacing)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
