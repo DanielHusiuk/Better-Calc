@@ -1,0 +1,695 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65195E842C5BCB2400D4BE8B /* ButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65195E832C5BCB2400D4BE8B /* ButtonsModel.swift */; };
+		652EA18A2C8B57CA00DD6803 /* StandardHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652EA1892C8B57CA00DD6803 /* StandardHistoryController.swift */; };
+		65464A762CB7DEA3008AB2AD /* PickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65464A752CB7DE9E008AB2AD /* PickerModel.swift */; };
+		6557D71F2CAB247800381649 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557D71E2CAB247800381649 /* SettingsViewController.swift */; };
+		656569672C7B37B8001D1F2B /* CopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656569662C7B37B8001D1F2B /* CopyLabel.swift */; };
+		65706BBB2CAE78CB0033398C /* BetterIcon7.png in Resources */ = {isa = PBXBuildFile; fileRef = 65706BB22CAE78CB0033398C /* BetterIcon7.png */; };
+		65706BBC2CAE78CB0033398C /* BetterIcon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 65706BB32CAE78CB0033398C /* BetterIcon4.png */; };
+		65706BBD2CAE78CB0033398C /* BetterIcon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 65706BB42CAE78CB0033398C /* BetterIcon1.png */; };
+		65706BBE2CAE78CB0033398C /* BetterIcon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 65706BB52CAE78CB0033398C /* BetterIcon3.png */; };
+		65706BBF2CAE78CB0033398C /* BetterIcon0.png in Resources */ = {isa = PBXBuildFile; fileRef = 65706BB62CAE78CB0033398C /* BetterIcon0.png */; };
+		65706BC02CAE78CB0033398C /* BetterIcon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 65706BB72CAE78CB0033398C /* BetterIcon5.png */; };
+		65706BC12CAE78CB0033398C /* BetterIcon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 65706BB82CAE78CB0033398C /* BetterIcon6.png */; };
+		65706BC22CAE78CB0033398C /* BetterIcon8.png in Resources */ = {isa = PBXBuildFile; fileRef = 65706BB92CAE78CB0033398C /* BetterIcon8.png */; };
+		65706BC32CAE78CB0033398C /* BetterIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 65706BBA2CAE78CB0033398C /* BetterIcon2.png */; };
+		65706BC52CAE7D1E0033398C /* IconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65706BC42CAE7D1E0033398C /* IconManager.swift */; };
+		6594D9052C5FC26D00218F02 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6594D9042C5FC26D00218F02 /* ButtonCell.swift */; };
+		659536072C7B43FF0036D99D /* PasteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659536062C7B43FF0036D99D /* PasteLabel.swift */; };
+		659EE3482C9368D000B39776 /* HistoryItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EE3462C9368D000B39776 /* HistoryItem+CoreDataProperties.swift */; };
+		659EE34A2C93690600B39776 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EE3492C93690600B39776 /* CoreDataManager.swift */; };
+		65B689512C620FFD005259E7 /* StandardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689502C620FFD005259E7 /* StandardViewController.swift */; };
+		65B689532C6246EF005259E7 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689522C6246EF005259E7 /* NavigationController.swift */; };
+		65B689562C628140005259E7 /* ScientificViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689552C628140005259E7 /* ScientificViewController.swift */; };
+		65B689582C6285AF005259E7 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689572C6285AF005259E7 /* CurrencyViewController.swift */; };
+		65B6895A2C6285C7005259E7 /* CryptoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689592C6285C7005259E7 /* CryptoViewController.swift */; };
+		65B6895C2C6285D9005259E7 /* LenghtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6895B2C6285D9005259E7 /* LenghtViewController.swift */; };
+		65B6895E2C6285F1005259E7 /* AreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6895D2C6285F1005259E7 /* AreaViewController.swift */; };
+		65B689602C62864A005259E7 /* VolumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6895F2C62864A005259E7 /* VolumeViewController.swift */; };
+		65B689622C628661005259E7 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689612C628661005259E7 /* TemperatureViewController.swift */; };
+		65B689682C628B74005259E7 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689672C628B74005259E7 /* DateViewController.swift */; };
+		65B6896A2C628B84005259E7 /* AgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689692C628B84005259E7 /* AgeViewController.swift */; };
+		65B6896C2C628B99005259E7 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6896B2C628B99005259E7 /* TimeViewController.swift */; };
+		65B6896E2C628BD3005259E7 /* SpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6896D2C628BD3005259E7 /* SpeedViewController.swift */; };
+		65B689702C628BE5005259E7 /* MassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6896F2C628BE5005259E7 /* MassViewController.swift */; };
+		65B689722C628BF7005259E7 /* DiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689712C628BF7005259E7 /* DiscountViewController.swift */; };
+		65B689742C628C0B005259E7 /* InvestitonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689732C628C0B005259E7 /* InvestitonViewController.swift */; };
+		65B689772C628D57005259E7 /* LoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689762C628D57005259E7 /* LoanViewController.swift */; };
+		65B689792C628D8E005259E7 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689782C628D8E005259E7 /* TipsViewController.swift */; };
+		65B6897B2C628DA3005259E7 /* BmiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6897A2C628DA3005259E7 /* BmiViewController.swift */; };
+		65B689812C628E22005259E7 /* CountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689802C628E22005259E7 /* CountViewController.swift */; };
+		65BFBB4B2CB2DE2700074527 /* TintModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BFBB4A2CB2DE2700074527 /* TintModel.swift */; };
+		65C51EA02CAEEA7600A2D164 /* IconsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C51E9F2CAEEA7600A2D164 /* IconsModel.swift */; };
+		65C51EA42CAF17F900A2D164 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C51EA32CAF17F900A2D164 /* IconCell.swift */; };
+		65DFA3E52C5A9B6A0090F4CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DFA3E42C5A9B6A0090F4CE /* AppDelegate.swift */; };
+		65DFA3E72C5A9B6A0090F4CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DFA3E62C5A9B6A0090F4CE /* SceneDelegate.swift */; };
+		65DFA3E92C5A9B6A0090F4CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DFA3E82C5A9B6A0090F4CE /* ViewController.swift */; };
+		65DFA3EC2C5A9B6A0090F4CE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3EB2C5A9B6A0090F4CE /* Base */; };
+		65DFA3EF2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65DFA3ED2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld */; };
+		65DFA3F12C5A9B6B0090F4CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3F02C5A9B6B0090F4CE /* Assets.xcassets */; };
+		65DFA3F42C5A9B6B0090F4CE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3F32C5A9B6B0090F4CE /* Base */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		65195E832C5BCB2400D4BE8B /* ButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsModel.swift; sourceTree = "<group>"; };
+		652EA1892C8B57CA00DD6803 /* StandardHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardHistoryController.swift; sourceTree = "<group>"; };
+		65464A752CB7DE9E008AB2AD /* PickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerModel.swift; sourceTree = "<group>"; };
+		6557D71E2CAB247800381649 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		656569662C7B37B8001D1F2B /* CopyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyLabel.swift; sourceTree = "<group>"; };
+		65706BB22CAE78CB0033398C /* BetterIcon7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BetterIcon7.png; sourceTree = "<group>"; };
+		65706BB32CAE78CB0033398C /* BetterIcon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BetterIcon4.png; sourceTree = "<group>"; };
+		65706BB42CAE78CB0033398C /* BetterIcon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BetterIcon1.png; sourceTree = "<group>"; };
+		65706BB52CAE78CB0033398C /* BetterIcon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BetterIcon3.png; sourceTree = "<group>"; };
+		65706BB62CAE78CB0033398C /* BetterIcon0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BetterIcon0.png; sourceTree = "<group>"; };
+		65706BB72CAE78CB0033398C /* BetterIcon5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BetterIcon5.png; sourceTree = "<group>"; };
+		65706BB82CAE78CB0033398C /* BetterIcon6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BetterIcon6.png; sourceTree = "<group>"; };
+		65706BB92CAE78CB0033398C /* BetterIcon8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BetterIcon8.png; sourceTree = "<group>"; };
+		65706BBA2CAE78CB0033398C /* BetterIcon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BetterIcon2.png; sourceTree = "<group>"; };
+		65706BC42CAE7D1E0033398C /* IconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconManager.swift; sourceTree = "<group>"; };
+		6594D9042C5FC26D00218F02 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		659536062C7B43FF0036D99D /* PasteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteLabel.swift; sourceTree = "<group>"; };
+		659EE3462C9368D000B39776 /* HistoryItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HistoryItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		659EE3492C93690600B39776 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		65B689502C620FFD005259E7 /* StandardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardViewController.swift; sourceTree = "<group>"; };
+		65B689522C6246EF005259E7 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		65B689552C628140005259E7 /* ScientificViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScientificViewController.swift; sourceTree = "<group>"; };
+		65B689572C6285AF005259E7 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
+		65B689592C6285C7005259E7 /* CryptoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoViewController.swift; sourceTree = "<group>"; };
+		65B6895B2C6285D9005259E7 /* LenghtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LenghtViewController.swift; sourceTree = "<group>"; };
+		65B6895D2C6285F1005259E7 /* AreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaViewController.swift; sourceTree = "<group>"; };
+		65B6895F2C62864A005259E7 /* VolumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeViewController.swift; sourceTree = "<group>"; };
+		65B689612C628661005259E7 /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
+		65B689672C628B74005259E7 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		65B689692C628B84005259E7 /* AgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeViewController.swift; sourceTree = "<group>"; };
+		65B6896B2C628B99005259E7 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
+		65B6896D2C628BD3005259E7 /* SpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedViewController.swift; sourceTree = "<group>"; };
+		65B6896F2C628BE5005259E7 /* MassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassViewController.swift; sourceTree = "<group>"; };
+		65B689712C628BF7005259E7 /* DiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountViewController.swift; sourceTree = "<group>"; };
+		65B689732C628C0B005259E7 /* InvestitonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestitonViewController.swift; sourceTree = "<group>"; };
+		65B689762C628D57005259E7 /* LoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanViewController.swift; sourceTree = "<group>"; };
+		65B689782C628D8E005259E7 /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
+		65B6897A2C628DA3005259E7 /* BmiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiViewController.swift; sourceTree = "<group>"; };
+		65B689802C628E22005259E7 /* CountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountViewController.swift; sourceTree = "<group>"; };
+		65BFBB4A2CB2DE2700074527 /* TintModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintModel.swift; sourceTree = "<group>"; };
+		65C51E9F2CAEEA7600A2D164 /* IconsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsModel.swift; sourceTree = "<group>"; };
+		65C51EA32CAF17F900A2D164 /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
+		65DFA3E12C5A9B6A0090F4CE /* Better Calc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Better Calc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		65DFA3E42C5A9B6A0090F4CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		65DFA3E62C5A9B6A0090F4CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		65DFA3E82C5A9B6A0090F4CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		65DFA3EB2C5A9B6A0090F4CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		65DFA3EE2C5A9B6A0090F4CE /* Better_Calc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Better_Calc.xcdatamodel; sourceTree = "<group>"; };
+		65DFA3F02C5A9B6B0090F4CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		65DFA3F32C5A9B6B0090F4CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		65DFA3F52C5A9B6B0090F4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		65DFA3DE2C5A9B6A0090F4CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		65195E7F2C5BCA2900D4BE8B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				65DFA3EA2C5A9B6A0090F4CE /* Main.storyboard */,
+				65DFA3F22C5A9B6B0090F4CE /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		65195E812C5BCA4A00D4BE8B /* Main Controller */ = {
+			isa = PBXGroup;
+			children = (
+				65DFA3E82C5A9B6A0090F4CE /* ViewController.swift */,
+				65B689522C6246EF005259E7 /* NavigationController.swift */,
+			);
+			path = "Main Controller";
+			sourceTree = "<group>";
+		};
+		65195E822C5BCA5700D4BE8B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				65464A752CB7DE9E008AB2AD /* PickerModel.swift */,
+				65195E832C5BCB2400D4BE8B /* ButtonsModel.swift */,
+				6594D9042C5FC26D00218F02 /* ButtonCell.swift */,
+				65BFBB4A2CB2DE2700074527 /* TintModel.swift */,
+				65DFA3F02C5A9B6B0090F4CE /* Assets.xcassets */,
+				65DFA3ED2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		65706B9F2CAE74200033398C /* AppIcon */ = {
+			isa = PBXGroup;
+			children = (
+				65706BB62CAE78CB0033398C /* BetterIcon0.png */,
+				65706BB42CAE78CB0033398C /* BetterIcon1.png */,
+				65706BBA2CAE78CB0033398C /* BetterIcon2.png */,
+				65706BB52CAE78CB0033398C /* BetterIcon3.png */,
+				65706BB32CAE78CB0033398C /* BetterIcon4.png */,
+				65706BB72CAE78CB0033398C /* BetterIcon5.png */,
+				65706BB82CAE78CB0033398C /* BetterIcon6.png */,
+				65706BB22CAE78CB0033398C /* BetterIcon7.png */,
+				65706BB92CAE78CB0033398C /* BetterIcon8.png */,
+			);
+			path = AppIcon;
+			sourceTree = "<group>";
+		};
+		65AB716D2C6159AE0086FA36 /* Calculators */ = {
+			isa = PBXGroup;
+			children = (
+				65B689632C628B34005259E7 /* 1 row */,
+				65B689642C628B41005259E7 /* 2 row */,
+				65B689652C628B4C005259E7 /* 3 row */,
+				65B689662C628B5B005259E7 /* 4 row */,
+				65B6897C2C628DB1005259E7 /* 5 row */,
+				65B6897D2C628DBA005259E7 /* 6 row */,
+				65B6897E2C628DC6005259E7 /* 7 row */,
+				65B6897F2C628DCF005259E7 /* 8 row */,
+				65B689822C628E38005259E7 /* 9 row */,
+				65B689832C628E3E005259E7 /* 10 row */,
+			);
+			path = Calculators;
+			sourceTree = "<group>";
+		};
+		65B689632C628B34005259E7 /* 1 row */ = {
+			isa = PBXGroup;
+			children = (
+				65B689502C620FFD005259E7 /* StandardViewController.swift */,
+				652EA1892C8B57CA00DD6803 /* StandardHistoryController.swift */,
+				656569662C7B37B8001D1F2B /* CopyLabel.swift */,
+				659536062C7B43FF0036D99D /* PasteLabel.swift */,
+				65B689552C628140005259E7 /* ScientificViewController.swift */,
+			);
+			path = "1 row";
+			sourceTree = "<group>";
+		};
+		65B689642C628B41005259E7 /* 2 row */ = {
+			isa = PBXGroup;
+			children = (
+				65B689572C6285AF005259E7 /* CurrencyViewController.swift */,
+				65B689592C6285C7005259E7 /* CryptoViewController.swift */,
+			);
+			path = "2 row";
+			sourceTree = "<group>";
+		};
+		65B689652C628B4C005259E7 /* 3 row */ = {
+			isa = PBXGroup;
+			children = (
+				65B6895B2C6285D9005259E7 /* LenghtViewController.swift */,
+				65B6895D2C6285F1005259E7 /* AreaViewController.swift */,
+			);
+			path = "3 row";
+			sourceTree = "<group>";
+		};
+		65B689662C628B5B005259E7 /* 4 row */ = {
+			isa = PBXGroup;
+			children = (
+				65B6895F2C62864A005259E7 /* VolumeViewController.swift */,
+				65B689612C628661005259E7 /* TemperatureViewController.swift */,
+			);
+			path = "4 row";
+			sourceTree = "<group>";
+		};
+		65B6897C2C628DB1005259E7 /* 5 row */ = {
+			isa = PBXGroup;
+			children = (
+				65B689672C628B74005259E7 /* DateViewController.swift */,
+				65B689692C628B84005259E7 /* AgeViewController.swift */,
+			);
+			path = "5 row";
+			sourceTree = "<group>";
+		};
+		65B6897D2C628DBA005259E7 /* 6 row */ = {
+			isa = PBXGroup;
+			children = (
+				65B6896B2C628B99005259E7 /* TimeViewController.swift */,
+				65B6896D2C628BD3005259E7 /* SpeedViewController.swift */,
+			);
+			path = "6 row";
+			sourceTree = "<group>";
+		};
+		65B6897E2C628DC6005259E7 /* 7 row */ = {
+			isa = PBXGroup;
+			children = (
+				65B6896F2C628BE5005259E7 /* MassViewController.swift */,
+				65B689802C628E22005259E7 /* CountViewController.swift */,
+			);
+			path = "7 row";
+			sourceTree = "<group>";
+		};
+		65B6897F2C628DCF005259E7 /* 8 row */ = {
+			isa = PBXGroup;
+			children = (
+				65B689712C628BF7005259E7 /* DiscountViewController.swift */,
+				65B689732C628C0B005259E7 /* InvestitonViewController.swift */,
+			);
+			path = "8 row";
+			sourceTree = "<group>";
+		};
+		65B689822C628E38005259E7 /* 9 row */ = {
+			isa = PBXGroup;
+			children = (
+				65B689762C628D57005259E7 /* LoanViewController.swift */,
+				65B689782C628D8E005259E7 /* TipsViewController.swift */,
+			);
+			path = "9 row";
+			sourceTree = "<group>";
+		};
+		65B689832C628E3E005259E7 /* 10 row */ = {
+			isa = PBXGroup;
+			children = (
+				65B6897A2C628DA3005259E7 /* BmiViewController.swift */,
+				6557D71E2CAB247800381649 /* SettingsViewController.swift */,
+				65C51E9F2CAEEA7600A2D164 /* IconsModel.swift */,
+				65C51EA32CAF17F900A2D164 /* IconCell.swift */,
+			);
+			path = "10 row";
+			sourceTree = "<group>";
+		};
+		65DFA3D82C5A9B6A0090F4CE = {
+			isa = PBXGroup;
+			children = (
+				659EE3462C9368D000B39776 /* HistoryItem+CoreDataProperties.swift */,
+				659EE3492C93690600B39776 /* CoreDataManager.swift */,
+				65706BC42CAE7D1E0033398C /* IconManager.swift */,
+				65706B9F2CAE74200033398C /* AppIcon */,
+				65DFA3E32C5A9B6A0090F4CE /* Better Calc */,
+				65DFA3E22C5A9B6A0090F4CE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		65DFA3E22C5A9B6A0090F4CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65DFA3E12C5A9B6A0090F4CE /* Better Calc.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		65DFA3E32C5A9B6A0090F4CE /* Better Calc */ = {
+			isa = PBXGroup;
+			children = (
+				65DFA3E42C5A9B6A0090F4CE /* AppDelegate.swift */,
+				65DFA3E62C5A9B6A0090F4CE /* SceneDelegate.swift */,
+				65195E812C5BCA4A00D4BE8B /* Main Controller */,
+				65AB716D2C6159AE0086FA36 /* Calculators */,
+				65195E7F2C5BCA2900D4BE8B /* View */,
+				65195E822C5BCA5700D4BE8B /* Model */,
+				65DFA3F52C5A9B6B0090F4CE /* Info.plist */,
+			);
+			path = "Better Calc";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		65DFA3E02C5A9B6A0090F4CE /* Better Calc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65DFA3F82C5A9B6B0090F4CE /* Build configuration list for PBXNativeTarget "Better Calc" */;
+			buildPhases = (
+				65DFA3DD2C5A9B6A0090F4CE /* Sources */,
+				65DFA3DE2C5A9B6A0090F4CE /* Frameworks */,
+				65DFA3DF2C5A9B6A0090F4CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Better Calc";
+			productName = "Better Calc";
+			productReference = 65DFA3E12C5A9B6A0090F4CE /* Better Calc.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		65DFA3D92C5A9B6A0090F4CE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					65DFA3E02C5A9B6A0090F4CE = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = 65DFA3DC2C5A9B6A0090F4CE /* Build configuration list for PBXProject "Better Calc" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 65DFA3D82C5A9B6A0090F4CE;
+			productRefGroup = 65DFA3E22C5A9B6A0090F4CE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				65DFA3E02C5A9B6A0090F4CE /* Better Calc */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		65DFA3DF2C5A9B6A0090F4CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65706BBE2CAE78CB0033398C /* BetterIcon3.png in Resources */,
+				65706BC02CAE78CB0033398C /* BetterIcon5.png in Resources */,
+				65706BBF2CAE78CB0033398C /* BetterIcon0.png in Resources */,
+				65706BC22CAE78CB0033398C /* BetterIcon8.png in Resources */,
+				65706BBB2CAE78CB0033398C /* BetterIcon7.png in Resources */,
+				65DFA3F12C5A9B6B0090F4CE /* Assets.xcassets in Resources */,
+				65DFA3F42C5A9B6B0090F4CE /* Base in Resources */,
+				65706BC32CAE78CB0033398C /* BetterIcon2.png in Resources */,
+				65DFA3EC2C5A9B6A0090F4CE /* Base in Resources */,
+				65706BC12CAE78CB0033398C /* BetterIcon6.png in Resources */,
+				65706BBD2CAE78CB0033398C /* BetterIcon1.png in Resources */,
+				65706BBC2CAE78CB0033398C /* BetterIcon4.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		65DFA3DD2C5A9B6A0090F4CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65B6896C2C628B99005259E7 /* TimeViewController.swift in Sources */,
+				65DFA3EF2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld in Sources */,
+				65C51EA02CAEEA7600A2D164 /* IconsModel.swift in Sources */,
+				65195E842C5BCB2400D4BE8B /* ButtonsModel.swift in Sources */,
+				65B6896A2C628B84005259E7 /* AgeViewController.swift in Sources */,
+				65464A762CB7DEA3008AB2AD /* PickerModel.swift in Sources */,
+				65B689772C628D57005259E7 /* LoanViewController.swift in Sources */,
+				656569672C7B37B8001D1F2B /* CopyLabel.swift in Sources */,
+				65DFA3E92C5A9B6A0090F4CE /* ViewController.swift in Sources */,
+				6557D71F2CAB247800381649 /* SettingsViewController.swift in Sources */,
+				65B689532C6246EF005259E7 /* NavigationController.swift in Sources */,
+				65C51EA42CAF17F900A2D164 /* IconCell.swift in Sources */,
+				652EA18A2C8B57CA00DD6803 /* StandardHistoryController.swift in Sources */,
+				65B6895A2C6285C7005259E7 /* CryptoViewController.swift in Sources */,
+				65B6897B2C628DA3005259E7 /* BmiViewController.swift in Sources */,
+				65DFA3E52C5A9B6A0090F4CE /* AppDelegate.swift in Sources */,
+				65B689622C628661005259E7 /* TemperatureViewController.swift in Sources */,
+				65B689792C628D8E005259E7 /* TipsViewController.swift in Sources */,
+				659EE3482C9368D000B39776 /* HistoryItem+CoreDataProperties.swift in Sources */,
+				65B6895C2C6285D9005259E7 /* LenghtViewController.swift in Sources */,
+				65DFA3E72C5A9B6A0090F4CE /* SceneDelegate.swift in Sources */,
+				65B689562C628140005259E7 /* ScientificViewController.swift in Sources */,
+				65B689742C628C0B005259E7 /* InvestitonViewController.swift in Sources */,
+				65706BC52CAE7D1E0033398C /* IconManager.swift in Sources */,
+				6594D9052C5FC26D00218F02 /* ButtonCell.swift in Sources */,
+				65B689602C62864A005259E7 /* VolumeViewController.swift in Sources */,
+				65B6895E2C6285F1005259E7 /* AreaViewController.swift in Sources */,
+				65B6896E2C628BD3005259E7 /* SpeedViewController.swift in Sources */,
+				65B689722C628BF7005259E7 /* DiscountViewController.swift in Sources */,
+				65B689702C628BE5005259E7 /* MassViewController.swift in Sources */,
+				65B689582C6285AF005259E7 /* CurrencyViewController.swift in Sources */,
+				65B689812C628E22005259E7 /* CountViewController.swift in Sources */,
+				65B689512C620FFD005259E7 /* StandardViewController.swift in Sources */,
+				659536072C7B43FF0036D99D /* PasteLabel.swift in Sources */,
+				65B689682C628B74005259E7 /* DateViewController.swift in Sources */,
+				65BFBB4B2CB2DE2700074527 /* TintModel.swift in Sources */,
+				659EE34A2C93690600B39776 /* CoreDataManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		65DFA3EA2C5A9B6A0090F4CE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65DFA3EB2C5A9B6A0090F4CE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		65DFA3F22C5A9B6B0090F4CE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65DFA3F32C5A9B6B0090F4CE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		65DFA3F62C5A9B6B0090F4CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		65DFA3F72C5A9B6B0090F4CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		65DFA3F92C5A9B6B0090F4CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SVFF6W5Y6W;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Better Calc/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Better Calc";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.danielhusiuk.Better-Calc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		65DFA3FA2C5A9B6B0090F4CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SVFF6W5Y6W;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Better Calc/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Better Calc";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.danielhusiuk.Better-Calc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		65DFA3DC2C5A9B6A0090F4CE /* Build configuration list for PBXProject "Better Calc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65DFA3F62C5A9B6B0090F4CE /* Debug */,
+				65DFA3F72C5A9B6B0090F4CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65DFA3F82C5A9B6B0090F4CE /* Build configuration list for PBXNativeTarget "Better Calc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65DFA3F92C5A9B6B0090F4CE /* Debug */,
+				65DFA3FA2C5A9B6B0090F4CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		65DFA3ED2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				65DFA3EE2C5A9B6A0090F4CE /* Better_Calc.xcdatamodel */,
+			);
+			currentVersion = 65DFA3EE2C5A9B6A0090F4CE /* Better_Calc.xcdatamodel */;
+			path = Better_Calc.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 65DFA3D92C5A9B6A0090F4CE /* Project object */;
+}
