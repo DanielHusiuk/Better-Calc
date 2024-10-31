@@ -46,6 +46,7 @@ class StandardViewController: UIViewController {
         
         buttonShadows()
         backgroundImages()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,8 +77,8 @@ class StandardViewController: UIViewController {
         let calcCornerRadius: CGFloat = 30
         CalculatorImageOutlet.applyshadowWithCorner(containerView: CalculatorViewOutlet, cornerRadious: calcCornerRadius)
         
-        let NumbCornerRadius: CGFloat = 20
-        NumbersImageOutlet.applyshadowWithCorner(containerView: NumbersViewOutlet, cornerRadious: NumbCornerRadius)
+        let numbCornerRadius: CGFloat = 20
+        NumbersImageOutlet.applyshadowWithCorner(containerView: NumbersViewOutlet, cornerRadious: numbCornerRadius)
     }
     
     func historyButton() {

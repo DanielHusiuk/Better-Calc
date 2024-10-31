@@ -93,7 +93,7 @@ class ButtonCell: UICollectionViewCell {
         innerView.addSubview(titleLabel)
         
         let padding: CGFloat = 15
-        let imageTopPadding: CGFloat = 45
+        let imageTopPadding: CGFloat = 50
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: innerView.centerXAnchor),
             imageView.topAnchor.constraint(equalTo: innerView.topAnchor, constant: imageTopPadding),
