@@ -73,8 +73,8 @@ class IconCell: UICollectionViewCell {
         
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 0, height: 0)
-        button.layer.shadowOpacity = 0.35
-        button.layer.shadowRadius = 12
+        button.layer.shadowOpacity = 0.25
+        button.layer.shadowRadius = 10
         button.layer.shadowPath = UIBezierPath(roundedRect: layer.bounds, cornerRadius: layer.cornerRadius).cgPath
         button.layer.masksToBounds = false
     }
