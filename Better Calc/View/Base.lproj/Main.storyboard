@@ -212,7 +212,7 @@
                                             <constraint firstItem="PYf-E3-bwT" firstAttribute="leading" secondItem="fCr-Jd-HBA" secondAttribute="leading" id="x0a-4a-pD8"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="tTU-bT-BYn">
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="tTU-bT-BYn" userLabel="ButtonViewOutlet">
                                         <rect key="frame" x="15" y="206" width="330" height="417"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="jy3-7n-nWS">
@@ -553,7 +553,7 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="jy3-7n-nWS" firstAttribute="leading" secondItem="tTU-bT-BYn" secondAttribute="leading" id="4cY-jK-Sun"/>
                                             <constraint firstItem="jy3-7n-nWS" firstAttribute="centerY" secondItem="tTU-bT-BYn" secondAttribute="centerY" id="KGM-Ut-hW7"/>
@@ -572,6 +572,7 @@
                                     <constraint firstItem="fCr-Jd-HBA" firstAttribute="leading" secondItem="D58-m9-WRL" secondAttribute="leading" constant="15" id="IML-qo-F7x"/>
                                     <constraint firstAttribute="height" constant="638" id="bg7-xP-adz"/>
                                     <constraint firstItem="tTU-bT-BYn" firstAttribute="leading" secondItem="D58-m9-WRL" secondAttribute="leading" constant="15" id="o8E-PH-BML"/>
+                                    <constraint firstItem="tTU-bT-BYn" firstAttribute="top" secondItem="fCr-Jd-HBA" secondAttribute="bottom" constant="27" id="r8e-xU-W0a"/>
                                     <constraint firstItem="fCr-Jd-HBA" firstAttribute="centerX" secondItem="D58-m9-WRL" secondAttribute="centerX" id="tFj-x0-D1q"/>
                                 </constraints>
                             </view>
@@ -1844,9 +1845,6 @@
         <image name="xmark.circle" catalog="system" width="128" height="123"/>
         <systemColor name="scrollViewTexturedBackgroundColor">
             <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

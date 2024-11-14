@@ -45,13 +45,29 @@ class StandardViewController: UIViewController {
         super.viewDidLoad()
         
         buttonShadows()
-        backgroundImages()
-        
+        applyShadowWithInsets(to: NumbersViewOutlet, cornerRadius: 20)
+        applyShadowWithInsets(to: CalculatorImageOutlet, cornerRadius: 30)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         historyButton()
+    }
+    
+    //MARK: - View Shadow
+    
+    func applyShadowWithInsets(to view: UIView, cornerRadius: CGFloat) {
+        view.layer.masksToBounds = false
+
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset = CGSize(width: 0, height: 3)
+        view.layer.shadowRadius = 8
+
+        let insetBounds = view.bounds.insetBy(dx: -5, dy: -5)
+        let shadowPath = UIBezierPath(roundedRect: insetBounds, cornerRadius: cornerRadius)
+        
+        view.layer.shadowPath = shadowPath.cgPath
     }
     
     
@@ -71,14 +87,6 @@ class StandardViewController: UIViewController {
             button.layer.shadowPath = UIBezierPath(roundedRect: button.bounds, cornerRadius: button.layer.cornerRadius).cgPath
             button.layer.masksToBounds = false
         }
-    }
-    
-    func backgroundImages() {
-        let calcCornerRadius: CGFloat = 30
-        CalculatorImageOutlet.applyshadowWithCorner(containerView: CalculatorViewOutlet, cornerRadious: calcCornerRadius)
-        
-        let numbCornerRadius: CGFloat = 20
-        NumbersImageOutlet.applyshadowWithCorner(containerView: NumbersViewOutlet, cornerRadious: numbCornerRadius)
     }
     
     func historyButton() {
