@@ -8,6 +8,9 @@
 import UIKit
 
 class ButtonCell: UICollectionViewCell {
+    
+    //MARK: - Cell objects
+    
     let button: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = #colorLiteral(red: 0.2745098039, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
@@ -37,6 +40,9 @@ class ButtonCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    
+    //MARK: - Shadow
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,6 +77,9 @@ class ButtonCell: UICollectionViewCell {
         super.layoutSubviews()
         shadowView.layer.cornerRadius = 25
     }
+    
+    
+    //MARK: - Inner Placement
     
     func configure(with buttonText: String, image: UIImage) {
         innerView.subviews.forEach { $0.removeFromSuperview() }

@@ -53,7 +53,7 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
             
             HistoryTableView.contentInset.bottom = 0
             HistoryTableView.verticalScrollIndicatorInsets.bottom = 0
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.CloseBarButton.isEnabled = true
             })
         } else {
@@ -66,11 +66,10 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
             let toolbarHeight = navigationController?.toolbar.frame.size.height
             HistoryTableView.contentInset.bottom = toolbarHeight!
             HistoryTableView.verticalScrollIndicatorInsets.bottom = toolbarHeight!
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.CloseBarButton.isEnabled = false
             })
         }
-        
     }
     
     @IBAction func deleteAll(_ sender: UIBarButtonItem) {
@@ -94,20 +93,28 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func deleteObject(_ sender: UIBarButtonItem) {
-        if !isEdit {
+        guard isEdit else { return }
+
+        guard let selectedRows = HistoryTableView.indexPathsForSelectedRows else {
+            let chooseAlert = UIAlertController(title: "Nothing to delete", message: "Choose cells to delete", preferredStyle: .alert)
+            chooseAlert.addAction(UIAlertAction(title: "Okay", style: .default))
+            present(chooseAlert, animated: true, completion: nil)
             return
         }
-        
-        let selectedRows = HistoryTableView.indexPathsForSelectedRows ?? []
-        let sortedSelectedRows = selectedRows.sorted(by: { $0.row > $1.row })
-        
+
+        let sortedSelectedRows = selectedRows.sorted(by: { $0.item > $1.item })
+        print("Rows to delete: \(sortedSelectedRows)")
+
         for indexPath in sortedSelectedRows {
             let deleteItem = historyArray[indexPath.row]
-            coreData.deleteObject(with: deleteItem.id)
+            coreData.deleteObject(object: deleteItem)
             historyArray.remove(at: indexPath.row)
         }
-        HistoryTableView.deleteRows(at: sortedSelectedRows, with: .fade)
         
+        HistoryTableView.performBatchUpdates {
+            HistoryTableView.deleteRows(at: sortedSelectedRows, with: .fade)
+        }
+
         if historyArray.isEmpty {
             if let navigationController = self.presentingViewController as? UINavigationController,
                let standardVC = navigationController.viewControllers.first(where: { $0 is StandardViewController }) as? StandardViewController {
@@ -115,16 +122,20 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
             }
             self.dismiss(animated: true, completion: nil)
         }
-        
+
         HistoryTableView.setEditing(false, animated: true)
-        isEdit = false
         EditBarButton.title = "Edit"
+        EditBarButton.style = .plain
+        isEdit = false
+
         navigationController?.setToolbarHidden(true, animated: true)
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.3) {
             self.CloseBarButton.isEnabled = true
-        })
+        }
         
-        loadHistory()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.loadHistory()
+        }
     }
     
     
@@ -219,4 +230,5 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         }
         
     }
+
 }

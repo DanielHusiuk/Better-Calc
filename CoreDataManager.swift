@@ -74,15 +74,14 @@ public final class CoreDataManager: NSObject {
         appDelegate.saveContext()
     }
     
-    public func deleteObject(with id: Int16) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HistoryItem")
-        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+    public func deleteObject(object: NSManagedObject) {
+        context.delete(object)
         do {
-            guard let objects = try? context.fetch(fetchRequest) as? [HistoryItem],
-                  let object = objects.first else { return }
-            context.delete(object)
+            try context.save()
+        } catch {
+            print("Failed to delete object directly: \(error)")
         }
-        appDelegate.saveContext()
+
     }
     
     public func deleteAllHistory() {

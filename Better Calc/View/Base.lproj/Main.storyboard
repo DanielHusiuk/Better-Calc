@@ -208,14 +208,13 @@
                                             <constraint firstItem="Fxx-80-6Cx" firstAttribute="leading" secondItem="u5n-jp-eme" secondAttribute="trailing" constant="4" id="pMM-Y0-aa5"/>
                                             <constraint firstItem="dTY-XG-eKk" firstAttribute="bottom" secondItem="PYf-E3-bwT" secondAttribute="bottom" id="pqD-W1-c4p"/>
                                             <constraint firstItem="dTY-XG-eKk" firstAttribute="top" secondItem="PYf-E3-bwT" secondAttribute="top" id="qrD-V3-twl"/>
-                                            <constraint firstAttribute="width" constant="330" id="wbb-Fg-Uo5"/>
                                             <constraint firstItem="PYf-E3-bwT" firstAttribute="leading" secondItem="fCr-Jd-HBA" secondAttribute="leading" id="x0a-4a-pD8"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="tTU-bT-BYn" userLabel="ButtonViewOutlet">
                                         <rect key="frame" x="15" y="206" width="330" height="417"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="jy3-7n-nWS">
+                                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="jy3-7n-nWS">
                                                 <rect key="frame" x="0.0" y="0.0" width="330" height="417"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="330" placeholderIntrinsicHeight="73" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="iz0-zt-xNw">
@@ -549,7 +548,6 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="417" id="KH3-Ch-JWs"/>
-                                                    <constraint firstAttribute="width" constant="330" id="wgc-al-qQZ"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
@@ -559,7 +557,6 @@
                                             <constraint firstItem="jy3-7n-nWS" firstAttribute="centerY" secondItem="tTU-bT-BYn" secondAttribute="centerY" id="KGM-Ut-hW7"/>
                                             <constraint firstItem="jy3-7n-nWS" firstAttribute="top" secondItem="tTU-bT-BYn" secondAttribute="top" id="KgZ-6E-XOl"/>
                                             <constraint firstAttribute="height" constant="417" id="PBj-ia-0rA"/>
-                                            <constraint firstAttribute="width" constant="330" id="e3b-TU-OAM"/>
                                             <constraint firstItem="jy3-7n-nWS" firstAttribute="centerX" secondItem="tTU-bT-BYn" secondAttribute="centerX" id="iSV-Qo-P1T"/>
                                         </constraints>
                                     </view>
@@ -582,7 +579,6 @@
                         <constraints>
                             <constraint firstItem="D58-m9-WRL" firstAttribute="top" secondItem="6py-PG-V8D" secondAttribute="bottom" constant="25" id="FDg-rh-E4o"/>
                             <constraint firstItem="6py-PG-V8D" firstAttribute="centerX" secondItem="D58-m9-WRL" secondAttribute="centerX" id="TzT-c3-Dd5"/>
-                            <constraint firstItem="3Mi-hz-6WU" firstAttribute="bottom" secondItem="D58-m9-WRL" secondAttribute="bottom" constant="56" id="Zip-eF-WjF"/>
                             <constraint firstItem="D58-m9-WRL" firstAttribute="leading" secondItem="3Mi-hz-6WU" secondAttribute="leading" constant="15" id="kce-2Z-jPM"/>
                             <constraint firstItem="6py-PG-V8D" firstAttribute="bottom" secondItem="3Mi-hz-6WU" secondAttribute="top" id="kxD-Ev-WK4"/>
                             <constraint firstItem="6py-PG-V8D" firstAttribute="leading" secondItem="R7c-Y1-ASr" secondAttribute="leading" id="m86-ff-j9Y"/>

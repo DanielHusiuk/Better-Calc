@@ -58,7 +58,6 @@ class StandardViewController: UIViewController {
     
     func applyShadowWithInsets(to view: UIView, cornerRadius: CGFloat) {
         view.layer.masksToBounds = false
-
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.2
         view.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -66,7 +65,6 @@ class StandardViewController: UIViewController {
 
         let insetBounds = view.bounds.insetBy(dx: -5, dy: -5)
         let shadowPath = UIBezierPath(roundedRect: insetBounds, cornerRadius: cornerRadius)
-        
         view.layer.shadowPath = shadowPath.cgPath
     }
     
@@ -252,11 +250,13 @@ class StandardViewController: UIViewController {
         }
         
         if let result = result {
-            if result >= 1e9 || result <= -1e9 {
+            if abs(result) >= 1e9 || abs(result) <= -1e9 {
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .scientific
                 numberFormatter.maximumFractionDigits = 2
                 numberFormatter.exponentSymbol = "e"
+                numberFormatter.positiveFormat = "0.##E+0"
+                numberFormatter.negativeFormat = "-0.##E+0"
                 
                 if let formattedResult = numberFormatter.string(from: NSNumber(value: result)) {
                     ResultsLabelOutlet.text = formattedResult

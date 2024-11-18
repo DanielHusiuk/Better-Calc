@@ -179,6 +179,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private var collectionView: UICollectionView?
     private var model = IconsModel()
+    private var selectedIndexPath: IndexPath?
     
     private func layoutCollection(in cell: UITableViewCell) {
         if collectionView != nil {
@@ -222,6 +223,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let buttonRow = model.icons[indexPath.row]
         cell.configure(with: buttonRow.text, image: buttonRow.image)
         cell.button.tag = indexPath.row
+//        cell.button.backgroundColor = .red
+        
+        if selectedIndexPath == indexPath {
+            cell.borderView.layer.borderWidth = 2
+            cell.borderView.layer.borderColor = UIColor.white.cgColor
+        } else {
+            cell.borderView.layer.borderWidth = 0
+        }
+        
         cell.button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         return cell
     }
@@ -233,7 +243,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         selectedTintId = tintModel.tints[sender.tag].id // Збереження вибраного id
         print("\(buttonRow.text) Button Pressed")
         
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+        selectedIndexPath = IndexPath(row: sender.tag, section: 0)
+        collectionView?.reloadData()
+        
+        guard UserDefaults.standard.bool(forKey: "TintState") else { return }
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         
