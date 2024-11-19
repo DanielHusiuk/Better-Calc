@@ -116,7 +116,7 @@ class IconCell: UICollectionViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         innerView.addSubview(titleLabel)
         
-        let padding: CGFloat = 10
+        let padding: CGFloat = 12
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: innerView.centerXAnchor),
             imageView.topAnchor.constraint(equalTo: innerView.topAnchor),

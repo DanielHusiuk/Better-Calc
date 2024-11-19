@@ -26,9 +26,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func updatePreferences() {
         SettingsTableViewOutlet.delegate = self
         SettingsTableViewOutlet.dataSource = self
-        
         SettingsTableViewOutlet.rowHeight = UITableView.automaticDimension
         SettingsTableViewOutlet.estimatedRowHeight = UITableView.automaticDimension
+        
+        let defaultTintCell = 0
+        let savedIndex = UserDefaults.standard.integer(forKey: "selectedCellPath")
+        let indexToUse = savedIndex == 0 ? defaultTintCell : savedIndex
+        selectedIndexPath = IndexPath(row: indexToUse, section: 0)
         
         if UserDefaults.standard.object(forKey: "HapticState") == nil {
             UserDefaults.standard.set(true, forKey: "HapticState")
@@ -223,11 +227,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let buttonRow = model.icons[indexPath.row]
         cell.configure(with: buttonRow.text, image: buttonRow.image)
         cell.button.tag = indexPath.row
-//        cell.button.backgroundColor = .red
         
         if selectedIndexPath == indexPath {
             cell.borderView.layer.borderWidth = 2
-            cell.borderView.layer.borderColor = UIColor.white.cgColor
+            cell.borderView.layer.borderColor = #colorLiteral(red: 0.9000000358, green: 0.9000000358, blue: 0.9000000358, alpha: 1)
         } else {
             cell.borderView.layer.borderWidth = 0
         }
@@ -240,16 +243,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let buttonRow = model.icons[sender.tag]
         buttonRow.action()
         
-        selectedTintId = tintModel.tints[sender.tag].id // Збереження вибраного id
-        print("\(buttonRow.text) Button Pressed")
-        
         selectedIndexPath = IndexPath(row: sender.tag, section: 0)
+        UserDefaults.standard.set(sender.tag, forKey: "selectedCellPath")
+        UserDefaults.standard.synchronize()
         collectionView?.reloadData()
         
+        selectedTintId = tintModel.tints[sender.tag].id // Збереження вибраного id
+        print("\(buttonRow.text) Button Pressed")
         guard UserDefaults.standard.bool(forKey: "TintState") else { return }
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        
     }
     
     
