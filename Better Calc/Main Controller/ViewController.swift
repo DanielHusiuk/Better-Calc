@@ -83,9 +83,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         let buttonRow = model.buttons[indexPath.row]
         cell.configure(with: buttonRow.text, image: buttonRow.image)
-        
         cell.button.tag = indexPath.row
-        cell.button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        cell.button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchDown)
         return cell
     }
     
@@ -124,6 +123,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @objc func buttonPressed(_ sender: UIButton) {
         let buttonRow = model.buttons[sender.tag]
         let buttonSegue = buttonRow.segue
+        let originalColor = sender.backgroundColor
+        
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = #colorLiteral(red: 0.3999999762, green: 0.3999999762, blue: 0.3999999762, alpha: 1)
+        }
+        UIView.animate(withDuration: 0.2) {
+            sender.backgroundColor = originalColor
+        }
+        
         performSegue(withIdentifier: buttonSegue, sender: self)
         print("\(buttonRow.text) Button Pressed")
         

@@ -14,6 +14,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private var tintModel = TintModel()
     private var selectedTintId: Int16 = 0
+    private var isExpanded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func updatePreferences() {
         SettingsTableViewOutlet.delegate = self
         SettingsTableViewOutlet.dataSource = self
+        SettingsTableViewOutlet.allowsSelection = true
         SettingsTableViewOutlet.rowHeight = UITableView.automaticDimension
         SettingsTableViewOutlet.estimatedRowHeight = UITableView.automaticDimension
         
@@ -90,7 +92,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 0:
             return 1
         case 1:
-            return 1
+            return isExpanded ? 2 : 1
         case 2:
             return 2
         case 3:
@@ -100,6 +102,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         default:
             return 1
         }
+        
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -127,7 +130,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             let height = rows * 110
             return height + 32
         case 1:
-            return 100
+            return isExpanded ? 100 : 44
         case 2, 3, 4:
             return 44
         default:
@@ -176,6 +179,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             return cell
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 1 {
+            isExpanded = !isExpanded
+            tableView.reloadSections([indexPath.section], with: .fade)
+        } else {
+            return
+        }
     }
     
     
@@ -248,7 +262,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         UserDefaults.standard.synchronize()
         collectionView?.reloadData()
         
-        selectedTintId = tintModel.tints[sender.tag].id // Збереження вибраного id
+        selectedTintId = tintModel.tints[sender.tag].id /// Збереження вибраного id
         print("\(buttonRow.text) Button Pressed")
         guard UserDefaults.standard.bool(forKey: "TintState") else { return }
         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -288,18 +302,42 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func openWithLaunch(in cell: UITableViewCell) {
-        let calcPicker = UIPickerView()
-        calcPicker.dataSource = self
-        calcPicker.delegate = self
-        calcPicker.translatesAutoresizingMaskIntoConstraints = false
-        
-        cell.contentView.addSubview(calcPicker)
+        let calcText = UILabel()
+        calcText.text = "Calculator"
+        calcText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        calcText.textColor = .white
+        calcText.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(calcText)
         NSLayoutConstraint.activate([
-            calcPicker.topAnchor.constraint(equalTo: cell.topAnchor),
-            calcPicker.bottomAnchor.constraint(equalTo: cell.bottomAnchor),
-            calcPicker.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
-            calcPicker.trailingAnchor.constraint(equalTo: cell.trailingAnchor)
+            calcText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            calcText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18)
         ])
+        
+        let choosedCalcText = UILabel()
+        choosedCalcText.text = "None"
+        choosedCalcText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        choosedCalcText.textColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
+        choosedCalcText.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(choosedCalcText)
+        NSLayoutConstraint.activate([
+            choosedCalcText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            choosedCalcText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
+        ])
+        
+        
+        
+//        let calcPicker = UIPickerView()
+//        calcPicker.dataSource = self
+//        calcPicker.delegate = self
+//        calcPicker.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        cell.contentView.addSubview(calcPicker)
+//        NSLayoutConstraint.activate([
+//            calcPicker.topAnchor.constraint(equalTo: cell.topAnchor),
+//            calcPicker.bottomAnchor.constraint(equalTo: cell.bottomAnchor),
+//            calcPicker.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
+//            calcPicker.trailingAnchor.constraint(equalTo: cell.trailingAnchor)
+//        ])
     }
     
     //MARK: - Preferences
@@ -384,8 +422,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ])
     }
     
-    @objc func resetButtonPressed() {
-        ///reset menu button positions logic
+    @objc func resetButtonPressed(in cell: UITableViewCell) {
+        ///reset menu button positions
+        let originalColor = cell.backgroundColor
+        
+        UIView.animate(withDuration: 0.1) {
+            cell.backgroundColor = #colorLiteral(red: 0.3999999762, green: 0.3999999762, blue: 0.3999999762, alpha: 1)
+        }
+        UIView.animate(withDuration: 0.2) {
+            cell.backgroundColor = originalColor
+        }
+
     }
     
     //delete
@@ -411,7 +458,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @objc func delButtonPressed(_ sender: UIButton) {
-        sender.backgroundColor = .clear
+        let originalColor = sender.backgroundColor
+        
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = #colorLiteral(red: 0.3999999762, green: 0.3999999762, blue: 0.3999999762, alpha: 1)
+        }
+        UIView.animate(withDuration: 0.2) {
+            sender.backgroundColor = originalColor
+        }
+        
         let alert = UIAlertController(title: "Delete history in all calculators?", message: "This action is irreversible", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
@@ -486,6 +541,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @objc func devButtonPressed(_ sender: UIButton) {
+        let originalColor = sender.backgroundColor
+        
+        UIView.animate(withDuration: 0.1) {
+            sender.backgroundColor = #colorLiteral(red: 0.3999999762, green: 0.3999999762, blue: 0.3999999762, alpha: 1)
+        }
+        UIView.animate(withDuration: 0.2) {
+            sender.backgroundColor = originalColor
+        }
+        
         let alert = UIAlertController(title: "Open developer GitHub?", message: "https://github.com/DanielHusiuk", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Confirm", style: .cancel, handler: { [weak self] (action: UIAlertAction!) in
