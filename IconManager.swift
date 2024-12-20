@@ -37,7 +37,7 @@ enum AppIcon: CaseIterable {
 }
 
 var current: AppIcon {
-    return AppIcon.allCases.first(where: {$0.name == UIApplication.shared.alternateIconName}) ?? .icon0
+    return AppIcon.allCases.first(where: {$0.name == UIApplication.shared.alternateIconName}) ?? .icon1
 }
 
 func setIcon(_ appIcon: AppIcon, completion: ((Bool) -> Void)? = nil) {

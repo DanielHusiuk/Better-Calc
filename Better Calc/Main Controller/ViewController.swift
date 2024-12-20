@@ -56,6 +56,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView?.register(ButtonCell.self, forCellWithReuseIdentifier: "buttonCell")
         collectionView?.delegate = self
         collectionView?.dataSource = self
+        collectionView?.allowsSelection = true
         collectionView?.indicatorStyle = .white
         collectionView?.backgroundColor = .clear
         collectionView?.contentMode = .scaleAspectFit
@@ -81,21 +82,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "buttonCell", for: indexPath) as? ButtonCell else {
             return UICollectionViewCell()
         }
+        
         let buttonRow = model.buttons[indexPath.row]
         cell.configure(with: buttonRow.text, image: buttonRow.image)
         cell.button.tag = indexPath.row
-        cell.button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchDown)
+        
+        cell.button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfItemsPerRow: CGFloat = 2
         let spacingBetweenCells: CGFloat = 20
-        
-        let totalSpacing = (2 * spacingBetweenCells) + ((numberOfItemsPerRow - 1) * spacingBetweenCells) // Загальні відступи
-        let width = (collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow // Ширина cells
-        
-        return CGSize(width: width, height: width) // Cells будуть квадратними
+        let totalSpacing = (2 * spacingBetweenCells) + ((numberOfItemsPerRow - 1) * spacingBetweenCells)
+        let width = (collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow
+        return CGSize(width: width, height: width)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -125,10 +126,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let buttonSegue = buttonRow.segue
         let originalColor = sender.backgroundColor
         
-        UIView.animate(withDuration: 0.1) {
-            sender.backgroundColor = #colorLiteral(red: 0.3999999762, green: 0.3999999762, blue: 0.3999999762, alpha: 1)
+        UIView.animate(withDuration: 0) {
+            sender.backgroundColor = #colorLiteral(red: 0.1326085031, green: 0.1326085031, blue: 0.1326085031, alpha: 1)
         }
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.3) {
             sender.backgroundColor = originalColor
         }
         

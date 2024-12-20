@@ -13,7 +13,7 @@ class ButtonCell: UICollectionViewCell {
     
     let button: UIButton = {
         let button = UIButton(type: .custom)
-        button.backgroundColor = #colorLiteral(red: 0.2745098039, green: 0.2745098039, blue: 0.2745098039, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)
         button.layer.cornerRadius = 25
         button.layer.masksToBounds = false
         button.translatesAutoresizingMaskIntoConstraints = false

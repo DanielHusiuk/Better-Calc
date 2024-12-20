@@ -13,8 +13,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var SettingsTableViewOutlet: UITableView!
     
     private var tintModel = TintModel()
-    private var selectedTintId: Int16 = 0
-    private var isExpanded = false
+    private var selectedTintId: Int16 = 1
+    private var isCollectionViewExpanded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         SettingsTableViewOutlet.rowHeight = UITableView.automaticDimension
         SettingsTableViewOutlet.estimatedRowHeight = UITableView.automaticDimension
         
-        let defaultTintCell = 0
+        let defaultTintCell = 1
         let savedIndex = UserDefaults.standard.integer(forKey: "selectedCellPath")
         let indexToUse = savedIndex == 0 ? defaultTintCell : savedIndex
         selectedIndexPath = IndexPath(row: indexToUse, section: 0)
@@ -72,10 +72,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func ResetSettingsButtonOutlet(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Reset settings?", message: "This will reset all parameters to default", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Reset", style: .cancel, handler: { [weak self] (action: UIAlertAction!) in
-            guard self != nil else { return }
-            
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
+//            UserDefaults.standard.removeObject(forKey: "selectedCellPath")
+//            UserDefaults.standard.removeObject(forKey: "HapticState")
+//            UserDefaults.standard.removeObject(forKey: "MenuState")
+            self?.updatePreferences()
         }))
         present(alert, animated: true, completion: nil)
     }
@@ -92,7 +94,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 0:
             return 1
         case 1:
-            return isExpanded ? 2 : 1
+            return 1
         case 2:
             return 2
         case 3:
@@ -129,21 +131,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             let rows = ceil(items / 3.0)
             let height = rows * 110
             return height + 32
-        case 1:
-            return isExpanded ? 100 : 44
-        case 2, 3, 4:
+        case 1, 2, 3, 4:
             return 44
         default:
             return UITableView.automaticDimension
         }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = UIColor.darkGray
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 30
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -154,7 +146,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 0:
             layoutCollection(in: cell)
         case 1:
-            openWithLaunch(in: cell)
+            switch indexPath.row {
+            case 0:
+                openWithLaunch(in: cell)
+            case 1:
+                pickerCell(in: cell)
+            default:
+                return cell
+            }
         case 2:
             switch indexPath.row {
             case 0:
@@ -184,12 +183,63 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.section == 1 {
-            isExpanded = !isExpanded
-            tableView.reloadSections([indexPath.section], with: .fade)
-        } else {
+        switch indexPath.section {
+        case 3:
+            switch indexPath.row {
+            case 0:
+                resetMenuFunc()
+            case 1:
+                deleteHistoryFunc()
+            default:
+                return
+            }
+        case 4:
+            devGitFunc()
+        default:
             return
         }
+        return
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        switch indexPath.section {
+        case 2:
+            return false
+        case 3:
+            switch indexPath.row {
+            case 0:
+                resetMenuFunc()
+            case 1:
+                deleteHistoryFunc()
+            default:
+                return true
+            }
+        default:
+            return true
+        }
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            let originalColor = cell.contentView.backgroundColor
+            
+            UIView.animate(withDuration: 0) {
+                cell.contentView.backgroundColor = #colorLiteral(red: 0.1326085031, green: 0.1326085031, blue: 0.1326085031, alpha: 1)
+            }
+            UIView.animate(withDuration: 0.3) {
+                cell.contentView.backgroundColor = originalColor
+            }
+        }
+        return indexPath
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = UIColor.darkGray
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 30
     }
     
     
@@ -262,6 +312,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         UserDefaults.standard.synchronize()
         collectionView?.reloadData()
         
+//        let originalColor = cell.contentView.backgroundColor
+//        UIView.animate(withDuration: 0) {
+//            cell.contentView.backgroundColor = #colorLiteral(red: 0.1326085031, green: 0.1326085031, blue: 0.1326085031, alpha: 1)
+//        }
+//        UIView.animate(withDuration: 0.3) {
+//            cell.contentView.backgroundColor = originalColor
+//        }
+        
         selectedTintId = tintModel.tints[sender.tag].id /// Збереження вибраного id
         print("\(buttonRow.text) Button Pressed")
         guard UserDefaults.standard.bool(forKey: "TintState") else { return }
@@ -274,7 +332,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private let pickersModel = PickerModel()
     private let pickerOptions = PickerModel().pickers.map { $0.text }
-
+    
     var selectedSegueIdentifier: String?
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -296,8 +354,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedSegueIdentifier = pickersModel.pickers[row].segue
         print("Selected segue: \(String(describing: selectedSegueIdentifier))")
+        //        openWithLaunch().choosedCalcText.text = "\(String(describing: selectedSegueIdentifier))"
         //write in viewDidAppear:
         //if pickerModel.id == 0 {return} else { performSegue(withIdentifier: pickersModel.pickers[row].segue) }
+        if let cell = pickerView.superview?.superview as? UITableViewCell {
+            if let choosedCalcText = cell.contentView.subviews.compactMap({ $0 as? UILabel }).first(where: { $0.tag == 101 }) {
+                choosedCalcText.text = "\(String(describing: selectedSegueIdentifier))"
+            }
+        }
         
     }
     
@@ -314,6 +378,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ])
         
         let choosedCalcText = UILabel()
+        choosedCalcText.tag = 101
         choosedCalcText.text = "None"
         choosedCalcText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         choosedCalcText.textColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
@@ -323,22 +388,23 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             choosedCalcText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             choosedCalcText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
         ])
-        
-        
-        
-//        let calcPicker = UIPickerView()
-//        calcPicker.dataSource = self
-//        calcPicker.delegate = self
-//        calcPicker.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        cell.contentView.addSubview(calcPicker)
-//        NSLayoutConstraint.activate([
-//            calcPicker.topAnchor.constraint(equalTo: cell.topAnchor),
-//            calcPicker.bottomAnchor.constraint(equalTo: cell.bottomAnchor),
-//            calcPicker.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
-//            calcPicker.trailingAnchor.constraint(equalTo: cell.trailingAnchor)
-//        ])
     }
+    
+    func pickerCell(in cell: UITableViewCell) {
+        let calcPicker = UIPickerView()
+        calcPicker.dataSource = self
+        calcPicker.delegate = self
+        calcPicker.translatesAutoresizingMaskIntoConstraints = false
+        
+        cell.contentView.addSubview(calcPicker)
+        NSLayoutConstraint.activate([
+            calcPicker.topAnchor.constraint(equalTo: cell.topAnchor),
+            calcPicker.bottomAnchor.constraint(equalTo: cell.bottomAnchor),
+            calcPicker.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
+            calcPicker.trailingAnchor.constraint(equalTo: cell.trailingAnchor)
+        ])
+    }
+    
     
     //MARK: - Preferences
     
@@ -406,67 +472,37 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     //reset
     func resetMenu(in cell: UITableViewCell) {
-        let resetMenuButton = UIButton(type: .system)
-        resetMenuButton.backgroundColor = .clear
-        resetMenuButton.setTitleColor(#colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1), for: .normal)
-        resetMenuButton.setTitle("Reset menu button positions", for: .normal)
-        resetMenuButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        resetMenuButton.translatesAutoresizingMaskIntoConstraints = false
-        resetMenuButton.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
-        cell.contentView.addSubview(resetMenuButton)
+        let resetText = UILabel()
+        resetText.text = "Reset menu button positions"
+        resetText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        resetText.textColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
+        resetText.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(resetText)
         NSLayoutConstraint.activate([
-            resetMenuButton.topAnchor.constraint(equalTo: cell.topAnchor),
-            resetMenuButton.bottomAnchor.constraint(equalTo: cell.bottomAnchor),
-            resetMenuButton.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
-            resetMenuButton.trailingAnchor.constraint(equalTo: cell.trailingAnchor)
+            resetText.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
+            resetText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
         ])
     }
     
-    @objc func resetButtonPressed(in cell: UITableViewCell) {
-        ///reset menu button positions
-        let originalColor = cell.backgroundColor
-        
-        UIView.animate(withDuration: 0.1) {
-            cell.backgroundColor = #colorLiteral(red: 0.3999999762, green: 0.3999999762, blue: 0.3999999762, alpha: 1)
-        }
-        UIView.animate(withDuration: 0.2) {
-            cell.backgroundColor = originalColor
-        }
-
+    func resetMenuFunc() {
+        //        reset menu button positions to standard
     }
     
     //delete
     func deleteHistory(in cell: UITableViewCell) {
-        let deleteButton = UIButton(type: .system)
-        deleteButton.backgroundColor = .clear
-        deleteButton.setTitleColor(.red, for: .normal)
-        deleteButton.setTitle("Delete all history", for: .normal)
-        deleteButton.titleLabel?.font = .boldSystemFont(ofSize: 17)
-        deleteButton.translatesAutoresizingMaskIntoConstraints = false
-        deleteButton.addTarget(self, action: #selector(delButtonPressed), for: [.touchUpInside, .touchUpOutside])
-        cell.contentView.addSubview(deleteButton)
+        let deleteText = UILabel()
+        deleteText.text = "Delete all history"
+        deleteText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        deleteText.textColor = .red
+        deleteText.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(deleteText)
         NSLayoutConstraint.activate([
-            deleteButton.topAnchor.constraint(equalTo: cell.topAnchor),
-            deleteButton.bottomAnchor.constraint(equalTo: cell.bottomAnchor),
-            deleteButton.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
-            deleteButton.trailingAnchor.constraint(equalTo: cell.trailingAnchor)
+            deleteText.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
+            deleteText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
         ])
     }
     
-    @objc func delButtonTouch(_ sender: UIButton) {
-        sender.backgroundColor = .gray
-    }
-    
-    @objc func delButtonPressed(_ sender: UIButton) {
-        let originalColor = sender.backgroundColor
-        
-        UIView.animate(withDuration: 0.1) {
-            sender.backgroundColor = #colorLiteral(red: 0.3999999762, green: 0.3999999762, blue: 0.3999999762, alpha: 1)
-        }
-        UIView.animate(withDuration: 0.2) {
-            sender.backgroundColor = originalColor
-        }
-        
+    func deleteHistoryFunc() {
         let alert = UIAlertController(title: "Delete history in all calculators?", message: "This action is irreversible", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
@@ -481,7 +517,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - Info
     
     func developerInfo(in cell: UITableViewCell) {
-        
         //text
         let createdText = UILabel()
         createdText.numberOfLines = 0
@@ -490,7 +525,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.contentView.addSubview(createdText)
         NSLayoutConstraint.activate([
             createdText.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
-            createdText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            createdText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
         ])
         
         let attributedString = NSMutableAttributedString()
@@ -525,34 +560,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             appImage.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             appImage.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor)
         ])
-        
-        //button
-        let developerButton = UIButton(type: .system)
-        developerButton.backgroundColor = .clear
-        developerButton.translatesAutoresizingMaskIntoConstraints = false
-        developerButton.addTarget(self, action: #selector(devButtonPressed), for: .touchUpInside)
-        cell.contentView.addSubview(developerButton)
-        NSLayoutConstraint.activate([
-            developerButton.topAnchor.constraint(equalTo: cell.topAnchor),
-            developerButton.bottomAnchor.constraint(equalTo: cell.bottomAnchor),
-            developerButton.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
-            developerButton.trailingAnchor.constraint(equalTo: cell.trailingAnchor)
-        ])
     }
     
-    @objc func devButtonPressed(_ sender: UIButton) {
-        let originalColor = sender.backgroundColor
-        
-        UIView.animate(withDuration: 0.1) {
-            sender.backgroundColor = #colorLiteral(red: 0.3999999762, green: 0.3999999762, blue: 0.3999999762, alpha: 1)
-        }
-        UIView.animate(withDuration: 0.2) {
-            sender.backgroundColor = originalColor
-        }
-        
+    func devGitFunc() {
         let alert = UIAlertController(title: "Open developer GitHub?", message: "https://github.com/DanielHusiuk", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Confirm", style: .cancel, handler: { [weak self] (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             
             if let gitURL = URL(string: "https://github.com/DanielHusiuk") {

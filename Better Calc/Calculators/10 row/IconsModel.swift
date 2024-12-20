@@ -16,8 +16,8 @@ struct appIcon {
 
 struct IconsModel {
     var icons: [appIcon] = [
-        appIcon(id: 0,    text: "Better Orange",      image: UIImage(named: "IconTemplate0.png")!)  { setIcon(.icon0) },
-        appIcon(id: 1,    text: "System Orange",      image: UIImage(named: "IconTemplate1.png")!)  { setIcon(.icon1) },
+        appIcon(id: 0,    text: "System Orange",      image: UIImage(named: "IconTemplate0.png")!)  { setIcon(.icon0) },
+        appIcon(id: 1,    text: "Better Orange",      image: UIImage(named: "IconTemplate1.png")!)  { setIcon(.icon1) },
         appIcon(id: 2,    text: "Cyan Like",         image: UIImage(named: "IconTemplate2.png")!)  { setIcon(.icon2) },
         appIcon(id: 3,    text: "Old Purple",        image: UIImage(named: "IconTemplate3.png")!)  { setIcon(.icon3) },
         appIcon(id: 4,    text: "Very Lime",         image: UIImage(named: "IconTemplate4.png")!)  { setIcon(.icon4) },
