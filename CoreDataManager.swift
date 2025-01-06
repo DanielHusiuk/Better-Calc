@@ -21,6 +21,47 @@ public final class CoreDataManager: NSObject {
         appDelegate.persistentContainer.viewContext
     }
     
+    
+    // MARK: - CollectionView Buttons Logic
+
+    public func saveCellPosition(positions: [IndexPath: Int]) {
+        resetCellPosition()
+        for (indexPath, buttonID) in positions {
+            guard let entity = NSEntityDescription.entity(forEntityName: "CellPosition", in: context) else { return }
+            let cellPosition = NSManagedObject(entity: entity, insertInto: context)
+            cellPosition.setValue(buttonID, forKey: "id")
+            cellPosition.setValue(indexPath.row, forKey: "position")
+        }
+        appDelegate.saveContext()
+    }
+
+    public func loadCellPosition() -> [Int] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CellPosition")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "position", ascending: true)]
+        
+        do {
+            let results = try context.fetch(fetchRequest) as? [NSManagedObject]
+            return results?.compactMap { $0.value(forKey: "id") as? Int } ?? []
+        } catch {
+            print("Failed to fetch cell positions: \(error)")
+            return []
+        }
+    }
+
+    public func resetCellPosition() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CellPosition")
+        do {
+            let results = try context.fetch(fetchRequest) as? [NSManagedObject]
+            results?.forEach { context.delete($0) }
+            appDelegate.saveContext()
+        } catch {
+            print("Failed to reset cell positions: \(error)")
+        }
+    }
+    
+    
+    //MARK: - History Logic
+    
     public func createHistoryObject(_ id: Int16, date: Date, result: String, working: String) {
         guard let objectEntityDescription = NSEntityDescription.entity(forEntityName: "HistoryItem", in: context) else { return }
         let object = HistoryItem(entity: objectEntityDescription, insertInto: context)
@@ -92,6 +133,5 @@ public final class CoreDataManager: NSObject {
         }
         appDelegate.saveContext()
     }
-    
     
 }

@@ -8,29 +8,59 @@
 import UIKit
 import CoreData
 
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource {
+var selectedSegueIdentifier: String?
+
+enum Section: Int, CaseIterable {
+    case colorTheme
+    case openLaunch
+    case preferences
+    case data
+    case info
+}
+
+enum RowItem: Hashable {
+    case header(String)
+    case details(String)
+}
+
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+    var tableView: UITableView!
+    var choosedCalcTextLabel: UILabel?
+    var selectedPickerText: String = "None"
     
-    @IBOutlet var SettingsTableViewOutlet: UITableView!
+    var pickerView: UIPickerView?
+    let pickersModel = PickerModel()
+    private var expandedSections: Set<Int> = []
+    
+    private var model = ButtonsModel()
+    private var mainView = ViewController()
     
     private var tintModel = TintModel()
     private var selectedTintId: Int16 = 1
-    private var isCollectionViewExpanded = false
+    var uiViewOutlet: UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updatePreferences()
+        loadTableView()
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadSavePicker()
+        loadNavBar()
+    }
     
-    //MARK: - Preferences
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        origAppear()
+    }
+    
+    //MARK: - Update
     
     func updatePreferences() {
-        SettingsTableViewOutlet.delegate = self
-        SettingsTableViewOutlet.dataSource = self
-        SettingsTableViewOutlet.allowsSelection = true
-        SettingsTableViewOutlet.rowHeight = UITableView.automaticDimension
-        SettingsTableViewOutlet.estimatedRowHeight = UITableView.automaticDimension
-        
         let defaultTintCell = 1
         let savedIndex = UserDefaults.standard.integer(forKey: "selectedCellPath")
         let indexToUse = savedIndex == 0 ? defaultTintCell : savedIndex
@@ -50,10 +80,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var originalAppearance: UINavigationBarAppearance?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func loadNavBar() {
         originalAppearance = navigationController?.navigationBar.standardAppearance
-        
         let customFont = UIFont.systemFont(ofSize: 18, weight: .bold)
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemUltraThinMaterialDark)
         
@@ -63,8 +91,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         navigationController?.navigationBar.standardAppearance = appearance
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    func origAppear() {
         if let originalAppearance = originalAppearance {
             navigationController?.navigationBar.standardAppearance = originalAppearance
         }
@@ -74,37 +101,88 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let alert = UIAlertController(title: "Reset settings?", message: "This will reset all parameters to default", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
-//            UserDefaults.standard.removeObject(forKey: "selectedCellPath")
-//            UserDefaults.standard.removeObject(forKey: "HapticState")
-//            UserDefaults.standard.removeObject(forKey: "MenuState")
+            UserDefaults.standard.removeObject(forKey: "selectedCellPath")
+            UserDefaults.standard.removeObject(forKey: "HapticState")
+            UserDefaults.standard.removeObject(forKey: "MenuState")
             self?.updatePreferences()
         }))
         present(alert, animated: true, completion: nil)
     }
     
     
-    //MARK: - Table View
+    //MARK: - PickerView
     
-    func numberOfSections(in SettingsTableViewOutlet: UITableView) -> Int {
-        return 5
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 1
-        case 2:
-            return 2
-        case 3:
-            return 2
-        case 4:
-            return 1
-        default:
-            return 1
-        }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickersModel.pickers.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: pickersModel.pickers[row].0, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickersModel.pickers[row].0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("Row \(row) selected")
+        let selectedItem = pickersModel.pickers[row].0
+        selectedPickerText = selectedItem
         
+        UserDefaults.standard.set(row, forKey: "SelectedPickerRow")
+        tableView.reloadRows(at: [IndexPath(row: 0, section: Section.openLaunch.rawValue)], with: .none)
+    }
+    
+    func loadSavePicker() {
+        let savedRow = UserDefaults.standard.integer(forKey: "SelectedPickerRow")
+        print("Loaded row from UserDefaults: \(savedRow)")
+        
+        if savedRow >= 0 && savedRow < pickersModel.pickers.count {
+            pickerView?.selectRow(savedRow, inComponent: 0, animated: false)
+            pickerView?.tintColor = .red
+            selectedPickerText = pickersModel.pickers[savedRow].0
+        } else {
+            selectedPickerText = "None"
+        }
+        tableView.reloadData()
+    }
+    
+    
+    //TableView
+    func loadTableView() {
+        tableView = UITableView(frame: view.bounds, style: .insetGrouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+        tableView.backgroundColor = #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 1)
+        tableView.separatorColor = .darkGray
+        tableView.indicatorStyle = .white
+        tableView.delegate = self
+        tableView.dataSource = self
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ColorThemeCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PickerHeaderCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PickerDetailCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "HapticCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ResetCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ResetMenuCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DeleteCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DevInfoCell")
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return Section.allCases.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -124,14 +202,36 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 1:
+            if expandedSections.contains(section) {
+                return 2
+            } else {
+                return 1
+            }
+        case 2, 3:
+            return 2
+        default:
+            return 1
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            let items = CGFloat(model.icons.count)
+            let items = CGFloat(iconModel.icons.count)
             let rows = ceil(items / 3.0)
             let height = rows * 110
-            return height + 32
-        case 1, 2, 3, 4:
+            return height + 30
+        case 1:
+            switch indexPath.row {
+            case 1:
+                return 145
+            default:
+                return 44
+            }
+        case 2, 3, 4:
             return 44
         default:
             return UITableView.automaticDimension
@@ -139,55 +239,76 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = SettingsTableViewOutlet.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.separatorInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
-        
-        switch indexPath.section {
-        case 0:
-            layoutCollection(in: cell)
-        case 1:
-            switch indexPath.row {
-            case 0:
-                openWithLaunch(in: cell)
-            case 1:
-                pickerCell(in: cell)
-            default:
-                return cell
+        switch Section(rawValue: indexPath.section) {
+        case .colorTheme:
+            let colorCell = tableView.dequeueReusableCell(withIdentifier: "ColorThemeCell", for: indexPath)
+            layoutCollection(in: colorCell)
+            return colorCell
+        case .openLaunch:
+            if indexPath.row == 0 {
+                let headerCell = tableView.dequeueReusableCell(withIdentifier: "PickerHeaderCell", for: indexPath)
+                headerCell.contentView.subviews.forEach { $0.removeFromSuperview() }
+                pickerHeader(in: headerCell)
+                return headerCell
+            } else {
+                let detailCell = tableView.dequeueReusableCell(withIdentifier: "PickerDetailCell", for: indexPath)
+                if pickerView == nil {
+                    pickerDetail(in: detailCell)
+                }
+                return detailCell
             }
-        case 2:
-            switch indexPath.row {
-            case 0:
-                hapticButton(in: cell)
-            case 1:
-                resetCalc(in: cell)
-            default:
-                return cell
+        case .preferences:
+            if indexPath.row == 0 {
+                let hapticCell = tableView.dequeueReusableCell(withIdentifier: "HapticCell", for: indexPath)
+                hapticButton(in: hapticCell)
+                return hapticCell
+            } else {
+                let resetCell = tableView.dequeueReusableCell(withIdentifier: "ResetCell", for: indexPath)
+                resetCalc(in: resetCell)
+                return resetCell
             }
-        case 3:
-            switch indexPath.row {
-            case 0:
-                resetMenu(in: cell)
-            case 1:
-                deleteHistory(in: cell)
-            default:
-                return cell
+        case .data:
+            if indexPath.row == 0 {
+                let resetMenuCell = tableView.dequeueReusableCell(withIdentifier: "ResetMenuCell", for: indexPath)
+                resetMenu(in: resetMenuCell)
+                return resetMenuCell
+            } else {
+                let deleteCell = tableView.dequeueReusableCell(withIdentifier: "DeleteCell", for: indexPath)
+                deleteHistory(in: deleteCell)
+                return deleteCell
             }
-        case 4:
-            developerInfo(in: cell)
+        case .info:
+            let devCell = tableView.dequeueReusableCell(withIdentifier: "DevInfoCell", for: indexPath)
+            developerInfo(in: devCell)
+            return devCell
         default:
-            return cell
+            return UITableViewCell()
         }
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = #colorLiteral(red: 0.1980375946, green: 0.1980375946, blue: 0.1980375946, alpha: 1)
+        let customBackgroundView = UIView()
+        customBackgroundView.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.1333333333, blue: 0.1333333333, alpha: 1)
+        cell.selectedBackgroundView = customBackgroundView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         switch indexPath.section {
+        case 1:
+            if indexPath.row == 0 {
+                if expandedSections.contains(indexPath.section) {
+                    expandedSections.remove(indexPath.section)
+                } else {
+                    expandedSections.insert(indexPath.section)
+                }
+                tableView.reloadSections([indexPath.section], with: .fade)
+            }
         case 3:
             switch indexPath.row {
             case 0:
-                resetMenuFunc()
+                mainView.resetMenuFunc()
             case 1:
                 deleteHistoryFunc()
             default:
@@ -198,40 +319,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         default:
             return
         }
-        return
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         switch indexPath.section {
-        case 2:
+        case 0, 2:
             return false
-        case 3:
-            switch indexPath.row {
-            case 0:
-                resetMenuFunc()
-            case 1:
-                deleteHistoryFunc()
-            default:
-                return true
-            }
         default:
             return true
         }
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if let cell = tableView.cellForRow(at: indexPath) {
-            let originalColor = cell.contentView.backgroundColor
-            
-            UIView.animate(withDuration: 0) {
-                cell.contentView.backgroundColor = #colorLiteral(red: 0.1326085031, green: 0.1326085031, blue: 0.1326085031, alpha: 1)
-            }
-            UIView.animate(withDuration: 0.3) {
-                cell.contentView.backgroundColor = originalColor
-            }
-        }
-        return indexPath
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -239,14 +335,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 30
+        return 20
     }
     
     
     //MARK: - Color Theme
     
     private var collectionView: UICollectionView?
-    private var model = IconsModel()
+    private var iconModel = IconsModel()
     private var selectedIndexPath: IndexPath?
     
     private func layoutCollection(in cell: UITableViewCell) {
@@ -281,30 +377,32 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.icons.count
+        return iconModel.icons.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as? IconCell else {
+        guard let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as? IconCell else {
             return UICollectionViewCell()
         }
-        let buttonRow = model.icons[indexPath.row]
-        cell.configure(with: buttonRow.text, image: buttonRow.image)
-        cell.button.tag = indexPath.row
-        
+        let buttonRow = iconModel.icons[indexPath.row]
+        collectionCell.configure(with: buttonRow.text, image: buttonRow.image)
+        collectionCell.button.tag = indexPath.row
+
         if selectedIndexPath == indexPath {
-            cell.borderView.layer.borderWidth = 2
-            cell.borderView.layer.borderColor = #colorLiteral(red: 0.9000000358, green: 0.9000000358, blue: 0.9000000358, alpha: 1)
+            collectionCell.borderView.layer.borderWidth = 2
+            collectionCell.borderView.layer.borderColor = #colorLiteral(red: 0.9000000358, green: 0.9000000358, blue: 0.9000000358, alpha: 1)
         } else {
-            cell.borderView.layer.borderWidth = 0
+            collectionCell.borderView.layer.borderWidth = 0
         }
-        
-        cell.button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        return cell
+
+        collectionCell.button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        return collectionCell
     }
     
+    
+    
     @objc func buttonPressed(_ sender: UIButton) {
-        let buttonRow = model.icons[sender.tag]
+        let buttonRow = iconModel.icons[sender.tag]
         buttonRow.action()
         
         selectedIndexPath = IndexPath(row: sender.tag, section: 0)
@@ -312,99 +410,57 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         UserDefaults.standard.synchronize()
         collectionView?.reloadData()
         
-//        let originalColor = cell.contentView.backgroundColor
-//        UIView.animate(withDuration: 0) {
-//            cell.contentView.backgroundColor = #colorLiteral(red: 0.1326085031, green: 0.1326085031, blue: 0.1326085031, alpha: 1)
-//        }
-//        UIView.animate(withDuration: 0.3) {
-//            cell.contentView.backgroundColor = originalColor
-//        }
-        
         selectedTintId = tintModel.tints[sender.tag].id /// Збереження вибраного id
         print("\(buttonRow.text) Button Pressed")
+        
         guard UserDefaults.standard.bool(forKey: "TintState") else { return }
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
     }
     
     
-    //MARK: - Open with launch
+    //MARK: - Open With Launch
     
-    private let pickersModel = PickerModel()
-    private let pickerOptions = PickerModel().pickers.map { $0.text }
-    
-    var selectedSegueIdentifier: String?
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerOptions.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerOptions[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: pickerOptions[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedSegueIdentifier = pickersModel.pickers[row].segue
-        print("Selected segue: \(String(describing: selectedSegueIdentifier))")
-        //        openWithLaunch().choosedCalcText.text = "\(String(describing: selectedSegueIdentifier))"
-        //write in viewDidAppear:
-        //if pickerModel.id == 0 {return} else { performSegue(withIdentifier: pickersModel.pickers[row].segue) }
-        if let cell = pickerView.superview?.superview as? UITableViewCell {
-            if let choosedCalcText = cell.contentView.subviews.compactMap({ $0 as? UILabel }).first(where: { $0.tag == 101 }) {
-                choosedCalcText.text = "\(String(describing: selectedSegueIdentifier))"
-            }
-        }
+    func pickerHeader(in cell: UITableViewCell) {
+        let CalcTextLabel = UILabel()
+        CalcTextLabel.text = "Calculator"
+        CalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        CalcTextLabel.textColor = .white
+        CalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(CalcTextLabel)
         
-    }
-    
-    func openWithLaunch(in cell: UITableViewCell) {
-        let calcText = UILabel()
-        calcText.text = "Calculator"
-        calcText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        calcText.textColor = .white
-        calcText.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(calcText)
         NSLayoutConstraint.activate([
-            calcText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-            calcText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18)
+            CalcTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            CalcTextLabel.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18)
         ])
         
-        let choosedCalcText = UILabel()
-        choosedCalcText.tag = 101
-        choosedCalcText.text = "None"
-        choosedCalcText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        choosedCalcText.textColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
-        choosedCalcText.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(choosedCalcText)
+        let choosedCalcTextLabel = UILabel()
+        choosedCalcTextLabel.text = selectedPickerText
+        choosedCalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        choosedCalcTextLabel.textColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
+        choosedCalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(choosedCalcTextLabel)
+        
         NSLayoutConstraint.activate([
-            choosedCalcText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-            choosedCalcText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
+            choosedCalcTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            choosedCalcTextLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
         ])
     }
     
-    func pickerCell(in cell: UITableViewCell) {
-        let calcPicker = UIPickerView()
-        calcPicker.dataSource = self
-        calcPicker.delegate = self
-        calcPicker.translatesAutoresizingMaskIntoConstraints = false
-        
-        cell.contentView.addSubview(calcPicker)
+    func pickerDetail(in cell: UITableViewCell) {
+        pickerView = UIPickerView()
+        pickerView?.dataSource = self
+        pickerView?.delegate = self
+        pickerView?.backgroundColor = .clear
+        cell.contentView.addSubview(pickerView!)
+        pickerView?.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            calcPicker.topAnchor.constraint(equalTo: cell.topAnchor),
-            calcPicker.bottomAnchor.constraint(equalTo: cell.bottomAnchor),
-            calcPicker.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
-            calcPicker.trailingAnchor.constraint(equalTo: cell.trailingAnchor)
+            pickerView!.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 8),
+            pickerView!.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -8),
+            pickerView!.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: -40),
+            pickerView!.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: 40)
         ])
     }
-    
     
     //MARK: - Preferences
     
@@ -482,10 +538,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             resetText.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
             resetText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
         ])
-    }
-    
-    func resetMenuFunc() {
-        //        reset menu button positions to standard
     }
     
     //delete

@@ -23,8 +23,8 @@ struct IconsModel {
         appIcon(id: 4,    text: "Very Lime",         image: UIImage(named: "IconTemplate4.png")!)  { setIcon(.icon4) },
         appIcon(id: 5,    text: "Cherry Red",        image: UIImage(named: "IconTemplate5.png")!)  { setIcon(.icon5) },
         appIcon(id: 6,    text: "Aegean Blue",       image: UIImage(named: "IconTemplate6.png")!)  { setIcon(.icon6) },
-        appIcon(id: 7,    text: "Miami One",         image: UIImage(named: "IconTemplate7.png")!)  { setIcon(.icon7) },
-        appIcon(id: 8,    text: "Just Gray",         image: UIImage(named: "IconTemplate8.png")!)  { setIcon(.icon8) },
+        appIcon(id: 7,    text: "Just Gray",         image: UIImage(named: "IconTemplate7.png")!)  { setIcon(.icon7) },
+        appIcon(id: 8,    text: "Miami One",         image: UIImage(named: "IconTemplate8.png")!)  { setIcon(.icon8) },
     ]
     
 }
