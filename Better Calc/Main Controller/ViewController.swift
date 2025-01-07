@@ -24,6 +24,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        model = ButtonsModel()
+        collectionView?.reloadData()
         loadButtons()
         loadNavBar()
     }

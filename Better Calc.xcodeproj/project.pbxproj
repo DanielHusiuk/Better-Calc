@@ -10,6 +10,7 @@
 		65195E842C5BCB2400D4BE8B /* ButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65195E832C5BCB2400D4BE8B /* ButtonsModel.swift */; };
 		652EA18A2C8B57CA00DD6803 /* StandardHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652EA1892C8B57CA00DD6803 /* StandardHistoryController.swift */; };
 		65464A762CB7DEA3008AB2AD /* PickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65464A752CB7DE9E008AB2AD /* PickerModel.swift */; };
+		655151EF2D2D6FD7000B99D8 /* PillboxView in Frameworks */ = {isa = PBXBuildFile; productRef = 655151EE2D2D6FD7000B99D8 /* PillboxView */; };
 		6557D71F2CAB247800381649 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557D71E2CAB247800381649 /* SettingsViewController.swift */; };
 		656569672C7B37B8001D1F2B /* CopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656569662C7B37B8001D1F2B /* CopyLabel.swift */; };
 		656CB81D2D1576AC0014CCF4 /* BetterIcon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 656CB8172D1576AC0014CCF4 /* BetterIcon4.png */; };
@@ -22,6 +23,7 @@
 		656CB8242D1576AC0014CCF4 /* BetterIcon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 656CB8192D1576AC0014CCF4 /* BetterIcon6.png */; };
 		656CB8252D1576AC0014CCF4 /* BetterIcon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 656CB8162D1576AC0014CCF4 /* BetterIcon3.png */; };
 		65706BC52CAE7D1E0033398C /* IconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65706BC42CAE7D1E0033398C /* IconManager.swift */; };
+		6590AA3E2D2D7C3200B969EC /* PillboxView in Frameworks */ = {isa = PBXBuildFile; productRef = 6590AA3D2D2D7C3200B969EC /* PillboxView */; };
 		6594D9052C5FC26D00218F02 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6594D9042C5FC26D00218F02 /* ButtonCell.swift */; };
 		659536072C7B43FF0036D99D /* PasteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659536062C7B43FF0036D99D /* PasteLabel.swift */; };
 		659EE3482C9368D000B39776 /* HistoryItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EE3462C9368D000B39776 /* HistoryItem+CoreDataProperties.swift */; };
@@ -117,6 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6590AA3E2D2D7C3200B969EC /* PillboxView in Frameworks */,
+				655151EF2D2D6FD7000B99D8 /* PillboxView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +364,9 @@
 				Base,
 			);
 			mainGroup = 65DFA3D82C5A9B6A0090F4CE;
+			packageReferences = (
+				6590AA3C2D2D7C3200B969EC /* XCLocalSwiftPackageReference "../Xcode Packages/PillboxView-0.1.6" */,
+			);
 			productRefGroup = 65DFA3E22C5A9B6A0090F4CE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -599,7 +606,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -639,7 +646,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -679,6 +686,36 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		6590AA3C2D2D7C3200B969EC /* XCLocalSwiftPackageReference "../Xcode Packages/PillboxView-0.1.6" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../Xcode Packages/PillboxView-0.1.6";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		655151ED2D2D6FD7000B99D8 /* XCRemoteSwiftPackageReference "PillboxView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Awesomeplayer165/PillboxView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		655151EE2D2D6FD7000B99D8 /* PillboxView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 655151ED2D2D6FD7000B99D8 /* XCRemoteSwiftPackageReference "PillboxView" */;
+			productName = PillboxView;
+		};
+		6590AA3D2D2D7C3200B969EC /* PillboxView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PillboxView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		65DFA3ED2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld */ = {

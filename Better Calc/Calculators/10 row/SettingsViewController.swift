@@ -104,6 +104,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             UserDefaults.standard.removeObject(forKey: "selectedCellPath")
             UserDefaults.standard.removeObject(forKey: "HapticState")
             UserDefaults.standard.removeObject(forKey: "MenuState")
+            
+            if let navController = self?.navigationController as? NavigationController {
+                navController.resButtonPill()
+            }
             self?.updatePreferences()
         }))
         present(alert, animated: true, completion: nil)
@@ -309,6 +313,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             switch indexPath.row {
             case 0:
                 mainView.resetMenuFunc()
+                resetButtonAlertFunc()
             case 1:
                 deleteHistoryFunc()
             default:
@@ -462,6 +467,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ])
     }
     
+    
     //MARK: - Preferences
     
     //haptic
@@ -540,6 +546,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ])
     }
     
+    func resetButtonAlertFunc() {
+        if let navController = self.navigationController as? NavigationController {
+            navController.resButtonPill()
+        }
+    }
+    
     //delete
     func deleteHistory(in cell: UITableViewCell) {
         let deleteText = UILabel()
@@ -559,7 +571,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
-            
+            if let navController = self?.navigationController as? NavigationController {
+                navController.delHistoryPill()
+            }
             self?.coreData.deleteAllHistory()
         }))
         present(alert, animated: true, completion: nil)
