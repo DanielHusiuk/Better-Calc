@@ -14,7 +14,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var originalAppearance: UINavigationBarAppearance?
     private var collectionView: UICollectionView?
+    
     private var model = ButtonsModel()
+    var pickerModel = PickerModel()
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +26,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         loadButtons()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !appDelegate.hasPerformedSegue {
+            loadPickerSegue()
+            appDelegate.hasPerformedSegue = true
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         model = ButtonsModel()
         collectionView?.reloadData()
+        
         loadButtons()
         loadNavBar()
     }
@@ -35,6 +49,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         navBarAppear()
     }
     
+    
+    //MARK: - Picker Segue
+    
+    func loadPickerSegue() {
+        let savedSegue = UserDefaults.standard.string(forKey: "SelectedPickerString")
+        let unwrappedSavedSegue = savedSegue.map { String(describing: $0) } ?? ""
+        
+        if unwrappedSavedSegue.isEmpty { return }
+        performSegue(withIdentifier: unwrappedSavedSegue, sender: self)
+    }
     
     //MARK: - Navigation Bar and Title
     

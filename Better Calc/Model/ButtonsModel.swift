@@ -17,9 +17,9 @@ struct Button {
 struct ButtonsModel {
     var buttons: [Button] = [
         Button( id: 1,    text: "Standard",      image: UIImage(named: "plus.forwardslash.minus.svg")!,    segue: "StandardSegue"),
-        Button( id: 2,    text: "Scientific",    image: UIImage(named: "x.squareroot.svg")!,              segue: "ScientificSegue"),
+//        Button( id: 2,    text: "Scientific",    image: UIImage(named: "x.squareroot.svg")!,              segue: "ScientificSegue"),
         Button( id: 3,    text: "Currency",      image: UIImage(named: "dollarsign.svg")!,               segue: "CurrencySegue"),
-        Button( id: 4,    text: "Crypto",        image: UIImage(named: "bitcoinsign.svg")!,              segue: "CryptoSegue"),
+//        Button( id: 4,    text: "Crypto",        image: UIImage(named: "bitcoinsign.svg")!,              segue: "CryptoSegue"),
         Button( id: 5,    text: "Lenght",        image: UIImage(named: "ruler.svg")!,                   segue: "LenghtSegue"),
         Button( id: 6,    text: "Area",          image: UIImage(named: "arrow.left.right.square.svg")!,    segue: "AreaSegue"),
         Button( id: 7,    text: "Volume",        image: UIImage(named: "cube.svg")!,                    segue: "VolumeSegue"),

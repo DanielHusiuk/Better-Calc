@@ -7,30 +7,21 @@
 
 import UIKit
 
+let buttonModel = ButtonsModel()
+let modelButtons = buttonModel.buttons
+
 class PickerModel: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
-    let pickers = [
-                   ("None",         ""),
-                   ("Standard",     "StandardSegue"),
-                   ("Scientific",    "ScientificSegue"),
-                   ("Currency",     "CurrencySegue"),
-                   ("Crypto",       "CryptoSegue"),
-                   ("Lenght",       "LenghtSegue"),
-                   ("Area",         "AreaSegue"),
-                   ("Volume",       "VolumeSegue"),
-                   ("Temperature",   "TemperatureSegue"),
-                   ("Date",         "DateSegue"),
-                   ("Age",          "AgeSegue"),
-                   ("Time",         "TimeSegue"),
-                   ("Speed",        "SpeedSegue"),
-                   ("Mass",         "MassSegue"),
-                   ("Count System",  "CountSegue"),
-                   ("Discount",     "DiscountSegue"),
-                   ("Investition",   "InvestitionSegue"),
-                   ("Loan",         "LoanSegue"),
-                   ("Tips",         "TipsSegue"),
-                   ("BMI",          "BmiSegue")
-    ]
     
+    var selectedSegueIdentifier: String?
+
+    lazy var pickers: [(String, String)] = {
+        var allPickers: [(String, String)] = [("None", "")]
+        let dynamicPickers = modelButtons.map { ($0.text, $0.segue) }
+        allPickers.append(contentsOf: dynamicPickers)
+        allPickers.removeLast()
+        return allPickers
+    }()
+
     var pickerOptions: [String] {
         return pickers.map { $0.0 }
     }
@@ -48,8 +39,8 @@ class PickerModel: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        selectedSegueIdentifier = pickers[row].1
-//        print("Selected segue: \(selectedSegueIdentifier ?? "None")")
+        selectedSegueIdentifier = pickers[row].1
+        print("Selected segue: \(selectedSegueIdentifier ?? "None")")
     }
     
 }

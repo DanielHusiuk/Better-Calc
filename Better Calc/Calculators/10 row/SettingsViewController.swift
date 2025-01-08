@@ -62,7 +62,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func updatePreferences() {
         let defaultTintCell = 1
-        let savedIndex = UserDefaults.standard.integer(forKey: "selectedCellPath")
+        let savedIndex = UserDefaults.standard.integer(forKey: "selectedTint")
         let indexToUse = savedIndex == 0 ? defaultTintCell : savedIndex
         selectedIndexPath = IndexPath(row: indexToUse, section: 0)
         
@@ -101,9 +101,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let alert = UIAlertController(title: "Reset settings?", message: "This will reset all parameters to default", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
-            UserDefaults.standard.removeObject(forKey: "selectedCellPath")
-            UserDefaults.standard.removeObject(forKey: "HapticState")
-            UserDefaults.standard.removeObject(forKey: "MenuState")
+            self?.resetUserSettings()
+            self?.updatePreferences()
+            self?.loadTableView()
+            self?.loadSavePicker()
+            self?.loadNavBar()
             
             if let navController = self?.navigationController as? NavigationController {
                 navController.resButtonPill()
@@ -111,6 +113,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             self?.updatePreferences()
         }))
         present(alert, animated: true, completion: nil)
+    }
+    
+    func resetUserSettings() {
+            UserDefaults.standard.removeObject(forKey: "selectedTint")
+                    
+            UserDefaults.standard.removeObject(forKey: "SelectedPickerRow")
+            UserDefaults.standard.removeObject(forKey: "SelectedPickerString")
+        
+                    
+            UserDefaults.standard.removeObject(forKey: "HapticState")
+            UserDefaults.standard.removeObject(forKey: "MenuState")
     }
     
     
@@ -128,14 +141,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return NSAttributedString(string: pickersModel.pickers[row].0, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickersModel.pickers[row].0
-    }
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("Row \(row) selected")
         let selectedItem = pickersModel.pickers[row].0
         selectedPickerText = selectedItem
+        
+        let selectedSegue = pickersModel.pickers[row].1
+        UserDefaults.standard.set(selectedSegue, forKey: "SelectedPickerString")
         
         UserDefaults.standard.set(row, forKey: "SelectedPickerRow")
         tableView.reloadRows(at: [IndexPath(row: 0, section: Section.openLaunch.rawValue)], with: .none)
@@ -143,11 +155,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func loadSavePicker() {
         let savedRow = UserDefaults.standard.integer(forKey: "SelectedPickerRow")
-        print("Loaded row from UserDefaults: \(savedRow)")
+        print("Loaded row: \(savedRow)")
+        
+        let savedSegue = UserDefaults.standard.string(forKey: "SelectedPickerString")
+        let unwrappedSavedSegue = savedSegue.map { String(describing: $0) } ?? ""
+        print("Loaded segue: \(unwrappedSavedSegue)")
         
         if savedRow >= 0 && savedRow < pickersModel.pickers.count {
             pickerView?.selectRow(savedRow, inComponent: 0, animated: false)
-            pickerView?.tintColor = .red
             selectedPickerText = pickersModel.pickers[savedRow].0
         } else {
             selectedPickerText = "None"
@@ -156,7 +171,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    //TableView
+    //MARK: - TableView
+    
     func loadTableView() {
         tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -404,14 +420,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return collectionCell
     }
     
-    
-    
     @objc func buttonPressed(_ sender: UIButton) {
         let buttonRow = iconModel.icons[sender.tag]
         buttonRow.action()
         
         selectedIndexPath = IndexPath(row: sender.tag, section: 0)
-        UserDefaults.standard.set(sender.tag, forKey: "selectedCellPath")
+        UserDefaults.standard.set(sender.tag, forKey: "selectedTint")
         UserDefaults.standard.synchronize()
         collectionView?.reloadData()
         

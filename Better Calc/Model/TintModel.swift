@@ -16,7 +16,7 @@ struct tintStruct {
 
 struct TintModel {
     var tints: [tintStruct] = [
-        tintStruct(id: 0,    text: "System Orange",     color: #colorLiteral(red: 0.9960784314, green: 0.5333333333, blue: 0.137254902, alpha: 1),          image: UIImage(named: "AppIcon_small0.png")!),
+        tintStruct(id: 0,    text: "System Orange",     color: #colorLiteral(red: 0.9960784314, green: 0.5333333333, blue: 0.137254902, alpha: 1),         image: UIImage(named: "AppIcon_small0.png")!),
         tintStruct(id: 1,    text: "Better Orange",     color: #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1),         image: UIImage(named: "AppIcon_small1.png")!),
         tintStruct(id: 2,    text: "Cyan Like",        color: #colorLiteral(red: 0.07450980392, green: 0.4, blue: 0.3960784314, alpha: 1),         image: UIImage(named: "AppIcon_small2.png")!),
         tintStruct(id: 3,    text: "Old Purple",       color: #colorLiteral(red: 0.3843137255, green: 0.2156862745, blue: 0.3333333333, alpha: 1),         image: UIImage(named: "AppIcon_small3.png")!),
