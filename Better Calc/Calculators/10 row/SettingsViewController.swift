@@ -24,7 +24,9 @@ enum RowItem: Hashable {
 }
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+    
+    @IBOutlet weak var RightNavBarButton: UIBarButtonItem!
+    
     var tableView: UITableView!
     var choosedCalcTextLabel: UILabel?
     var selectedPickerText: String = "None"
@@ -38,7 +40,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private var tintModel = TintModel()
     private var selectedTintId: Int16 = 1
-    var uiViewOutlet: UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        rightNavBarButtonIcon()
         loadSavePicker()
         loadNavBar()
     }
@@ -70,8 +72,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             UserDefaults.standard.set(true, forKey: "HapticState")
         }
         
-        if UserDefaults.standard.object(forKey: "MenuState") == nil {
-            UserDefaults.standard.set(false, forKey: "MenuState")
+        if UserDefaults.standard.object(forKey: "ResetState") == nil {
+            UserDefaults.standard.set(false, forKey: "ResetState")
         }
     }
     
@@ -102,28 +104,37 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             self?.resetUserSettings()
-            self?.updatePreferences()
-            self?.loadTableView()
-            self?.loadSavePicker()
-            self?.loadNavBar()
-            
-            if let navController = self?.navigationController as? NavigationController {
-                navController.resButtonPill()
-            }
-            self?.updatePreferences()
+
+            self?.navigationController?.popViewController(animated: true)
         }))
         present(alert, animated: true, completion: nil)
+
     }
     
     func resetUserSettings() {
-            UserDefaults.standard.removeObject(forKey: "selectedTint")
-                    
-            UserDefaults.standard.removeObject(forKey: "SelectedPickerRow")
-            UserDefaults.standard.removeObject(forKey: "SelectedPickerString")
+        UserDefaults.standard.removeObject(forKey: "selectedTint")
+        UserDefaults.standard.removeObject(forKey: "SelectedPickerRow")
+        UserDefaults.standard.removeObject(forKey: "SelectedPickerString")
+        UserDefaults.standard.removeObject(forKey: "HapticState")
+        UserDefaults.standard.removeObject(forKey: "ResetState")
         
-                    
-            UserDefaults.standard.removeObject(forKey: "HapticState")
-            UserDefaults.standard.removeObject(forKey: "MenuState")
+        loadSavePicker()
+        loadNavBar()
+        setIcon(.icon1)
+        mainView.resetMenuFunc()
+        
+        if let navController = self.navigationController as? NavigationController {
+            navController.resButtonPill()
+        }
+            updatePreferences()
+        }
+    
+    func rightNavBarButtonIcon() {
+        if #available(iOS 17.0, *) {
+            RightNavBarButton.image = UIImage(systemName: "exclamationmark.arrow.trianglehead.counterclockwise.rotate.90")
+        } else {
+            RightNavBarButton.image = UIImage(systemName: "exclamationmark.arrow.circlepath")
+        }
     }
     
     

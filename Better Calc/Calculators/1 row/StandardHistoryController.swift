@@ -192,7 +192,6 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         let disclosureIndicator = UIImageView(image: UIImage(systemName: "chevron.right"))
         disclosureIndicator.tintColor = #colorLiteral(red: 0.8, green: 0.5098039216, blue: 0.2784313725, alpha: 1)
         cell.accessoryView = disclosureIndicator
-        
         return cell
     }
     

@@ -694,7 +694,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="History" style="editor" id="91t-xr-p7u">
-                        <barButtonItem key="leftBarButtonItem" image="xmark.circle" catalog="system" id="M0a-fa-sPV">
+                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="M0a-fa-sPV">
                             <color key="tintColor" red="0.80000000000000004" green="0.50980392156862742" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="unwindHome:" destination="QAd-AT-VRl" id="gv3-mG-Rwt"/>
@@ -1775,13 +1775,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Settings" style="editor" id="dWV-Px-nIf">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="m5P-PF-uoX">
-                            <imageReference key="image" image="exclamationmark.arrow.trianglehead.counterclockwise.rotate.90" catalog="system" symbolScale="large"/>
                             <color key="tintColor" red="0.80000000000000004" green="0.51005656030000002" blue="0.2780444031" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="ResetSettingsButtonOutlet:" destination="Rts-4A-0tP" id="sMT-fO-Q86"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="RightNavBarButton" destination="m5P-PF-uoX" id="TbX-X6-C1t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bC3-ES-1sv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="rKv-l7-h2P" userLabel="Erase Long Gesture">
@@ -1798,14 +1800,13 @@
         <image name="delete.left.fill" catalog="system" width="128" height="102"/>
         <image name="divide" catalog="system" width="128" height="101"/>
         <image name="equal" catalog="system" width="128" height="73"/>
-        <image name="exclamationmark.arrow.trianglehead.counterclockwise.rotate.90" catalog="system" width="128" height="119"/>
         <image name="list.clipboard" catalog="system" width="98" height="128"/>
         <image name="minus" catalog="system" width="128" height="26"/>
         <image name="multiply" catalog="system" width="128" height="111"/>
         <image name="percent" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.forwardslash.minus" catalog="system" width="128" height="115"/>
-        <image name="xmark.circle" catalog="system" width="128" height="123"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="scrollViewTexturedBackgroundColor">
             <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

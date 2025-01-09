@@ -28,7 +28,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         if !appDelegate.hasPerformedSegue {
             loadPickerSegue()
             appDelegate.hasPerformedSegue = true
@@ -40,8 +39,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         model = ButtonsModel()
         collectionView?.reloadData()
         
-        loadButtons()
         loadNavBar()
+        loadButtons()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -60,23 +59,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         performSegue(withIdentifier: unwrappedSavedSegue, sender: self)
     }
     
+    
     //MARK: - Navigation Bar and Title
     
     func loadNavBar() {
         originalAppearance = navigationController?.navigationBar.standardAppearance
-        
-        let customFont = UIFont.systemFont(ofSize: 25, weight: .bold)
+        let customFont = UIFont.systemFont(ofSize: 22, weight: .bold)
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemUltraThinMaterialDark)
         
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [.font: customFont, .foregroundColor: UIColor.white]
         appearance.backgroundEffect = blurEffect
+        
         navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.setNeedsLayout()
     }
     
     func navBarAppear() {
         if let originalAppearance = originalAppearance {
             navigationController?.navigationBar.standardAppearance = originalAppearance
+            navigationController?.navigationBar.setNeedsLayout()
         }
     }
     
