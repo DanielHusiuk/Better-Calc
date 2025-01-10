@@ -129,6 +129,10 @@ class StandardViewController: UIViewController {
             self.PasteResultButtonOutlet.isHidden = true
             self.EraseButtonOutlet.isHidden = true
         }
+        
+        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
     
     @IBAction func plusMinusButton(_ sender: UIButton) {

@@ -104,11 +104,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             self?.resetUserSettings()
-
-            self?.navigationController?.popViewController(animated: true)
+            if let navigationController = self?.navigationController {
+                navigationController.popViewController(animated: true)
+            }
+            
         }))
         present(alert, animated: true, completion: nil)
-
+        
+        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
     
     func resetUserSettings() {
@@ -117,7 +122,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         UserDefaults.standard.removeObject(forKey: "SelectedPickerString")
         UserDefaults.standard.removeObject(forKey: "HapticState")
         UserDefaults.standard.removeObject(forKey: "ResetState")
-        
         loadSavePicker()
         loadNavBar()
         setIcon(.icon1)
@@ -178,7 +182,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             selectedPickerText = "None"
         }
-        tableView.reloadData()
     }
     
     
@@ -335,6 +338,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                     expandedSections.insert(indexPath.section)
                 }
                 tableView.reloadSections([indexPath.section], with: .fade)
+                loadSavePicker()
             }
         case 3:
             switch indexPath.row {
@@ -351,6 +355,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         default:
             return
         }
+        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
@@ -443,7 +450,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         selectedTintId = tintModel.tints[sender.tag].id /// Збереження вибраного id
         print("\(buttonRow.text) Button Pressed")
         
-        guard UserDefaults.standard.bool(forKey: "TintState") else { return }
+        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
     }
@@ -525,11 +532,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     //calc
     func resetCalc(in cell: UITableViewCell) {
-        let hapticSwitch = UISwitch()
-        hapticSwitch.onTintColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
-        hapticSwitch.isOn = UserDefaults.standard.bool(forKey: "ResetState")
-        hapticSwitch.addTarget(self, action: #selector(hapticSwitchChanged(_:)), for: .valueChanged)
-        cell.accessoryView = hapticSwitch
+        let resetSwitch = UISwitch()
+        resetSwitch.onTintColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
+        resetSwitch.isOn = UserDefaults.standard.bool(forKey: "ResetState")
+        resetSwitch.addTarget(self, action: #selector(resetSwitchChanged(_:)), for: .valueChanged)
+        cell.accessoryView = resetSwitch
         
         let resetCalcText = UILabel()
         resetCalcText.text = "Reset data with close"
@@ -560,7 +567,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //reset
     func resetMenu(in cell: UITableViewCell) {
         let resetText = UILabel()
-        resetText.text = "Reset menu button positions"
+        resetText.text = "Reset menu buttons positions"
         resetText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         resetText.textColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
         resetText.translatesAutoresizingMaskIntoConstraints = false

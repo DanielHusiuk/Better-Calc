@@ -24,7 +24,7 @@ struct TintModel {
         tintStruct(id: 5,    text: "Cherry Red",       color: #colorLiteral(red: 0.4784313725, green: 0.05882352941, blue: 0.07450980392, alpha: 1),         image: UIImage(named: "AppIcon_small5.png")!),
         tintStruct(id: 6,    text: "Aegean Blue",      color: #colorLiteral(red: 0.1058823529, green: 0.2156862745, blue: 0.3333333333, alpha: 1),         image: UIImage(named: "AppIcon_small6.png")!),
         tintStruct(id: 7,    text: "Just Gray",        color: #colorLiteral(red: 0.4039215686, green: 0.4039215686, blue: 0.4039215686, alpha: 1),         image: UIImage(named: "AppIcon_small7.png")!),
-        tintStruct(id: 8,    text: "Miami One",        color: #colorLiteral(red: 0.05098039216, green: 0.5019607843, blue: 0.6078431373, alpha: 1) ,        image: UIImage(named: "AppIcon_small8.png")!)
+        tintStruct(id: 8,    text: "Miami One",        color: #colorLiteral(red: 0.05098039216, green: 0.5019607843, blue: 0.6078431373, alpha: 1),         image: UIImage(named: "AppIcon_small8.png")!)
     ]
     
 }

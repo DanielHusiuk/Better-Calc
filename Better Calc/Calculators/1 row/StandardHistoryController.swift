@@ -73,7 +73,7 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func deleteAll(_ sender: UIBarButtonItem) {
-        let refreshAlert = UIAlertController(title: "Delete all history?", message: "This action is irreversible", preferredStyle: .alert)
+        let refreshAlert = UIAlertController(title: "Delete history?", message: "This action is irreversible", preferredStyle: .alert)
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         refreshAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard let self = self else { return }
@@ -90,13 +90,16 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         present(refreshAlert, animated: true, completion: nil)
         
         loadHistory()
+        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
     
     @IBAction func deleteObject(_ sender: UIBarButtonItem) {
         guard isEdit else { return }
 
         guard let selectedRows = HistoryTableView.indexPathsForSelectedRows else {
-            let chooseAlert = UIAlertController(title: "Nothing to delete", message: "Choose cells to delete", preferredStyle: .alert)
+            let chooseAlert = UIAlertController(title: "Nothing to delete", message: "Choose results you want to delete", preferredStyle: .alert)
             chooseAlert.addAction(UIAlertAction(title: "Okay", style: .default))
             present(chooseAlert, animated: true, completion: nil)
             return
@@ -154,10 +157,10 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     func toolBar(_ sender:UIToolbar) {
         navigationController?.isToolbarHidden = true
         let deleteAll = UIBarButtonItem(title: "Delete All", style: .plain, target: self, action: #selector(deleteAll))
+        deleteAll.tintColor = .red
         let trashButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteObject))
+        trashButton.tintColor = #colorLiteral(red: 0.8, green: 0.5098039216, blue: 0.2784313725, alpha: 1)
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        navigationController?.toolbar.tintColor = #colorLiteral(red: 0.8, green: 0.5098039216, blue: 0.2784313725, alpha: 1)
         self.toolbarItems = [deleteAll, flexibleSpace, trashButton]
     }
     
@@ -181,7 +184,6 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let historyItem = historyArray[indexPath.row]
-        
         cell.textLabel?.text = historyItem.working
         cell.detailTextLabel?.text = historyItem.result
         
@@ -224,7 +226,6 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
             } else {
                 print("Previous Controller not found")
             }
-            
             self.dismiss(animated: true, completion: nil)
         }
         
