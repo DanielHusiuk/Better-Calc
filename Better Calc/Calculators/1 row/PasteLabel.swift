@@ -7,8 +7,10 @@
 
 import UIKit
 
-class PasteLabel: UILabel {
+let standardController = StandardViewController()
+let navController = NavigationController()
 
+class PasteLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,6 +21,34 @@ class PasteLabel: UILabel {
         super.init(coder: aDecoder)
         self.sharedInit()
     }
+    
+    
+    //MARK: - Preferences
+    
+    func findNavigationController() -> NavigationController? {
+        var responder: UIResponder? = self
+        while let nextResponder = responder?.next {
+            if let navigationController = nextResponder as? NavigationController {
+                return navigationController
+            }
+            responder = nextResponder
+        }
+        return nil
+    }
+    
+    func findStandardController() -> StandardViewController? {
+        var responder: UIResponder? = self
+        while let nextResponder = responder?.next {
+            if let standardController = nextResponder as? StandardViewController {
+                return standardController
+            }
+            responder = nextResponder
+        }
+        return nil
+    }
+    
+    
+    //MARK: - PasteUI
 
     func sharedInit() {
         self.isUserInteractionEnabled = true
@@ -38,15 +68,25 @@ class PasteLabel: UILabel {
         if let pastedText = board.string {
             let normalizedText = normalizeDecimalSeparator(pastedText)
             if isValidNumber(normalizedText) && countCheck(for: normalizedText) {
-                self.text = normalizedText
+                if self.text == "0" {
+                    self.text = normalizedText
+                    if let standardController = findStandardController() {
+                        standardController.checkEraseButton()
+                    }
+                } else if let currentText = self.text {
+                    self.text = currentText + normalizedText
+                }
             } else {
+                if let navController = findNavigationController() {
+                    navController.cannotPasteError()
+                }
                 print("Cannot paste")
             }
         }
         let menu = UIMenuController.shared
         menu.showMenu(from: self, rect: self.bounds)
     }
-    
+
     func countCheck(for text: String) -> Bool {
         let hasDecimalPoint = text.contains(".")
         if hasDecimalPoint {
@@ -89,5 +129,4 @@ class PasteLabel: UILabel {
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return action == #selector(UIResponderStandardEditActions.paste)
     }
-    
 }

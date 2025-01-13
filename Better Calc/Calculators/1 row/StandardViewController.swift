@@ -43,16 +43,22 @@ class StandardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        buttonShadows()
         applyShadowWithInsets(to: NumbersViewOutlet, cornerRadius: 20)
         applyShadowWithInsets(to: CalculatorImageOutlet, cornerRadius: 30)
+        buttonShadows()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         historyButton()
+        loadViewState()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        saveViewState()
+    }
+    
     
     //MARK: - View Shadow
     
@@ -66,6 +72,41 @@ class StandardViewController: UIViewController {
         let insetBounds = view.bounds.insetBy(dx: -5, dy: -5)
         let shadowPath = UIBezierPath(roundedRect: insetBounds, cornerRadius: cornerRadius)
         view.layer.shadowPath = shadowPath.cgPath
+    }
+    
+    
+    // MARK: - Save/Load State
+    
+    func saveViewState() {
+        guard UserDefaults.standard.bool(forKey: "KeepState") else { return }
+        let workings = WorkingsLabelOutlet.text ?? ""
+        let results = ResultsLabelOutlet.text ?? ""
+        let operationValue = currentOperation?.rawValue
+        
+        CoreDataManager.shared.saveStandardState(
+            workings: workings,
+            results: results,
+            isTypingNumber: isTypingNumber,
+            firstOperand: firstOperand,
+            currentOperation: operationValue
+        )
+    }
+    
+    func loadViewState() {
+        guard UserDefaults.standard.bool(forKey: "KeepState") else { return }
+        if let state = CoreDataManager.shared.loadStandardState() {
+            WorkingsLabelOutlet.text = state.workingsText ?? "0"
+            ResultsLabelOutlet.text = state.resultsText ?? "0"
+            isTypingNumber = state.isTypingNumber
+            firstOperand = state.firstOperand
+            currentOperation = Operation(rawValue: Int(state.currentOperation))
+            
+            checkEraseButton()
+            checkPasteButton()
+            print("View state loaded.")
+        } else {
+            print("No saved view state found.")
+        }
     }
     
     
@@ -87,6 +128,26 @@ class StandardViewController: UIViewController {
         }
     }
     
+    func checkEraseButton() {
+        if WorkingsLabelOutlet.text != "0" {
+            EraseButtonOutlet.alpha = 0.0
+            EraseButtonOutlet.isHidden = false
+            UIView.animate(withDuration: 0.1, animations: {
+                self.EraseButtonOutlet.alpha = 1.0
+            })
+        }
+    }
+    
+    func checkPasteButton() {
+        if ResultsLabelOutlet.text != "0" {
+            PasteResultButtonOutlet.alpha = 0.0
+            PasteResultButtonOutlet.isHidden = false
+            UIView.animate(withDuration: 0.1, animations: {
+                self.PasteResultButtonOutlet.alpha = 1.0
+            })
+        }
+    }
+        
     func historyButton() {
         let historyButton = HistoryButtonOutlet
         if coreData.fetchObjects(with: 1).count == 0 {
@@ -276,11 +337,7 @@ class StandardViewController: UIViewController {
             if let resultText = ResultsLabelOutlet.text, resultText.contains("e") {
                 return
             } else if PasteResultButtonOutlet.isHidden == true {
-                PasteResultButtonOutlet.alpha = 0.0
-                PasteResultButtonOutlet.isHidden = false
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.PasteResultButtonOutlet.alpha = 1.0
-                })
+                checkPasteButton()
             }
             
             let historyItems = coreData.fetchObjects(with: 1)
@@ -310,6 +367,7 @@ class StandardViewController: UIViewController {
             }
         }
     }
+    
     
     //MARK: - Other Buttons
     
@@ -393,11 +451,7 @@ class StandardViewController: UIViewController {
             isTypingNumber = true
             
             if EraseButtonOutlet.isHidden == true {
-                EraseButtonOutlet.alpha = 0.0
-                EraseButtonOutlet.isHidden = false
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.EraseButtonOutlet.alpha = 1.0
-                })
+                checkEraseButton()
             }
         }
     }
@@ -418,25 +472,4 @@ class StandardViewController: UIViewController {
                 self.PasteResultButtonOutlet.isHidden = true
             }
         }
-    
-    
-}
-
-    //MARK: - Extensions
-
-extension UIImageView {
-    func applyshadowWithCorner(containerView : UIView, cornerRadious : CGFloat){
-        containerView.clipsToBounds = false
-        containerView.layer.shadowColor = UIColor.black.cgColor
-        containerView.layer.shadowOpacity = 0.4
-        containerView.layer.shadowOffset = CGSize.zero
-        containerView.layer.shadowRadius = 10
-        containerView.layer.cornerRadius = cornerRadious
-
-        let shadowBounds = containerView.bounds.insetBy(dx: 12, dy: 20)
-        containerView.layer.shadowPath = UIBezierPath(roundedRect: shadowBounds, cornerRadius: cornerRadious).cgPath
-
-        self.clipsToBounds = true
-        self.layer.cornerRadius = cornerRadious
-    }
 }

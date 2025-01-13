@@ -20,7 +20,6 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadHistory()
         blurBackground()
         toolBar(UIToolbar.init())
@@ -28,7 +27,6 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         
         HistoryTableView.delegate = self
         HistoryTableView.dataSource = self
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {

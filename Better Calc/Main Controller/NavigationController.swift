@@ -32,4 +32,16 @@ class NavigationController: UINavigationController {
         pill.completedTask(state: true)
     }
     
+    func cannotPasteError() {
+        pill.isNavigationControllerPresent = true
+        pill.showTask(message: "Cannot paste", vcView: self.view)
+        pill.completedTask(state: false)
+    }
+    
+    func coppiedPill() {
+        pill.isNavigationControllerPresent = true
+        pill.showTask(message: "Result copied", vcView: self.view)
+        pill.completedTask(state: true)
+    }
+    
 }

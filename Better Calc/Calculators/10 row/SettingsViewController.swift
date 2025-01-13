@@ -72,8 +72,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             UserDefaults.standard.set(true, forKey: "HapticState")
         }
         
-        if UserDefaults.standard.object(forKey: "ResetState") == nil {
-            UserDefaults.standard.set(false, forKey: "ResetState")
+        if UserDefaults.standard.object(forKey: "KeepState") == nil {
+            UserDefaults.standard.set(true, forKey: "KeepState")
         }
     }
     
@@ -121,7 +121,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         UserDefaults.standard.removeObject(forKey: "SelectedPickerRow")
         UserDefaults.standard.removeObject(forKey: "SelectedPickerString")
         UserDefaults.standard.removeObject(forKey: "HapticState")
-        UserDefaults.standard.removeObject(forKey: "ResetState")
+        UserDefaults.standard.removeObject(forKey: "KeepState")
         loadSavePicker()
         loadNavBar()
         setIcon(.icon1)
@@ -209,7 +209,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PickerHeaderCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PickerDetailCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "HapticCell")
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ResetCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "KeepCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ResetMenuCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DeleteCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DevInfoCell")
@@ -297,9 +297,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 hapticButton(in: hapticCell)
                 return hapticCell
             } else {
-                let resetCell = tableView.dequeueReusableCell(withIdentifier: "ResetCell", for: indexPath)
-                resetCalc(in: resetCell)
-                return resetCell
+                let keepCell = tableView.dequeueReusableCell(withIdentifier: "KeepCell", for: indexPath)
+                keepData(in: keepCell)
+                return keepCell
             }
         case .data:
             if indexPath.row == 0 {
@@ -447,7 +447,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         UserDefaults.standard.synchronize()
         collectionView?.reloadData()
         
-        selectedTintId = tintModel.tints[sender.tag].id /// Збереження вибраного id
+        selectedTintId = tintModel.tints[sender.tag].id // Збереження вибраного id
         print("\(buttonRow.text) Button Pressed")
         
         guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
@@ -530,32 +530,32 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    //calc
-    func resetCalc(in cell: UITableViewCell) {
-        let resetSwitch = UISwitch()
-        resetSwitch.onTintColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
-        resetSwitch.isOn = UserDefaults.standard.bool(forKey: "ResetState")
-        resetSwitch.addTarget(self, action: #selector(resetSwitchChanged(_:)), for: .valueChanged)
-        cell.accessoryView = resetSwitch
+    //keep
+    func keepData(in cell: UITableViewCell) {
+        let keepSwitch = UISwitch()
+        keepSwitch.onTintColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
+        keepSwitch.isOn = UserDefaults.standard.bool(forKey: "KeepState")
+        keepSwitch.addTarget(self, action: #selector(keepSwitchChanged(_:)), for: .valueChanged)
+        cell.accessoryView = keepSwitch
         
-        let resetCalcText = UILabel()
-        resetCalcText.text = "Reset data with close"
-        resetCalcText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        resetCalcText.textColor = .white
-        resetCalcText.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(resetCalcText)
+        let keepDataText = UILabel()
+        keepDataText.text = "Keep data after close"
+        keepDataText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        keepDataText.textColor = .white
+        keepDataText.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(keepDataText)
         NSLayoutConstraint.activate([
-            resetCalcText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-            resetCalcText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18)
+            keepDataText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            keepDataText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18)
         ])
     }
     
-    @objc func resetSwitchChanged(_ sender: UISwitch) {
+    @objc func keepSwitchChanged(_ sender: UISwitch) {
         if sender.isOn {
-            UserDefaults.standard.set(true, forKey: "ResetState")
-            ///reset calc data logic
+            UserDefaults.standard.set(true, forKey: "KeepState")
         } else {
-            UserDefaults.standard.set(false, forKey: "ResetState")
+            UserDefaults.standard.set(false, forKey: "KeepState")
+            coreData.resetStandardState()
         }
     }
     

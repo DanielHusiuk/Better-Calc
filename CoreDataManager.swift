@@ -134,4 +134,45 @@ public final class CoreDataManager: NSObject {
         appDelegate.saveContext()
     }
     
+    
+    //MARK: - Keep Standard Data Logic
+    
+    public func saveStandardState(workings: String, results: String, isTypingNumber: Bool, firstOperand: Double?, currentOperation: Int?) {
+        resetStandardState()
+        guard let entity = NSEntityDescription.entity(forEntityName: "StandardState", in: context) else { return }
+        let state = NSManagedObject(entity: entity, insertInto: context)
+        
+        state.setValue(workings, forKey: "workingsText")
+        state.setValue(results, forKey: "resultsText")
+        state.setValue(isTypingNumber, forKey: "isTypingNumber")
+        state.setValue(firstOperand, forKey: "firstOperand")
+        state.setValue(currentOperation, forKey: "currentOperation")
+        
+        appDelegate.saveContext()
+        print("Standard state saved.")
+    }
+    
+    public func loadStandardState() -> StandardState? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "StandardState")
+        do {
+            let results = try context.fetch(fetchRequest) as? [StandardState]
+            return results?.first
+        } catch {
+            print("Failed to load standard state: \(error)")
+            return nil
+        }
+    }
+    
+    public func resetStandardState() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "StandardState")
+        do {
+            let results = try context.fetch(fetchRequest) as? [NSManagedObject]
+            results?.forEach { context.delete($0) }
+            appDelegate.saveContext()
+            print("Standard state reset.")
+        } catch {
+            print("Failed to reset standard state: \(error)")
+        }
+    }
+    
 }

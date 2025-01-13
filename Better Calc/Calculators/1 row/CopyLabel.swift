@@ -7,6 +7,8 @@
 
 import UIKit
 
+let navControllr = NavigationController()
+
 class CopyLabel: UILabel, UIEditMenuInteractionDelegate {
     
         override init(frame: CGRect) {
@@ -18,6 +20,22 @@ class CopyLabel: UILabel, UIEditMenuInteractionDelegate {
             super.init(coder: aDecoder)
             self.sharedInit()
         }
+    
+    //MARK: - Preference
+    
+    func findNavigationController() -> NavigationController? {
+        var responder: UIResponder? = self
+        while let nextResponder = responder?.next {
+            if let navigationController = nextResponder as? NavigationController {
+                return navigationController
+            }
+            responder = nextResponder
+        }
+        return nil
+    }
+    
+    
+    //MARK: - CopyUI
     
         func sharedInit() {
             self.isUserInteractionEnabled = true
@@ -35,6 +53,11 @@ class CopyLabel: UILabel, UIEditMenuInteractionDelegate {
         override func copy(_ sender: Any?) {
             let board = UIPasteboard.general
             board.string = text
+            
+            if let navController = findNavigationController() {
+                navController.coppiedPill()
+            }
+            
             let menu = UIMenuController.shared
             menu.showMenu(from: self, rect: self.bounds)
         }
