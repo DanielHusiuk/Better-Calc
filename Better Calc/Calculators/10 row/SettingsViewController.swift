@@ -450,6 +450,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         selectedTintId = tintModel.tints[sender.tag].id // Збереження вибраного id
         print("\(buttonRow.text) Button Pressed")
         
+        let indexPath = IndexPath(row: 0, section: Section.info.rawValue)
+        tableView.reloadRows(at: [indexPath], with: .none)
+        
         guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()

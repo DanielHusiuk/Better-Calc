@@ -24,8 +24,8 @@ class StandardViewController: UIViewController {
     
     @IBOutlet var ShadowButtonsOutlet: [UIButton]!
     
-    private var currentOperation: Operation?
-    private var firstOperand: Double?
+    var currentOperation: Operation?
+    var firstOperand: Double?
     
     private var eraseTimer: Timer?
     private var isErasing = false
@@ -239,7 +239,7 @@ class StandardViewController: UIViewController {
                             if let secondOperand = Double(secondOperandString) {
                                 let percentageValue = firstOperand! * (secondOperand / 100)
                                 let roundedPercentageValue = Double(round(1000000 * percentageValue) / 1000000)
-                                WorkingsLabelOutlet.text = components[0] + " \(components[1]) " + String(roundedPercentageValue)
+                                WorkingsLabelOutlet.text = components[0] + components[1] + String(roundedPercentageValue)
                             }
                             return
                         }
@@ -306,10 +306,9 @@ class StandardViewController: UIViewController {
         case .multiplication:
             result = firstOperand * secondOperand
         case .division:
-            if secondOperand == 0 {
-                return
+            if secondOperand != 0 {
+                result = firstOperand / secondOperand
             }
-            result = firstOperand / secondOperand
         case .percentage:
             result = secondOperand
         }

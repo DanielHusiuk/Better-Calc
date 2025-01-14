@@ -27,6 +27,7 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         
         HistoryTableView.delegate = self
         HistoryTableView.dataSource = self
+        saveStandardState()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -39,6 +40,10 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func unwindHome(_ segue: UIStoryboardSegue) {
         self.dismiss(animated: true, completion: nil)
+        if let navigationController = self.presentingViewController as? UINavigationController,
+           let standardVC = navigationController.viewControllers.first(where: { $0 is StandardViewController }) as? StandardViewController {
+            standardVC.loadViewState()
+        }
     }
     
     @IBAction func editButton(_ sender: UIBarButtonItem) {
@@ -162,6 +167,13 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         self.toolbarItems = [deleteAll, flexibleSpace, trashButton]
     }
     
+    func saveStandardState() {
+        if let navigationController = self.presentingViewController as? UINavigationController,
+           let standardVC = navigationController.viewControllers.first(where: { $0 is StandardViewController }) as? StandardViewController {
+            standardVC.saveViewState()
+        }
+    }
+    
     
     //MARK: - History Logic
     
@@ -175,8 +187,21 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     
     //MARK: - Table View
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return historyArray.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return historyArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let historyItem = historyArray[section]
+        guard let date = historyItem.date else { return nil }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        return dateFormatter.string(from: date)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -206,19 +231,30 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
                 if let workingText = selectedHistory.working, let resultText = selectedHistory.result {
                     standardVC.WorkingsLabelOutlet.text = ""
                     standardVC.ResultsLabelOutlet.text = ""
-                    standardVC.WorkingsLabelOutlet.text = "\(workingText)"
-                    standardVC.ResultsLabelOutlet.text = "\(resultText)"
-                    standardVC.isTypingNumber = false
+                    standardVC.WorkingsLabelOutlet.text = workingText
+                    standardVC.ResultsLabelOutlet.text = resultText
+                                        
+                    let symbolRange = CharacterSet(charactersIn: "+−×÷")
+                    if let currentOperationRange = workingText.rangeOfCharacter(from: symbolRange) {
+                        let symbol = workingText[currentOperationRange]
+                        switch symbol {
+                        case "+":
+                            standardVC.currentOperation = .addition
+                        case "−":
+                            standardVC.currentOperation = .subtraction
+                        case "×":
+                            standardVC.currentOperation = .multiplication
+                        case "÷":
+                            standardVC.currentOperation = .division
+                        default:
+                            break
+                        }
+                    }
+                    standardVC.isTypingNumber = true
                     
                     if standardVC.EraseButtonOutlet.isHidden == true || standardVC.PasteResultButtonOutlet.isHidden == true {
-                        standardVC.EraseButtonOutlet.alpha = 0.0
-                        standardVC.PasteResultButtonOutlet.alpha = 0.0
-                        standardVC.EraseButtonOutlet.isHidden = false
-                        standardVC.PasteResultButtonOutlet.isHidden = false
-                        UIView.animate(withDuration: 0.1, animations: {
-                            standardVC.EraseButtonOutlet.alpha = 1.0
-                            standardVC.PasteResultButtonOutlet.alpha = 1.0
-                        })
+                        standardVC.checkEraseButton()
+                        standardVC.checkPasteButton()
                     }
                 }
             } else {
