@@ -36,6 +36,36 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     }
     
     
+    //MARK: - Preferences
+    
+    func blurBackground() {
+        let blurEffect = UIBlurEffect(style: .systemMaterialDark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.isUserInteractionEnabled = false
+        view.insertSubview(blurEffectView, at: 0)
+    }
+    
+    func toolBar(_ sender:UIToolbar) {
+        navigationController?.isToolbarHidden = true
+        let deleteAll = UIBarButtonItem(title: "Delete All", style: .plain, target: self, action: #selector(deleteAll))
+        deleteAll.tintColor = .red
+        let trashButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteObject))
+        trashButton.tintColor = #colorLiteral(red: 0.8, green: 0.5098039216, blue: 0.2784313725, alpha: 1)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        self.toolbarItems = [deleteAll, flexibleSpace, trashButton]
+    }
+    
+    func saveStandardState() {
+        if let navigationController = self.presentingViewController as? UINavigationController,
+           let standardVC = navigationController.viewControllers.first(where: { $0 is StandardViewController }) as? StandardViewController {
+            standardVC.saveViewState()
+        }
+    }
+    
+    
     //MARK: - IB Actions
     
     @IBAction func unwindHome(_ segue: UIStoryboardSegue) {
@@ -76,8 +106,11 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func deleteAll(_ sender: UIBarButtonItem) {
-        let refreshAlert = UIAlertController(title: "Delete history?", message: "This action is irreversible", preferredStyle: .alert)
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        let refreshAlert = UIAlertController(title: "Delete history?\nThis action is irreversible", message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        cancelAction.setValue(UIColor(#colorLiteral(red: 0.8, green: 0.5098039216, blue: 0.2784313725, alpha: 1)), forKey: "titleTextColor")
+        refreshAlert.addAction(cancelAction)
+        
         refreshAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard let self = self else { return }
             self.coreData.deleteAllObjects(with: self.historyId)
@@ -107,21 +140,30 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
             present(chooseAlert, animated: true, completion: nil)
             return
         }
-
         let sortedSelectedRows = selectedRows.sorted(by: { $0.item > $1.item })
         print("Rows to delete: \(sortedSelectedRows)")
 
+        HistoryTableView.beginUpdates()
         for indexPath in sortedSelectedRows {
-            let deleteItem = historyArray[indexPath.row]
-            coreData.deleteObject(object: deleteItem)
-            historyArray.remove(at: indexPath.row)
+            let key = sortedSectionKeys[indexPath.section]
+            if var group = groupedHistory[key] {
+                let deleteItem = group[indexPath.row]
+                coreData.deleteObject(object: deleteItem)
+                group.remove(at: indexPath.row)
+                
+                if group.isEmpty {
+                    groupedHistory.removeValue(forKey: key)
+                    sortedSectionKeys.remove(at: indexPath.section)
+                    HistoryTableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
+                } else {
+                    groupedHistory[key] = group
+                    HistoryTableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
         }
-        
-        HistoryTableView.performBatchUpdates {
-            HistoryTableView.deleteRows(at: sortedSelectedRows, with: .fade)
-        }
+        HistoryTableView.endUpdates()
 
-        if historyArray.isEmpty {
+        if groupedHistory.isEmpty {
             if let navigationController = self.presentingViewController as? UINavigationController,
                let standardVC = navigationController.viewControllers.first(where: { $0 is StandardViewController }) as? StandardViewController {
                 standardVC.HistoryButtonOutlet.isEnabled = false
@@ -138,85 +180,70 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         UIView.animate(withDuration: 0.3) {
             self.CloseBarButton.isEnabled = true
         }
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.loadHistory()
         }
     }
     
     
-    //MARK: - Preferences
-    
-    func blurBackground() {
-        let blurEffect = UIBlurEffect(style: .systemMaterialDark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurEffectView.isUserInteractionEnabled = false
-        view.insertSubview(blurEffectView, at: 0)
-    }
-    
-    func toolBar(_ sender:UIToolbar) {
-        navigationController?.isToolbarHidden = true
-        let deleteAll = UIBarButtonItem(title: "Delete All", style: .plain, target: self, action: #selector(deleteAll))
-        deleteAll.tintColor = .red
-        let trashButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteObject))
-        trashButton.tintColor = #colorLiteral(red: 0.8, green: 0.5098039216, blue: 0.2784313725, alpha: 1)
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        self.toolbarItems = [deleteAll, flexibleSpace, trashButton]
-    }
-    
-    func saveStandardState() {
-        if let navigationController = self.presentingViewController as? UINavigationController,
-           let standardVC = navigationController.viewControllers.first(where: { $0 is StandardViewController }) as? StandardViewController {
-            standardVC.saveViewState()
-        }
-    }
-    
-    
     //MARK: - History Logic
     
-    var historyArray: [HistoryItem] = [ ]
-    
+    var groupedHistory: [String: [HistoryItem]] = [:]
+    var sortedSectionKeys: [String] = []
+
     func loadHistory() {
-        historyArray = coreData.fetchObjects(with: self.historyId)
+        let fetchedHistory = coreData.fetchObjects(with: self.historyId)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        
+        groupedHistory = Dictionary(grouping: fetchedHistory) { historyItem in
+            guard let date = historyItem.date else { return "Unknown Date" }
+            return dateFormatter.string(from: date)
+        }
+        sortedSectionKeys = groupedHistory.keys.sorted { key1, key2 in
+            let date1 = dateFormatter.date(from: key1) ?? Date.distantPast
+            let date2 = dateFormatter.date(from: key2) ?? Date.distantPast
+            return date1 < date2
+        }
         HistoryTableView.reloadData()
     }
     
     
-    //MARK: - Table View
+    //MARK: - History Table View
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return historyArray.count
+        return sortedSectionKeys.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return historyArray.count
+        let key = sortedSectionKeys[section]
+        return groupedHistory[key]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let historyItem = historyArray[section]
-        guard let date = historyItem.date else { return nil }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, yyyy"
-        return dateFormatter.string(from: date)
+        return sortedSectionKeys[section]
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let historyItem = historyArray[indexPath.row]
-        cell.textLabel?.text = historyItem.working
-        cell.detailTextLabel?.text = historyItem.result
+        let key = sortedSectionKeys[indexPath.section]
+        if let historyItem = groupedHistory[key]?[indexPath.row] {
+            cell.textLabel?.text = historyItem.working
+            cell.detailTextLabel?.text = historyItem.result
+        }
         
         let customBackgroundView = UIView()
-        customBackgroundView.backgroundColor = #colorLiteral(red: 0.3000000119, green: 0.3000000119, blue: 0.3000000119, alpha: 1)
+        customBackgroundView.backgroundColor = #colorLiteral(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
         cell.selectedBackgroundView = customBackgroundView
         
         let disclosureIndicator = UIImageView(image: UIImage(systemName: "chevron.right"))
-        disclosureIndicator.tintColor = #colorLiteral(red: 0.8, green: 0.5098039216, blue: 0.2784313725, alpha: 1)
+        disclosureIndicator.tintColor = #colorLiteral(red: 0.8, green: 0.51, blue: 0.28, alpha: 1)
         cell.accessoryView = disclosureIndicator
+        
         return cell
     }
     
@@ -224,11 +251,12 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         if HistoryTableView.isEditing == true {
             return
         } else {
-            let selectedHistory = historyArray[indexPath.row]
+            let key = sortedSectionKeys[indexPath.section]
+            let selectedHistory = groupedHistory[key]?[indexPath.row]
             
             if let navigationController = self.presentingViewController as? UINavigationController,
                let standardVC = navigationController.viewControllers.first(where: { $0 is StandardViewController }) as? StandardViewController {
-                if let workingText = selectedHistory.working, let resultText = selectedHistory.result {
+                if let workingText = selectedHistory?.working, let resultText = selectedHistory?.result {
                     standardVC.WorkingsLabelOutlet.text = ""
                     standardVC.ResultsLabelOutlet.text = ""
                     standardVC.WorkingsLabelOutlet.text = workingText

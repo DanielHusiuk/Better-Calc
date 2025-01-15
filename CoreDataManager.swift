@@ -87,6 +87,7 @@ public final class CoreDataManager: NSObject {
     public func fetchObject(with id: Int16) -> HistoryItem? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
          do {
              let objects = try? context.fetch(fetchRequest) as? [HistoryItem]
              return objects?.first
@@ -135,7 +136,7 @@ public final class CoreDataManager: NSObject {
     }
     
     
-    //MARK: - Keep Standard Data Logic
+    //MARK: - Keep StandardState Data Logic
     
     public func saveStandardState(workings: String, results: String, isTypingNumber: Bool, firstOperand: Double?, currentOperation: Int?) {
         resetStandardState()

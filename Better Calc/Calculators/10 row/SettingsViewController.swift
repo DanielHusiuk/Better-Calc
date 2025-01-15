@@ -67,6 +67,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let savedIndex = UserDefaults.standard.integer(forKey: "selectedTint")
         let indexToUse = savedIndex == 0 ? defaultTintCell : savedIndex
         selectedIndexPath = IndexPath(row: indexToUse, section: 0)
+        selectedTintId = Int16(UserDefaults.standard.integer(forKey: "selectedTint"))
         
         if UserDefaults.standard.object(forKey: "HapticState") == nil {
             UserDefaults.standard.set(true, forKey: "HapticState")
@@ -117,7 +118,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func resetUserSettings() {
-        UserDefaults.standard.removeObject(forKey: "selectedTint")
+        UserDefaults.standard.set(1, forKey: "selectedTint")
         UserDefaults.standard.removeObject(forKey: "SelectedPickerRow")
         UserDefaults.standard.removeObject(forKey: "SelectedPickerString")
         UserDefaults.standard.removeObject(forKey: "HapticState")
@@ -444,7 +445,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         selectedIndexPath = IndexPath(row: sender.tag, section: 0)
         UserDefaults.standard.set(sender.tag, forKey: "selectedTint")
-        UserDefaults.standard.synchronize()
         collectionView?.reloadData()
         
         selectedTintId = tintModel.tints[sender.tag].id // Збереження вибраного id
@@ -602,8 +602,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func deleteHistoryFunc() {
-        let alert = UIAlertController(title: "Delete history in all calculators?", message: "This action is irreversible", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        let alert = UIAlertController(title: "Delete history in all calculators?\nThis action is irreversible", message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        cancelAction.setValue(UIColor(#colorLiteral(red: 0.8, green: 0.5098039216, blue: 0.2784313725, alpha: 1)), forKey: "titleTextColor")
+        alert.addAction(cancelAction)
+    
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             if let navController = self?.navigationController as? NavigationController {
