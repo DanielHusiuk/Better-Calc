@@ -64,10 +64,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func updatePreferences() {
         let defaultTintCell = 1
-        let savedIndex = UserDefaults.standard.integer(forKey: "selectedTint")
+        let savedIndex = UserDefaults.standard.integer(forKey: "selectedTintID")
         let indexToUse = savedIndex == 0 ? defaultTintCell : savedIndex
         selectedIndexPath = IndexPath(row: indexToUse, section: 0)
-        selectedTintId = Int16(UserDefaults.standard.integer(forKey: "selectedTint"))
+        selectedTintId = Int16(UserDefaults.standard.integer(forKey: "selectedTintID"))
         
         if UserDefaults.standard.object(forKey: "HapticState") == nil {
             UserDefaults.standard.set(true, forKey: "HapticState")
@@ -118,7 +118,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func resetUserSettings() {
-        UserDefaults.standard.set(1, forKey: "selectedTint")
+        UserDefaults.standard.set(1, forKey: "selectedTintID")
         UserDefaults.standard.removeObject(forKey: "SelectedPickerRow")
         UserDefaults.standard.removeObject(forKey: "SelectedPickerString")
         UserDefaults.standard.removeObject(forKey: "HapticState")
@@ -444,15 +444,22 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         buttonRow.action()
         
         selectedIndexPath = IndexPath(row: sender.tag, section: 0)
-        UserDefaults.standard.set(sender.tag, forKey: "selectedTint")
+        UserDefaults.standard.set(sender.tag, forKey: "selectedTintID")
         collectionView?.reloadData()
         
-        selectedTintId = tintModel.tints[sender.tag].id // Збереження вибраного id
-        print("\(buttonRow.text) Button Pressed")
+        selectedTintId = tintModel.tints[sender.tag].id
+        if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+            UserDefaults.standard.setColor(selectedTintColor, forKey: "selectedTintColor")
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            if let navigationController = self.navigationController as? NavigationController {
+                navigationController.didSelectTintColor()
+            }
+        }
         
-        let indexPath = IndexPath(row: 0, section: Section.info.rawValue)
-        tableView.reloadRows(at: [indexPath], with: .none)
-        
+        tableView?.reloadData()
+
         guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
@@ -477,7 +484,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let choosedCalcTextLabel = UILabel()
         choosedCalcTextLabel.text = selectedPickerText
         choosedCalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        choosedCalcTextLabel.textColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
+        if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+            choosedCalcTextLabel.textColor = selectedTintColor
+        }
         choosedCalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(choosedCalcTextLabel)
         
@@ -508,7 +517,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //haptic
     func hapticButton(in cell: UITableViewCell) {
         let hapticSwitch = UISwitch()
-        hapticSwitch.onTintColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
+        if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+            hapticSwitch.onTintColor = selectedTintColor
+        }
         hapticSwitch.isOn = UserDefaults.standard.bool(forKey: "HapticState")
         hapticSwitch.addTarget(self, action: #selector(hapticSwitchChanged(_:)), for: .valueChanged)
         cell.accessoryView = hapticSwitch
@@ -536,7 +547,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //keep
     func keepData(in cell: UITableViewCell) {
         let keepSwitch = UISwitch()
-        keepSwitch.onTintColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
+        if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+            keepSwitch.onTintColor = selectedTintColor
+        }
         keepSwitch.isOn = UserDefaults.standard.bool(forKey: "KeepState")
         keepSwitch.addTarget(self, action: #selector(keepSwitchChanged(_:)), for: .valueChanged)
         cell.accessoryView = keepSwitch
@@ -572,7 +585,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let resetText = UILabel()
         resetText.text = "Reset menu buttons positions"
         resetText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        resetText.textColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
+        if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+            resetText.textColor = selectedTintColor
+        }
         resetText.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(resetText)
         NSLayoutConstraint.activate([
@@ -602,9 +617,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func deleteHistoryFunc() {
+        let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
         let alert = UIAlertController(title: "Delete history in all calculators?\nThis action is irreversible", message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        cancelAction.setValue(UIColor(#colorLiteral(red: 0.8, green: 0.5098039216, blue: 0.2784313725, alpha: 1)), forKey: "titleTextColor")
+        cancelAction.setValue(selectedTintColor, forKey: "titleTextColor")
         alert.addAction(cancelAction)
     
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
@@ -679,4 +695,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         present(alert, animated: true, completion: nil)
     }
     
+}
+
+extension UserDefaults {
+    func setColor(_ color: UIColor, forKey key: String) {
+        let colorData = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
+        set(colorData, forKey: key)
+    }
+    
+    func color(forKey key: String) -> UIColor? {
+        guard let colorData = data(forKey: key),
+              let color = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor else {
+            return nil
+        }
+        return color
+    }
 }

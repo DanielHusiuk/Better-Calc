@@ -86,7 +86,9 @@ class ButtonCell: UICollectionViewCell {
         
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = #colorLiteral(red: 0.8163539171, green: 0.538916111, blue: 0.3300756216, alpha: 1)
+        if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
+            imageView.tintColor = selectedTintColor
+        }
         imageView.contentScaleFactor = 2
         imageView.translatesAutoresizingMaskIntoConstraints = false
         innerView.addSubview(imageView)

@@ -20,6 +20,7 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        buttonsTint()
         loadHistory()
         blurBackground()
         toolBar(UIToolbar.init())
@@ -48,12 +49,21 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         view.insertSubview(blurEffectView, at: 0)
     }
     
+    func buttonsTint() {
+        if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
+            self.CloseBarButton.tintColor = selectedTintColor
+            self.EditBarButton.tintColor = selectedTintColor
+        }
+    }
+    
     func toolBar(_ sender:UIToolbar) {
         navigationController?.isToolbarHidden = true
         let deleteAll = UIBarButtonItem(title: "Delete All", style: .plain, target: self, action: #selector(deleteAll))
         deleteAll.tintColor = .red
         let trashButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteObject))
-        trashButton.tintColor = #colorLiteral(red: 0.8, green: 0.5098039216, blue: 0.2784313725, alpha: 1)
+        if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
+            trashButton.tintColor = selectedTintColor
+        }
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         self.toolbarItems = [deleteAll, flexibleSpace, trashButton]
     }
@@ -105,10 +115,12 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    
     @IBAction func deleteAll(_ sender: UIBarButtonItem) {
+        let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
         let refreshAlert = UIAlertController(title: "Delete history?\nThis action is irreversible", message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        cancelAction.setValue(UIColor(#colorLiteral(red: 0.8, green: 0.5098039216, blue: 0.2784313725, alpha: 1)), forKey: "titleTextColor")
+        cancelAction.setValue(selectedTintColor, forKey: "titleTextColor")
         refreshAlert.addAction(cancelAction)
         
         refreshAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
@@ -241,7 +253,9 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         cell.selectedBackgroundView = customBackgroundView
         
         let disclosureIndicator = UIImageView(image: UIImage(systemName: "chevron.right"))
-        disclosureIndicator.tintColor = #colorLiteral(red: 0.8, green: 0.51, blue: 0.28, alpha: 1)
+        if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
+            disclosureIndicator.tintColor = selectedTintColor
+        }
         cell.accessoryView = disclosureIndicator
         
         return cell

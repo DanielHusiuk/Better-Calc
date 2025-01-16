@@ -119,6 +119,9 @@ class StandardViewController: UIViewController {
         let shadowRadius: CGFloat = 8
 
         for button in ShadowButtonsOutlet {
+            if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
+               button.tintColor = selectedTintColor
+            }
             button.layer.shadowColor = shadowColor
             button.layer.shadowOffset = shadowOffset
             button.layer.shadowOpacity = shadowOpacity

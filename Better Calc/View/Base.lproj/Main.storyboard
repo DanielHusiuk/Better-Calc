@@ -19,7 +19,6 @@
                     <navigationBar key="navigationBar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" id="43f-9t-T88">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.80000000000000004" green="0.51005656030000002" blue="0.2780444031" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
@@ -39,6 +38,7 @@
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="KEM-HR-0N6">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemRedColor"/>
                     </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iHO-yH-PW9"/>
@@ -277,7 +277,6 @@
                                                                 <buttonConfiguration key="configuration" style="filled" image="divide" catalog="system" cornerStyle="large">
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
                                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <color key="baseBackgroundColor" red="0.80000000000000004" green="0.51005656030000002" blue="0.2780444031" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="operationButtonPressed:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="cxQ-vU-Qva"/>
@@ -344,7 +343,6 @@
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="filled" image="multiply" catalog="system" cornerStyle="large">
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
-                                                                    <color key="baseBackgroundColor" red="0.80000000000000004" green="0.51005656030000002" blue="0.2780444031" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="operationButtonPressed:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="21R-cF-j6J"/>
@@ -411,7 +409,6 @@
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="filled" image="minus" catalog="system" cornerStyle="large">
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
-                                                                    <color key="baseBackgroundColor" red="0.80000000000000004" green="0.51005656030000002" blue="0.2780444031" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="operationButtonPressed:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="tRS-Vp-tQv"/>
@@ -478,7 +475,6 @@
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system" cornerStyle="large">
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
-                                                                    <color key="baseBackgroundColor" red="0.80000000000000004" green="0.51005656030000002" blue="0.2780444031" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="operationButtonPressed:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="8ll-px-EgE"/>
@@ -533,7 +529,6 @@
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="filled" image="equal" catalog="system" cornerStyle="large">
                                                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
-                                                                            <color key="baseBackgroundColor" red="0.80000000000000004" green="0.51005656030000002" blue="0.2780444031" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="equalsButton:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="Xg1-xj-DXO"/>
@@ -589,7 +584,6 @@
                     <navigationItem key="navigationItem" title="Standard" style="editor" id="hqb-rE-SY9">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Item" id="IUW-jL-KzH">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.51005656030000002" blue="0.2780444031" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="wZW-7r-Pwn" kind="presentation" identifier="StandartHistory" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="GbF-z8-izm"/>
                             </connections>
@@ -678,7 +672,6 @@
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" red="0.80000000000000004" green="0.51168721910000003" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -695,13 +688,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="History" style="editor" id="91t-xr-p7u">
                         <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="M0a-fa-sPV">
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392156862742" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="unwindHome:" destination="QAd-AT-VRl" id="gv3-mG-Rwt"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="vOD-jp-gNe">
-                            <color key="tintColor" red="0.80000000000000004" green="0.51168721910000003" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="editButton:" destination="QAd-AT-VRl" id="VvT-ik-hIx"/>
                             </connections>
@@ -733,7 +724,6 @@
                     <navigationItem key="navigationItem" title="Scientific" style="editor" id="HjZ-kC-LK9">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="VH2-Yr-cZs">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="pnD-HD-n13" kind="presentation" identifier="ScientificHistory" id="hYB-eN-z3D"/>
                             </connections>
@@ -785,7 +775,6 @@
                     <navigationItem key="navigationItem" title="Crypto" style="editor" id="Ud7-b7-Alh">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="2c1-OE-MRk">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="bRC-vI-fBx" kind="presentation" identifier="CryptoHistory" id="dTs-Kh-fN9"/>
                             </connections>
@@ -816,7 +805,6 @@
                     <navigationItem key="navigationItem" title="Currency" style="editor" id="6pm-bo-J4z">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="Tye-PF-GuO">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="8Ja-y4-yEn" kind="presentation" identifier="CurrencyHistory" id="wK0-SB-prO"/>
                             </connections>
@@ -896,7 +884,6 @@
                     <navigationItem key="navigationItem" title="Area" style="editor" id="Tea-qD-3to">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="e7U-f5-NUA">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="bdI-CN-OHn" kind="presentation" identifier="AreaHistory" id="cxZ-48-hd4"/>
                             </connections>
@@ -927,7 +914,6 @@
                     <navigationItem key="navigationItem" title="Lenght" style="editor" id="Mel-9l-fIi">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="rk5-Lq-mlp">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="TKb-a8-dnv" kind="presentation" identifier="LenghtHistory" id="Fgh-gf-6p0"/>
                             </connections>
@@ -1007,7 +993,6 @@
                     <navigationItem key="navigationItem" title="Temperature" style="editor" id="zSD-Yn-H4y">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="hva-Xu-TL0">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="3oM-OU-bm2" kind="presentation" identifier="TemperatureHistory" id="J36-ml-IQe"/>
                             </connections>
@@ -1038,7 +1023,6 @@
                     <navigationItem key="navigationItem" title="Volume" style="editor" id="PBy-Rm-LYV">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="0Sj-FQ-dnK">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="4re-fC-Rrc" kind="presentation" identifier="VolumeHistory" id="gC7-WK-LFl"/>
                             </connections>
@@ -1174,7 +1158,6 @@
                     <navigationItem key="navigationItem" title="Investition" style="editor" id="ftG-ht-qm7">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="j69-LY-cIQ">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="5yf-XD-YL5" kind="presentation" identifier="InvestitonHistory" id="4kB-ok-pAn"/>
                             </connections>
@@ -1205,7 +1188,6 @@
                     <navigationItem key="navigationItem" title="Time" style="editor" id="Jtf-ui-0r7">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="j8E-GZ-fhj">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="u51-CK-OZ4" kind="presentation" identifier="TimeHistory" id="iVj-XF-CNF"/>
                             </connections>
@@ -1264,7 +1246,6 @@
                     <navigationItem key="navigationItem" title="Mass" style="editor" id="gG7-TY-ssH">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="d3V-SD-3Qs">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="T0X-Fp-gj0" kind="presentation" identifier="MassHistory" id="usW-aR-0nA"/>
                             </connections>
@@ -1295,7 +1276,6 @@
                     <navigationItem key="navigationItem" title="Discount" style="editor" id="pz6-gH-5cd">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="NmN-aR-WSY">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="g5g-w7-1wm" kind="presentation" identifier="DiscountHistory" id="fRF-4B-oOo"/>
                             </connections>
@@ -1319,7 +1299,6 @@
                     <navigationItem key="navigationItem" title="Speed" style="editor" id="e9c-JV-7PK">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="qrA-yD-vX2">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="SYk-11-ceZ" kind="presentation" identifier="SpeedHistory" id="lIb-Zv-qhd"/>
                             </connections>
@@ -1378,7 +1357,6 @@
                     <navigationItem key="navigationItem" title="Date" style="editor" id="Xwo-xz-plL">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="rvX-MJ-bDz">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="OcP-f1-HqY" kind="presentation" identifier="DateHistory" id="3Nh-dE-vyB"/>
                             </connections>
@@ -1458,7 +1436,6 @@
                     <navigationItem key="navigationItem" title="Count System" style="editor" id="EK5-3u-WWZ">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="KLN-XU-lfD">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="lVp-b5-w9X" kind="presentation" identifier="CountHistory" id="YMO-gW-ulN"/>
                             </connections>
@@ -1538,7 +1515,6 @@
                     <navigationItem key="navigationItem" title="Age" style="editor" id="boB-Ix-h7T">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="0b8-LS-X4C">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="Iua-hR-4Kl" kind="presentation" identifier="AgeHistory" id="rjB-l2-bFM"/>
                             </connections>
@@ -1590,7 +1566,6 @@
                     <navigationItem key="navigationItem" title="Tips" style="editor" id="Ynk-hn-FwM">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="etR-Pa-mGa">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="93V-bO-YUu" kind="presentation" identifier="TipsHistory" id="3iE-lH-gxm"/>
                             </connections>
@@ -1621,7 +1596,6 @@
                     <navigationItem key="navigationItem" title="Loan" style="editor" id="6sx-rs-Ygq">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="98v-ms-YBq">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="WG4-R9-YgK" kind="presentation" identifier="LoanHistory" id="xGj-NX-Nvn"/>
                             </connections>
@@ -1708,7 +1682,6 @@
                     <navigationItem key="navigationItem" title="Body Mass Index" style="editor" id="vY0-mu-NsI">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="1Lo-FH-bdo">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392159999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="639-TN-OX6" kind="presentation" identifier="BmiHistory" id="2xL-IC-jH9"/>
                             </connections>
@@ -1772,10 +1745,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="aTt-Wx-nCc"/>
                         <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemRedColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" style="editor" id="dWV-Px-nIf">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="m5P-PF-uoX">
-                            <color key="tintColor" red="0.80000000000000004" green="0.50980392156862742" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="ResetSettingsButtonOutlet:" destination="Rts-4A-0tP" id="sMT-fO-Q86"/>
                             </connections>
@@ -1812,6 +1785,9 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -16,6 +16,17 @@ class NavigationController: UINavigationController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        didSelectTintColor()
+    }
+    
+    func didSelectTintColor() {
+        if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
+            navigationBar.tintColor = selectedTintColor
+        }
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
