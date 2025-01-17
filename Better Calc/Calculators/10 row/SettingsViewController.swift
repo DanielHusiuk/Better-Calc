@@ -63,9 +63,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - Update
     
     func updatePreferences() {
-        let defaultTintCell = 1
         let savedIndex = UserDefaults.standard.integer(forKey: "selectedTintID")
-        let indexToUse = savedIndex == 0 ? defaultTintCell : savedIndex
+        let indexToUse = savedIndex
         selectedIndexPath = IndexPath(row: indexToUse, section: 0)
         selectedTintId = Int16(UserDefaults.standard.integer(forKey: "selectedTintID"))
         
@@ -101,14 +100,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func ResetSettingsButtonOutlet(_ sender: UIBarButtonItem) {
+        let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
         let alert = UIAlertController(title: "Reset settings?", message: "This will reset all parameters to default", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancelAction.setValue(selectedTintColor, forKey: "titleTextColor")
+        alert.addAction(cancelAction)
         alert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             self?.resetUserSettings()
-            if let navigationController = self?.navigationController {
-                navigationController.popViewController(animated: true)
-            }
-            
         }))
         present(alert, animated: true, completion: nil)
         
@@ -118,6 +116,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func resetUserSettings() {
+        if tintModel.tints.count > 1 {
+            let secondTintColor = tintModel.tints[1].color
+            UserDefaults.standard.setColor(secondTintColor, forKey: "selectedTintColor")
+        }
+        if let navigationController = self.navigationController as? NavigationController {
+            navigationController.didSelectTintColor()
+        }
         UserDefaults.standard.set(1, forKey: "selectedTintID")
         UserDefaults.standard.removeObject(forKey: "SelectedPickerRow")
         UserDefaults.standard.removeObject(forKey: "SelectedPickerString")
@@ -127,6 +132,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         loadNavBar()
         setIcon(.icon1)
         mainView.resetMenuFunc()
+        collectionView?.reloadData()
+        tableView?.reloadData()
         
         if let navController = self.navigationController as? NavigationController {
             navController.resButtonPill()
@@ -683,19 +690,25 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func devGitFunc() {
+        let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
         let alert = UIAlertController(title: "Open developer GitHub?", message: "https://github.com/DanielHusiuk", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak self] (action: UIAlertAction!) in
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             
             if let gitURL = URL(string: "https://github.com/DanielHusiuk") {
                 UIApplication.shared.open(gitURL, options: [:], completionHandler: nil)
             }
-        }))
+        })
+        confirmAction.setValue(selectedTintColor, forKey: "titleTextColor")
+        alert.addAction(confirmAction)
         present(alert, animated: true, completion: nil)
     }
     
 }
+
+
+    //MARK: - Extensions
 
 extension UserDefaults {
     func setColor(_ color: UIColor, forKey key: String) {
@@ -705,7 +718,7 @@ extension UserDefaults {
     
     func color(forKey key: String) -> UIColor? {
         guard let colorData = data(forKey: key),
-              let color = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor else {
+              let color = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData) else {
             return nil
         }
         return color

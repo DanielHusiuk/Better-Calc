@@ -11,6 +11,7 @@ import PillboxView
 class NavigationController: UINavigationController {
     
     let pill = PillView()
+    let tintModel = TintModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

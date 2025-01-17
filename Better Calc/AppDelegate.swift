@@ -12,8 +12,10 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var hasPerformedSegue = false
+    var tintModel = TintModel()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        updateColorTheme()
         return true
     }
     
@@ -53,6 +55,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    
+    //MARK: - Color Theme Defaults
+    
+    func updateColorTheme() {
+        if UserDefaults.standard.object(forKey: "selectedTintID") == nil {
+            UserDefaults.standard.set(1, forKey: "selectedTintID")
+        }
+        if UserDefaults.standard.object(forKey: "selectedTintColor") == nil {
+            let secondTintColor = tintModel.tints[1].color
+            UserDefaults.standard.setColor(secondTintColor, forKey: "selectedTintColor")
+        }
+    }
 
 }
-

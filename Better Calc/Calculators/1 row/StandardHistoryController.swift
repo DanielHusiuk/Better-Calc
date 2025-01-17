@@ -118,12 +118,12 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func deleteAll(_ sender: UIBarButtonItem) {
         let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
-        let refreshAlert = UIAlertController(title: "Delete history?\nThis action is irreversible", message: nil, preferredStyle: .actionSheet)
+        let deleteAlert = UIAlertController(title: "Delete history?\nThis action is irreversible", message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         cancelAction.setValue(selectedTintColor, forKey: "titleTextColor")
-        refreshAlert.addAction(cancelAction)
+        deleteAlert.addAction(cancelAction)
         
-        refreshAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
+        deleteAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard let self = self else { return }
             self.coreData.deleteAllObjects(with: self.historyId)
             
@@ -135,7 +135,7 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
             self.dismiss(animated: true, completion: nil)
             self.navigationController?.setToolbarHidden(true, animated: true)
         }))
-        present(refreshAlert, animated: true, completion: nil)
+        present(deleteAlert, animated: true, completion: nil)
         
         loadHistory()
         guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
@@ -147,8 +147,11 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         guard isEdit else { return }
 
         guard let selectedRows = HistoryTableView.indexPathsForSelectedRows else {
+            let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
             let chooseAlert = UIAlertController(title: "Nothing to delete", message: "Choose results you want to delete", preferredStyle: .alert)
-            chooseAlert.addAction(UIAlertAction(title: "Okay", style: .default))
+            let okayAction = UIAlertAction(title: "Okay", style: .default)
+            okayAction.setValue(selectedTintColor, forKey: "titleTextColor")
+            chooseAlert.addAction(okayAction)
             present(chooseAlert, animated: true, completion: nil)
             return
         }
