@@ -45,7 +45,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         updatePreferences()
         loadTableView()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,7 +110,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         present(alert, animated: true, completion: nil)
         
         guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .light)
+        let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
     }
     
@@ -119,9 +118,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if tintModel.tints.count > 1 {
             let secondTintColor = tintModel.tints[1].color
             UserDefaults.standard.setColor(secondTintColor, forKey: "selectedTintColor")
-        }
-        if let navigationController = self.navigationController as? NavigationController {
-            navigationController.didSelectTintColor()
         }
         UserDefaults.standard.set(1, forKey: "selectedTintID")
         UserDefaults.standard.removeObject(forKey: "SelectedPickerRow")
@@ -132,14 +128,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         loadNavBar()
         setIcon(.icon1)
         mainView.resetMenuFunc()
-        collectionView?.reloadData()
-        tableView?.reloadData()
         
-        if let navController = self.navigationController as? NavigationController {
-            navController.resButtonPill()
+        if let navigationController = self.navigationController as? NavigationController {
+            navigationController.didSelectTintColor()
+            navigationController.resButtonPill()
         }
-            updatePreferences()
-        }
+        
+        collectionView?.reloadData()
+        UIView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
+        updatePreferences()
+        
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred()
+    }
     
     func rightNavBarButtonIcon() {
         if #available(iOS 17.0, *) {
@@ -262,10 +263,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            let items = CGFloat(iconModel.icons.count)
-            let rows = ceil(items / 3.0)
-            let height = rows * 110
-            return height + 30
+            return 360
         case 1:
             switch indexPath.row {
             case 1:
@@ -434,14 +432,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let buttonRow = iconModel.icons[indexPath.row]
         collectionCell.configure(with: buttonRow.text, image: buttonRow.image)
         collectionCell.button.tag = indexPath.row
-
+        
         if selectedIndexPath == indexPath {
             collectionCell.borderView.layer.borderWidth = 2
             collectionCell.borderView.layer.borderColor = #colorLiteral(red: 0.9000000358, green: 0.9000000358, blue: 0.9000000358, alpha: 1)
         } else {
             collectionCell.borderView.layer.borderWidth = 0
         }
-
+        
         collectionCell.button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         return collectionCell
     }
@@ -458,15 +456,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             UserDefaults.standard.setColor(selectedTintColor, forKey: "selectedTintColor")
         }
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             if let navigationController = self.navigationController as? NavigationController {
                 navigationController.didSelectTintColor()
             }
         }
         
-        tableView?.reloadData()
-
+        UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
         guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
@@ -578,7 +575,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             UserDefaults.standard.set(true, forKey: "KeepState")
         } else {
             UserDefaults.standard.set(false, forKey: "KeepState")
-            coreData.resetStandardState()
+            coreData.resetBasicState()
         }
     }
     
@@ -629,7 +626,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         cancelAction.setValue(selectedTintColor, forKey: "titleTextColor")
         alert.addAction(cancelAction)
-    
+        
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             if let navController = self?.navigationController as? NavigationController {
@@ -708,7 +705,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 
-    //MARK: - Extensions
+//MARK: - Extensions
 
 extension UserDefaults {
     func setColor(_ color: UIColor, forKey key: String) {

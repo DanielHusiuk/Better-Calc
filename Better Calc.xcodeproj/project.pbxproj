@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		65195E842C5BCB2400D4BE8B /* ButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65195E832C5BCB2400D4BE8B /* ButtonsModel.swift */; };
-		652EA18A2C8B57CA00DD6803 /* StandardHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652EA1892C8B57CA00DD6803 /* StandardHistoryController.swift */; };
+		652EA18A2C8B57CA00DD6803 /* BasicHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652EA1892C8B57CA00DD6803 /* BasicHistoryController.swift */; };
 		65464A762CB7DEA3008AB2AD /* PickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65464A752CB7DE9E008AB2AD /* PickerModel.swift */; };
 		655151EF2D2D6FD7000B99D8 /* PillboxView in Frameworks */ = {isa = PBXBuildFile; productRef = 655151EE2D2D6FD7000B99D8 /* PillboxView */; };
 		6557D71F2CAB247800381649 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557D71E2CAB247800381649 /* SettingsViewController.swift */; };
@@ -28,12 +28,12 @@
 		659536072C7B43FF0036D99D /* PasteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659536062C7B43FF0036D99D /* PasteLabel.swift */; };
 		659EE3482C9368D000B39776 /* HistoryItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EE3462C9368D000B39776 /* HistoryItem+CoreDataProperties.swift */; };
 		659EE34A2C93690600B39776 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EE3492C93690600B39776 /* CoreDataManager.swift */; };
-		65B689512C620FFD005259E7 /* StandardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689502C620FFD005259E7 /* StandardViewController.swift */; };
+		65B689512C620FFD005259E7 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689502C620FFD005259E7 /* BasicViewController.swift */; };
 		65B689532C6246EF005259E7 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689522C6246EF005259E7 /* NavigationController.swift */; };
 		65B689562C628140005259E7 /* ScientificViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689552C628140005259E7 /* ScientificViewController.swift */; };
 		65B689582C6285AF005259E7 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689572C6285AF005259E7 /* CurrencyViewController.swift */; };
 		65B6895A2C6285C7005259E7 /* CryptoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689592C6285C7005259E7 /* CryptoViewController.swift */; };
-		65B6895C2C6285D9005259E7 /* LenghtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6895B2C6285D9005259E7 /* LenghtViewController.swift */; };
+		65B6895C2C6285D9005259E7 /* LengthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6895B2C6285D9005259E7 /* LengthViewController.swift */; };
 		65B6895E2C6285F1005259E7 /* AreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6895D2C6285F1005259E7 /* AreaViewController.swift */; };
 		65B689602C62864A005259E7 /* VolumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6895F2C62864A005259E7 /* VolumeViewController.swift */; };
 		65B689622C628661005259E7 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689612C628661005259E7 /* TemperatureViewController.swift */; };
@@ -62,7 +62,7 @@
 
 /* Begin PBXFileReference section */
 		65195E832C5BCB2400D4BE8B /* ButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsModel.swift; sourceTree = "<group>"; };
-		652EA1892C8B57CA00DD6803 /* StandardHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardHistoryController.swift; sourceTree = "<group>"; };
+		652EA1892C8B57CA00DD6803 /* BasicHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHistoryController.swift; sourceTree = "<group>"; };
 		65464A752CB7DE9E008AB2AD /* PickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerModel.swift; sourceTree = "<group>"; };
 		6557D71E2CAB247800381649 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		656569662C7B37B8001D1F2B /* CopyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyLabel.swift; sourceTree = "<group>"; };
@@ -80,12 +80,12 @@
 		659536062C7B43FF0036D99D /* PasteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteLabel.swift; sourceTree = "<group>"; };
 		659EE3462C9368D000B39776 /* HistoryItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HistoryItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		659EE3492C93690600B39776 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		65B689502C620FFD005259E7 /* StandardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardViewController.swift; sourceTree = "<group>"; };
+		65B689502C620FFD005259E7 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
 		65B689522C6246EF005259E7 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		65B689552C628140005259E7 /* ScientificViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScientificViewController.swift; sourceTree = "<group>"; };
 		65B689572C6285AF005259E7 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		65B689592C6285C7005259E7 /* CryptoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoViewController.swift; sourceTree = "<group>"; };
-		65B6895B2C6285D9005259E7 /* LenghtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LenghtViewController.swift; sourceTree = "<group>"; };
+		65B6895B2C6285D9005259E7 /* LengthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthViewController.swift; sourceTree = "<group>"; };
 		65B6895D2C6285F1005259E7 /* AreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaViewController.swift; sourceTree = "<group>"; };
 		65B6895F2C62864A005259E7 /* VolumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeViewController.swift; sourceTree = "<group>"; };
 		65B689612C628661005259E7 /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
@@ -194,8 +194,8 @@
 		65B689632C628B34005259E7 /* 1 row */ = {
 			isa = PBXGroup;
 			children = (
-				65B689502C620FFD005259E7 /* StandardViewController.swift */,
-				652EA1892C8B57CA00DD6803 /* StandardHistoryController.swift */,
+				65B689502C620FFD005259E7 /* BasicViewController.swift */,
+				652EA1892C8B57CA00DD6803 /* BasicHistoryController.swift */,
 				656569662C7B37B8001D1F2B /* CopyLabel.swift */,
 				659536062C7B43FF0036D99D /* PasteLabel.swift */,
 				65B689552C628140005259E7 /* ScientificViewController.swift */,
@@ -215,7 +215,7 @@
 		65B689652C628B4C005259E7 /* 3 row */ = {
 			isa = PBXGroup;
 			children = (
-				65B6895B2C6285D9005259E7 /* LenghtViewController.swift */,
+				65B6895B2C6285D9005259E7 /* LengthViewController.swift */,
 				65B6895D2C6285F1005259E7 /* AreaViewController.swift */,
 			);
 			path = "3 row";
@@ -415,14 +415,14 @@
 				6557D71F2CAB247800381649 /* SettingsViewController.swift in Sources */,
 				65B689532C6246EF005259E7 /* NavigationController.swift in Sources */,
 				65C51EA42CAF17F900A2D164 /* IconCell.swift in Sources */,
-				652EA18A2C8B57CA00DD6803 /* StandardHistoryController.swift in Sources */,
+				652EA18A2C8B57CA00DD6803 /* BasicHistoryController.swift in Sources */,
 				65B6895A2C6285C7005259E7 /* CryptoViewController.swift in Sources */,
 				65B6897B2C628DA3005259E7 /* BmiViewController.swift in Sources */,
 				65DFA3E52C5A9B6A0090F4CE /* AppDelegate.swift in Sources */,
 				65B689622C628661005259E7 /* TemperatureViewController.swift in Sources */,
 				65B689792C628D8E005259E7 /* TipsViewController.swift in Sources */,
 				659EE3482C9368D000B39776 /* HistoryItem+CoreDataProperties.swift in Sources */,
-				65B6895C2C6285D9005259E7 /* LenghtViewController.swift in Sources */,
+				65B6895C2C6285D9005259E7 /* LengthViewController.swift in Sources */,
 				65DFA3E72C5A9B6A0090F4CE /* SceneDelegate.swift in Sources */,
 				65B689562C628140005259E7 /* ScientificViewController.swift in Sources */,
 				65B689742C628C0B005259E7 /* InvestitonViewController.swift in Sources */,
@@ -435,7 +435,7 @@
 				65B689702C628BE5005259E7 /* MassViewController.swift in Sources */,
 				65B689582C6285AF005259E7 /* CurrencyViewController.swift in Sources */,
 				65B689812C628E22005259E7 /* CountViewController.swift in Sources */,
-				65B689512C620FFD005259E7 /* StandardViewController.swift in Sources */,
+				65B689512C620FFD005259E7 /* BasicViewController.swift in Sources */,
 				659536072C7B43FF0036D99D /* PasteLabel.swift in Sources */,
 				65B689682C628B74005259E7 /* DateViewController.swift in Sources */,
 				65BFBB4B2CB2DE2700074527 /* TintModel.swift in Sources */,

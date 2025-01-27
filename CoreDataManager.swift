@@ -21,6 +21,12 @@ public final class CoreDataManager: NSObject {
         appDelegate.persistentContainer.viewContext
     }
     
+    func deleteHaptics() {
+        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+    }
+    
     
     // MARK: - CollectionView Buttons Logic
 
@@ -114,6 +120,7 @@ public final class CoreDataManager: NSObject {
             objects?.forEach{context.delete($0)}
         }
         appDelegate.saveContext()
+        deleteHaptics()
     }
     
     public func deleteObject(object: NSManagedObject) {
@@ -123,7 +130,7 @@ public final class CoreDataManager: NSObject {
         } catch {
             print("Failed to delete object directly: \(error)")
         }
-
+        deleteHaptics()
     }
     
     public func deleteAllHistory() {
@@ -133,14 +140,15 @@ public final class CoreDataManager: NSObject {
             objects?.forEach{context.delete($0)}
         }
         appDelegate.saveContext()
+        deleteHaptics()
     }
     
     
-    //MARK: - Keep StandardState Data Logic
+    //MARK: - Keep BasicState Data Logic
     
-    public func saveStandardState(workings: String, results: String, isTypingNumber: Bool, firstOperand: Double?, currentOperation: Int?) {
-        resetStandardState()
-        guard let entity = NSEntityDescription.entity(forEntityName: "StandardState", in: context) else { return }
+    public func saveBasicState(workings: String, results: String, isTypingNumber: Bool, firstOperand: Double?, currentOperation: Int?) {
+        resetBasicState()
+        guard let entity = NSEntityDescription.entity(forEntityName: "BasicState", in: context) else { return }
         let state = NSManagedObject(entity: entity, insertInto: context)
         
         state.setValue(workings, forKey: "workingsText")
@@ -153,10 +161,10 @@ public final class CoreDataManager: NSObject {
         print("Standard state saved.")
     }
     
-    public func loadStandardState() -> StandardState? {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "StandardState")
+    public func loadBasicState() -> BasicState? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BasicState")
         do {
-            let results = try context.fetch(fetchRequest) as? [StandardState]
+            let results = try context.fetch(fetchRequest) as? [BasicState]
             return results?.first
         } catch {
             print("Failed to load standard state: \(error)")
@@ -164,8 +172,8 @@ public final class CoreDataManager: NSObject {
         }
     }
     
-    public func resetStandardState() {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "StandardState")
+    public func resetBasicState() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BasicState")
         do {
             let results = try context.fetch(fetchRequest) as? [NSManagedObject]
             results?.forEach { context.delete($0) }

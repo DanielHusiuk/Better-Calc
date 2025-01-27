@@ -39,6 +39,11 @@ class CopyLabel: UILabel, UIEditMenuInteractionDelegate {
     
         func sharedInit() {
             self.isUserInteractionEnabled = true
+            if traitCollection.userInterfaceStyle == .dark {
+                self.overrideUserInterfaceStyle = .dark
+            } else {
+                self.overrideUserInterfaceStyle = .light
+            }
             self.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.showMenu)))
         }
         

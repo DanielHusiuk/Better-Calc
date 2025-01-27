@@ -12,6 +12,7 @@ class NavigationController: UINavigationController {
     
     let pill = PillView()
     let tintModel = TintModel()
+    let settingsVC = SettingsViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class NavigationController: UINavigationController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         didSelectTintColor()
+        settingsVC.updatePreferences()
     }
     
     func didSelectTintColor() {

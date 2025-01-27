@@ -7,7 +7,7 @@
 
 import UIKit
 
-let standardController = StandardViewController()
+let basicController = BasicViewController()
 let navController = NavigationController()
 
 class PasteLabel: UILabel {
@@ -36,11 +36,11 @@ class PasteLabel: UILabel {
         return nil
     }
     
-    func findStandardController() -> StandardViewController? {
+    func findBasicController() -> BasicViewController? {
         var responder: UIResponder? = self
         while let nextResponder = responder?.next {
-            if let standardController = nextResponder as? StandardViewController {
-                return standardController
+            if let basicController = nextResponder as? BasicViewController {
+                return basicController
             }
             responder = nextResponder
         }
@@ -52,6 +52,11 @@ class PasteLabel: UILabel {
 
     func sharedInit() {
         self.isUserInteractionEnabled = true
+        if traitCollection.userInterfaceStyle == .dark {
+            self.overrideUserInterfaceStyle = .dark
+        } else {
+            self.overrideUserInterfaceStyle = .light
+        }
         self.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.showMenu)))
     }
 
@@ -70,8 +75,8 @@ class PasteLabel: UILabel {
             if isValidNumber(normalizedText) && countCheck(for: normalizedText) {
                 if self.text == "0" {
                     self.text = normalizedText
-                    if let standardController = findStandardController() {
-                        standardController.checkEraseButton()
+                    if let basicController = findBasicController() {
+                        basicController.checkEraseButton()
                     }
                 } else if let currentText = self.text {
                     self.text = currentText + normalizedText

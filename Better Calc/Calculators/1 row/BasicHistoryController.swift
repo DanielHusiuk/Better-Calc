@@ -1,5 +1,5 @@
 //
-//  StandardHistoryController.swift
+//  BasicHistoryController.swift
 //  Better Calc
 //
 //  Created by Daniel Husiuk on 06.09.2024.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class StandardHistoryController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BasicHistoryController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var HistoryTableView: UITableView!
     @IBOutlet weak var CloseBarButton: UIBarButtonItem!
@@ -20,20 +20,16 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
+        
         buttonsTint()
         loadHistory()
         blurBackground()
         toolBar(UIToolbar.init())
-        overrideUserInterfaceStyle = .dark
         
         HistoryTableView.delegate = self
         HistoryTableView.dataSource = self
-        saveStandardState()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        overrideUserInterfaceStyle = .unspecified
+        saveBasicState()
     }
     
     
@@ -53,6 +49,7 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
             self.CloseBarButton.tintColor = selectedTintColor
             self.EditBarButton.tintColor = selectedTintColor
+            self.HistoryTableView.tintColor = selectedTintColor
         }
     }
     
@@ -68,10 +65,10 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         self.toolbarItems = [deleteAll, flexibleSpace, trashButton]
     }
     
-    func saveStandardState() {
+    func saveBasicState() {
         if let navigationController = self.presentingViewController as? UINavigationController,
-           let standardVC = navigationController.viewControllers.first(where: { $0 is StandardViewController }) as? StandardViewController {
-            standardVC.saveViewState()
+           let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
+            basicVC.saveViewState()
         }
     }
     
@@ -81,8 +78,8 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func unwindHome(_ segue: UIStoryboardSegue) {
         self.dismiss(animated: true, completion: nil)
         if let navigationController = self.presentingViewController as? UINavigationController,
-           let standardVC = navigationController.viewControllers.first(where: { $0 is StandardViewController }) as? StandardViewController {
-            standardVC.loadViewState()
+           let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
+            basicVC.loadViewState()
         }
     }
     
@@ -99,6 +96,10 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
             UIView.animate(withDuration: 0.3, animations: {
                 self.CloseBarButton.isEnabled = true
             })
+            
+            guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
         } else {
             navigationController?.setToolbarHidden(false, animated: true)
             HistoryTableView.setEditing(true, animated: true)
@@ -112,6 +113,10 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
             UIView.animate(withDuration: 0.3, animations: {
                 self.CloseBarButton.isEnabled = false
             })
+            
+            guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
         }
     }
     
@@ -128,8 +133,8 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
             self.coreData.deleteAllObjects(with: self.historyId)
             
             if let navigationController = self.presentingViewController as? UINavigationController,
-               let standardVC = navigationController.viewControllers.first(where: { $0 is StandardViewController }) as? StandardViewController {
-                standardVC.HistoryButtonOutlet.isEnabled = false
+               let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
+                basicVC.HistoryButtonOutlet.isEnabled = false
             }
             
             self.dismiss(animated: true, completion: nil)
@@ -138,9 +143,6 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
         present(deleteAlert, animated: true, completion: nil)
         
         loadHistory()
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
     }
     
     @IBAction func deleteObject(_ sender: UIBarButtonItem) {
@@ -153,6 +155,11 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
             okayAction.setValue(selectedTintColor, forKey: "titleTextColor")
             chooseAlert.addAction(okayAction)
             present(chooseAlert, animated: true, completion: nil)
+            
+            if UserDefaults.standard.bool(forKey: "HapticState") {
+                let generator = UIImpactFeedbackGenerator(style: .medium)
+                generator.impactOccurred()
+            }
             return
         }
         let sortedSelectedRows = selectedRows.sorted(by: { $0.item > $1.item })
@@ -180,8 +187,8 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
 
         if groupedHistory.isEmpty {
             if let navigationController = self.presentingViewController as? UINavigationController,
-               let standardVC = navigationController.viewControllers.first(where: { $0 is StandardViewController }) as? StandardViewController {
-                standardVC.HistoryButtonOutlet.isEnabled = false
+               let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
+                basicVC.HistoryButtonOutlet.isEnabled = false
             }
             self.dismiss(animated: true, completion: nil)
         }
@@ -201,7 +208,7 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
     }
     
     
-    //MARK: - History Logic
+    //MARK: - History Grouping Logic
     
     var groupedHistory: [String: [HistoryItem]] = [:]
     var sortedSectionKeys: [String] = []
@@ -272,34 +279,34 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
             let selectedHistory = groupedHistory[key]?[indexPath.row]
             
             if let navigationController = self.presentingViewController as? UINavigationController,
-               let standardVC = navigationController.viewControllers.first(where: { $0 is StandardViewController }) as? StandardViewController {
+               let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
                 if let workingText = selectedHistory?.working, let resultText = selectedHistory?.result {
-                    standardVC.WorkingsLabelOutlet.text = ""
-                    standardVC.ResultsLabelOutlet.text = ""
-                    standardVC.WorkingsLabelOutlet.text = workingText
-                    standardVC.ResultsLabelOutlet.text = resultText
+                    basicVC.WorkingsLabelOutlet.text = ""
+                    basicVC.ResultsLabelOutlet.text = ""
+                    basicVC.WorkingsLabelOutlet.text = workingText
+                    basicVC.ResultsLabelOutlet.text = resultText
                                         
                     let symbolRange = CharacterSet(charactersIn: "+−×÷")
                     if let currentOperationRange = workingText.rangeOfCharacter(from: symbolRange) {
                         let symbol = workingText[currentOperationRange]
                         switch symbol {
                         case "+":
-                            standardVC.currentOperation = .addition
+                            basicVC.currentOperation = .addition
                         case "−":
-                            standardVC.currentOperation = .subtraction
+                            basicVC.currentOperation = .subtraction
                         case "×":
-                            standardVC.currentOperation = .multiplication
+                            basicVC.currentOperation = .multiplication
                         case "÷":
-                            standardVC.currentOperation = .division
+                            basicVC.currentOperation = .division
                         default:
                             break
                         }
                     }
-                    standardVC.isTypingNumber = true
+                    basicVC.isTypingNumber = true
                     
-                    if standardVC.EraseButtonOutlet.isHidden == true || standardVC.PasteResultButtonOutlet.isHidden == true {
-                        standardVC.checkEraseButton()
-                        standardVC.checkPasteButton()
+                    if basicVC.EraseButtonOutlet.isHidden == true || basicVC.PasteResultButtonOutlet.isHidden == true {
+                        basicVC.checkEraseButton()
+                        basicVC.checkPasteButton()
                     }
                 }
             } else {
@@ -307,7 +314,9 @@ class StandardHistoryController: UIViewController, UITableViewDelegate, UITableV
             }
             self.dismiss(animated: true, completion: nil)
         }
-        
+        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+        let generator = UIImpactFeedbackGenerator(style: .rigid)
+        generator.impactOccurred()
     }
 
 }

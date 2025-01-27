@@ -1,5 +1,5 @@
 //
-//  StandardViewController.swift
+//  BasicViewController.swift
 //  Better Calc
 //
 //  Created by Daniel Husiuk on 06.08.2024.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class StandardViewController: UIViewController {
+class BasicViewController: UIViewController {
     
     @IBOutlet weak var WorkingsLabelOutlet: UILabel!
     @IBOutlet weak var ResultsLabelOutlet: UILabel!
@@ -46,6 +46,7 @@ class StandardViewController: UIViewController {
         applyShadowWithInsets(to: NumbersViewOutlet, cornerRadius: 20)
         applyShadowWithInsets(to: CalculatorImageOutlet, cornerRadius: 30)
         buttonShadows()
+        overrideUserInterfaceStyle = .dark
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,7 +84,7 @@ class StandardViewController: UIViewController {
         let results = ResultsLabelOutlet.text ?? ""
         let operationValue = currentOperation?.rawValue
         
-        CoreDataManager.shared.saveStandardState(
+        CoreDataManager.shared.saveBasicState(
             workings: workings,
             results: results,
             isTypingNumber: isTypingNumber,
@@ -94,7 +95,7 @@ class StandardViewController: UIViewController {
     
     func loadViewState() {
         guard UserDefaults.standard.bool(forKey: "KeepState") else { return }
-        if let state = CoreDataManager.shared.loadStandardState() {
+        if let state = CoreDataManager.shared.loadBasicState() {
             WorkingsLabelOutlet.text = state.workingsText ?? "0"
             ResultsLabelOutlet.text = state.resultsText ?? "0"
             isTypingNumber = state.isTypingNumber
@@ -195,7 +196,7 @@ class StandardViewController: UIViewController {
         }
         
         guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .light)
+        let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
     }
     
@@ -354,6 +355,9 @@ class StandardViewController: UIViewController {
                 }
             }
         }
+        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
     
     @IBAction func decimalButton(_ sender: UIButton) {
@@ -416,6 +420,9 @@ class StandardViewController: UIViewController {
                 }
             }
         }
+        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+        let generator = UIImpactFeedbackGenerator(style: .rigid)
+        generator.impactOccurred()
     }
     
     @IBAction func numberButtonTapped(_ sender: UIButton) {
@@ -473,5 +480,9 @@ class StandardViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.PasteResultButtonOutlet.isHidden = true
             }
+        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+        let generator = UIImpactFeedbackGenerator(style: .rigid)
+        generator.impactOccurred()
         }
+
 }

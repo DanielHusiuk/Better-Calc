@@ -24,6 +24,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewDidLoad()
         layoutCollection()
         loadButtons()
+        overrideUserInterfaceStyle = .dark
     }
     
     override func viewDidAppear(_ animated: Bool) {
