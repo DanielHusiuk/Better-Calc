@@ -18,6 +18,10 @@ class LengthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
+    }
+        
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         applyShadowWithInsets(to: FromNumberImageOutlet, cornerRadius: 20)
         applyShadowWithInsets(to: ToNumberImageOutlet, cornerRadius: 20)
         applyShadowWithInsets(to: CalculatorImageOutlet, cornerRadius: 30)

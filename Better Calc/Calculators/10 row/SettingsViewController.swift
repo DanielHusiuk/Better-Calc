@@ -245,6 +245,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case 4:
+            return "© Better Calc  v\(String(describing: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""))"
+        default:
+            return nil
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 1:
@@ -379,8 +388,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = UIColor.darkGray
     }
     
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = UIColor.darkGray
+        (view as? UITableViewHeaderFooterView)?.textLabel?.textAlignment = .center
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.font = UIFont.boldSystemFont(ofSize: headerView.textLabel?.font.pointSize ?? 17)
+        }
+
+    }
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20
+        return 35
     }
     
     

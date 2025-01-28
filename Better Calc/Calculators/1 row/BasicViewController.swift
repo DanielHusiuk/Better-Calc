@@ -43,10 +43,9 @@ class BasicViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyShadowWithInsets(to: NumbersViewOutlet, cornerRadius: 20)
-        applyShadowWithInsets(to: CalculatorImageOutlet, cornerRadius: 30)
-        buttonShadows()
         overrideUserInterfaceStyle = .dark
+        checkEraseButton()
+        checkPasteButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +57,13 @@ class BasicViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         saveViewState()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        applyShadowWithInsets(to: NumbersViewOutlet, cornerRadius: 20)
+        applyShadowWithInsets(to: CalculatorImageOutlet, cornerRadius: 30)
+        buttonShadows()
     }
     
     
@@ -103,7 +109,11 @@ class BasicViewController: UIViewController {
             currentOperation = Operation(rawValue: Int(state.currentOperation))
             
             checkEraseButton()
-            checkPasteButton()
+            if let results = ResultsLabelOutlet.text, results.contains("e") {
+                return
+            } else {
+                checkPasteButton()
+            }
             print("View state loaded.")
         } else {
             print("No saved view state found.")
