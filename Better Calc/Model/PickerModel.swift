@@ -15,7 +15,7 @@ class PickerModel: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     var selectedSegueIdentifier: String?
 
     lazy var pickers: [(String, String)] = {
-        var allPickers: [(String, String)] = [("None", "")]
+        var allPickers: [(String, String)] = [(NSLocalizedString("settings_none", comment: ""), "")]
         let dynamicPickers = modelButtons.map { ($0.text, $0.segue) }
         allPickers.append(contentsOf: dynamicPickers)
         allPickers.removeLast()
@@ -40,7 +40,7 @@ class PickerModel: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedSegueIdentifier = pickers[row].1
-        print("Selected segue: \(selectedSegueIdentifier ?? "None")")
+        print("Selected segue: \(selectedSegueIdentifier ?? NSLocalizedString("settings_none", comment: ""))")
     }
     
 }

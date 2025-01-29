@@ -14,6 +14,8 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var CloseBarButton: UIBarButtonItem!
     @IBOutlet weak var EditBarButton: UIBarButtonItem!
     
+    @IBOutlet weak var NavigationTitleOutlet: UINavigationItem!
+    
     var coreData = CoreDataManager.shared
     var historyId: Int16 = 1
     var isEdit: Bool = false

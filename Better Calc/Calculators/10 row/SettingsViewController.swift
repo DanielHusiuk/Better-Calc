@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var tableView: UITableView!
     var choosedCalcTextLabel: UILabel?
-    var selectedPickerText: String = "None"
+    var selectedPickerText: String = NSLocalizedString("settings_none", comment: "")
     
     var pickerView: UIPickerView?
     let pickersModel = PickerModel()
@@ -189,7 +189,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             pickerView?.selectRow(savedRow, inComponent: 0, animated: false)
             selectedPickerText = pickersModel.pickers[savedRow].0
         } else {
-            selectedPickerText = "None"
+            selectedPickerText = NSLocalizedString("settings_none", comment: "")
         }
     }
     
@@ -231,15 +231,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Color theme:"
+            return NSLocalizedString("settings_color_theme", comment: "")
         case 1:
-            return "Open with launch:"
+            return NSLocalizedString("settings_open_with_launch", comment: "")
         case 2:
-            return "Preferences:"
+            return NSLocalizedString("settings_preferences", comment: "")
         case 3:
-            return "Data:"
+            return NSLocalizedString("settings_data", comment: "")
         case 4:
-            return "Info:"
+            return NSLocalizedString("settings_info", comment: "")
         default:
             return nil
         }
@@ -492,7 +492,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func pickerHeader(in cell: UITableViewCell) {
         let CalcTextLabel = UILabel()
-        CalcTextLabel.text = "Calculator"
+        CalcTextLabel.text = NSLocalizedString("settings_owl_calculator", comment: "")
         CalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         CalcTextLabel.textColor = .white
         CalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -547,7 +547,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.accessoryView = hapticSwitch
         
         let hapticText = UILabel()
-        hapticText.text = "Haptic feedback"
+        hapticText.text = NSLocalizedString("settings_p_haptic_feedback", comment: "")
         hapticText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         hapticText.textColor = .white
         hapticText.translatesAutoresizingMaskIntoConstraints = false
@@ -577,7 +577,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.accessoryView = keepSwitch
         
         let keepDataText = UILabel()
-        keepDataText.text = "Keep data after close"
+        keepDataText.text = NSLocalizedString("settings_p_keep_data_after_close", comment: "")
         keepDataText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         keepDataText.textColor = .white
         keepDataText.translatesAutoresizingMaskIntoConstraints = false
@@ -605,7 +605,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //reset
     func resetMenu(in cell: UITableViewCell) {
         let resetText = UILabel()
-        resetText.text = "Reset menu buttons positions"
+        resetText.text = NSLocalizedString("settings_d_reset_menu_buttons_positions", comment: "")
         resetText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             resetText.textColor = selectedTintColor
@@ -627,7 +627,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //delete
     func deleteHistory(in cell: UITableViewCell) {
         let deleteText = UILabel()
-        deleteText.text = "Delete all history"
+        deleteText.text = NSLocalizedString("settings_d_delete_all_history", comment: "")
         deleteText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         deleteText.textColor = .red
         deleteText.translatesAutoresizingMaskIntoConstraints = false
@@ -671,7 +671,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ])
         
         let attributedString = NSMutableAttributedString()
-        let regularText = NSAttributedString(string: "Created by:   ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)])
+        let regularText = NSAttributedString(string: NSLocalizedString("settings_created_by", comment: ""), attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)])
         attributedString.append(regularText)
         let boldText = NSAttributedString(string: "Daniel Husiuk", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)])
         attributedString.append(boldText)

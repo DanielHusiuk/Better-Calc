@@ -1,0 +1,594 @@
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "0Sj-FQ-dnK"; */
+"0Sj-FQ-dnK.title" = "Item";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0a4-wZ-tjv"; */
+"0a4-wZ-tjv.text" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "0b8-LS-X4C"; */
+"0b8-LS-X4C.title" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "1Lo-FH-bdo"; */
+"1Lo-FH-bdo.title" = "Item";
+
+/* Class = "UIButton"; configuration.title = "3"; ObjectID = "1Z4-qA-7sS"; */
+"1Z4-qA-7sS.configuration.title" = "3";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "1Z4-qA-7sS"; */
+"1Z4-qA-7sS.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "1ah-vN-B5V"; */
+"1ah-vN-B5V.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "1ee-1g-Pzp"; */
+"1ee-1g-Pzp.title" = "Історія";
+
+/* Class = "UIButton"; configuration.title = "5"; ObjectID = "21K-7x-ZhZ"; */
+"21K-7x-ZhZ.configuration.title" = "5";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "21K-7x-ZhZ"; */
+"21K-7x-ZhZ.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "2c1-OE-MRk"; */
+"2c1-OE-MRk.title" = "Item";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "2le-X4-2eG"; */
+"2le-X4-2eG.title" = "Історія";
+
+/* Class = "UIButton"; configuration.title = "cm "; ObjectID = "38k-dM-wz4"; */
+"38k-dM-wz4.configuration.title" = "см ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "38k-dM-wz4"; */
+"38k-dM-wz4.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "3Zz-n8-BP7"; */
+"3Zz-n8-BP7.text" = "Subtitle";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "3fv-b2-WPK"; */
+"3fv-b2-WPK.title" = "Історія";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "3l3-ZI-x9i"; */
+"3l3-ZI-x9i.text" = "Subtitle";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "3st-Sg-kyZ"; */
+"3st-Sg-kyZ.text" = "Subtitle";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "43h-8Y-7rT"; */
+"43h-8Y-7rT.text" = "Title";
+
+/* Class = "UIButton"; configuration.title = "5"; ObjectID = "4lD-py-fg2"; */
+"4lD-py-fg2.configuration.title" = "5";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "4lD-py-fg2"; */
+"4lD-py-fg2.normalTitle" = "Button";
+
+/* Class = "UITextField"; text = "0"; ObjectID = "60F-Xe-BY3"; */
+"60F-Xe-BY3.text" = "0";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "69g-kZ-72N"; */
+"69g-kZ-72N.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Currency"; ObjectID = "6pm-bo-J4z"; */
+"6pm-bo-J4z.title" = "Валюта";
+
+/* Class = "UINavigationItem"; title = "Loan"; ObjectID = "6sx-rs-Ygq"; */
+"6sx-rs-Ygq.title" = "Позика";
+
+/* Class = "UILabel"; text = "From:"; ObjectID = "7Dl-Kq-wVB"; */
+"7Dl-Kq-wVB.text" = "З:";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "7Hs-rb-clV"; */
+"7Hs-rb-clV.title" = "Ред.";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "7TJ-mK-99S"; */
+"7TJ-mK-99S.text" = "Title";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "7YR-wf-sE9"; */
+"7YR-wf-sE9.text" = "Subtitle";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "7aI-CP-dhH"; */
+"7aI-CP-dhH.text" = "Title";
+
+/* Class = "UIButton"; configuration.title = "6"; ObjectID = "7dW-VN-BgL"; */
+"7dW-VN-BgL.configuration.title" = "6";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7dW-VN-BgL"; */
+"7dW-VN-BgL.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "8Nb-3B-P1s"; */
+"8Nb-3B-P1s.text" = "Subtitle";
+
+/* Class = "UITextField"; text = "0"; ObjectID = "8dP-if-hj9"; */
+"8dP-if-hj9.text" = "0";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "91t-xr-p7u"; */
+"91t-xr-p7u.title" = "Історія";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "98v-ms-YBq"; */
+"98v-ms-YBq.title" = "Item";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "9HA-KL-8RT"; */
+"9HA-KL-8RT.text" = "Subtitle";
+
+/* Class = "UINavigationItem"; title = "Choose Calculator"; ObjectID = "9JK-MH-3J4"; */
+"9JK-MH-3J4.title" = "Виберіть Калькулятор";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "9fH-DW-7In"; */
+"9fH-DW-7In.title" = "Історія";
+
+/* Class = "UIButton"; configuration.title = "AC"; ObjectID = "9hH-LR-1el"; */
+"9hH-LR-1el.configuration.title" = "AC";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "9hH-LR-1el"; */
+"9hH-LR-1el.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "9s7-Ml-WkQ"; */
+"9s7-Ml-WkQ.title" = "Історія";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "A74-CA-QdX"; */
+"A74-CA-QdX.text" = "Subtitle";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "AOF-c1-hs8"; */
+"AOF-c1-hs8.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "DWd-IA-wuB"; */
+"DWd-IA-wuB.title" = "Історія";
+
+/* Class = "UINavigationItem"; title = "Count System"; ObjectID = "EK5-3u-WWZ"; */
+"EK5-3u-WWZ.title" = "Сист. Числення";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "EWM-VD-n69"; */
+"EWM-VD-n69.title" = "Історія";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Ec7-xs-OJW"; */
+"Ec7-xs-OJW.text" = "Title";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "FVo-NI-AoP"; */
+"FVo-NI-AoP.text" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "FY8-sI-wKC"; */
+"FY8-sI-wKC.title" = "Ред.";
+
+/* Class = "UIButton"; configuration.title = "2"; ObjectID = "FjA-vd-H7I"; */
+"FjA-vd-H7I.configuration.title" = "2";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "FjA-vd-H7I"; */
+"FjA-vd-H7I.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "Fng-xB-mSU"; */
+"Fng-xB-mSU.title" = "Історія";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Fxx-80-6Cx"; */
+"Fxx-80-6Cx.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "0"; ObjectID = "G1U-VY-EMu"; */
+"G1U-VY-EMu.configuration.title" = "0";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "G1U-VY-EMu"; */
+"G1U-VY-EMu.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "GFx-uo-4ea"; */
+"GFx-uo-4ea.text" = "Subtitle";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "Gg2-A9-Xum"; */
+"Gg2-A9-Xum.title" = "Історія";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "GrZ-rW-0OX"; */
+"GrZ-rW-0OX.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Scientific"; ObjectID = "HjZ-kC-LK9"; */
+"HjZ-kC-LK9.title" = "Науковий";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "I0A-E8-ywN"; */
+"I0A-E8-ywN.title" = "Ред.";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "IUW-jL-KzH"; */
+"IUW-jL-KzH.title" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "IUo-nw-MKY"; */
+"IUo-nw-MKY.title" = "Ред.";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "Isg-Ee-Elk"; */
+"Isg-Ee-Elk.text" = "Subtitle";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "J2Z-aR-Tma"; */
+"J2Z-aR-Tma.title" = "Item";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "JOw-mY-wC4"; */
+"JOw-mY-wC4.text" = "Title";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "JZb-kg-Bu1"; */
+"JZb-kg-Bu1.text" = "Subtitle";
+
+/* Class = "UINavigationItem"; title = "Time"; ObjectID = "Jtf-ui-0r7"; */
+"Jtf-ui-0r7.title" = "Час";
+
+/* Class = "UIButton"; configuration.title = "8"; ObjectID = "Jws-yv-sUX"; */
+"Jws-yv-sUX.configuration.title" = "8";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Jws-yv-sUX"; */
+"Jws-yv-sUX.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "2"; ObjectID = "K0a-je-CNG"; */
+"K0a-je-CNG.configuration.title" = "2";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "K0a-je-CNG"; */
+"K0a-je-CNG.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "KLN-XU-lfD"; */
+"KLN-XU-lfD.title" = "Item";
+
+/* Class = "UIButton"; configuration.title = "6"; ObjectID = "Llc-So-XwC"; */
+"Llc-So-XwC.configuration.title" = "6";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Llc-So-XwC"; */
+"Llc-So-XwC.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "MHh-Z0-uWq"; */
+"MHh-Z0-uWq.title" = "Історія";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "MUi-xm-0ZT"; */
+"MUi-xm-0ZT.title" = "Ред.";
+
+/* Class = "UINavigationItem"; title = "Length"; ObjectID = "Mel-9l-fIi"; */
+"Mel-9l-fIi.title" = "Довжина";
+
+/* Class = "UIButton"; configuration.title = "0"; ObjectID = "Mtg-Kh-iEh"; */
+"Mtg-Kh-iEh.configuration.title" = "0";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Mtg-Kh-iEh"; */
+"Mtg-Kh-iEh.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "N16-a6-dbL"; */
+"N16-a6-dbL.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "9"; ObjectID = "NSo-IW-8Zb"; */
+"NSo-IW-8Zb.configuration.title" = "9";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "NSo-IW-8Zb"; */
+"NSo-IW-8Zb.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "NmN-aR-WSY"; */
+"NmN-aR-WSY.title" = "Item";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "OAb-OL-eHI"; */
+"OAb-OL-eHI.text" = "Subtitle";
+
+/* Class = "UINavigationItem"; title = "Volume"; ObjectID = "PBy-Rm-LYV"; */
+"PBy-Rm-LYV.title" = "Об'єм";
+
+/* Class = "UIButton"; configuration.title = "1"; ObjectID = "PjN-t2-3tp"; */
+"PjN-t2-3tp.configuration.title" = "1";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PjN-t2-3tp"; */
+"PjN-t2-3tp.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "QEw-hK-r2b"; */
+"QEw-hK-r2b.title" = "Історія";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "QGx-lx-1tN"; */
+"QGx-lx-1tN.title" = "Історія";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "QkB-8F-O4t"; */
+"QkB-8F-O4t.title" = "Ред.";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "QnP-WX-sHg"; */
+"QnP-WX-sHg.title" = "Ред.";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "R2l-cq-Jmq"; */
+"R2l-cq-Jmq.title" = "Ред.";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "R6N-VW-wYJ"; */
+"R6N-VW-wYJ.text" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "RCh-2P-RqS"; */
+"RCh-2P-RqS.title" = "Ред.";
+
+/* Class = "UIButton"; configuration.title = "3"; ObjectID = "RG7-4h-Pg5"; */
+"RG7-4h-Pg5.configuration.title" = "3";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "RG7-4h-Pg5"; */
+"RG7-4h-Pg5.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "SME-LW-jrQ"; */
+"SME-LW-jrQ.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "SlC-xK-JUr"; */
+"SlC-xK-JUr.title" = "Історія";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "TS0-hD-G4I"; */
+"TS0-hD-G4I.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Area"; ObjectID = "Tea-qD-3to"; */
+"Tea-qD-3to.title" = "Площа";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Tw4-b7-dNa"; */
+"Tw4-b7-dNa.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "Tye-PF-GuO"; */
+"Tye-PF-GuO.title" = "Item";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "UTZ-Fe-CyM"; */
+"UTZ-Fe-CyM.text" = "Title";
+
+/* Class = "UIButton"; configuration.title = "4"; ObjectID = "UcA-49-Eu0"; */
+"UcA-49-Eu0.configuration.title" = "4";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "UcA-49-Eu0"; */
+"UcA-49-Eu0.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "Crypto"; ObjectID = "Ud7-b7-Alh"; */
+"Ud7-b7-Alh.title" = "Крипта";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "VH2-Yr-cZs"; */
+"VH2-Yr-cZs.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "VvT-fc-xUC"; */
+"VvT-fc-xUC.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "XG3-Fo-qNk"; */
+"XG3-Fo-qNk.title" = "Ред.";
+
+/* Class = "UINavigationItem"; title = "Resolution"; ObjectID = "XXf-hA-dcJ"; */
+"XXf-hA-dcJ.title" = "Розширення";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "XXs-vc-r0v"; */
+"XXs-vc-r0v.title" = "Історія";
+
+/* Class = "UINavigationItem"; title = "Date"; ObjectID = "Xwo-xz-plL"; */
+"Xwo-xz-plL.title" = "Дата";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "YCE-hN-XGZ"; */
+"YCE-hN-XGZ.title" = "Історія";
+
+/* Class = "UINavigationItem"; title = "Tips"; ObjectID = "Ynk-hn-FwM"; */
+"Ynk-hn-FwM.title" = "Чайові";
+
+/* Class = "UIButton"; configuration.title = "1"; ObjectID = "Z5l-3i-2Ms"; */
+"Z5l-3i-2Ms.configuration.title" = "1";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Z5l-3i-2Ms"; */
+"Z5l-3i-2Ms.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "aD2-ph-ajk"; */
+"aD2-ph-ajk.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "aGn-XG-0fR"; */
+"aGn-XG-0fR.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "bFK-an-dXB"; */
+"bFK-an-dXB.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "bcy-oo-bHm"; */
+"bcy-oo-bHm.title" = "Історія";
+
+/* Class = "UINavigationItem"; title = "Age"; ObjectID = "boB-Ix-h7T"; */
+"boB-Ix-h7T.title" = "Вік";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "cx9-ZK-IDm"; */
+"cx9-ZK-IDm.title" = "Історія";
+
+/* Class = "UIButton"; configuration.title = "AC"; ObjectID = "d0e-uA-OFp"; */
+"d0e-uA-OFp.configuration.title" = "AC";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "d0e-uA-OFp"; */
+"d0e-uA-OFp.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "d3V-SD-3Qs"; */
+"d3V-SD-3Qs.title" = "Item";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "dFr-Ra-DQw"; */
+"dFr-Ra-DQw.text" = "Subtitle";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dTY-XG-eKk"; */
+"dTY-XG-eKk.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "dWV-Px-nIf"; */
+"dWV-Px-nIf.title" = "Налаштування";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "ddZ-Bf-O7R"; */
+"ddZ-Bf-O7R.text" = "Subtitle";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "dhg-to-3xV"; */
+"dhg-to-3xV.text" = "Title";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "dtC-dW-ILR"; */
+"dtC-dW-ILR.text" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "e7U-f5-NUA"; */
+"e7U-f5-NUA.title" = "Item";
+
+/* Class = "UINavigationItem"; title = "Speed"; ObjectID = "e9c-JV-7PK"; */
+"e9c-JV-7PK.title" = "Швидкість";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "eR3-LU-aIf"; */
+"eR3-LU-aIf.title" = "Ред.";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "ead-SH-Mgm"; */
+"ead-SH-Mgm.text" = "0";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "eoS-KC-x9X"; */
+"eoS-KC-x9X.title" = "Історія";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "etR-Pa-mGa"; */
+"etR-Pa-mGa.title" = "Item";
+
+/* Class = "UIButton"; configuration.title = "."; ObjectID = "fF6-jd-j72"; */
+"fF6-jd-j72.configuration.title" = ".";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "fF6-jd-j72"; */
+"fF6-jd-j72.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "Investition"; ObjectID = "ftG-ht-qm7"; */
+"ftG-ht-qm7.title" = "Інвестиція";
+
+/* Class = "UINavigationItem"; title = "Mass"; ObjectID = "gG7-TY-ssH"; */
+"gG7-TY-ssH.title" = "Маса";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "h3C-3Q-zgF"; */
+"h3C-3Q-zgF.title" = "Ред.";
+
+/* Class = "UINavigationItem"; title = "Data"; ObjectID = "hbn-8t-xdY"; */
+"hbn-8t-xdY.title" = "Дані";
+
+/* Class = "UIButton"; configuration.title = "4"; ObjectID = "hhq-NP-w90"; */
+"hhq-NP-w90.configuration.title" = "4";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "hhq-NP-w90"; */
+"hhq-NP-w90.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "Basic"; ObjectID = "hqb-rE-SY9"; */
+"hqb-rE-SY9.title" = "Базовий";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "hva-Xu-TL0"; */
+"hva-Xu-TL0.title" = "Item";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "ihe-38-0R4"; */
+"ihe-38-0R4.text" = "Subtitle";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "il0-JV-RCR"; */
+"il0-JV-RCR.text" = "Subtitle";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "ilA-sV-LwX"; */
+"ilA-sV-LwX.title" = "Ред.";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "j69-LY-cIQ"; */
+"j69-LY-cIQ.title" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "j8E-GZ-fhj"; */
+"j8E-GZ-fhj.title" = "Item";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "kTb-KX-2N5"; */
+"kTb-KX-2N5.text" = "Subtitle";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "m1b-jG-YG5"; */
+"m1b-jG-YG5.text" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "m5P-PF-uoX"; */
+"m5P-PF-uoX.title" = "Item";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "mIg-ue-pSJ"; */
+"mIg-ue-pSJ.title" = "Історія";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "nK1-sx-Cgx"; */
+"nK1-sx-Cgx.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "oYt-iR-iXo"; */
+"oYt-iR-iXo.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "ohX-bc-VRW"; */
+"ohX-bc-VRW.text" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "os6-aI-rXu"; */
+"os6-aI-rXu.title" = "Ред.";
+
+/* Class = "UIButton"; configuration.title = "8"; ObjectID = "p2L-jn-Ono"; */
+"p2L-jn-Ono.configuration.title" = "8";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "p2L-jn-Ono"; */
+"p2L-jn-Ono.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "pLD-Og-dfa"; */
+"pLD-Og-dfa.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Discount"; ObjectID = "pz6-gH-5cd"; */
+"pz6-gH-5cd.title" = "Знижка";
+
+/* Class = "UIButton"; configuration.title = "7"; ObjectID = "qZ9-gy-yl3"; */
+"qZ9-gy-yl3.configuration.title" = "7";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "qZ9-gy-yl3"; */
+"qZ9-gy-yl3.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "qrA-yD-vX2"; */
+"qrA-yD-vX2.title" = "Item";
+
+/* Class = "UIButton"; configuration.title = "7"; ObjectID = "qrU-Y1-OSj"; */
+"qrU-Y1-OSj.configuration.title" = "7";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "qrU-Y1-OSj"; */
+"qrU-Y1-OSj.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "To:"; ObjectID = "rBU-2f-Cp2"; */
+"rBU-2f-Cp2.text" = "До:";
+
+/* Class = "UIButton"; configuration.title = "9"; ObjectID = "rgu-zl-Iyb"; */
+"rgu-zl-Iyb.configuration.title" = "9";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rgu-zl-Iyb"; */
+"rgu-zl-Iyb.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "rk5-Lq-mlp"; */
+"rk5-Lq-mlp.title" = "Item";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "rqu-qa-HKm"; */
+"rqu-qa-HKm.text" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "rvX-MJ-bDz"; */
+"rvX-MJ-bDz.title" = "Item";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "spo-Ea-Qgg"; */
+"spo-Ea-Qgg.text" = "Subtitle";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "tpJ-EA-6QC"; */
+"tpJ-EA-6QC.title" = "Ред.";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "u5n-jp-eme"; */
+"u5n-jp-eme.text" = "0";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "uNu-6g-pfc"; */
+"uNu-6g-pfc.title" = "Історія";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "uPv-dd-xYg"; */
+"uPv-dd-xYg.text" = "Subtitle";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "uhw-lZ-d4z"; */
+"uhw-lZ-d4z.title" = "Ред.";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "uz1-sW-ILJ"; */
+"uz1-sW-ILJ.text" = "Subtitle";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "vOD-jp-gNe"; */
+"vOD-jp-gNe.title" = "Ред.";
+
+/* Class = "UINavigationItem"; title = "Body Mass Index"; ObjectID = "vY0-mu-NsI"; */
+"vY0-mu-NsI.title" = "Індекс Маси Тіла";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "wjD-Mg-9O4"; */
+"wjD-Mg-9O4.text" = "Subtitle";
+
+/* Class = "UIButton"; configuration.title = "cm "; ObjectID = "xOW-Zd-zs3"; */
+"xOW-Zd-zs3.configuration.title" = "см ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "xOW-Zd-zs3"; */
+"xOW-Zd-zs3.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "y6h-Jc-Kog"; */
+"y6h-Jc-Kog.text" = "Subtitle";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "yJj-3W-m95"; */
+"yJj-3W-m95.title" = "Ред.";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "yO3-33-k7J"; */
+"yO3-33-k7J.title" = "Ред.";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "yY6-tB-rns"; */
+"yY6-tB-rns.title" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "yi9-wW-xWG"; */
+"yi9-wW-xWG.title" = "Ред.";
+
+/* Class = "UIButton"; configuration.title = "."; ObjectID = "yoe-NH-EHL"; */
+"yoe-NH-EHL.configuration.title" = ".";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "yoe-NH-EHL"; */
+"yoe-NH-EHL.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "yol-c2-dGj"; */
+"yol-c2-dGj.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "zQG-Ik-GQj"; */
+"zQG-Ik-GQj.title" = "Ред.";
+
+/* Class = "UINavigationItem"; title = "Temperature"; ObjectID = "zSD-Yn-H4y"; */
+"zSD-Yn-H4y.title" = "Температура";
