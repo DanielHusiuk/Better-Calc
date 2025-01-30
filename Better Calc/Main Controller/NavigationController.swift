@@ -36,25 +36,25 @@ class NavigationController: UINavigationController {
     
     func resButtonPill() {
         pill.isNavigationControllerPresent = true
-        pill.showTask(message: "Reset done", vcView: self.view)
+        pill.showTask(message: NSLocalizedString("pill_reset_done", comment: ""), vcView: self.view)
         pill.completedTask(state: true)
     }
     
     func delHistoryPill() {
         pill.isNavigationControllerPresent = true
-        pill.showTask(message: "History deleted", vcView: self.view)
+        pill.showTask(message: NSLocalizedString("pill_history_deleted", comment: ""), vcView: self.view)
         pill.completedTask(state: true)
     }
     
     func cannotPasteError() {
         pill.isNavigationControllerPresent = true
-        pill.showTask(message: "Cannot paste", vcView: self.view)
+        pill.showTask(message: NSLocalizedString("pill_cannot_paste", comment: ""), vcView: self.view)
         pill.completedTask(state: false)
     }
     
     func coppiedPill() {
         pill.isNavigationControllerPresent = true
-        pill.showTask(message: "Result copied", vcView: self.view)
+        pill.showTask(message: NSLocalizedString("pill_result_copied", comment: ""), vcView: self.view)
         pill.completedTask(state: true)
     }
     

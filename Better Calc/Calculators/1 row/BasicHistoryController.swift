@@ -57,7 +57,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     
     func toolBar(_ sender:UIToolbar) {
         navigationController?.isToolbarHidden = true
-        let deleteAll = UIBarButtonItem(title: "Delete All", style: .plain, target: self, action: #selector(deleteAll))
+        let deleteAll = UIBarButtonItem(title: NSLocalizedString("history_delete_all", comment: ""), style: .plain, target: self, action: #selector(deleteAll))
         deleteAll.tintColor = .red
         let trashButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteObject))
         if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
@@ -89,7 +89,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         if isEdit {
             navigationController?.setToolbarHidden(true, animated: true)
             HistoryTableView.setEditing(false, animated: true)
-            sender.title = "Edit"
+            sender.title = NSLocalizedString("edit", comment: "")
             sender.style = .plain
             isEdit = false
             
@@ -105,7 +105,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         } else {
             navigationController?.setToolbarHidden(false, animated: true)
             HistoryTableView.setEditing(true, animated: true)
-            sender.title = "Done"
+            sender.title = NSLocalizedString("done", comment: "")
             sender.style = .done
             isEdit = true
             
@@ -115,22 +115,18 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
             UIView.animate(withDuration: 0.3, animations: {
                 self.CloseBarButton.isEnabled = false
             })
-            
-            guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
         }
     }
     
     
     @IBAction func deleteAll(_ sender: UIBarButtonItem) {
         let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
-        let deleteAlert = UIAlertController(title: "Delete history?\nThis action is irreversible", message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let deleteAlert = UIAlertController(title: "\(NSLocalizedString("delete_history", comment: ""))\n\(NSLocalizedString("this_action_is_irreversible", comment: ""))" , message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel)
         cancelAction.setValue(selectedTintColor, forKey: "titleTextColor")
         deleteAlert.addAction(cancelAction)
         
-        deleteAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
+        deleteAlert.addAction(UIAlertAction(title: NSLocalizedString("confirm", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard let self = self else { return }
             self.coreData.deleteAllObjects(with: self.historyId)
             
@@ -152,8 +148,8 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
 
         guard let selectedRows = HistoryTableView.indexPathsForSelectedRows else {
             let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
-            let chooseAlert = UIAlertController(title: "Nothing to delete", message: "Choose results you want to delete", preferredStyle: .alert)
-            let okayAction = UIAlertAction(title: "Okay", style: .default)
+            let chooseAlert = UIAlertController(title: NSLocalizedString("history_nothing_to_delete", comment: ""), message: NSLocalizedString("history_choose_results_you_want_to_delete", comment: ""), preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: NSLocalizedString("okay", comment: ""), style: .default)
             okayAction.setValue(selectedTintColor, forKey: "titleTextColor")
             chooseAlert.addAction(okayAction)
             present(chooseAlert, animated: true, completion: nil)
@@ -196,7 +192,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         }
 
         HistoryTableView.setEditing(false, animated: true)
-        EditBarButton.title = "Edit"
+        EditBarButton.title = NSLocalizedString("edit", comment: "")
         EditBarButton.style = .plain
         isEdit = false
 

@@ -100,11 +100,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func ResetSettingsButtonOutlet(_ sender: UIBarButtonItem) {
         let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
-        let alert = UIAlertController(title: "Reset settings?", message: "This will reset all parameters to default", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: NSLocalizedString("settings_reset_settings", comment: ""), message: NSLocalizedString("settings_this_will_reset_all_parameters_to_default", comment: ""), preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil)
         cancelAction.setValue(selectedTintColor, forKey: "titleTextColor")
         alert.addAction(cancelAction)
-        alert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("settings_reset", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             self?.resetUserSettings()
         }))
         present(alert, animated: true, completion: nil)
@@ -233,7 +233,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 0:
             return NSLocalizedString("settings_color_theme", comment: "")
         case 1:
-            return NSLocalizedString("settings_open_with_launch", comment: "")
+            return NSLocalizedString("settings_open_after_launch", comment: "")
         case 2:
             return NSLocalizedString("settings_preferences", comment: "")
         case 3:
@@ -468,6 +468,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         selectedIndexPath = IndexPath(row: sender.tag, section: 0)
         UserDefaults.standard.set(sender.tag, forKey: "selectedTintID")
+        NotificationCenter.default.post(name: UserDefaults.didChangeNotification, object: nil)
         collectionView?.reloadData()
         
         selectedTintId = tintModel.tints[sender.tag].id
@@ -492,7 +493,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func pickerHeader(in cell: UITableViewCell) {
         let CalcTextLabel = UILabel()
-        CalcTextLabel.text = NSLocalizedString("settings_owl_calculator", comment: "")
+        CalcTextLabel.text = NSLocalizedString("settings_o_w_l_calculator", comment: "")
         CalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         CalcTextLabel.textColor = .white
         CalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -640,17 +641,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func deleteHistoryFunc() {
         let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
-        let alert = UIAlertController(title: "Delete history in all calculators?\nThis action is irreversible", message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let alert = UIAlertController(title: "\(NSLocalizedString("settings_delete_history_in_all_calculators", comment: ""))\n\(NSLocalizedString("this_action_is_irreversible", comment: ""))", message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel)
         cancelAction.setValue(selectedTintColor, forKey: "titleTextColor")
         alert.addAction(cancelAction)
         
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("confirm", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             if let navController = self?.navigationController as? NavigationController {
                 navController.delHistoryPill()
             }
             self?.coreData.deleteAllHistory()
+            self?.coreData.resetBasicState()
         }))
         present(alert, animated: true, completion: nil)
     }
@@ -706,9 +708,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func devGitFunc() {
         let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
-        let alert = UIAlertController(title: "Open developer GitHub?", message: "https://github.com/DanielHusiuk", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { [weak self] (action: UIAlertAction!) in
+        let alert = UIAlertController(title: NSLocalizedString("open_developer_github", comment: ""), message: "https://github.com/DanielHusiuk", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil))
+        let confirmAction = UIAlertAction(title: NSLocalizedString("confirm", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             
             if let gitURL = URL(string: "https://github.com/DanielHusiuk") {

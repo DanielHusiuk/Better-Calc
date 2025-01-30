@@ -16,6 +16,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+         
+         // Встановлюємо початкову тему
+         applyTheme()
+         
+         // Додаємо спостерігача за змінами в UserDefaults
+         NotificationCenter.default.addObserver(self, selector: #selector(userDefaultsDidChange), name: UserDefaults.didChangeNotification, object: nil)
+    }
+    
+    @objc func userDefaultsDidChange() {
+        applyTheme() // Викликаємо метод зміни теми
+    }
+
+    func applyTheme() {
+        let selectedTintID = UserDefaults.standard.integer(forKey: "selectedTintID")
+        let isDarkMode = (selectedTintID == 7) // Якщо 8, то темний режим
+
+        window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -21,7 +21,7 @@
 "1ah-vN-B5V.text" = "Title";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "1ee-1g-Pzp"; */
-"1ee-1g-Pzp.title" = "History";
+"1ee-1g-Pzp.title" = "Historia";
 
 /* Class = "UIButton"; configuration.title = "5"; ObjectID = "21K-7x-ZhZ"; */
 "21K-7x-ZhZ.configuration.title" = "5";
@@ -33,7 +33,7 @@
 "2c1-OE-MRk.title" = "Item";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "2le-X4-2eG"; */
-"2le-X4-2eG.title" = "History";
+"2le-X4-2eG.title" = "Historia";
 
 /* Class = "UIButton"; configuration.title = "cm "; ObjectID = "38k-dM-wz4"; */
 "38k-dM-wz4.configuration.title" = "cm ";
@@ -45,7 +45,7 @@
 "3Zz-n8-BP7.text" = "Subtitle";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "3fv-b2-WPK"; */
-"3fv-b2-WPK.title" = "History";
+"3fv-b2-WPK.title" = "Historia";
 
 /* Class = "UILabel"; text = "Subtitle"; ObjectID = "3l3-ZI-x9i"; */
 "3l3-ZI-x9i.text" = "Subtitle";
@@ -69,16 +69,16 @@
 "69g-kZ-72N.text" = "Title";
 
 /* Class = "UINavigationItem"; title = "Currency"; ObjectID = "6pm-bo-J4z"; */
-"6pm-bo-J4z.title" = "Currency";
+"6pm-bo-J4z.title" = "Valuta";
 
 /* Class = "UINavigationItem"; title = "Loan"; ObjectID = "6sx-rs-Ygq"; */
-"6sx-rs-Ygq.title" = "Loan";
+"6sx-rs-Ygq.title" = "Lån";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "7Dl-Kq-wVB"; */
-"7Dl-Kq-wVB.text" = "From:";
+"7Dl-Kq-wVB.text" = "Från:";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "7Hs-rb-clV"; */
-"7Hs-rb-clV.title" = "Edit";
+"7Hs-rb-clV.title" = "Redigera";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "7TJ-mK-99S"; */
 "7TJ-mK-99S.text" = "Title";
@@ -102,7 +102,7 @@
 "8dP-if-hj9.text" = "0";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "91t-xr-p7u"; */
-"91t-xr-p7u.title" = "History";
+"91t-xr-p7u.title" = "Historia";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "98v-ms-YBq"; */
 "98v-ms-YBq.title" = "Item";
@@ -111,10 +111,10 @@
 "9HA-KL-8RT.text" = "Subtitle";
 
 /* Class = "UINavigationItem"; title = "Choose Calculator"; ObjectID = "9JK-MH-3J4"; */
-"9JK-MH-3J4.title" = "Choose Calculator";
+"9JK-MH-3J4.title" = "Välj Kalkylator:";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "9fH-DW-7In"; */
-"9fH-DW-7In.title" = "History";
+"9fH-DW-7In.title" = "Historia";
 
 /* Class = "UIButton"; configuration.title = "AC"; ObjectID = "9hH-LR-1el"; */
 "9hH-LR-1el.configuration.title" = "AC";
@@ -123,7 +123,7 @@
 "9hH-LR-1el.normalTitle" = "Button";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "9s7-Ml-WkQ"; */
-"9s7-Ml-WkQ.title" = "History";
+"9s7-Ml-WkQ.title" = "Historia";
 
 /* Class = "UILabel"; text = "Subtitle"; ObjectID = "A74-CA-QdX"; */
 "A74-CA-QdX.text" = "Subtitle";
@@ -132,13 +132,13 @@
 "AOF-c1-hs8.normalTitle" = "Button";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "DWd-IA-wuB"; */
-"DWd-IA-wuB.title" = "History";
+"DWd-IA-wuB.title" = "Historia";
 
 /* Class = "UINavigationItem"; title = "Count System"; ObjectID = "EK5-3u-WWZ"; */
-"EK5-3u-WWZ.title" = "Count System";
+"EK5-3u-WWZ.title" = "Räknesystem";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "EWM-VD-n69"; */
-"EWM-VD-n69.title" = "History";
+"EWM-VD-n69.title" = "Historia";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "Ec7-xs-OJW"; */
 "Ec7-xs-OJW.text" = "Title";
@@ -147,7 +147,7 @@
 "FVo-NI-AoP.text" = "Title";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "FY8-sI-wKC"; */
-"FY8-sI-wKC.title" = "Edit";
+"FY8-sI-wKC.title" = "Redigera";
 
 /* Class = "UIButton"; configuration.title = "2"; ObjectID = "FjA-vd-H7I"; */
 "FjA-vd-H7I.configuration.title" = "2";
@@ -156,7 +156,7 @@
 "FjA-vd-H7I.normalTitle" = "Button";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "Fng-xB-mSU"; */
-"Fng-xB-mSU.title" = "History";
+"Fng-xB-mSU.title" = "Historia";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Fxx-80-6Cx"; */
 "Fxx-80-6Cx.normalTitle" = "Button";
@@ -171,22 +171,22 @@
 "GFx-uo-4ea.text" = "Subtitle";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "Gg2-A9-Xum"; */
-"Gg2-A9-Xum.title" = "History";
+"Gg2-A9-Xum.title" = "Historia";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "GrZ-rW-0OX"; */
 "GrZ-rW-0OX.text" = "Title";
 
 /* Class = "UINavigationItem"; title = "Scientific"; ObjectID = "HjZ-kC-LK9"; */
-"HjZ-kC-LK9.title" = "Scientific";
+"HjZ-kC-LK9.title" = "Vetenskaplig";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "I0A-E8-ywN"; */
-"I0A-E8-ywN.title" = "Edit";
+"I0A-E8-ywN.title" = "Redigera";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "IUW-jL-KzH"; */
 "IUW-jL-KzH.title" = "Item";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "IUo-nw-MKY"; */
-"IUo-nw-MKY.title" = "Edit";
+"IUo-nw-MKY.title" = "Redigera";
 
 /* Class = "UILabel"; text = "Subtitle"; ObjectID = "Isg-Ee-Elk"; */
 "Isg-Ee-Elk.text" = "Subtitle";
@@ -201,7 +201,7 @@
 "JZb-kg-Bu1.text" = "Subtitle";
 
 /* Class = "UINavigationItem"; title = "Time"; ObjectID = "Jtf-ui-0r7"; */
-"Jtf-ui-0r7.title" = "Time";
+"Jtf-ui-0r7.title" = "Tid";
 
 /* Class = "UIButton"; configuration.title = "8"; ObjectID = "Jws-yv-sUX"; */
 "Jws-yv-sUX.configuration.title" = "8";
@@ -225,13 +225,13 @@
 "Llc-So-XwC.normalTitle" = "Button";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "MHh-Z0-uWq"; */
-"MHh-Z0-uWq.title" = "History";
+"MHh-Z0-uWq.title" = "Historia";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "MUi-xm-0ZT"; */
-"MUi-xm-0ZT.title" = "Edit";
+"MUi-xm-0ZT.title" = "Redigera";
 
 /* Class = "UINavigationItem"; title = "Length"; ObjectID = "Mel-9l-fIi"; */
-"Mel-9l-fIi.title" = "Length";
+"Mel-9l-fIi.title" = "Längd";
 
 /* Class = "UIButton"; configuration.title = "0"; ObjectID = "Mtg-Kh-iEh"; */
 "Mtg-Kh-iEh.configuration.title" = "0";
@@ -255,7 +255,7 @@
 "OAb-OL-eHI.text" = "Subtitle";
 
 /* Class = "UINavigationItem"; title = "Volume"; ObjectID = "PBy-Rm-LYV"; */
-"PBy-Rm-LYV.title" = "Volume";
+"PBy-Rm-LYV.title" = "Volym";
 
 /* Class = "UIButton"; configuration.title = "1"; ObjectID = "PjN-t2-3tp"; */
 "PjN-t2-3tp.configuration.title" = "1";
@@ -264,25 +264,25 @@
 "PjN-t2-3tp.normalTitle" = "Button";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "QEw-hK-r2b"; */
-"QEw-hK-r2b.title" = "History";
+"QEw-hK-r2b.title" = "Historia";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "QGx-lx-1tN"; */
-"QGx-lx-1tN.title" = "History";
+"QGx-lx-1tN.title" = "Historia";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "QkB-8F-O4t"; */
-"QkB-8F-O4t.title" = "Edit";
+"QkB-8F-O4t.title" = "Redigera";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "QnP-WX-sHg"; */
-"QnP-WX-sHg.title" = "Edit";
+"QnP-WX-sHg.title" = "Redigera";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "R2l-cq-Jmq"; */
-"R2l-cq-Jmq.title" = "Edit";
+"R2l-cq-Jmq.title" = "Redigera";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "R6N-VW-wYJ"; */
 "R6N-VW-wYJ.text" = "Title";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "RCh-2P-RqS"; */
-"RCh-2P-RqS.title" = "Edit";
+"RCh-2P-RqS.title" = "Redigera";
 
 /* Class = "UIButton"; configuration.title = "3"; ObjectID = "RG7-4h-Pg5"; */
 "RG7-4h-Pg5.configuration.title" = "3";
@@ -294,13 +294,13 @@
 "SME-LW-jrQ.text" = "Title";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "SlC-xK-JUr"; */
-"SlC-xK-JUr.title" = "History";
+"SlC-xK-JUr.title" = "Historia";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "TS0-hD-G4I"; */
 "TS0-hD-G4I.text" = "Title";
 
 /* Class = "UINavigationItem"; title = "Area"; ObjectID = "Tea-qD-3to"; */
-"Tea-qD-3to.title" = "Area";
+"Tea-qD-3to.title" = "Område";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Tw4-b7-dNa"; */
 "Tw4-b7-dNa.normalTitle" = "Button";
@@ -318,7 +318,7 @@
 "UcA-49-Eu0.normalTitle" = "Button";
 
 /* Class = "UINavigationItem"; title = "Crypto"; ObjectID = "Ud7-b7-Alh"; */
-"Ud7-b7-Alh.title" = "Crypto";
+"Ud7-b7-Alh.title" = "Krypto";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "VH2-Yr-cZs"; */
 "VH2-Yr-cZs.title" = "Item";
@@ -327,19 +327,19 @@
 "VvT-fc-xUC.normalTitle" = "Button";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "XG3-Fo-qNk"; */
-"XG3-Fo-qNk.title" = "Edit";
+"XG3-Fo-qNk.title" = "Redigera";
 
 /* Class = "UINavigationItem"; title = "Resolution"; ObjectID = "XXf-hA-dcJ"; */
-"XXf-hA-dcJ.title" = "Resolution";
+"XXf-hA-dcJ.title" = "Upplösning";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "XXs-vc-r0v"; */
-"XXs-vc-r0v.title" = "History";
+"XXs-vc-r0v.title" = "Historia";
 
 /* Class = "UINavigationItem"; title = "Date"; ObjectID = "Xwo-xz-plL"; */
-"Xwo-xz-plL.title" = "Date";
+"Xwo-xz-plL.title" = "Datum";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "YCE-hN-XGZ"; */
-"YCE-hN-XGZ.title" = "History";
+"YCE-hN-XGZ.title" = "Historia";
 
 /* Class = "UINavigationItem"; title = "Tips"; ObjectID = "Ynk-hn-FwM"; */
 "Ynk-hn-FwM.title" = "Tips";
@@ -360,13 +360,13 @@
 "bFK-an-dXB.normalTitle" = "Button";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "bcy-oo-bHm"; */
-"bcy-oo-bHm.title" = "History";
+"bcy-oo-bHm.title" = "Historia";
 
 /* Class = "UINavigationItem"; title = "Age"; ObjectID = "boB-Ix-h7T"; */
-"boB-Ix-h7T.title" = "Age";
+"boB-Ix-h7T.title" = "Åldras";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "cx9-ZK-IDm"; */
-"cx9-ZK-IDm.title" = "History";
+"cx9-ZK-IDm.title" = "Historia";
 
 /* Class = "UIButton"; configuration.title = "AC"; ObjectID = "d0e-uA-OFp"; */
 "d0e-uA-OFp.configuration.title" = "AC";
@@ -384,7 +384,7 @@
 "dTY-XG-eKk.normalTitle" = "Button";
 
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "dWV-Px-nIf"; */
-"dWV-Px-nIf.title" = "Settings";
+"dWV-Px-nIf.title" = "Inställningar";
 
 /* Class = "UILabel"; text = "Subtitle"; ObjectID = "ddZ-Bf-O7R"; */
 "ddZ-Bf-O7R.text" = "Subtitle";
@@ -399,16 +399,16 @@
 "e7U-f5-NUA.title" = "Item";
 
 /* Class = "UINavigationItem"; title = "Speed"; ObjectID = "e9c-JV-7PK"; */
-"e9c-JV-7PK.title" = "Speed";
+"e9c-JV-7PK.title" = "Hastighet";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "eR3-LU-aIf"; */
-"eR3-LU-aIf.title" = "Edit";
+"eR3-LU-aIf.title" = "Redigera";
 
 /* Class = "UILabel"; text = "0"; ObjectID = "ead-SH-Mgm"; */
 "ead-SH-Mgm.text" = "0";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "eoS-KC-x9X"; */
-"eoS-KC-x9X.title" = "History";
+"eoS-KC-x9X.title" = "Historia";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "etR-Pa-mGa"; */
 "etR-Pa-mGa.title" = "Item";
@@ -420,13 +420,13 @@
 "fF6-jd-j72.normalTitle" = "Button";
 
 /* Class = "UINavigationItem"; title = "Investition"; ObjectID = "ftG-ht-qm7"; */
-"ftG-ht-qm7.title" = "Investition";
+"ftG-ht-qm7.title" = "Investering";
 
 /* Class = "UINavigationItem"; title = "Mass"; ObjectID = "gG7-TY-ssH"; */
-"gG7-TY-ssH.title" = "Mass";
+"gG7-TY-ssH.title" = "Massa";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "h3C-3Q-zgF"; */
-"h3C-3Q-zgF.title" = "Edit";
+"h3C-3Q-zgF.title" = "Redigera";
 
 /* Class = "UINavigationItem"; title = "Data"; ObjectID = "hbn-8t-xdY"; */
 "hbn-8t-xdY.title" = "Data";
@@ -438,7 +438,7 @@
 "hhq-NP-w90.normalTitle" = "Button";
 
 /* Class = "UINavigationItem"; title = "Basic"; ObjectID = "hqb-rE-SY9"; */
-"hqb-rE-SY9.title" = "Basic";
+"hqb-rE-SY9.title" = "Grundläggande";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "hva-Xu-TL0"; */
 "hva-Xu-TL0.title" = "Item";
@@ -450,7 +450,7 @@
 "il0-JV-RCR.text" = "Subtitle";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "ilA-sV-LwX"; */
-"ilA-sV-LwX.title" = "Edit";
+"ilA-sV-LwX.title" = "Redigera";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "j69-LY-cIQ"; */
 "j69-LY-cIQ.title" = "Item";
@@ -468,7 +468,7 @@
 "m5P-PF-uoX.title" = "Item";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "mIg-ue-pSJ"; */
-"mIg-ue-pSJ.title" = "History";
+"mIg-ue-pSJ.title" = "Historia";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "nK1-sx-Cgx"; */
 "nK1-sx-Cgx.text" = "Title";
@@ -480,7 +480,7 @@
 "ohX-bc-VRW.text" = "Title";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "os6-aI-rXu"; */
-"os6-aI-rXu.title" = "Edit";
+"os6-aI-rXu.title" = "Redigera";
 
 /* Class = "UIButton"; configuration.title = "8"; ObjectID = "p2L-jn-Ono"; */
 "p2L-jn-Ono.configuration.title" = "8";
@@ -492,7 +492,7 @@
 "pLD-Og-dfa.text" = "Title";
 
 /* Class = "UINavigationItem"; title = "Discount"; ObjectID = "pz6-gH-5cd"; */
-"pz6-gH-5cd.title" = "Discount";
+"pz6-gH-5cd.title" = "Rabatt";
 
 /* Class = "UIButton"; configuration.title = "7"; ObjectID = "qZ9-gy-yl3"; */
 "qZ9-gy-yl3.configuration.title" = "7";
@@ -510,7 +510,7 @@
 "qrU-Y1-OSj.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "To:"; ObjectID = "rBU-2f-Cp2"; */
-"rBU-2f-Cp2.text" = "To:";
+"rBU-2f-Cp2.text" = "Till:";
 
 /* Class = "UIButton"; configuration.title = "9"; ObjectID = "rgu-zl-Iyb"; */
 "rgu-zl-Iyb.configuration.title" = "9";
@@ -531,25 +531,25 @@
 "spo-Ea-Qgg.text" = "Subtitle";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "tpJ-EA-6QC"; */
-"tpJ-EA-6QC.title" = "Edit";
+"tpJ-EA-6QC.title" = "Redigera";
 
 /* Class = "UILabel"; text = "0"; ObjectID = "u5n-jp-eme"; */
 "u5n-jp-eme.text" = "0";
 
 /* Class = "UINavigationItem"; title = "History"; ObjectID = "uNu-6g-pfc"; */
-"uNu-6g-pfc.title" = "History";
+"uNu-6g-pfc.title" = "Historia";
 
 /* Class = "UILabel"; text = "Subtitle"; ObjectID = "uPv-dd-xYg"; */
 "uPv-dd-xYg.text" = "Subtitle";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "uhw-lZ-d4z"; */
-"uhw-lZ-d4z.title" = "Edit";
+"uhw-lZ-d4z.title" = "Redigera";
 
 /* Class = "UILabel"; text = "Subtitle"; ObjectID = "uz1-sW-ILJ"; */
 "uz1-sW-ILJ.text" = "Subtitle";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "vOD-jp-gNe"; */
-"vOD-jp-gNe.title" = "Edit";
+"vOD-jp-gNe.title" = "Redigera";
 
 /* Class = "UINavigationItem"; title = "Body Mass Index"; ObjectID = "vY0-mu-NsI"; */
 "vY0-mu-NsI.title" = "Body Mass Index";
@@ -567,16 +567,16 @@
 "y6h-Jc-Kog.text" = "Subtitle";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "yJj-3W-m95"; */
-"yJj-3W-m95.title" = "Edit";
+"yJj-3W-m95.title" = "Redigera";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "yO3-33-k7J"; */
-"yO3-33-k7J.title" = "Edit";
+"yO3-33-k7J.title" = "Redigera";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "yY6-tB-rns"; */
 "yY6-tB-rns.title" = "Item";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "yi9-wW-xWG"; */
-"yi9-wW-xWG.title" = "Edit";
+"yi9-wW-xWG.title" = "Redigera";
 
 /* Class = "UIButton"; configuration.title = "."; ObjectID = "yoe-NH-EHL"; */
 "yoe-NH-EHL.configuration.title" = ".";
@@ -588,7 +588,7 @@
 "yol-c2-dGj.normalTitle" = "Button";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "zQG-Ik-GQj"; */
-"zQG-Ik-GQj.title" = "Edit";
+"zQG-Ik-GQj.title" = "Redigera";
 
 /* Class = "UINavigationItem"; title = "Temperature"; ObjectID = "zSD-Yn-H4y"; */
-"zSD-Yn-H4y.title" = "Temperature";
+"zSD-Yn-H4y.title" = "Temperatur";
