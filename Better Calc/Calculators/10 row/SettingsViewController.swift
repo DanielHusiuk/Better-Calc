@@ -40,6 +40,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private var tintModel = TintModel()
     private var selectedTintId: Int16 = 1
+    var hasShowedPill = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,6 +116,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func resetUserSettings() {
+        guard !hasShowedPill else { return }
+        hasShowedPill = true
         if tintModel.tints.count > 1 {
             let secondTintColor = tintModel.tints[1].color
             UserDefaults.standard.setColor(secondTintColor, forKey: "selectedTintColor")
@@ -140,6 +143,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         let generator = UIImpactFeedbackGenerator(style: .heavy)
         generator.impactOccurred()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.hasShowedPill = false
+        }
     }
     
     func rightNavBarButtonIcon() {
@@ -551,11 +558,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         hapticText.text = NSLocalizedString("settings_p_haptic_feedback", comment: "")
         hapticText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         hapticText.textColor = .white
+        hapticText.adjustsFontSizeToFitWidth = true
+        hapticText.minimumScaleFactor = 0.6
         hapticText.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(hapticText)
         NSLayoutConstraint.activate([
             hapticText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-            hapticText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18)
+            hapticText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
+            hapticText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
         ])
     }
     
@@ -581,11 +591,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         keepDataText.text = NSLocalizedString("settings_p_keep_data_after_close", comment: "")
         keepDataText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         keepDataText.textColor = .white
+        keepDataText.adjustsFontSizeToFitWidth = true
+        keepDataText.minimumScaleFactor = 0.6
         keepDataText.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(keepDataText)
         NSLayoutConstraint.activate([
             keepDataText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-            keepDataText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18)
+            keepDataText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
+            keepDataText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
         ])
     }
     
@@ -608,20 +621,30 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let resetText = UILabel()
         resetText.text = NSLocalizedString("settings_d_reset_menu_buttons_positions", comment: "")
         resetText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        resetText.translatesAutoresizingMaskIntoConstraints = false
+        resetText.textAlignment = .center
+        resetText.adjustsFontSizeToFitWidth = true
+        resetText.minimumScaleFactor = 0.6
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             resetText.textColor = selectedTintColor
         }
-        resetText.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(resetText)
         NSLayoutConstraint.activate([
             resetText.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
-            resetText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
+            resetText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            resetText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
+            resetText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
         ])
     }
     
     func resetButtonAlertFunc() {
+        guard !hasShowedPill else { return }
+        hasShowedPill = true
         if let navController = self.navigationController as? NavigationController {
             navController.resButtonPill()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.hasShowedPill = false
         }
     }
     
@@ -631,15 +654,22 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         deleteText.text = NSLocalizedString("settings_d_delete_all_history", comment: "")
         deleteText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         deleteText.textColor = .red
+        deleteText.textAlignment = .center
+        deleteText.adjustsFontSizeToFitWidth = true
+        deleteText.minimumScaleFactor = 0.6
         deleteText.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(deleteText)
         NSLayoutConstraint.activate([
             deleteText.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
-            deleteText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
+            deleteText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            deleteText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
+            deleteText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
         ])
     }
     
     func deleteHistoryFunc() {
+        guard hasShowedPill else { return }
+        hasShowedPill = true
         let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
         let alert = UIAlertController(title: "\(NSLocalizedString("settings_delete_history_in_all_calculators", comment: ""))\n\(NSLocalizedString("this_action_is_irreversible", comment: ""))", message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel)
@@ -653,6 +683,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             }
             self?.coreData.deleteAllHistory()
             self?.coreData.resetBasicState()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self!.hasShowedPill = false
+            }
         }))
         present(alert, animated: true, completion: nil)
     }
@@ -663,13 +696,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func developerInfo(in cell: UITableViewCell) {
         //text
         let createdText = UILabel()
-        createdText.numberOfLines = 0
+        createdText.numberOfLines = 1
         createdText.textColor = .white
+        createdText.textAlignment = .center
+        createdText.adjustsFontSizeToFitWidth = true
+        createdText.minimumScaleFactor = 0.6
         createdText.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(createdText)
         NSLayoutConstraint.activate([
-            createdText.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
-            createdText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
+            createdText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            createdText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 50),
+            createdText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -50)
         ])
         
         let attributedString = NSMutableAttributedString()

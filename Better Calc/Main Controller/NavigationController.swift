@@ -40,6 +40,12 @@ class NavigationController: UINavigationController {
         pill.completedTask(state: true)
     }
     
+    func resetError() {
+        pill.isNavigationControllerPresent = true
+        pill.showTask(message: NSLocalizedString("pill_cannot_reset", comment: ""), vcView: self.view)
+        pill.completedTask(state: false)
+    }
+    
     func delHistoryPill() {
         pill.isNavigationControllerPresent = true
         pill.showTask(message: NSLocalizedString("pill_history_deleted", comment: ""), vcView: self.view)

@@ -112,7 +112,10 @@ class IconCell: UICollectionViewCell {
         titleLabel.text = buttonText
         titleLabel.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
         titleLabel.textColor = .white
-        titleLabel.numberOfLines = 2
+        titleLabel.numberOfLines = 1
+        titleLabel.textAlignment = .center
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.6
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         innerView.addSubview(titleLabel)
         
@@ -124,7 +127,9 @@ class IconCell: UICollectionViewCell {
             imageView.heightAnchor.constraint(equalTo: innerView.heightAnchor),
             
             titleLabel.centerXAnchor.constraint(equalTo: innerView.centerXAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: innerView.bottomAnchor, constant: padding)
+            titleLabel.bottomAnchor.constraint(equalTo: innerView.bottomAnchor, constant: padding),
+            titleLabel.leadingAnchor.constraint(equalTo: innerView.leadingAnchor, constant: -10),
+            titleLabel.trailingAnchor.constraint(equalTo: innerView.trailingAnchor, constant: 10)
         ])
         
         innerView.layer.cornerRadius = 25

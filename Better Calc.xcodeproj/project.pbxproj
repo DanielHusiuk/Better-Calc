@@ -45,7 +45,7 @@
 		65B6896E2C628BD3005259E7 /* SpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6896D2C628BD3005259E7 /* SpeedViewController.swift */; };
 		65B689702C628BE5005259E7 /* MassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6896F2C628BE5005259E7 /* MassViewController.swift */; };
 		65B689722C628BF7005259E7 /* DiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689712C628BF7005259E7 /* DiscountViewController.swift */; };
-		65B689742C628C0B005259E7 /* InvestitonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689732C628C0B005259E7 /* InvestitonViewController.swift */; };
+		65B689742C628C0B005259E7 /* InvestmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689732C628C0B005259E7 /* InvestmentViewController.swift */; };
 		65B689772C628D57005259E7 /* LoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689762C628D57005259E7 /* LoanViewController.swift */; };
 		65B689792C628D8E005259E7 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689782C628D8E005259E7 /* TipsViewController.swift */; };
 		65B6897B2C628DA3005259E7 /* BmiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6897A2C628DA3005259E7 /* BmiViewController.swift */; };
@@ -126,7 +126,7 @@
 		65B6896D2C628BD3005259E7 /* SpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedViewController.swift; sourceTree = "<group>"; };
 		65B6896F2C628BE5005259E7 /* MassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassViewController.swift; sourceTree = "<group>"; };
 		65B689712C628BF7005259E7 /* DiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountViewController.swift; sourceTree = "<group>"; };
-		65B689732C628C0B005259E7 /* InvestitonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestitonViewController.swift; sourceTree = "<group>"; };
+		65B689732C628C0B005259E7 /* InvestmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentViewController.swift; sourceTree = "<group>"; };
 		65B689762C628D57005259E7 /* LoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanViewController.swift; sourceTree = "<group>"; };
 		65B689782C628D8E005259E7 /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
 		65B6897A2C628DA3005259E7 /* BmiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiViewController.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				65B689712C628BF7005259E7 /* DiscountViewController.swift */,
-				65B689732C628C0B005259E7 /* InvestitonViewController.swift */,
+				65B689732C628C0B005259E7 /* InvestmentViewController.swift */,
 			);
 			path = "8 row";
 			sourceTree = "<group>";
@@ -472,7 +472,7 @@
 				65B6895C2C6285D9005259E7 /* LengthViewController.swift in Sources */,
 				65DFA3E72C5A9B6A0090F4CE /* SceneDelegate.swift in Sources */,
 				65B689562C628140005259E7 /* ScientificViewController.swift in Sources */,
-				65B689742C628C0B005259E7 /* InvestitonViewController.swift in Sources */,
+				65B689742C628C0B005259E7 /* InvestmentViewController.swift in Sources */,
 				65706BC52CAE7D1E0033398C /* IconManager.swift in Sources */,
 				6594D9052C5FC26D00218F02 /* ButtonCell.swift in Sources */,
 				65B689602C62864A005259E7 /* VolumeViewController.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InvestitonViewController: UIViewController {
+class InvestmentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

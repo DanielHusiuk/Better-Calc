@@ -67,27 +67,71 @@ class PasteLabel: UILabel {
             menu.showMenu(from: self, rect: self.bounds)
         }
     }
-
+    
     override func paste(_ sender: Any?) {
         let board = UIPasteboard.general
         if let pastedText = board.string {
             let normalizedText = normalizeDecimalSeparator(pastedText)
+            
             if isValidNumber(normalizedText) && countCheck(for: normalizedText) {
+                let workingText = self.text ?? ""
+                let operators = ["+", "−", "×", "÷"]
+                var lastOperatorRange: Range<String.Index>? = nil
+                
+                for op in operators {
+                    if let range = workingText.range(of: op, options: .backwards) {
+                        lastOperatorRange = range
+                        break
+                    }
+                }
+                
+                if let range = lastOperatorRange {
+                    _ = String(workingText[..<range.lowerBound])
+                    let secondPart = String(workingText[range.upperBound...])
+                    
+                    if secondPart.contains(".") {
+                        if normalizedText.contains(".") {
+                            if let navController = findNavigationController() {
+                                navController.cannotPasteError()
+                            }
+                            print("Cannot paste")
+                            return
+                        } else {
+                            self.text = workingText + normalizedText
+                        }
+                    }
+                } else {
+                    if workingText.contains(".") {
+                        if normalizedText.contains(".") {
+                            if let navController = findNavigationController() {
+                                navController.cannotPasteError()
+                            }
+                            print("Cannot paste")
+                            return
+                        } else {
+                            self.text = workingText + normalizedText
+                        }
+                    }
+                }
+                
                 if self.text == "0" {
                     self.text = normalizedText
-                    if let basicController = findBasicController() {
-                        basicController.checkEraseButton()
-                    }
-                } else if let currentText = self.text {
-                    self.text = currentText + normalizedText
+                } else {
+                    self.text = workingText + normalizedText
+                }
+                
+                if let basicController = findBasicController() {
+                    basicController.checkEraseButton()
                 }
             } else {
                 if let navController = findNavigationController() {
                     navController.cannotPasteError()
                 }
                 print("Cannot paste")
+                return
             }
         }
+        
         let menu = UIMenuController.shared
         menu.showMenu(from: self, rect: self.bounds)
     }
@@ -112,7 +156,7 @@ class PasteLabel: UILabel {
     }
 
     func isValidNumber(_ text: String) -> Bool {
-        let numberRegEx = "^-?\\d*(\\.\\d+)?$"
+        let numberRegEx = "^-?\\d+(\\.\\d+)?$"
         let predicate = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
         return predicate.evaluate(with: text)
     }
@@ -120,7 +164,7 @@ class PasteLabel: UILabel {
     func normalizeDecimalSeparator(_ text: String) -> String {
         var normalizedText = text
         normalizedText = normalizedText.replacingOccurrences(of: ",", with: ".")
-        let unwantedSymbols = ["%", "*", "/", "÷", "×"]
+        let unwantedSymbols = ["%", "*", "/", "÷", "×", "+", "−"]
         for symbol in unwantedSymbols {
             normalizedText = normalizedText.replacingOccurrences(of: symbol, with: "")
         }

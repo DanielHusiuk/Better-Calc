@@ -1241,7 +1241,7 @@
         <!--Investment-->
         <scene sceneID="ZIX-wF-4eC">
             <objects>
-                <viewController id="OPn-6Q-sJr" customClass="InvestitonViewController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OPn-6Q-sJr" customClass="InvestmentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kbk-as-Qb4">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

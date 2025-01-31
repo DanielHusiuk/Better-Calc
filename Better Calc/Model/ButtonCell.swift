@@ -97,9 +97,10 @@ class ButtonCell: UICollectionViewCell {
         titleLabel.text = buttonText
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         titleLabel.textColor = .white
-        titleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = 1
+        titleLabel.textAlignment = .center
         titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.minimumScaleFactor = 0.8
+        titleLabel.minimumScaleFactor = 0.6
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         innerView.addSubview(titleLabel)
         
@@ -112,7 +113,9 @@ class ButtonCell: UICollectionViewCell {
             imageView.heightAnchor.constraint(equalTo: innerView.heightAnchor, multiplier: 0.25),
             
             titleLabel.centerXAnchor.constraint(equalTo: innerView.centerXAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: innerView.bottomAnchor, constant: -padding)
+            titleLabel.bottomAnchor.constraint(equalTo: innerView.bottomAnchor, constant: -padding),
+            titleLabel.leadingAnchor.constraint(equalTo: innerView.leadingAnchor, constant: 10),
+            titleLabel.trailingAnchor.constraint(equalTo: innerView.trailingAnchor, constant: -10)
         ])
         
         innerView.layer.cornerRadius = 25
