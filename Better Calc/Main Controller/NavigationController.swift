@@ -52,6 +52,12 @@ class NavigationController: UINavigationController {
         pill.completedTask(state: true)
     }
     
+    func historyError() {
+        pill.isNavigationControllerPresent = true
+        pill.showTask(message: NSLocalizedString("pill_history_error", comment: ""), vcView: self.view)
+        pill.completedTask(state: false)
+    }
+    
     func cannotPasteError() {
         pill.isNavigationControllerPresent = true
         pill.showTask(message: NSLocalizedString("pill_cannot_paste", comment: ""), vcView: self.view)

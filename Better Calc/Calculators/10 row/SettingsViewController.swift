@@ -40,7 +40,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private var tintModel = TintModel()
     private var selectedTintId: Int16 = 1
-    var hasShowedPill = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,36 +115,39 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func resetUserSettings() {
-        guard !hasShowedPill else { return }
-        hasShowedPill = true
-        if tintModel.tints.count > 1 {
+        if UserDefaults.standard.color(forKey: "selectedTintColor") == tintModel.tints[1].color,
+            UserDefaults.standard.integer(forKey: "selectedTintID") == 1,
+            UserDefaults.standard.integer(forKey: "SelectedPickerRow") == 0,
+           UserDefaults.standard.object(forKey: "SelectedPickerString") == nil,
+           UserDefaults.standard.bool(forKey: "HapticState") == true,
+           UserDefaults.standard.bool(forKey: "KeepState") == true {
+            if let navigationController = self.navigationController as? NavigationController {
+                navigationController.resetError()
+            }
+        } else {
             let secondTintColor = tintModel.tints[1].color
             UserDefaults.standard.setColor(secondTintColor, forKey: "selectedTintColor")
-        }
-        UserDefaults.standard.set(1, forKey: "selectedTintID")
-        UserDefaults.standard.removeObject(forKey: "SelectedPickerRow")
-        UserDefaults.standard.removeObject(forKey: "SelectedPickerString")
-        UserDefaults.standard.removeObject(forKey: "HapticState")
-        UserDefaults.standard.removeObject(forKey: "KeepState")
-        loadSavePicker()
-        loadNavBar()
-        setIcon(.icon1)
-        mainView.resetMenuFunc()
-        
-        if let navigationController = self.navigationController as? NavigationController {
-            navigationController.didSelectTintColor()
-            navigationController.resButtonPill()
-        }
-        
-        collectionView?.reloadData()
-        UIView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
-        updatePreferences()
-        
-        let generator = UIImpactFeedbackGenerator(style: .heavy)
-        generator.impactOccurred()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.hasShowedPill = false
+            UserDefaults.standard.set(1, forKey: "selectedTintID")
+            UserDefaults.standard.removeObject(forKey: "SelectedPickerRow")
+            UserDefaults.standard.removeObject(forKey: "SelectedPickerString")
+            UserDefaults.standard.removeObject(forKey: "HapticState")
+            UserDefaults.standard.removeObject(forKey: "KeepState")
+            loadSavePicker()
+            loadNavBar()
+            setIcon(.icon1)
+            mainView.resetMenuFunc()
+            
+            if let navigationController = self.navigationController as? NavigationController {
+                navigationController.didSelectTintColor()
+                navigationController.resButtonPill()
+            }
+            
+            collectionView?.reloadData()
+            UIView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
+            updatePreferences()
+            
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+            generator.impactOccurred()
         }
     }
     
@@ -365,8 +367,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 3:
             switch indexPath.row {
             case 0:
-                mainView.resetMenuFunc()
-                resetButtonAlertFunc()
+                resetButtonFunc()
             case 1:
                 deleteHistoryFunc()
             default:
@@ -637,14 +638,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ])
     }
     
-    func resetButtonAlertFunc() {
-        guard !hasShowedPill else { return }
-        hasShowedPill = true
-        if let navController = self.navigationController as? NavigationController {
-            navController.resButtonPill()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.hasShowedPill = false
+    func resetButtonFunc() {
+        if UserDefaults.standard.bool(forKey: "isMenuChanged") == true {
+            mainView.resetMenuFunc()
+            if let navController = self.navigationController as? NavigationController {
+                navController.resButtonPill()
+            }
+            print("isMenuChanged:  \(String(describing: UserDefaults.standard.bool(forKey: "isMenuChanged")))")
+        } else if UserDefaults.standard.bool(forKey: "isMenuChanged") == false {
+            if let navController = self.navigationController as? NavigationController {
+                navController.resetError()
+            }
+            print("isMenuChanged:  \(String(describing: UserDefaults.standard.bool(forKey: "isMenuChanged")))")
         }
     }
     
@@ -668,8 +673,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func deleteHistoryFunc() {
-        guard hasShowedPill else { return }
-        hasShowedPill = true
         let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
         let alert = UIAlertController(title: "\(NSLocalizedString("settings_delete_history_in_all_calculators", comment: ""))\n\(NSLocalizedString("this_action_is_irreversible", comment: ""))", message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel)
@@ -678,17 +681,32 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         alert.addAction(UIAlertAction(title: NSLocalizedString("confirm", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
-            if let navController = self?.navigationController as? NavigationController {
-                navController.delHistoryPill()
-            }
-            self?.coreData.deleteAllHistory()
-            self?.coreData.resetBasicState()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self!.hasShowedPill = false
-            }
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            self?.deleteHistoryFetch(entityName: "HistoryItem", context: context)
         }))
         present(alert, animated: true, completion: nil)
     }
+    
+    func deleteHistoryFetch(entityName: String, context: NSManagedObjectContext) {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            
+            do {
+                let count = try context.count(for: fetchRequest)
+                if count == 0 {
+                    if let navController = self.navigationController as? NavigationController {
+                        navController.historyError()
+                    }
+                } else {
+                    if let navController = self.navigationController as? NavigationController {
+                        navController.delHistoryPill()
+                    }
+                    coreData.deleteAllHistory()
+                    coreData.resetBasicState()
+                }
+            } catch {
+                print("deleteHistoryFetch: \(error.localizedDescription)")
+            }
+        }
     
     
     //MARK: - Info

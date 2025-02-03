@@ -56,7 +56,6 @@
 		65DFA3E52C5A9B6A0090F4CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DFA3E42C5A9B6A0090F4CE /* AppDelegate.swift */; };
 		65DFA3E72C5A9B6A0090F4CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DFA3E62C5A9B6A0090F4CE /* SceneDelegate.swift */; };
 		65DFA3E92C5A9B6A0090F4CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DFA3E82C5A9B6A0090F4CE /* ViewController.swift */; };
-		65DFA3EC2C5A9B6A0090F4CE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3EB2C5A9B6A0090F4CE /* Base */; };
 		65DFA3EF2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65DFA3ED2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld */; };
 		65DFA3F12C5A9B6B0090F4CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3F02C5A9B6B0090F4CE /* Assets.xcassets */; };
 		65DFA3F42C5A9B6B0090F4CE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3F32C5A9B6B0090F4CE /* Base */; };
@@ -439,7 +438,6 @@
 				656CB8242D1576AC0014CCF4 /* BetterIcon6.png in Resources */,
 				656CB8252D1576AC0014CCF4 /* BetterIcon3.png in Resources */,
 				65DFA3F42C5A9B6B0090F4CE /* Base in Resources */,
-				65DFA3EC2C5A9B6A0090F4CE /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,7 +6,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Better"
+            "value" : "Better Orange"
           }
         },
         "en" : {
@@ -24,7 +24,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Better"
+            "value" : "Better Orange"
           }
         },
         "it" : {
@@ -48,7 +48,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Better"
+            "value" : "Better Oranje"
           }
         },
         "pl" : {
@@ -84,13 +84,19 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Better"
+            "value" : "Better 橙色"
           }
         }
       }
     },
     "button_age" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alter"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +107,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'âge"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leeftijd"
           }
         },
         "pl" : {
@@ -132,11 +150,23 @@
             "state" : "translated",
             "value" : "Вік"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "年龄"
+          }
         }
       }
     },
     "button_area" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -147,6 +177,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Área"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zone"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gebied"
           }
         },
         "pl" : {
@@ -178,12 +220,24 @@
             "state" : "translated",
             "value" : "Площа"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "区域"
+          }
         }
       }
     },
     "button_basic" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundlegend"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -194,6 +248,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Básico"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De base"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basis"
           }
         },
         "pl" : {
@@ -225,11 +291,23 @@
             "state" : "translated",
             "value" : "Базовий"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "基本的"
+          }
         }
       }
     },
     "button_bmi" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -240,6 +318,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "IMC"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IMC"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI"
           }
         },
         "pl" : {
@@ -271,11 +361,23 @@
             "state" : "translated",
             "value" : "ІМТ"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "体重指数"
+          }
         }
       }
     },
     "button_count_system" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zählsystem"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -286,6 +388,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sistema de conteo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Système de comptage"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telsysteem"
           }
         },
         "pl" : {
@@ -317,11 +431,23 @@
             "state" : "translated",
             "value" : "Сист. Числення"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "计数系统"
+          }
         }
       }
     },
     "button_crypto" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Krypto"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -332,6 +458,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Criptomoneda"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crypto"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crypto"
           }
         },
         "pl" : {
@@ -363,11 +501,23 @@
             "state" : "translated",
             "value" : "Крипта"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加密货币"
+          }
         }
       }
     },
     "button_currency" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Währung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -378,6 +528,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Moneda"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monnaie"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valuta"
           }
         },
         "pl" : {
@@ -409,11 +571,23 @@
             "state" : "translated",
             "value" : "Валюта"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "货币"
+          }
         }
       }
     },
     "button_data" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -424,6 +598,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Datos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Données"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gegevens"
           }
         },
         "pl" : {
@@ -455,11 +641,23 @@
             "state" : "translated",
             "value" : "Дані"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数据"
+          }
         }
       }
     },
     "button_date" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -470,6 +668,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fecha"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum"
           }
         },
         "pl" : {
@@ -501,11 +711,23 @@
             "state" : "translated",
             "value" : "Дата"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日期"
+          }
         }
       }
     },
     "button_discount" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rabatt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -516,6 +738,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Descuento"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rabais"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korting"
           }
         },
         "pl" : {
@@ -547,11 +781,23 @@
             "state" : "translated",
             "value" : "Знижка"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "折扣"
+          }
         }
       }
     },
     "button_investment" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Investition"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -562,6 +808,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inversión"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Investissement"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Investering"
           }
         },
         "pl" : {
@@ -593,11 +851,23 @@
             "state" : "translated",
             "value" : "Інвестиція"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "投资"
+          }
         }
       }
     },
     "button_length" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Länge"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -608,6 +878,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Longitud"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longueur"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lengte"
           }
         },
         "pl" : {
@@ -639,11 +921,23 @@
             "state" : "translated",
             "value" : "Довжина"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "长度"
+          }
         }
       }
     },
     "button_loan" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Darlehen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -654,6 +948,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Préstamo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prêt"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lening"
           }
         },
         "pl" : {
@@ -685,11 +991,23 @@
             "state" : "translated",
             "value" : "Позика"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "贷款"
+          }
         }
       }
     },
     "button_mass" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masse"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -700,6 +1018,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Masa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masse"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Massa"
           }
         },
         "pl" : {
@@ -731,11 +1061,23 @@
             "state" : "translated",
             "value" : "Маса"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "质量"
+          }
         }
       }
     },
     "button_resolution" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auflösung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -746,6 +1088,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Resolución"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résolution"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resolutie"
           }
         },
         "pl" : {
@@ -777,11 +1131,23 @@
             "state" : "translated",
             "value" : "Розширення"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分辨率"
+          }
         }
       }
     },
     "button_scientific" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wissenschaftlich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -792,6 +1158,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Científica"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scientifique"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wetenschappelijk"
           }
         },
         "pl" : {
@@ -823,11 +1201,23 @@
             "state" : "translated",
             "value" : "Науковий"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "科学的"
+          }
         }
       }
     },
     "button_settings" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -838,6 +1228,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajustes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instellingen"
           }
         },
         "pl" : {
@@ -869,11 +1271,23 @@
             "state" : "translated",
             "value" : "Налаштування"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置"
+          }
         }
       }
     },
     "button_speed" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschwindigkeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -884,6 +1298,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Velocidad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitesse"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snelheid"
           }
         },
         "pl" : {
@@ -915,11 +1341,23 @@
             "state" : "translated",
             "value" : "Швидкість"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "速度"
+          }
         }
       }
     },
     "button_temperature" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatur"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -930,6 +1368,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Temperatura"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Température"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatuur"
           }
         },
         "pl" : {
@@ -961,11 +1411,23 @@
             "state" : "translated",
             "value" : "Температура"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "温度"
+          }
         }
       }
     },
     "button_time" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -976,6 +1438,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tiempo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temps"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tijd"
           }
         },
         "pl" : {
@@ -1007,11 +1481,23 @@
             "state" : "translated",
             "value" : "Час"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时间"
+          }
         }
       }
     },
     "button_tips" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trinkgeld"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1022,6 +1508,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consejos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pourboire"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tips"
           }
         },
         "pl" : {
@@ -1053,11 +1551,23 @@
             "state" : "translated",
             "value" : "Чайові"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小费"
+          }
         }
       }
     },
     "button_volume" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volumen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1068,6 +1578,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Volumen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume"
           }
         },
         "pl" : {
@@ -1099,11 +1621,23 @@
             "state" : "translated",
             "value" : "Об’єм"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "体积"
+          }
         }
       }
     },
     "cancel" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1114,6 +1648,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancelar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuleren"
           }
         },
         "pl" : {
@@ -1145,11 +1691,23 @@
             "state" : "translated",
             "value" : "Відмінити"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          }
         }
       }
     },
     "cherry_red" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kirschrot"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1160,6 +1718,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rojo Cereza"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rouge Cerise"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kersenrood"
           }
         },
         "pl" : {
@@ -1191,11 +1761,23 @@
             "state" : "translated",
             "value" : "Червона Вишня"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "樱桃红"
+          }
         }
       }
     },
     "confirm" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bestätigen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1206,6 +1788,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Confirme"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmer"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bevestig"
           }
         },
         "pl" : {
@@ -1237,11 +1831,23 @@
             "state" : "translated",
             "value" : "Підтвердити"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
         }
       }
     },
     "cyan_like" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie Cyan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1252,6 +1858,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Como Cyan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comme Cyan"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoals Cyaan"
           }
         },
         "pl" : {
@@ -1283,11 +1901,23 @@
             "state" : "translated",
             "value" : "Як Блакить"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "像青色"
+          }
         }
       }
     },
     "deep_blue" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiefblau"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1298,6 +1928,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Azul Profundo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bleu Profond"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diepblauw"
           }
         },
         "pl" : {
@@ -1329,11 +1971,23 @@
             "state" : "translated",
             "value" : "Глибокий Синій"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深蓝色"
+          }
         }
       }
     },
     "delete_history" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschichte löschen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1344,6 +1998,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Borrar el historial?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer l'historique ?"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschiedenis wissen?"
           }
         },
         "pl" : {
@@ -1375,11 +2041,23 @@
             "state" : "translated",
             "value" : "Видалити історію?"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除历史？"
+          }
         }
       }
     },
     "done" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erledigt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1390,6 +2068,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hecho"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fait"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klaar"
           }
         },
         "pl" : {
@@ -1421,11 +2111,23 @@
             "state" : "translated",
             "value" : "Готово"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成的"
+          }
         }
       }
     },
     "edit" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeiten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1436,6 +2138,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Editar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewerk"
           }
         },
         "pl" : {
@@ -1467,11 +2181,23 @@
             "state" : "translated",
             "value" : "Редаг."
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑"
+          }
         }
       }
     },
     "history_choose_results_you_want_to_delete" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wählen Sie die Ergebnisse aus, die Sie löschen möchten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1482,6 +2208,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seleccione los resultados que desea eliminar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionnez les résultats que vous souhaitez supprimer"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecteer de resultaten die u wilt verwijderen"
           }
         },
         "pl" : {
@@ -1513,11 +2251,23 @@
             "state" : "translated",
             "value" : "Виберіть результати, які потрібно видалити"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择要删除的结果"
+          }
         }
       }
     },
     "history_delete_all" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1528,6 +2278,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar todo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer tout"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles verwijderen"
           }
         },
         "pl" : {
@@ -1559,11 +2321,23 @@
             "state" : "translated",
             "value" : "Видалити все"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部删除"
+          }
         }
       }
     },
     "history_nothing_to_delete" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nichts zu löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1574,6 +2348,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nada que eliminar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien à supprimer"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niets te verwijderen"
           }
         },
         "pl" : {
@@ -1605,11 +2391,23 @@
             "state" : "translated",
             "value" : "Нічого не обрано"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有可刪除"
+          }
         }
       }
     },
     "just_gray" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einfach Grau"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1620,6 +2418,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sólo Gris"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juste Gris"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gewoon Grijs"
           }
         },
         "pl" : {
@@ -1651,11 +2461,23 @@
             "state" : "translated",
             "value" : "Просто Сірий"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "只是灰色"
+          }
         }
       }
     },
     "miami_one" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miami Eins"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1666,6 +2488,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Miami Uno"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miami One"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miami Een"
           }
         },
         "pl" : {
@@ -1697,11 +2531,23 @@
             "state" : "translated",
             "value" : "З Маямі"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从迈阿密"
+          }
         }
       }
     },
     "okay" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1712,6 +2558,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oké"
           }
         },
         "pl" : {
@@ -1743,11 +2601,23 @@
             "state" : "translated",
             "value" : "ОК"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "好的"
+          }
         }
       }
     },
     "old_purple" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altlila"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1758,6 +2628,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Morado Viejo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vieux Violet"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oud Paars"
           }
         },
         "pl" : {
@@ -1789,21 +2671,45 @@
             "state" : "translated",
             "value" : "Старий Фіолет"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "老紫"
+          }
         }
       }
     },
     "open_developer_github" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub des Entwicklers öffnen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open developer’s GitHub?"
+            "value" : "Open the developer’s GitHub?"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Abrir el enlace GitHub del desarrollador?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir le GitHub des développeurs ?"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub-link openen?"
           }
         },
         "pl" : {
@@ -1835,11 +2741,23 @@
             "state" : "translated",
             "value" : "Відкрити GitHub розробника?"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开开发者的GitHub？"
+          }
         }
       }
     },
     "pill_cannot_paste" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einfügen nicht möglich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1850,6 +2768,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se puede pegar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de coller"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kan niet plakken"
           }
         },
         "pl" : {
@@ -1881,11 +2811,23 @@
             "state" : "translated",
             "value" : "Не вставлено"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法粘贴"
+          }
         }
       }
     },
     "pill_cannot_reset" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereits zurückgesetzt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1896,6 +2838,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ya reiniciado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déjà réinitialisé"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al gereset"
           }
         },
         "pl" : {
@@ -1927,11 +2881,23 @@
             "state" : "translated",
             "value" : "Вже скинуто"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法重置"
+          }
         }
       }
     },
     "pill_history_deleted" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verlauf gelöscht"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1942,6 +2908,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Historial eliminado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historique supprimé"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschiedenis verwijderd"
           }
         },
         "pl" : {
@@ -1973,11 +2951,93 @@
             "state" : "translated",
             "value" : "Історію видалено"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "历史记录已删除"
+          }
+        }
+      }
+    },
+    "pill_history_error" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Geschichte ist leer"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History is empty"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La historia está vacía"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'histoire est vide"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschiedenis is leeg"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historia jest pusta"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A história está vazia"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historien är tom"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarih boştur"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Історія пуста"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "历史是空洞的"
+          }
         }
       }
     },
     "pill_reset_done" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurücksetzen abgeschlossen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1988,6 +3048,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reinicio realizado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialisation effectuée"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset gedaan"
           }
         },
         "pl" : {
@@ -2019,11 +3091,23 @@
             "state" : "translated",
             "value" : "Скидання виконано"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置已完成"
+          }
         }
       }
     },
     "pill_result_copied" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ergebnis kopiert"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2034,6 +3118,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Resultado copiado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résultat copié"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resultaat gekopieerd"
           }
         },
         "pl" : {
@@ -2065,11 +3161,23 @@
             "state" : "translated",
             "value" : "Скопійовано"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "结果已复制"
+          }
         }
       }
     },
     "settings_color_theme" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farbthema:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2080,6 +3188,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tema de color:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thème de couleur:"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kleurthema:"
           }
         },
         "pl" : {
@@ -2111,11 +3231,23 @@
             "state" : "translated",
             "value" : "Колірна тема:"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "颜色主题："
+          }
         }
       }
     },
     "settings_created_by" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstellt von:   "
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2126,6 +3258,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Creado por:   "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créé par:   "
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gemaakt door:   "
           }
         },
         "pl" : {
@@ -2157,21 +3301,45 @@
             "state" : "translated",
             "value" : "Створив:   "
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "创建者："
+          }
         }
       }
     },
     "settings_d_delete_all_history" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamten Verlauf löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete all history"
+            "value" : "Delete entire history"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Borrar todo el historial"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer tout l'historique"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle geschiedenis verwijderen"
           }
         },
         "pl" : {
@@ -2203,11 +3371,23 @@
             "state" : "translated",
             "value" : "Повністю видалити історію"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除所有历史记录"
+          }
         }
       }
     },
     "settings_d_reset_menu_buttons_positions" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menütastenpositionen zurücksetzen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2218,6 +3398,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restablecer posiciones de los botones del menú"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser les positions des boutons du menu"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Posities van menuknoppen resetten"
           }
         },
         "pl" : {
@@ -2249,11 +3441,23 @@
             "state" : "translated",
             "value" : "Скинути позиції кнопок меню"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置菜单按钮位置"
+          }
         }
       }
     },
     "settings_data" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2264,6 +3468,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Datos:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donnés:"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gegevens:"
           }
         },
         "pl" : {
@@ -2295,11 +3511,23 @@
             "state" : "translated",
             "value" : "Дані:"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数据："
+          }
         }
       }
     },
     "settings_delete_history_in_all_calculators" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verlauf in allen Taschenrechnern löschen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2310,6 +3538,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Borrar el historial de todas las calculadoras?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer l'historique dans toutes les calculatrices ?"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschiedenis verwijderen in alle rekenmachines?"
           }
         },
         "pl" : {
@@ -2341,11 +3581,23 @@
             "state" : "translated",
             "value" : "Видалити історію всіх калькуляторів?"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除所有计算器历史记录？"
+          }
         }
       }
     },
     "settings_info" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Infos:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2356,6 +3608,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Información:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Infos:"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info:"
           }
         },
         "pl" : {
@@ -2387,11 +3651,23 @@
             "state" : "translated",
             "value" : "Інформація:"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "信息："
+          }
         }
       }
     },
     "settings_none" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2402,6 +3678,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ninguno"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nee"
           }
         },
         "pl" : {
@@ -2433,11 +3721,23 @@
             "state" : "translated",
             "value" : "Нічого"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无"
+          }
         }
       }
     },
     "settings_o_w_l_calculator" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taschenrechner"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2448,6 +3748,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Calculadora"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculatrice"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rekenmachine"
           }
         },
         "pl" : {
@@ -2479,11 +3791,23 @@
             "state" : "translated",
             "value" : "Калькулятор"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "计算器"
+          }
         }
       }
     },
     "settings_open_after_launch" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach dem Start öffnen:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2494,6 +3818,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abierto después del lanzamiento:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvert après le lancement :"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open na lancering:"
           }
         },
         "pl" : {
@@ -2525,11 +3861,23 @@
             "state" : "translated",
             "value" : "Відкрити після запуску:"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发射后打开："
+          }
         }
       }
     },
     "settings_p_haptic_feedback" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haptisches Feedback"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2540,6 +3888,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Retroalimentación háptica"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retour haptique"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haptische feedback"
           }
         },
         "pl" : {
@@ -2571,11 +3931,23 @@
             "state" : "translated",
             "value" : "Тактильний відгук"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "触觉反馈"
+          }
         }
       }
     },
     "settings_p_keep_data_after_close" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten nach dem Schließen aufbewahren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2586,6 +3958,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Conservar datos después del cierre"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conserver les données après la fermeture"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gegevens opslaan na het sluiten"
           }
         },
         "pl" : {
@@ -2617,11 +4001,23 @@
             "state" : "translated",
             "value" : "Зберігати стан після закриття"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭后保留数据"
+          }
         }
       }
     },
     "settings_preferences" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorlieben:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2632,6 +4028,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Preferencias:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Préférences :"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voorkeuren:"
           }
         },
         "pl" : {
@@ -2663,11 +4071,23 @@
             "state" : "translated",
             "value" : "Параметри:"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "偏好："
+          }
         }
       }
     },
     "settings_reset" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurücksetzen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2678,6 +4098,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restablecer"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opnieuw instellen"
           }
         },
         "pl" : {
@@ -2709,11 +4141,23 @@
             "state" : "translated",
             "value" : "Скинути"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置"
+          }
         }
       }
     },
     "settings_reset_settings" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen zurücksetzen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2724,6 +4168,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Restablecer ajustes?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser les paramètres ?"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instellingen resetten?"
           }
         },
         "pl" : {
@@ -2755,11 +4211,23 @@
             "state" : "translated",
             "value" : "Скинути налаштування?"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置设置？"
+          }
         }
       }
     },
     "settings_this_will_reset_all_parameters_to_default" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dadurch werden alle Parameter auf die Standardwerte zurückgesetzt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2770,6 +4238,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esto restablecerá todos los parámetros a los valores predeterminados"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cela réinitialisera tous les paramètres par défaut"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiermee worden alle parameters teruggezet naar de standaardinstellingen"
           }
         },
         "pl" : {
@@ -2801,11 +4281,23 @@
             "state" : "translated",
             "value" : "Це скине всі параметри до початкового стану"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这会将所有参数重置为默认值"
+          }
         }
       }
     },
     "system_orange" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System Orange"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2816,6 +4308,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sistema Naranja"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Système Orange"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systeem Oranje"
           }
         },
         "pl" : {
@@ -2847,11 +4351,23 @@
             "state" : "translated",
             "value" : "Сист. Помаранч"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "系统橙色"
+          }
         }
       }
     },
     "this_action_is_irreversible" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Aktion ist unumkehrbar"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2862,6 +4378,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esta acción es irreversible"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette action est irréversible"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deze actie is onomkeerbaar"
           }
         },
         "pl" : {
@@ -2893,11 +4421,23 @@
             "state" : "translated",
             "value" : "Це незворотна дія"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此操作不可逆转"
+          }
         }
       }
     },
     "very_lime" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sehr Limette"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2908,6 +4448,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Muy Lima"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Très Chaux"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeer Kalk"
           }
         },
         "pl" : {
@@ -2938,6 +4490,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дуже Лайм"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "非常酸橙"
           }
         }
       }

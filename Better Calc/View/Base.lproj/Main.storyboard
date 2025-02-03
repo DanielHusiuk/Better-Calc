@@ -3897,7 +3897,7 @@
         <!--Data-->
         <scene sceneID="bZa-hn-XG9">
             <objects>
-                <viewController id="xHG-SO-PWF" customClass="InvestitonViewController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xHG-SO-PWF" customClass="DataViewController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1AQ-kd-Z76">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4047,12 +4047,12 @@
         <!--Resolution-->
         <scene sceneID="Wpr-mc-saV">
             <objects>
-                <viewController id="DHI-Ig-rpk" customClass="InvestitonViewController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DHI-Ig-rpk" customClass="ResolutionViewController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6jk-If-jTE">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Wxe-np-bq7"/>
-                        <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" title="Resolution" style="editor" id="XXf-hA-dcJ">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="J2Z-aR-Tma">
