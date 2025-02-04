@@ -30,19 +30,19 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Better"
+            "value" : "Better Arancione"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Better"
+            "value" : "Better オレンジ"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Better"
+            "value" : "Better 오렌지"
           }
         },
         "nl" : {
@@ -115,6 +115,24 @@
             "value" : "L'âge"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Età"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "年齢"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나이"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -183,6 +201,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zone"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zona"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エリア"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "영역"
           }
         },
         "nl" : {
@@ -256,6 +292,24 @@
             "value" : "De base"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Di base"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ベーシック"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기초적인"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -324,6 +378,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "IMC"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IMC"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "肥満度指数"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "체질량지수"
           }
         },
         "nl" : {
@@ -396,6 +468,24 @@
             "value" : "Système de comptage"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistema di conteggio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "計数システム"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카운트 시스템"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -464,6 +554,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crypto"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criptovaluta"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暗号通貨"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "암호화폐"
           }
         },
         "nl" : {
@@ -536,6 +644,24 @@
             "value" : "Monnaie"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valuta"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通貨"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "통화"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -604,6 +730,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Données"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dati"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "데이터"
           }
         },
         "nl" : {
@@ -676,6 +820,24 @@
             "value" : "Date"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日付"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "날짜"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -744,6 +906,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rabais"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sconto"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "割引"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "할인"
           }
         },
         "nl" : {
@@ -816,6 +996,24 @@
             "value" : "Investissement"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Investimenti"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "投資"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "투자"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -884,6 +1082,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Longueur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lunghezza"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "長さ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "길이"
           }
         },
         "nl" : {
@@ -956,6 +1172,24 @@
             "value" : "Prêt"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prestito"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ローン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "대여"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1024,6 +1258,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Masse"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Massa"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "質量"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "질량"
           }
         },
         "nl" : {
@@ -1096,6 +1348,24 @@
             "value" : "Résolution"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Risoluzione"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "決議"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "해상도"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1164,6 +1434,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Scientifique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scientifico"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "科学的"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "과학적"
           }
         },
         "nl" : {
@@ -1236,6 +1524,24 @@
             "value" : "Paramètres"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリの設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1304,6 +1610,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vitesse"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velocità"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スピード"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "속도"
           }
         },
         "nl" : {
@@ -1376,6 +1700,24 @@
             "value" : "Température"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatura"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "温度"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "온도"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1444,6 +1786,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Temps"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時間"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시간"
           }
         },
         "nl" : {
@@ -1516,6 +1876,24 @@
             "value" : "Pourboire"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mancia"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヒント"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "팁"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1584,6 +1962,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Volume"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ボリューム"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "부피"
           }
         },
         "nl" : {
@@ -1656,6 +2052,24 @@
             "value" : "Annuler"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annullare"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "취소"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1724,6 +2138,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rouge Cerise"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rosso Ciliegia"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チェリーレッド"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "체리 레드"
           }
         },
         "nl" : {
@@ -1796,6 +2228,24 @@
             "value" : "Confirmer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confermare"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확인"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1845,13 +2295,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wie Cyan"
+            "value" : "Cyan-ähnlich"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cyan Like"
+            "value" : "Cyan-Like"
           }
         },
         "es" : {
@@ -1864,6 +2314,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comme Cyan"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ciano-Simile"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シアンのような"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "청록색"
           }
         },
         "nl" : {
@@ -1881,19 +2349,19 @@
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ciano Como"
+            "value" : "Ciano-Como"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cyan Gillar"
+            "value" : "Cyanliknande"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cyan Gibi"
+            "value" : "Cyan Benzeri"
           }
         },
         "uk" : {
@@ -1934,6 +2402,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bleu Profond"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blu Profondo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ディープブルー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "딥 블루"
           }
         },
         "nl" : {
@@ -2006,6 +2492,24 @@
             "value" : "Supprimer l'historique ?"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminare la cronologia?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "履歴を消去しますか?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기록을 삭제하시겠습니까?"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2074,6 +2578,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fait"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fatto"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "완료"
           }
         },
         "nl" : {
@@ -2146,6 +2668,24 @@
             "value" : "Modifier"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifica"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "편집"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2214,6 +2754,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sélectionnez les résultats que vous souhaitez supprimer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selezionare i risultati che si desidera eliminare"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除したい結果を選択してください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "삭제할 결과를 선택합니다."
           }
         },
         "nl" : {
@@ -2286,6 +2844,24 @@
             "value" : "Supprimer tout"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancellare tutti"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべて削除"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모두 삭제"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2354,6 +2930,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rien à supprimer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nulla da eliminare"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除するものはありません"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "삭제할 항목이 없습니다."
           }
         },
         "nl" : {
@@ -2426,6 +3020,24 @@
             "value" : "Juste Gris"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo Grigio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ジャストグレー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "그냥 회색"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2494,6 +3106,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Miami One"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miami Uno"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マイアミワン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마이애미 원"
           }
         },
         "nl" : {
@@ -2566,6 +3196,24 @@
             "value" : "OK"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "わかりました"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "괜찮아"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2634,6 +3282,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vieux Violet"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Viola Antico"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オールドパープル"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "올드 퍼플"
           }
         },
         "nl" : {
@@ -2706,6 +3372,24 @@
             "value" : "Ouvrir le GitHub des développeurs ?"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub aperto per gli sviluppatori?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開発者のGitHubを開きますか?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개발자의 GitHub을 열어보시겠습니까?"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2776,6 +3460,24 @@
             "value" : "Impossible de coller"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile incollare"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "貼り付けできません"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "붙여넣기 할 수 없습니다"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2831,7 +3533,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Already resetted"
+            "value" : "Already reseted"
           }
         },
         "es" : {
@@ -2844,6 +3546,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Déjà réinitialisé"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Già restaurato"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すでにリセット済み"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미 재설정됨"
           }
         },
         "nl" : {
@@ -2916,6 +3636,24 @@
             "value" : "Historique supprimé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronologia eliminata"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "履歴を削除しました"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History list deleted"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2984,6 +3722,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "L'histoire est vide"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La storia è vuota"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "歴史は空だ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기록이 비어 있습니다"
           }
         },
         "nl" : {
@@ -3056,6 +3812,24 @@
             "value" : "Réinitialisation effectuée"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset eseguito"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リセット完了"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "재설정 완료"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3124,6 +3898,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Résultat copié"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Risultato copiato"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コピー結果"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "결과 복사됨"
           }
         },
         "nl" : {
@@ -3196,6 +3988,24 @@
             "value" : "Thème de couleur:"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tema colore:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カラーテーマ："
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "색상 테마:"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3245,67 +4055,85 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erstellt von:   "
+            "value" : "Autor:   "
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Created by:   "
+            "value" : "Author:   "
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Creado por:   "
+            "value" : "Autor:   "
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Créé par:   "
+            "value" : "Auteur:   "
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autore:   "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "著者：  "
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "작가:   "
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gemaakt door:   "
+            "value" : "Auteur:   "
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Utworzone przez:   "
+            "value" : "Autor:   "
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Criado por:   "
+            "value" : "Autor:   "
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Skapad av:   "
+            "value" : "Författare:   "
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yapılmış:   "
+            "value" : "Uygulama Yazarı:   "
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Створив:   "
+            "value" : "Розробив:   "
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "创建者："
+            "value" : "作者： "
           }
         }
       }
@@ -3334,6 +4162,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer tout l'historique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancellare l'intera cronologia"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "履歴全体を削除する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전체 기록 삭제"
           }
         },
         "nl" : {
@@ -3406,6 +4252,24 @@
             "value" : "Réinitialiser les positions des boutons du menu"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristino delle posizioni dei pulsanti del menu"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メニューボタンの位置をリセット"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메뉴 버튼 위치 재설정"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3474,6 +4338,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Donnés:"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dati:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データ："
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "데이터:"
           }
         },
         "nl" : {
@@ -3546,6 +4428,24 @@
             "value" : "Supprimer l'historique dans toutes les calculatrices ?"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancellare la cronologia in tutte le calcolatrici?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "電卓の履歴をすべて削除しますか？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 계산기에서 기록을 삭제하시겠습니까?"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3614,6 +4514,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Infos:"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "情報："
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정보:"
           }
         },
         "nl" : {
@@ -3686,6 +4604,24 @@
             "value" : "Aucun"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuno"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "なし"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "없음"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3754,6 +4690,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Calculatrice"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcolatrice"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "電卓"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계산자"
           }
         },
         "nl" : {
@@ -3826,6 +4780,24 @@
             "value" : "Ouvert après le lancement :"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aperto dopo il lancio:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起動後に開く:"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "출시 후 오픈:"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3894,6 +4866,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Retour haptique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback tattile"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "触覚フィードバック"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "촉각적 피드백"
           }
         },
         "nl" : {
@@ -3966,6 +4956,24 @@
             "value" : "Conserver les données après la fermeture"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantieni i dati dopo la chiusura"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "閉店後もデータを保持"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "닫은 후 데이터 유지"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4034,6 +5042,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Préférences :"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferenze:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "好み:"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선호사항:"
           }
         },
         "nl" : {
@@ -4106,6 +5132,24 @@
             "value" : "Réinitialiser"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リセット"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "재설정"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4155,55 +5199,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Einstellungen zurücksetzen?"
+            "value" : "Standardeinstellungen wiederherstellen?"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reset settings?"
+            "value" : "Restore default settings?"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿Restablecer ajustes?"
+            "value" : "¿Restaurar configuración predeterminada?"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Réinitialiser les paramètres ?"
+            "value" : "Restaurer les paramètres par défaut ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristinare le impostazioni predefinite?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デフォルト設定に戻す？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기본 설정을 복원하시겠습니까?"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Instellingen resetten?"
+            "value" : "Standaardinstellingen herstellen?"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zresetować ustawienia?"
+            "value" : "Przywrócić ustawienia domyślne?"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Repor as definições?"
+            "value" : "Restaurar as definições padrão?"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Återställa inställningar?"
+            "value" : "Återställa standardinställningarna?"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ayarları sıfırlamak mı?"
+            "value" : "Varsayılan ayarlara geri dönülsün mü?"
           }
         },
         "uk" : {
@@ -4215,7 +5277,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重置设置？"
+            "value" : "恢复默认设置？"
           }
         }
       }
@@ -4244,6 +5306,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cela réinitialisera tous les paramètres par défaut"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo ripristinerà i valori predefiniti di tutti i parametri."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "これにより、すべてのパラメーターがデフォルトにリセットされる。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이렇게 하면 모든 매개변수가 기본값으로 재설정됩니다."
           }
         },
         "nl" : {
@@ -4316,6 +5396,24 @@
             "value" : "Système Orange"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistema Arancione"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システムオレンジ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시스템 오렌지"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4386,6 +5484,24 @@
             "value" : "Cette action est irréversible"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa azione è irreversibile."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この行為は元に戻すことはできません"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 작업은 되돌릴 수 없습니다"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4454,6 +5570,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Très Chaux"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Molto Lime"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ベリーライム"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "매우 라임"
           }
         },
         "nl" : {
