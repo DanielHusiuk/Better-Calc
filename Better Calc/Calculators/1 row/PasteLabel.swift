@@ -11,12 +11,12 @@ let basicController = BasicViewController()
 let navController = NavigationController()
 
 class PasteLabel: UILabel {
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.sharedInit()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.sharedInit()
@@ -49,7 +49,7 @@ class PasteLabel: UILabel {
     
     
     //MARK: - PasteUI
-
+    
     func sharedInit() {
         self.isUserInteractionEnabled = true
         if traitCollection.userInterfaceStyle == .dark {
@@ -59,7 +59,7 @@ class PasteLabel: UILabel {
         }
         self.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.showMenu)))
     }
-
+    
     @objc func showMenu(sender: AnyObject?) {
         self.becomeFirstResponder()
         let menu = UIMenuController.shared
@@ -135,7 +135,7 @@ class PasteLabel: UILabel {
         let menu = UIMenuController.shared
         menu.showMenu(from: self, rect: self.bounds)
     }
-
+    
     func countCheck(for text: String) -> Bool {
         let hasDecimalPoint = text.contains(".")
         if hasDecimalPoint {
@@ -154,13 +154,13 @@ class PasteLabel: UILabel {
         }
         return false
     }
-
+    
     func isValidNumber(_ text: String) -> Bool {
         let numberRegEx = "^-?\\d+(\\.\\d+)?$"
         let predicate = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
         return predicate.evaluate(with: text)
     }
-
+    
     func normalizeDecimalSeparator(_ text: String) -> String {
         var normalizedText = text
         normalizedText = normalizedText.replacingOccurrences(of: ",", with: ".")
@@ -170,11 +170,11 @@ class PasteLabel: UILabel {
         }
         return normalizedText
     }
-
+    
     override var canBecomeFirstResponder: Bool {
         return true
     }
-
+    
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return action == #selector(UIResponderStandardEditActions.paste)
     }

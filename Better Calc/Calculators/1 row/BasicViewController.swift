@@ -75,7 +75,7 @@ class BasicViewController: UIViewController {
         view.layer.shadowOpacity = 0.2
         view.layer.shadowOffset = CGSize(width: 0, height: 3)
         view.layer.shadowRadius = 8
-
+        
         let insetBounds = view.bounds.insetBy(dx: -5, dy: -5)
         let shadowPath = UIBezierPath(roundedRect: insetBounds, cornerRadius: cornerRadius)
         view.layer.shadowPath = shadowPath.cgPath
@@ -128,10 +128,10 @@ class BasicViewController: UIViewController {
         let shadowOffset = CGSize(width: 0, height: 0)
         let shadowOpacity: Float = 0.4
         let shadowRadius: CGFloat = 8
-
+        
         for button in ShadowButtonsOutlet {
             if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
-               button.tintColor = selectedTintColor
+                button.tintColor = selectedTintColor
             }
             button.layer.shadowColor = shadowColor
             button.layer.shadowOffset = shadowOffset
@@ -161,7 +161,7 @@ class BasicViewController: UIViewController {
             })
         }
     }
-        
+    
     func historyButton() {
         let historyButton = HistoryButtonOutlet
         if coreData.fetchObjects(with: 1).count == 0 {
@@ -310,7 +310,7 @@ class BasicViewController: UIViewController {
         if secondOperand == 0 {
             return
         }
-
+        
         var result: Double?
         switch operation {
         case .addition:
@@ -445,7 +445,7 @@ class BasicViewController: UIViewController {
             isTypingNumber = true
             return
         }
-
+        
         let hasDecimalPoint = lastComponent.contains(".")
         if hasDecimalPoint {
             let parts = lastComponent.components(separatedBy: ".")
@@ -476,23 +476,23 @@ class BasicViewController: UIViewController {
     }
     
     @IBAction func pasteResult(_ sender: UIButton) {
-            if let resultText = ResultsLabelOutlet.text, resultText != "0" {
-                WorkingsLabelOutlet.text = resultText
-                ResultsLabelOutlet.text = "0"
-                firstOperand = nil
-                currentOperation = nil
-                isTypingNumber = true
-            }
-            
-            UIView.animate(withDuration: 0.1, animations: {
-                self.PasteResultButtonOutlet.alpha = 0.0
-            })
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                self.PasteResultButtonOutlet.isHidden = true
-            }
+        if let resultText = ResultsLabelOutlet.text, resultText != "0" {
+            WorkingsLabelOutlet.text = resultText
+            ResultsLabelOutlet.text = "0"
+            firstOperand = nil
+            currentOperation = nil
+            isTypingNumber = true
+        }
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            self.PasteResultButtonOutlet.alpha = 0.0
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.PasteResultButtonOutlet.isHidden = true
+        }
         guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
         let generator = UIImpactFeedbackGenerator(style: .rigid)
         generator.impactOccurred()
-        }
-
+    }
+    
 }

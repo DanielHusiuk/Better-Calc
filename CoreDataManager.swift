@@ -29,7 +29,7 @@ public final class CoreDataManager: NSObject {
     
     
     // MARK: - CollectionView Buttons Logic
-
+    
     public func saveCellPosition(positions: [IndexPath: Int]) {
         resetCellPosition()
         for (indexPath, buttonID) in positions {
@@ -40,7 +40,7 @@ public final class CoreDataManager: NSObject {
         }
         appDelegate.saveContext()
     }
-
+    
     public func loadCellPosition() -> [Int] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CellPosition")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "position", ascending: true)]
@@ -53,7 +53,7 @@ public final class CoreDataManager: NSObject {
             return []
         }
     }
-
+    
     public func resetCellPosition() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CellPosition")
         do {
@@ -80,7 +80,7 @@ public final class CoreDataManager: NSObject {
     }
     
     public func fetchObjects(with id: Int16) -> [HistoryItem] {
-       let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HistoryItem")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {
             return (try context.fetch(fetchRequest) as? [HistoryItem]) ?? []
@@ -94,10 +94,10 @@ public final class CoreDataManager: NSObject {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-         do {
-             let objects = try? context.fetch(fetchRequest) as? [HistoryItem]
-             return objects?.first
-         }
+        do {
+            let objects = try? context.fetch(fetchRequest) as? [HistoryItem]
+            return objects?.first
+        }
     }
     
     public func updateObject(with id: Int16, result: String, working: String) {

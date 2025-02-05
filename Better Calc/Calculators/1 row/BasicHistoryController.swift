@@ -145,7 +145,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func deleteObject(_ sender: UIBarButtonItem) {
         guard isEdit else { return }
-
+        
         guard let selectedRows = HistoryTableView.indexPathsForSelectedRows else {
             let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
             let chooseAlert = UIAlertController(title: NSLocalizedString("history_nothing_to_delete", comment: ""), message: NSLocalizedString("history_choose_results_you_want_to_delete", comment: ""), preferredStyle: .alert)
@@ -162,7 +162,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         }
         let sortedSelectedRows = selectedRows.sorted(by: { $0.item > $1.item })
         print("Rows to delete: \(sortedSelectedRows)")
-
+        
         HistoryTableView.beginUpdates()
         for indexPath in sortedSelectedRows {
             let key = sortedSectionKeys[indexPath.section]
@@ -182,7 +182,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
             }
         }
         HistoryTableView.endUpdates()
-
+        
         if groupedHistory.isEmpty {
             if let navigationController = self.presentingViewController as? UINavigationController,
                let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
@@ -190,12 +190,12 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
             }
             self.dismiss(animated: true, completion: nil)
         }
-
+        
         HistoryTableView.setEditing(false, animated: true)
         EditBarButton.title = NSLocalizedString("edit", comment: "")
         EditBarButton.style = .plain
         isEdit = false
-
+        
         navigationController?.setToolbarHidden(true, animated: true)
         UIView.animate(withDuration: 0.3) {
             self.CloseBarButton.isEnabled = true
@@ -210,7 +210,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     
     var groupedHistory: [String: [HistoryItem]] = [:]
     var sortedSectionKeys: [String] = []
-
+    
     func loadHistory() {
         let fetchedHistory = coreData.fetchObjects(with: self.historyId)
         let dateFormatter = DateFormatter()
@@ -283,7 +283,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
                     basicVC.ResultsLabelOutlet.text = ""
                     basicVC.WorkingsLabelOutlet.text = workingText
                     basicVC.ResultsLabelOutlet.text = resultText
-                                        
+                    
                     let symbolRange = CharacterSet(charactersIn: "+−×÷")
                     if let currentOperationRange = workingText.rangeOfCharacter(from: symbolRange) {
                         let symbol = workingText[currentOperationRange]
@@ -316,5 +316,5 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         let generator = UIImpactFeedbackGenerator(style: .rigid)
         generator.impactOccurred()
     }
-
+    
 }

@@ -13,27 +13,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var hasPerformedSegue = false
     var tintModel = TintModel()
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         updateColorTheme()
         return true
     }
     
-
+    
     // MARK: - UISceneSession Lifecycle
-
+    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
+    
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
     
-
+    
     // MARK: - Core Data
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
-
+        
         let container = NSPersistentContainer(name: "Better_Calc")
         container.loadPersistentStores{ (description, error) in
             if let error {
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return container
     }()
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -68,5 +68,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.setColor(secondTintColor, forKey: "selectedTintColor")
         }
     }
-
+    
 }

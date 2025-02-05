@@ -11,15 +11,15 @@ let navControllr = NavigationController()
 
 class CopyLabel: UILabel, UIEditMenuInteractionDelegate {
     
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            self.sharedInit()
-        }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.sharedInit()
+    }
     
-        required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-            self.sharedInit()
-        }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.sharedInit()
+    }
     
     //MARK: - Preference
     
@@ -37,41 +37,41 @@ class CopyLabel: UILabel, UIEditMenuInteractionDelegate {
     
     //MARK: - CopyUI
     
-        func sharedInit() {
-            self.isUserInteractionEnabled = true
-            if traitCollection.userInterfaceStyle == .dark {
-                self.overrideUserInterfaceStyle = .dark
-            } else {
-                self.overrideUserInterfaceStyle = .light
-            }
-            self.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.showMenu)))
+    func sharedInit() {
+        self.isUserInteractionEnabled = true
+        if traitCollection.userInterfaceStyle == .dark {
+            self.overrideUserInterfaceStyle = .dark
+        } else {
+            self.overrideUserInterfaceStyle = .light
         }
-        
-        @objc func showMenu(sender: AnyObject?) {
-            self.becomeFirstResponder()
-            let menu = UIMenuController.shared
-            if !menu.isMenuVisible {
-                menu.showMenu(from: self, rect: self.bounds)
-            }
-        }
+        self.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.showMenu)))
+    }
     
-        override func copy(_ sender: Any?) {
-            let board = UIPasteboard.general
-            board.string = text
-            
-            if let navController = findNavigationController() {
-                navController.coppiedPill()
-            }
-            
-            let menu = UIMenuController.shared
+    @objc func showMenu(sender: AnyObject?) {
+        self.becomeFirstResponder()
+        let menu = UIMenuController.shared
+        if !menu.isMenuVisible {
             menu.showMenu(from: self, rect: self.bounds)
         }
+    }
     
-        override var canBecomeFirstResponder: Bool {
-            return true
+    override func copy(_ sender: Any?) {
+        let board = UIPasteboard.general
+        board.string = text
+        
+        if let navController = findNavigationController() {
+            navController.coppiedPill()
         }
+        
+        let menu = UIMenuController.shared
+        menu.showMenu(from: self, rect: self.bounds)
+    }
     
-        override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-            return action == #selector(UIResponderStandardEditActions.copy)
-        }
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return action == #selector(UIResponderStandardEditActions.copy)
+    }
 }

@@ -116,14 +116,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func resetUserSettings() {
         if UserDefaults.standard.color(forKey: "selectedTintColor") == tintModel.tints[1].color,
-            UserDefaults.standard.integer(forKey: "selectedTintID") == 1,
-            UserDefaults.standard.integer(forKey: "SelectedPickerRow") == 0,
+           UserDefaults.standard.integer(forKey: "selectedTintID") == 1,
+           UserDefaults.standard.integer(forKey: "SelectedPickerRow") == 0,
            UserDefaults.standard.object(forKey: "SelectedPickerString") == nil,
            UserDefaults.standard.bool(forKey: "HapticState") == true,
            UserDefaults.standard.bool(forKey: "KeepState") == true {
-            if let navigationController = self.navigationController as? NavigationController {
-                navigationController.resetError()
-            }
+            (self.navigationController as? NavigationController)?.resetError()
         } else {
             let secondTintColor = tintModel.tints[1].color
             UserDefaults.standard.setColor(secondTintColor, forKey: "selectedTintColor")
@@ -137,10 +135,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             setIcon(.icon1)
             mainView.resetMenuFunc()
             
-            if let navigationController = self.navigationController as? NavigationController {
-                navigationController.didSelectTintColor()
-                navigationController.resButtonPill()
-            }
+            (self.navigationController as? NavigationController)?.didSelectTintColor()
+            (self.navigationController as? NavigationController)?.resButtonPill()
             
             collectionView?.reloadData()
             UIView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
@@ -402,7 +398,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.textLabel?.font = UIFont.boldSystemFont(ofSize: headerView.textLabel?.font.pointSize ?? 17)
         }
-
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -485,9 +480,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            if let navigationController = self.navigationController as? NavigationController {
-                navigationController.didSelectTintColor()
-            }
+            (self.navigationController as? NavigationController)?.didSelectTintColor()
         }
         
         UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
@@ -639,17 +632,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func resetButtonFunc() {
-        if UserDefaults.standard.bool(forKey: "isMenuChanged") == true {
+        let savedPositions = CoreDataManager.shared.loadCellPosition()
+        let defaultPositions = model.buttons.map { Int($0.id) }
+        
+        if savedPositions == [] || savedPositions == defaultPositions {
+            (self.navigationController as? NavigationController)?.resetError()
+        } else if savedPositions != defaultPositions {
             mainView.resetMenuFunc()
-            if let navController = self.navigationController as? NavigationController {
-                navController.resButtonPill()
-            }
-            print("isMenuChanged:  \(String(describing: UserDefaults.standard.bool(forKey: "isMenuChanged")))")
-        } else if UserDefaults.standard.bool(forKey: "isMenuChanged") == false {
-            if let navController = self.navigationController as? NavigationController {
-                navController.resetError()
-            }
-            print("isMenuChanged:  \(String(describing: UserDefaults.standard.bool(forKey: "isMenuChanged")))")
+            (self.navigationController as? NavigationController)?.resButtonPill()
         }
     }
     
@@ -688,25 +678,21 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func deleteHistoryFetch(entityName: String, context: NSManagedObjectContext) {
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-            
-            do {
-                let count = try context.count(for: fetchRequest)
-                if count == 0 {
-                    if let navController = self.navigationController as? NavigationController {
-                        navController.historyError()
-                    }
-                } else {
-                    if let navController = self.navigationController as? NavigationController {
-                        navController.delHistoryPill()
-                    }
-                    coreData.deleteAllHistory()
-                    coreData.resetBasicState()
-                }
-            } catch {
-                print("deleteHistoryFetch: \(error.localizedDescription)")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        
+        do {
+            let count = try context.count(for: fetchRequest)
+            if count == 0 {
+                (self.navigationController as? NavigationController)?.historyError()
+            } else {
+                (self.navigationController as? NavigationController)?.delHistoryPill()
+                coreData.deleteAllHistory()
+                coreData.resetBasicState()
             }
+        } catch {
+            print("deleteHistoryFetch: \(error.localizedDescription)")
         }
+    }
     
     
     //MARK: - Info

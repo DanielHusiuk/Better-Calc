@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var ButtonsViewOutlet: UIView!
     
@@ -19,8 +19,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var pickerModel = PickerModel()
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var fetchedResultsController: NSFetchedResultsController<CellPosition>!
-    let isChangedPosition = UserDefaults.standard.bool(forKey: "isMenuChanged")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,17 +92,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 model.buttons.first { $0.id == id }
             }
         }
-        
-        if UserDefaults.standard.object(forKey: "isMenuChanged") == nil {
-            UserDefaults.standard.set(false, forKey: "isMenuChanged")
-        }
     }
     
     func resetMenuFunc() {
         CoreDataManager.shared.resetCellPosition()
         model = ButtonsModel()
         collectionView?.reloadData()
-        UserDefaults.standard.set(false, forKey: "isMenuChanged")
     }
     
     func layoutCollection() {
@@ -228,30 +221,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: collectionView))
         case .ended:
             collectionView.endInteractiveMovement()
-            setupFetchedResultsController()
         default:
             collectionView.cancelInteractiveMovement()
         }
-    }
-    
-    func setupFetchedResultsController() {
-        let fetchRequest: NSFetchRequest<CellPosition> = CellPosition.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "position", ascending: true)]
-
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
-
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            print("Fetch failed: \(error)")
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        UserDefaults.standard.set(true, forKey: "isMenuChanged")
-        print("isMenuChanged after save:  \(String(describing: UserDefaults.standard.bool(forKey: "isMenuChanged")))")
     }
     
 }

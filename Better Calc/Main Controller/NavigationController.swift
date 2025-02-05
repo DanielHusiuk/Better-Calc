@@ -13,7 +13,10 @@ class NavigationController: UINavigationController {
     let pill = PillView()
     let tintModel = TintModel()
     let settingsVC = SettingsViewController()
-
+    
+    private static var activePills: [PillView] = []
+    private static let queue = DispatchQueue(label: "pillbox.queue", attributes: .concurrent)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,7 +25,15 @@ class NavigationController: UINavigationController {
         super.viewWillAppear(animated)
         didSelectTintColor()
         settingsVC.updatePreferences()
+        
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    
+    //MARK: - Functions
     
     func didSelectTintColor() {
         if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
@@ -30,44 +41,49 @@ class NavigationController: UINavigationController {
         }
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    static func showPill(message: String, state: Bool, vcView: UIView) {
+        queue.async(flags: .barrier) {
+            DispatchQueue.main.async {
+                activePills = activePills.filter { $0.vcView != nil }
+                
+                if activePills.isEmpty {
+                    let pill = PillView()
+                    pill.isNavigationControllerPresent = true
+                    pill.showTask(message: message, vcView: vcView)
+                    pill.completedTask(state: state)
+                    activePills.append(pill)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        queue.async(flags: .barrier) {
+                            activePills.removeAll { $0 === pill }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func resButtonPill() {
-        pill.isNavigationControllerPresent = true
-        pill.showTask(message: NSLocalizedString("pill_reset_done", comment: ""), vcView: self.view)
-        pill.completedTask(state: true)
+        NavigationController.showPill(message: NSLocalizedString("pill_reset_done", comment: ""), state: true, vcView: self.view)
     }
     
     func resetError() {
-        pill.isNavigationControllerPresent = true
-        pill.showTask(message: NSLocalizedString("pill_cannot_reset", comment: ""), vcView: self.view)
-        pill.completedTask(state: false)
+        NavigationController.showPill(message: NSLocalizedString("pill_cannot_reset", comment: ""), state: false, vcView: self.view)
     }
     
     func delHistoryPill() {
-        pill.isNavigationControllerPresent = true
-        pill.showTask(message: NSLocalizedString("pill_history_deleted", comment: ""), vcView: self.view)
-        pill.completedTask(state: true)
+        NavigationController.showPill(message: NSLocalizedString("pill_history_deleted", comment: ""), state: true, vcView: self.view)
     }
     
     func historyError() {
-        pill.isNavigationControllerPresent = true
-        pill.showTask(message: NSLocalizedString("pill_history_error", comment: ""), vcView: self.view)
-        pill.completedTask(state: false)
+        NavigationController.showPill(message: NSLocalizedString("pill_history_error", comment: ""), state: false, vcView: self.view)
     }
     
     func cannotPasteError() {
-        pill.isNavigationControllerPresent = true
-        pill.showTask(message: NSLocalizedString("pill_cannot_paste", comment: ""), vcView: self.view)
-        pill.completedTask(state: false)
+        NavigationController.showPill(message: NSLocalizedString("pill_cannot_paste", comment: ""), state: false, vcView: self.view)
     }
     
     func coppiedPill() {
-        pill.isNavigationControllerPresent = true
-        pill.showTask(message: NSLocalizedString("pill_result_copied", comment: ""), vcView: self.view)
-        pill.completedTask(state: true)
+        NavigationController.showPill(message: NSLocalizedString("pill_result_copied", comment: ""), state: true, vcView: self.view)
     }
-    
 }

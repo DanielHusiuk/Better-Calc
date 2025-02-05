@@ -13,7 +13,7 @@ let modelButtons = buttonModel.buttons
 class PickerModel: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var selectedSegueIdentifier: String?
-
+    
     lazy var pickers: [(String, String)] = {
         var allPickers: [(String, String)] = [(NSLocalizedString("settings_none", comment: ""), "")]
         let dynamicPickers = modelButtons.map { ($0.text, $0.segue) }
@@ -21,7 +21,7 @@ class PickerModel: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
         allPickers.removeLast()
         return allPickers
     }()
-
+    
     var pickerOptions: [String] {
         return pickers.map { $0.0 }
     }
@@ -33,7 +33,7 @@ class PickerModel: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickers.count
     }
-        
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickers[row].0
     }
