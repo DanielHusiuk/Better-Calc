@@ -308,6 +308,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" image="multiply" catalog="system" cornerStyle="large">
                                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="operationButtonPressed:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="21R-cF-j6J"/>
@@ -359,6 +360,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" image="minus" catalog="system" cornerStyle="large">
                                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="operationButtonPressed:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="tRS-Vp-tQv"/>
@@ -410,6 +412,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system" cornerStyle="large">
                                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="operationButtonPressed:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="8ll-px-EgE"/>
@@ -458,6 +461,7 @@
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="filled" image="equal" catalog="system" cornerStyle="large">
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
+                                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="equalsButton:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="Xg1-xj-DXO"/>

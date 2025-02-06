@@ -273,7 +273,7 @@ class BasicViewController: UIViewController {
                             case .division:
                                 WorkingsLabelOutlet.text = text + " ÷ "
                             case .percentage:
-                                let percentageValue = value / 100
+                                let percentageValue = value * 0.01
                                 WorkingsLabelOutlet.text = String(percentageValue)
                                 currentOperation = nil
                             }
@@ -300,7 +300,7 @@ class BasicViewController: UIViewController {
             if secondOperandString.contains("%") {
                 secondOperandString = secondOperandString.replacingOccurrences(of: "%", with: "")
                 if let percentageValue = Double(secondOperandString) {
-                    secondOperand = firstOperand * (percentageValue / 100)
+                    secondOperand = firstOperand * (percentageValue * 0.01)
                 }
             } else {
                 secondOperand = Double(secondOperandString) ?? 0.0
