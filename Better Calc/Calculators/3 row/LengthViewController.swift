@@ -13,6 +13,10 @@ class LengthViewController: UIViewController {
     @IBOutlet weak var FromNumberImageOutlet: UIImageView!
     @IBOutlet weak var ToNumberImageOutlet: UIImageView!
     
+    @IBOutlet weak var FromTextFieldOutlet: UITextField!
+    @IBOutlet weak var FromButtonOutlet: UIButton!
+    @IBOutlet weak var ToButtonOutlet: UIButton!
+    
     @IBOutlet var ShadowButtonsOutlet: [UIButton]!
 
     override func viewDidLoad() {
@@ -64,5 +68,25 @@ class LengthViewController: UIViewController {
             button.layer.masksToBounds = false
         }
     }
+    
+    
+    //MARK: - Buttons Functions
+    
+    @IBAction func EraseButton(_ sender: UIButton) {
+        FromTextFieldOutlet.text?.removeLast()
+    }
+    
+    @IBAction func ChangeButton(_ sender: UIButton) {
+        //unit change functionality
+    }
+    
+    @IBAction func AllClearButton(_ sender: UIButton) {
+        FromTextFieldOutlet.text? = "0"
+    }
+    
+    @IBAction func NumberButton(_ sender: UIButton) {
 
+    }
+    
+    
 }

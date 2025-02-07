@@ -239,21 +239,21 @@ class BasicViewController: UIViewController {
                 print("Operation button pressed but tag is not valid")
                 return
             }
-            
+
             if let lastDot = WorkingsLabelOutlet.text, lastDot.last == "." {
                 return
             } else {
                 if let text = WorkingsLabelOutlet.text, !text.isEmpty {
                     if currentOperation != nil {
-                        let components = text.components(separatedBy: " ")
-                        guard components.count > 2 else { return }
-                        
-                        let secondOperandString = components[2]
+                        var components = text.components(separatedBy: " ")
+                        guard components.count > 1 else { return }
+
                         if operation == .percentage {
-                            if let secondOperand = Double(secondOperandString) {
-                                let percentageValue = firstOperand! * (secondOperand / 100)
-                                let roundedPercentageValue = Double(round(1000000 * percentageValue) / 1000000)
-                                WorkingsLabelOutlet.text = components[0] + components[1] + String(roundedPercentageValue)
+                            if let lastComponent = components.last, let secondOperand = Double(lastComponent) {
+                                let percentageValue = firstOperand! * (secondOperand * 0.01)
+                                let formattedValue = formatNumber(percentageValue)
+                                components[components.count - 1] = formattedValue
+                                WorkingsLabelOutlet.text = components.joined(separator: " ")
                             }
                             return
                         }
@@ -262,7 +262,7 @@ class BasicViewController: UIViewController {
                             firstOperand = value
                             isTypingNumber = false
                             currentOperation = operation
-                            
+
                             switch operation {
                             case .addition:
                                 WorkingsLabelOutlet.text = text + " + "
@@ -274,7 +274,7 @@ class BasicViewController: UIViewController {
                                 WorkingsLabelOutlet.text = text + " ÷ "
                             case .percentage:
                                 let percentageValue = value * 0.01
-                                WorkingsLabelOutlet.text = String(percentageValue)
+                                WorkingsLabelOutlet.text = formatNumber(percentageValue)
                                 currentOperation = nil
                             }
                         }
@@ -286,15 +286,15 @@ class BasicViewController: UIViewController {
     
     @IBAction func equalsButton(_ sender: UIButton) {
         guard let operation = currentOperation, let text = WorkingsLabelOutlet.text else { return }
-        
+
         let components = text.components(separatedBy: " ")
         guard components.count >= 2 else { return }
-        
+
         let firstOperandString = components[0]
         guard let firstOperand = Double(firstOperandString) else { return }
-        
+
         var secondOperand: Double = 0.0
-        
+
         if components.count > 2 {
             var secondOperandString = components[2]
             if secondOperandString.contains("%") {
@@ -306,11 +306,11 @@ class BasicViewController: UIViewController {
                 secondOperand = Double(secondOperandString) ?? 0.0
             }
         }
-        
+
         if secondOperand == 0 {
             return
         }
-        
+
         var result: Double?
         switch operation {
         case .addition:
@@ -326,33 +326,18 @@ class BasicViewController: UIViewController {
         case .percentage:
             result = secondOperand
         }
-        
+
         if let result = result {
-            if abs(result) >= 1e9 || abs(result) <= -1e9 {
-                let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .scientific
-                numberFormatter.maximumFractionDigits = 2
-                numberFormatter.exponentSymbol = "e"
-                numberFormatter.positiveFormat = "0.##E+0"
-                numberFormatter.negativeFormat = "-0.##E+0"
-                
-                if let formattedResult = numberFormatter.string(from: NSNumber(value: result)) {
-                    ResultsLabelOutlet.text = formattedResult
-                }
-            } else if result.truncatingRemainder(dividingBy: 1) != 0 {
-                let roundedResult = Double(round(1000000 * result) / 1000000)
-                ResultsLabelOutlet.text = String(roundedResult)
-            } else {
-                ResultsLabelOutlet.text = String(format: "%.0f", result)
-            }
+            ResultsLabelOutlet.text = formatNumber(result)
+
             isTypingNumber = false
             
             if let resultText = ResultsLabelOutlet.text, resultText.contains("e") {
                 return
-            } else if PasteResultButtonOutlet.isHidden == true {
+            } else if PasteResultButtonOutlet.isHidden {
                 checkPasteButton()
             }
-            
+
             let historyItems = coreData.fetchObjects(with: 1)
             if let lastOperation = WorkingsLabelOutlet.text, lastOperation.last == " " {
                 return
@@ -365,9 +350,17 @@ class BasicViewController: UIViewController {
                 }
             }
         }
+
         guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+    }
+
+    func formatNumber(_ number: Double) -> String {
+        if abs(number) < 1e-6, number != 0 {
+            return String(format: "%.10f", number).replacingOccurrences(of: "\\.?0+$", with: "", options: .regularExpression)
+        }
+        return String(number)
     }
     
     @IBAction func decimalButton(_ sender: UIButton) {
@@ -390,46 +383,37 @@ class BasicViewController: UIViewController {
     @IBAction @objc func eraseButton(_ sender: UIButton) {
         if var text = WorkingsLabelOutlet.text, !text.isEmpty {
             let operations = "+−×÷"
-            let trimmedText = text.trimmingCharacters(in: .whitespaces)
             
-            if !trimmedText.isEmpty {
-                let lastChar = trimmedText.last
-                if let lastChar = lastChar, operations.contains(lastChar) {
-                    let range = trimmedText.range(of: " \(lastChar)", options: .backwards)
-                    if let range = range {
-                        text.removeSubrange(range)
-                    } else {
-                        text.removeLast()
-                    }
-                    
-                    WorkingsLabelOutlet.text = text.trimmingCharacters(in: .whitespaces)
-                    currentOperation = nil
-                    isTypingNumber = true
-                } else {
-                    text = String(text.dropLast())
-                    if text.last == " " {
-                        text = String(text.dropLast())
-                    }
-                    
-                    WorkingsLabelOutlet.text = text.trimmingCharacters(in: .whitespaces)
-                    
-                    if text.isEmpty {
-                        WorkingsLabelOutlet.text = "0"
-                        ResultsLabelOutlet.text = "0"
-                        isTypingNumber = false
-                        
-                        UIView.animate(withDuration: 0.1, animations: {
-                            self.PasteResultButtonOutlet.alpha = 0.0
-                            self.EraseButtonOutlet.alpha = 0.0
-                        })
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            self.PasteResultButtonOutlet.isHidden = true
-                            self.EraseButtonOutlet.isHidden = true
-                        }
-                    }
+            if text.hasSuffix(" ") {
+                text.removeLast()
+            }
+
+            if let lastChar = text.last, operations.contains(lastChar) {
+                text = String(text.dropLast(2))
+                currentOperation = nil
+                isTypingNumber = true
+            } else {
+                text = String(text.dropLast())
+            }
+            
+            WorkingsLabelOutlet.text = text
+            
+            if text.isEmpty {
+                WorkingsLabelOutlet.text = "0"
+                ResultsLabelOutlet.text = "0"
+                isTypingNumber = false
+                
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.PasteResultButtonOutlet.alpha = 0.0
+                    self.EraseButtonOutlet.alpha = 0.0
+                })
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.PasteResultButtonOutlet.isHidden = true
+                    self.EraseButtonOutlet.isHidden = true
                 }
             }
         }
+
         guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
         let generator = UIImpactFeedbackGenerator(style: .rigid)
         generator.impactOccurred()

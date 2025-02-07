@@ -908,7 +908,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="hDL-w9-fNJ"/>
+                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="ibI-z8-ly4"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jws-yv-sUX">
@@ -920,7 +920,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="o3W-ka-zgt"/>
+                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="aRs-Zh-MGx"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSo-IW-8Zb">
@@ -932,7 +932,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="Fzq-aU-qxx"/>
+                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="e7t-Sx-ymg"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGn-XG-0fR" userLabel="Erase">
@@ -945,7 +945,7 @@
                                                             <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="IQI-Wk-PK8"/>
+                                                            <action selector="EraseButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="BMW-5y-1EF"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -971,7 +971,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="OWw-Ix-YUi"/>
+                                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="PzP-tx-SQv"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5l-3i-2Ms">
@@ -983,7 +983,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="AtM-St-En3"/>
+                                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="SPq-8d-aCE"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1000,7 +1000,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="fB0-Fd-c4v"/>
+                                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="SHC-vi-FoV"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjA-vd-H7I">
@@ -1012,7 +1012,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="gC9-sd-Eef"/>
+                                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="5Hs-oW-QIl"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1034,7 +1034,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="ZFa-bA-UjS"/>
+                                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="az3-4d-4Gq"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Z4-qA-7sS">
@@ -1046,7 +1046,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="8CQ-lE-0jZ"/>
+                                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="o5Y-ic-iwt"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1064,7 +1064,7 @@
                                                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="are-hZ-jfy"/>
+                                                                    <action selector="ChangeButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="Cik-vk-nQf"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -1087,7 +1087,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="ZvU-Cd-gdL"/>
+                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="AtU-oV-e7d"/>
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="f8R-oj-0ad">
@@ -1102,7 +1102,7 @@
                                                                     <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="decimalButton:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="J9Z-k8-1P8"/>
+                                                                    <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="Ixd-v2-HPM"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hH-LR-1el" userLabel="Clear">
@@ -1114,7 +1114,7 @@
                                                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="numberButtonTapped:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="tFN-yW-rpd"/>
+                                                                    <action selector="AllClearButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="hdO-Nz-FnH"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -1167,7 +1167,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CalculatorImageOutlet" destination="zmN-xm-Csw" id="59U-OG-JCN"/>
+                        <outlet property="FromButtonOutlet" destination="xOW-Zd-zs3" id="g6N-Uq-1fQ"/>
                         <outlet property="FromNumberImageOutlet" destination="MsC-pX-bLg" id="QNw-sY-gq3"/>
+                        <outlet property="FromTextFieldOutlet" destination="60F-Xe-BY3" id="O8U-Jt-70Z"/>
+                        <outlet property="ToButtonOutlet" destination="38k-dM-wz4" id="vvR-7h-xTh"/>
                         <outlet property="ToNumberImageOutlet" destination="ygT-sI-8GQ" id="zs8-VB-fy0"/>
                         <outletCollection property="ShadowButtonsOutlet" destination="9hH-LR-1el" collectionClass="NSMutableArray" id="eGl-tI-joN"/>
                         <outletCollection property="ShadowButtonsOutlet" destination="NSo-IW-8Zb" collectionClass="NSMutableArray" id="vLw-iY-ewW"/>
@@ -4217,16 +4220,16 @@
             <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
