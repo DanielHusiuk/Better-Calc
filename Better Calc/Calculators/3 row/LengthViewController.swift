@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LengthViewController: UIViewController {
     
@@ -13,17 +14,20 @@ class LengthViewController: UIViewController {
     @IBOutlet weak var FromNumberImageOutlet: UIImageView!
     @IBOutlet weak var ToNumberImageOutlet: UIImageView!
     
-    @IBOutlet weak var FromTextFieldOutlet: UITextField!
+    @IBOutlet weak var FromLabelOutlet: UILabel!
     @IBOutlet weak var FromButtonOutlet: UIButton!
     @IBOutlet weak var ToButtonOutlet: UIButton!
     
     @IBOutlet var ShadowButtonsOutlet: [UIButton]!
-
+    
+    var selectedOption: UnitLength = .centimeters
+    let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        overrideUserInterfaceStyle = .dark
+        updatePreferences()
     }
-        
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         applyShadowWithInsets(to: FromNumberImageOutlet, cornerRadius: 20)
@@ -33,7 +37,13 @@ class LengthViewController: UIViewController {
     }
     
     
-    //MARK: - View Shadow
+    //MARK: - View preferences
+    
+    func updatePreferences() {
+        overrideUserInterfaceStyle = .dark
+        UnitMenu(in: FromButtonOutlet)
+        UnitMenu(in: ToButtonOutlet)
+    }
     
     func applyShadowWithInsets(to view: UIView, cornerRadius: CGFloat) {
         view.layer.masksToBounds = false
@@ -41,7 +51,7 @@ class LengthViewController: UIViewController {
         view.layer.shadowOpacity = 0.2
         view.layer.shadowOffset = CGSize(width: 0, height: 3)
         view.layer.shadowRadius = 8
-
+        
         let insetBounds = view.bounds.insetBy(dx: -5, dy: -5)
         let shadowPath = UIBezierPath(roundedRect: insetBounds, cornerRadius: cornerRadius)
         view.layer.shadowPath = shadowPath.cgPath
@@ -55,10 +65,10 @@ class LengthViewController: UIViewController {
         let shadowOffset = CGSize(width: 0, height: 0)
         let shadowOpacity: Float = 0.4
         let shadowRadius: CGFloat = 8
-
+        
         for button in ShadowButtonsOutlet {
             if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
-               button.tintColor = selectedTintColor
+                button.tintColor = selectedTintColor
             }
             button.layer.shadowColor = shadowColor
             button.layer.shadowOffset = shadowOffset
@@ -73,20 +83,86 @@ class LengthViewController: UIViewController {
     //MARK: - Buttons Functions
     
     @IBAction func EraseButton(_ sender: UIButton) {
-        FromTextFieldOutlet.text?.removeLast()
+        if var text = FromLabelOutlet.text, text != "0" {
+            if !text.isEmpty {
+                text.removeLast()
+            }
+            FromLabelOutlet.text = text
+            if text.isEmpty {
+                AnimationManager().animateTextSlide(label: FromLabelOutlet, newText: "0")
+            }
+            
+            guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+            let generator = UIImpactFeedbackGenerator(style: .rigid)
+            generator.impactOccurred()
+        }
     }
     
-    @IBAction func ChangeButton(_ sender: UIButton) {
+    @IBAction func ChangeUnitButton(_ sender: UIButton) {
         //unit change functionality
     }
     
     @IBAction func AllClearButton(_ sender: UIButton) {
-        FromTextFieldOutlet.text? = "0"
+        if FromLabelOutlet.text == "0" { return }
+        AnimationManager().animateTextSlide(label: FromLabelOutlet, newText: "0")
+        
+        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
     }
     
-    @IBAction func NumberButton(_ sender: UIButton) {
-
+    @IBAction func NumberButtons(_ sender: UIButton) {
+        guard let buttonNumber = sender.titleLabel?.text else { return }
+        guard var currentText = FromLabelOutlet.text else { return }
+        
+        let parts = currentText.components(separatedBy: ".")
+        let hasDecimal = currentText.contains(".")
+        
+        if hasDecimal, parts[1].count >= 6 {
+            return
+        }
+        if !hasDecimal, currentText.count >= 9 {
+            return
+        }
+        if currentText == "0" {
+            currentText = ""
+        }
+        FromLabelOutlet.text = currentText + buttonNumber
     }
+    
+    @IBAction func DecimalButton(_ sender: UIButton) {
+        if let fromText = FromLabelOutlet.text {
+            guard !fromText.contains(".") else { return }
+            FromLabelOutlet.text = fromText + "."
+        }
+    }
+    
+    
+    //MARK: - Units Logic
+    
+    func UnitMenu(in button: UIButton) {
+        let checkmarkImage = UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+        let actions = UnitsModel().lengthDictionary.keys
+            .sorted{ ($0.description) < ($1.description) }
+            .enumerated()
+            .map { index, option in
+            let description = UnitsModel().lengthDictionary[option]
+            return UIAction(
+                title: option.symbol,
+                subtitle: description,
+                image: option == selectedOption ? checkmarkImage!.withTintColor(selectedTintColor, renderingMode: .alwaysOriginal) : nil
+            ) { _ in
+                self.selectedOption = option
+                button.setTitle("\(option.symbol) ", for: .normal)
+                self.UnitMenu(in: button)
+            }
+        }
+        
+        let menu = UIMenu(title: "Choose unit:", options: .displayInline, children: actions)
+        button.menu = menu
+        button.showsMenuAsPrimaryAction = true
+    }
+    
     
     
 }

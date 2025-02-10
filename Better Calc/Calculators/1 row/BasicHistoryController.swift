@@ -19,6 +19,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     var coreData = CoreDataManager.shared
     var historyId: Int16 = 1
     var isEdit: Bool = false
+    let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +49,9 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func buttonsTint() {
-        if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
-            self.CloseBarButton.tintColor = selectedTintColor
-            self.EditBarButton.tintColor = selectedTintColor
-            self.HistoryTableView.tintColor = selectedTintColor
-        }
+        CloseBarButton.tintColor = selectedTintColor
+        EditBarButton.tintColor = selectedTintColor
+        HistoryTableView.tintColor = selectedTintColor
     }
     
     func toolBar(_ sender:UIToolbar) {

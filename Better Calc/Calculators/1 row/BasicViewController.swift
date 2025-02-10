@@ -32,6 +32,7 @@ class BasicViewController: UIViewController {
     
     var coreData = CoreDataManager.shared
     var isTypingNumber = false
+    let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")!
     
     enum Operation: Int {
         case addition = 11
@@ -130,9 +131,7 @@ class BasicViewController: UIViewController {
         let shadowRadius: CGFloat = 8
         
         for button in ShadowButtonsOutlet {
-            if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
-                button.tintColor = selectedTintColor
-            }
+            button.tintColor = selectedTintColor
             button.layer.shadowColor = shadowColor
             button.layer.shadowOffset = shadowOffset
             button.layer.shadowOpacity = shadowOpacity
@@ -190,8 +189,13 @@ class BasicViewController: UIViewController {
     // MARK: - Function Buttons
     
     @IBAction func allClearButton(_ sender: UIButton!) {
-        WorkingsLabelOutlet.text = "0"
-        ResultsLabelOutlet.text = "0"
+        if WorkingsLabelOutlet.text == "0" { return }
+        AnimationManager().animateTextSlide(label: WorkingsLabelOutlet, newText: "0")
+        
+        if ResultsLabelOutlet.text != "0" {
+            AnimationManager().animateTextSlide(label: ResultsLabelOutlet, newText: "0")
+        }
+
         firstOperand = nil
         currentOperation = nil
         isTypingNumber = false
@@ -399,8 +403,11 @@ class BasicViewController: UIViewController {
             WorkingsLabelOutlet.text = text
             
             if text.isEmpty {
-                WorkingsLabelOutlet.text = "0"
-                ResultsLabelOutlet.text = "0"
+                AnimationManager().animateTextSlide(label: WorkingsLabelOutlet, newText: "0")
+                
+                if ResultsLabelOutlet.text != "0" {
+                    AnimationManager().animateTextSlide(label: ResultsLabelOutlet, newText: "0")
+                }
                 isTypingNumber = false
                 
                 UIView.animate(withDuration: 0.1, animations: {

@@ -154,7 +154,7 @@
                                                     <action selector="pasteResult:" destination="UDw-yk-iwJ" eventType="touchUpInside" id="CiQ-PG-Wor"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.050000000000000003" translatesAutoresizingMaskIntoConstraints="NO" id="ead-SH-Mgm" userLabel="Workings Label" customClass="PasteLabel" customModule="Better_Calc" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="ead-SH-Mgm" userLabel="Workings Label" customClass="PasteLabel" customModule="Better_Calc" customModuleProvider="target">
                                                 <rect key="frame" x="267" y="16" width="19.333333333333314" height="69.666666666666671"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                                 <color key="textColor" white="0.69999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -783,26 +783,33 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOW-Zd-zs3">
-                                                        <rect key="frame" x="257.33333333333331" y="0.0" width="72.666666666666686" height="120"/>
+                                                    <label opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="ZpE-7j-gnM" customClass="PasteLabel" customModule="Better_Calc" customModuleProvider="target">
+                                                        <rect key="frame" x="218" y="39" width="22.333333333333332" height="42"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOW-Zd-zs3">
+                                                        <rect key="frame" x="247.66666666666671" y="0.0" width="82.333333333333343" height="120"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" image="chevron.up.chevron.down" catalog="system" imagePlacement="trailing" title="cm " cornerStyle="medium" titleAlignment="trailing">
+                                                        <buttonConfiguration key="configuration" style="filled" image="chevron.up.chevron.down" catalog="system" imagePlacement="trailing" title="dam " cornerStyle="medium">
                                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
-                                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="baseForegroundColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.minimumScaleFactor">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.lineBreakMode">
+                                                                <integer key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </button>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="60F-Xe-BY3">
-                                                        <rect key="frame" x="226" y="40" width="23" height="40"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                    </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -810,16 +817,17 @@
                                                     <constraint firstItem="xOW-Zd-zs3" firstAttribute="top" secondItem="0de-hJ-EyQ" secondAttribute="top" id="4Qi-QX-Fd4"/>
                                                     <constraint firstAttribute="bottom" secondItem="MsC-pX-bLg" secondAttribute="bottom" id="5s5-FI-1V3"/>
                                                     <constraint firstAttribute="bottom" secondItem="7Dl-Kq-wVB" secondAttribute="bottom" id="6D7-41-JN0"/>
-                                                    <constraint firstItem="xOW-Zd-zs3" firstAttribute="leading" secondItem="60F-Xe-BY3" secondAttribute="trailing" constant="8.3300000000000001" id="6Sx-Kz-Uw1"/>
                                                     <constraint firstItem="7Dl-Kq-wVB" firstAttribute="top" secondItem="0de-hJ-EyQ" secondAttribute="top" id="8Nk-Ac-NuO"/>
-                                                    <constraint firstAttribute="trailing" secondItem="xOW-Zd-zs3" secondAttribute="trailing" id="DBq-bZ-VSA"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ZpE-7j-gnM" secondAttribute="trailing" constant="89.670000000000002" id="Bc9-yj-HFs"/>
                                                     <constraint firstItem="MsC-pX-bLg" firstAttribute="leading" secondItem="0de-hJ-EyQ" secondAttribute="leading" id="HJG-VL-iTu"/>
-                                                    <constraint firstAttribute="bottom" secondItem="60F-Xe-BY3" secondAttribute="bottom" constant="40" id="HeP-8E-CLy"/>
+                                                    <constraint firstItem="xOW-Zd-zs3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0de-hJ-EyQ" secondAttribute="leading" constant="247" id="LMY-Ec-VlR"/>
                                                     <constraint firstItem="MsC-pX-bLg" firstAttribute="top" secondItem="0de-hJ-EyQ" secondAttribute="top" id="RlR-aD-Lg8"/>
-                                                    <constraint firstItem="60F-Xe-BY3" firstAttribute="top" secondItem="0de-hJ-EyQ" secondAttribute="top" constant="40" id="gId-oq-vdI"/>
-                                                    <constraint firstItem="60F-Xe-BY3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Dl-Kq-wVB" secondAttribute="trailing" constant="8" symbolic="YES" id="kyR-n5-l9v"/>
+                                                    <constraint firstItem="ZpE-7j-gnM" firstAttribute="top" secondItem="0de-hJ-EyQ" secondAttribute="top" constant="39" id="UBZ-eJ-kOT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="xOW-Zd-zs3" secondAttribute="trailing" id="jG0-ff-Cew"/>
                                                     <constraint firstAttribute="bottom" secondItem="xOW-Zd-zs3" secondAttribute="bottom" id="lfE-Go-4OB"/>
+                                                    <constraint firstItem="ZpE-7j-gnM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Dl-Kq-wVB" secondAttribute="trailing" constant="8" symbolic="YES" id="ynw-Bl-Gid"/>
                                                     <constraint firstItem="7Dl-Kq-wVB" firstAttribute="leading" secondItem="0de-hJ-EyQ" secondAttribute="leading" constant="15" id="ynw-sT-amh"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ZpE-7j-gnM" secondAttribute="bottom" constant="39" id="yoe-4y-qNV"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="hxJ-Li-6GJ" userLabel="ToNumberOutlet">
@@ -843,47 +851,48 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38k-dM-wz4">
-                                                        <rect key="frame" x="257.33333333333331" y="0.0" width="72.666666666666686" height="120"/>
+                                                    <label opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="ygO-qP-6kG" customClass="CopyLabel" customModule="Better_Calc" customModuleProvider="target">
+                                                        <rect key="frame" x="218" y="39" width="22.333333333333332" height="42"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38k-dM-wz4">
+                                                        <rect key="frame" x="247.66666666666671" y="0.0" width="82.333333333333343" height="120"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" image="chevron.up.chevron.down" catalog="system" imagePlacement="trailing" title="cm " cornerStyle="medium" titleAlignment="trailing">
+                                                        <buttonConfiguration key="configuration" style="filled" image="chevron.up.chevron.down" catalog="system" imagePlacement="trailing" title="dam " cornerStyle="medium" titleAlignment="trailing">
                                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
-                                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                                            <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                                             <color key="baseForegroundColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                     </button>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="8dP-if-hj9">
-                                                        <rect key="frame" x="226" y="40" width="23" height="40"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                    </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="8dP-if-hj9" secondAttribute="bottom" constant="40" id="5SC-qJ-Qld"/>
                                                     <constraint firstItem="rBU-2f-Cp2" firstAttribute="leading" secondItem="hxJ-Li-6GJ" secondAttribute="leading" constant="15" id="F47-6V-taJ"/>
-                                                    <constraint firstItem="8dP-if-hj9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rBU-2f-Cp2" secondAttribute="trailing" constant="8" symbolic="YES" id="Ire-O2-wZY"/>
-                                                    <constraint firstItem="8dP-if-hj9" firstAttribute="top" secondItem="hxJ-Li-6GJ" secondAttribute="top" constant="40" id="JPS-Md-iFC"/>
                                                     <constraint firstAttribute="trailing" secondItem="ygT-sI-8GQ" secondAttribute="trailing" id="LpF-bB-9J8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="38k-dM-wz4" secondAttribute="trailing" id="TFc-2U-BFD"/>
                                                     <constraint firstAttribute="bottom" secondItem="rBU-2f-Cp2" secondAttribute="bottom" id="TPo-MW-hKq"/>
-                                                    <constraint firstItem="38k-dM-wz4" firstAttribute="leading" secondItem="8dP-if-hj9" secondAttribute="trailing" constant="8.3300000000000001" id="TZt-wT-wkI"/>
+                                                    <constraint firstItem="ygO-qP-6kG" firstAttribute="top" secondItem="hxJ-Li-6GJ" secondAttribute="top" constant="39" id="U03-rV-RG8"/>
                                                     <constraint firstAttribute="bottom" secondItem="38k-dM-wz4" secondAttribute="bottom" id="UaV-bc-HbI"/>
-                                                    <constraint firstAttribute="trailing" secondItem="38k-dM-wz4" secondAttribute="trailing" id="XSQ-DY-dbf"/>
                                                     <constraint firstItem="rBU-2f-Cp2" firstAttribute="top" secondItem="hxJ-Li-6GJ" secondAttribute="top" id="YTj-lM-eiQ"/>
                                                     <constraint firstItem="38k-dM-wz4" firstAttribute="top" secondItem="hxJ-Li-6GJ" secondAttribute="top" id="aKI-9x-aV7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ygO-qP-6kG" secondAttribute="bottom" constant="39" id="c9C-qi-3Xi"/>
                                                     <constraint firstAttribute="bottom" secondItem="ygT-sI-8GQ" secondAttribute="bottom" id="cxh-hQ-i8d"/>
                                                     <constraint firstItem="ygT-sI-8GQ" firstAttribute="leading" secondItem="hxJ-Li-6GJ" secondAttribute="leading" id="eWG-tS-IlM"/>
+                                                    <constraint firstItem="38k-dM-wz4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hxJ-Li-6GJ" secondAttribute="leading" constant="247" id="fqj-uL-iGX"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ygO-qP-6kG" secondAttribute="trailing" constant="89.670000000000002" id="hzI-VT-vaM"/>
                                                     <constraint firstItem="ygT-sI-8GQ" firstAttribute="top" secondItem="hxJ-Li-6GJ" secondAttribute="top" id="lqw-R0-kIk"/>
+                                                    <constraint firstItem="ygO-qP-6kG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rBU-2f-Cp2" secondAttribute="trailing" constant="8" symbolic="YES" id="zw0-p0-TD4"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="xOW-Zd-zs3" firstAttribute="width" secondItem="38k-dM-wz4" secondAttribute="width" id="6AV-lw-FnT"/>
                                             <constraint firstAttribute="bottom" secondItem="hxJ-Li-6GJ" secondAttribute="bottom" id="R1r-cA-Dgp"/>
                                             <constraint firstAttribute="trailing" secondItem="hxJ-Li-6GJ" secondAttribute="trailing" id="ZLz-CM-7zE"/>
                                             <constraint firstItem="0de-hJ-EyQ" firstAttribute="leading" secondItem="Lhz-s9-a92" secondAttribute="leading" id="pdw-HS-bVX"/>
@@ -908,7 +917,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="ibI-z8-ly4"/>
+                                                            <action selector="NumberButtons:" destination="wfu-ML-8A6" eventType="touchUpInside" id="p2r-gX-YbL"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jws-yv-sUX">
@@ -920,7 +929,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="aRs-Zh-MGx"/>
+                                                            <action selector="NumberButtons:" destination="wfu-ML-8A6" eventType="touchUpInside" id="4vF-N5-hiG"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSo-IW-8Zb">
@@ -932,7 +941,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="e7t-Sx-ymg"/>
+                                                            <action selector="NumberButtons:" destination="wfu-ML-8A6" eventType="touchUpInside" id="Tky-Aj-RcZ"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGn-XG-0fR" userLabel="Erase">
@@ -971,7 +980,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="PzP-tx-SQv"/>
+                                                                            <action selector="NumberButtons:" destination="wfu-ML-8A6" eventType="touchUpInside" id="uGh-5H-uzS"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5l-3i-2Ms">
@@ -983,7 +992,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="SPq-8d-aCE"/>
+                                                                            <action selector="NumberButtons:" destination="wfu-ML-8A6" eventType="touchUpInside" id="BjV-Wn-6YR"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1000,7 +1009,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="SHC-vi-FoV"/>
+                                                                            <action selector="NumberButtons:" destination="wfu-ML-8A6" eventType="touchUpInside" id="xpB-gc-uvw"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjA-vd-H7I">
@@ -1012,7 +1021,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="5Hs-oW-QIl"/>
+                                                                            <action selector="NumberButtons:" destination="wfu-ML-8A6" eventType="touchUpInside" id="a7g-ue-0Nd"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1034,7 +1043,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="az3-4d-4Gq"/>
+                                                                            <action selector="NumberButtons:" destination="wfu-ML-8A6" eventType="touchUpInside" id="dD2-re-dEx"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Z4-qA-7sS">
@@ -1046,7 +1055,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="o5Y-ic-iwt"/>
+                                                                            <action selector="NumberButtons:" destination="wfu-ML-8A6" eventType="touchUpInside" id="iYB-xm-2Be"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1064,7 +1073,7 @@
                                                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="ChangeButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="Cik-vk-nQf"/>
+                                                                    <action selector="ChangeUnitButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="WJc-61-z6E"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -1087,7 +1096,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="AtU-oV-e7d"/>
+                                                            <action selector="NumberButtons:" destination="wfu-ML-8A6" eventType="touchUpInside" id="uHm-kX-Wy5"/>
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="f8R-oj-0ad">
@@ -1102,7 +1111,7 @@
                                                                     <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="NumberButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="Ixd-v2-HPM"/>
+                                                                    <action selector="DecimalButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="jI6-WK-fQe"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hH-LR-1el" userLabel="Clear">
@@ -1168,8 +1177,8 @@
                     <connections>
                         <outlet property="CalculatorImageOutlet" destination="zmN-xm-Csw" id="59U-OG-JCN"/>
                         <outlet property="FromButtonOutlet" destination="xOW-Zd-zs3" id="g6N-Uq-1fQ"/>
+                        <outlet property="FromLabelOutlet" destination="ZpE-7j-gnM" id="EwB-mO-yLm"/>
                         <outlet property="FromNumberImageOutlet" destination="MsC-pX-bLg" id="QNw-sY-gq3"/>
-                        <outlet property="FromTextFieldOutlet" destination="60F-Xe-BY3" id="O8U-Jt-70Z"/>
                         <outlet property="ToButtonOutlet" destination="38k-dM-wz4" id="vvR-7h-xTh"/>
                         <outlet property="ToNumberImageOutlet" destination="ygT-sI-8GQ" id="zs8-VB-fy0"/>
                         <outletCollection property="ShadowButtonsOutlet" destination="9hH-LR-1el" collectionClass="NSMutableArray" id="eGl-tI-joN"/>
@@ -4220,16 +4229,16 @@
             <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
