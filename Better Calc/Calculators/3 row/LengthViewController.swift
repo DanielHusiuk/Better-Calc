@@ -11,17 +11,18 @@ import CoreData
 class LengthViewController: UIViewController {
     
     @IBOutlet weak var CalculatorImageOutlet: UIImageView!
-    @IBOutlet weak var FromNumberImageOutlet: UIImageView!
-    @IBOutlet weak var ToNumberImageOutlet: UIImageView!
-    
-    @IBOutlet weak var FromLabelOutlet: UILabel!
-    @IBOutlet weak var FromButtonOutlet: UIButton!
-    @IBOutlet weak var ToButtonOutlet: UIButton!
-    
     @IBOutlet var ShadowButtonsOutlet: [UIButton]!
     
-    var selectedOption: UnitLength = .centimeters
+    @IBOutlet weak var FromNumberImageOutlet: UIImageView!
+    @IBOutlet weak var FromLabelOutlet: UILabel!
+    @IBOutlet weak var FromButtonOutlet: UIButton!
+    
+    @IBOutlet weak var ToNumberImageOutlet: UIImageView!
+    @IBOutlet weak var ToLabelOutlet: UILabel!
+    @IBOutlet weak var ToButtonOutlet: UIButton!
+    
     let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")!
+    var selectedUnits: [UIButton: UnitLength] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,15 +119,9 @@ class LengthViewController: UIViewController {
         let parts = currentText.components(separatedBy: ".")
         let hasDecimal = currentText.contains(".")
         
-        if hasDecimal, parts[1].count >= 6 {
-            return
-        }
-        if !hasDecimal, currentText.count >= 9 {
-            return
-        }
-        if currentText == "0" {
-            currentText = ""
-        }
+        if hasDecimal, parts[1].count >= 6 { return }
+        if !hasDecimal, currentText.count >= 9 { return }
+        if currentText == "0" { currentText = "" }
         FromLabelOutlet.text = currentText + buttonNumber
     }
     
@@ -141,6 +136,16 @@ class LengthViewController: UIViewController {
     //MARK: - Units Logic
     
     func UnitMenu(in button: UIButton) {
+        if selectedUnits[FromButtonOutlet] == nil {
+            selectedUnits[FromButtonOutlet] = .centimeters
+        }
+        
+        if selectedUnits[ToButtonOutlet] == nil {
+            selectedUnits[ToButtonOutlet] = .kilometers
+        }
+        
+        let selectedUnit = selectedUnits[button] ?? .meters
+        
         let checkmarkImage = UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         let actions = UnitsModel().lengthDictionary.keys
             .sorted{ ($0.description) < ($1.description) }
@@ -150,9 +155,9 @@ class LengthViewController: UIViewController {
             return UIAction(
                 title: option.symbol,
                 subtitle: description,
-                image: option == selectedOption ? checkmarkImage!.withTintColor(selectedTintColor, renderingMode: .alwaysOriginal) : nil
+                image: option == selectedUnits[button] ? checkmarkImage!.withTintColor(selectedTintColor, renderingMode: .alwaysOriginal) : nil
             ) { _ in
-                self.selectedOption = option
+                self.selectedUnits[button] = option
                 button.setTitle("\(option.symbol) ", for: .normal)
                 self.UnitMenu(in: button)
             }
@@ -161,6 +166,11 @@ class LengthViewController: UIViewController {
         let menu = UIMenu(title: "Choose unit:", options: .displayInline, children: actions)
         button.menu = menu
         button.showsMenuAsPrimaryAction = true
+        button.setTitle("\(selectedUnit.symbol) ", for: .normal)
+        
+        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
+        let generator = UIImpactFeedbackGenerator(style: .rigid)
+        generator.impactOccurred()
     }
     
     

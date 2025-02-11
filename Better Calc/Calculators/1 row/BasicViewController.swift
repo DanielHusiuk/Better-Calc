@@ -364,7 +364,12 @@ class BasicViewController: UIViewController {
         if abs(number) < 1e-6, number != 0 {
             return String(format: "%.10f", number).replacingOccurrences(of: "\\.?0+$", with: "", options: .regularExpression)
         }
-        return String(number)
+        let formattedString = String(number)
+        
+        if formattedString.hasSuffix(".0") {
+                return String(number).replacingOccurrences(of: ".0", with: "")
+        }
+        return String(format: "%.6f", number)
     }
     
     @IBAction func decimalButton(_ sender: UIButton) {

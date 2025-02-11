@@ -5,7 +5,6 @@
 //  Created by Daniel Husiuk on 03.10.2024.
 //
 
-import Foundation
 import UIKit
 
 enum AppIcon: CaseIterable {
