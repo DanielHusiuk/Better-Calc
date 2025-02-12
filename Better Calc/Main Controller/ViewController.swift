@@ -197,9 +197,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             performSegue(withIdentifier: buttonSegue, sender: self)
             print("\(buttonRow.text) Button Pressed")
             
-            guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
+            if UserDefaults.standard.bool(forKey: "HapticState") {
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            }
         }
     }
     

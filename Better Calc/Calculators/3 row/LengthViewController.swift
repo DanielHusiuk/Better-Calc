@@ -93,9 +93,9 @@ class LengthViewController: UIViewController {
                 AnimationManager().animateTextSlide(label: FromLabelOutlet, newText: "0")
             }
             
-            guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-            let generator = UIImpactFeedbackGenerator(style: .rigid)
-            generator.impactOccurred()
+            if UserDefaults.standard.bool(forKey: "HapticState") {
+                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+            }
         }
     }
     
@@ -144,35 +144,39 @@ class LengthViewController: UIViewController {
             selectedUnits[ToButtonOutlet] = .kilometers
         }
         
+        let isFromButton = (button == FromButtonOutlet)
         let selectedUnit = selectedUnits[button] ?? .meters
+        let disabledUnit = isFromButton ? selectedUnits[ToButtonOutlet] : selectedUnits[FromButtonOutlet]
         
         let checkmarkImage = UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         let actions = UnitsModel().lengthDictionary.keys
             .sorted{ ($0.description) < ($1.description) }
             .enumerated()
             .map { index, option in
-            let description = UnitsModel().lengthDictionary[option]
-            return UIAction(
-                title: option.symbol,
-                subtitle: description,
-                image: option == selectedUnits[button] ? checkmarkImage!.withTintColor(selectedTintColor, renderingMode: .alwaysOriginal) : nil
-            ) { _ in
-                self.selectedUnits[button] = option
-                button.setTitle("\(option.symbol) ", for: .normal)
-                self.UnitMenu(in: button)
+                let description = UnitsModel().lengthDictionary[option]
+                let isDisabled = (option == disabledUnit)
+                return UIAction(
+                    title: option.symbol,
+                    subtitle: description,
+                    image: option == selectedUnits[button] ? checkmarkImage!.withTintColor(selectedTintColor, renderingMode: .alwaysOriginal) : nil,
+                    attributes: isDisabled ? .disabled : []
+                ) { _ in
+                    self.selectedUnits[button] = option
+                    button.setTitle("\(option.symbol) ", for: .normal)
+                    self.UnitMenu(in: self.FromButtonOutlet)
+                    self.UnitMenu(in: self.ToButtonOutlet)
+                }
             }
-        }
         
         let menu = UIMenu(title: "Choose unit:", options: .displayInline, children: actions)
         button.menu = menu
         button.showsMenuAsPrimaryAction = true
         button.setTitle("\(selectedUnit.symbol) ", for: .normal)
         
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .rigid)
-        generator.impactOccurred()
+        
+        if UserDefaults.standard.bool(forKey: "HapticState") {
+            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+        }
     }
-    
-    
     
 }

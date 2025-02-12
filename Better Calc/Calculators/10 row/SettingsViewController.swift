@@ -109,9 +109,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }))
         present(alert, animated: true, completion: nil)
         
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
+        if UserDefaults.standard.bool(forKey: "HapticState") {
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        }
     }
     
     func resetUserSettings() {
@@ -374,9 +374,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         default:
             return
         }
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
+        if UserDefaults.standard.bool(forKey: "HapticState") {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
@@ -484,9 +484,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
+        if UserDefaults.standard.bool(forKey: "HapticState") {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
     }
     
     
@@ -684,6 +684,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             let count = try context.count(for: fetchRequest)
             if count == 0 {
                 (self.navigationController as? NavigationController)?.historyError()
+                coreData.resetBasicState()
             } else {
                 (self.navigationController as? NavigationController)?.delHistoryPill()
                 coreData.deleteAllHistory()

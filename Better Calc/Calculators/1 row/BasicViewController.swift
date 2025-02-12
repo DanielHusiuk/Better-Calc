@@ -209,9 +209,9 @@ class BasicViewController: UIViewController {
             self.EraseButtonOutlet.isHidden = true
         }
         
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
+        if UserDefaults.standard.bool(forKey: "HapticState") {
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        }
     }
     
     @IBAction func plusMinusButton(_ sender: UIButton) {
@@ -355,21 +355,18 @@ class BasicViewController: UIViewController {
             }
         }
 
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
+        if UserDefaults.standard.bool(forKey: "HapticState") {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
     }
 
     func formatNumber(_ number: Double) -> String {
-        if abs(number) < 1e-6, number != 0 {
-            return String(format: "%.10f", number).replacingOccurrences(of: "\\.?0+$", with: "", options: .regularExpression)
+        if abs(number) >= 1e6 || (abs(number) < 1e-6 && number != 0) {
+            return String(format: "%.8e", number)
+        } else {
+            let formattedString = String(format: "%.6f", number)
+            return formattedString.replacingOccurrences(of: "\\.?0+$", with: "", options: .regularExpression)
         }
-        let formattedString = String(number)
-        
-        if formattedString.hasSuffix(".0") {
-                return String(number).replacingOccurrences(of: ".0", with: "")
-        }
-        return String(format: "%.6f", number)
     }
     
     @IBAction func decimalButton(_ sender: UIButton) {
@@ -426,9 +423,9 @@ class BasicViewController: UIViewController {
             }
         }
 
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .rigid)
-        generator.impactOccurred()
+        if UserDefaults.standard.bool(forKey: "HapticState") {
+            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+        }
     }
     
     @IBAction func numberButtonTapped(_ sender: UIButton) {
@@ -486,9 +483,9 @@ class BasicViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.PasteResultButtonOutlet.isHidden = true
         }
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .rigid)
-        generator.impactOccurred()
+        if UserDefaults.standard.bool(forKey: "HapticState") {
+            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+        }
     }
     
 }

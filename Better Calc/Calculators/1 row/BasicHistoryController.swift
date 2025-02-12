@@ -98,9 +98,9 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
                 self.CloseBarButton.isEnabled = true
             })
             
-            guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
+            if UserDefaults.standard.bool(forKey: "HapticState") {
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            }
         } else {
             navigationController?.setToolbarHidden(false, animated: true)
             HistoryTableView.setEditing(true, animated: true)
@@ -154,8 +154,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
             present(chooseAlert, animated: true, completion: nil)
             
             if UserDefaults.standard.bool(forKey: "HapticState") {
-                let generator = UIImpactFeedbackGenerator(style: .medium)
-                generator.impactOccurred()
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             }
             return
         }
@@ -311,9 +310,9 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
             }
             self.dismiss(animated: true, completion: nil)
         }
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .rigid)
-        generator.impactOccurred()
+        if UserDefaults.standard.bool(forKey: "HapticState") {
+            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+        }
     }
     
 }
