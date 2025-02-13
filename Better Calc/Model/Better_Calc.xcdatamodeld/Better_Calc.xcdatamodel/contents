@@ -11,6 +11,21 @@
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="position" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="ConverterHistoryItem" representedClassName="ConverterHistoryItem" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="fromButton" optional="YES" attributeType="String"/>
+        <attribute name="fromText" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="toButton" optional="YES" attributeType="String"/>
+        <attribute name="toText" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ConverterState" representedClassName="ConverterState" syncable="YES" codeGenerationType="class">
+        <attribute name="fromButton" optional="YES" attributeType="String"/>
+        <attribute name="fromText" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="toButton" optional="YES" attributeType="String"/>
+        <attribute name="toText" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="HistoryItem" representedClassName=".HistoryItem" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>

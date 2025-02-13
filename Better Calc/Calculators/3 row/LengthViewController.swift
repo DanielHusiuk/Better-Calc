@@ -29,6 +29,14 @@ class LengthViewController: UIViewController {
         updatePreferences()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         applyShadowWithInsets(to: FromNumberImageOutlet, cornerRadius: 20)
@@ -58,6 +66,11 @@ class LengthViewController: UIViewController {
         view.layer.shadowPath = shadowPath.cgPath
     }
     
+    
+    // MARK: - Save/Load State
+    
+    
+
     
     // MARK: - Button Preferences
     
@@ -91,25 +104,41 @@ class LengthViewController: UIViewController {
             FromLabelOutlet.text = text
             if text.isEmpty {
                 AnimationManager().animateTextSlide(label: FromLabelOutlet, newText: "0")
+                AnimationManager().animateTextSlide(label: ToLabelOutlet, newText: "0")
             }
             
             if UserDefaults.standard.bool(forKey: "HapticState") {
                 UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
             }
+            convertFunc()
         }
     }
     
     @IBAction func ChangeUnitButton(_ sender: UIButton) {
-        //unit change functionality
+        let selectedUnit1 = selectedUnits[FromButtonOutlet]!
+        let selectedUnit2 = selectedUnits[ToButtonOutlet]!
+        
+        selectedUnits[FromButtonOutlet] = selectedUnit2
+        selectedUnits[ToButtonOutlet] = selectedUnit1
+
+        UIView.animate(withDuration: 0.3, animations: {
+            UIView.transition(with: self.FromButtonOutlet, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+            UIView.transition(with: self.ToButtonOutlet, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+            UIView.transition(with: self.ToLabelOutlet, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+            self.updatePreferences()
+        })
+        
+        convertFunc()
     }
     
     @IBAction func AllClearButton(_ sender: UIButton) {
         if FromLabelOutlet.text == "0" { return }
         AnimationManager().animateTextSlide(label: FromLabelOutlet, newText: "0")
+        AnimationManager().animateTextSlide(label: ToLabelOutlet, newText: "0")
         
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
+        if UserDefaults.standard.bool(forKey: "HapticState") {
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        }
     }
     
     @IBAction func NumberButtons(_ sender: UIButton) {
@@ -123,6 +152,8 @@ class LengthViewController: UIViewController {
         if !hasDecimal, currentText.count >= 9 { return }
         if currentText == "0" { currentText = "" }
         FromLabelOutlet.text = currentText + buttonNumber
+        
+        convertFunc()
     }
     
     @IBAction func DecimalButton(_ sender: UIButton) {
@@ -137,11 +168,11 @@ class LengthViewController: UIViewController {
     
     func UnitMenu(in button: UIButton) {
         if selectedUnits[FromButtonOutlet] == nil {
-            selectedUnits[FromButtonOutlet] = .centimeters
+            selectedUnits[FromButtonOutlet] = .kilometers
         }
         
         if selectedUnits[ToButtonOutlet] == nil {
-            selectedUnits[ToButtonOutlet] = .kilometers
+            selectedUnits[ToButtonOutlet] = .miles
         }
         
         let isFromButton = (button == FromButtonOutlet)
@@ -156,8 +187,8 @@ class LengthViewController: UIViewController {
                 let description = UnitsModel().lengthDictionary[option]
                 let isDisabled = (option == disabledUnit)
                 return UIAction(
-                    title: option.symbol,
-                    subtitle: description,
+                    title: description!,
+                    subtitle: option.symbol,
                     image: option == selectedUnits[button] ? checkmarkImage!.withTintColor(selectedTintColor, renderingMode: .alwaysOriginal) : nil,
                     attributes: isDisabled ? .disabled : []
                 ) { _ in
@@ -173,9 +204,29 @@ class LengthViewController: UIViewController {
         button.showsMenuAsPrimaryAction = true
         button.setTitle("\(selectedUnit.symbol) ", for: .normal)
         
-        
         if UserDefaults.standard.bool(forKey: "HapticState") {
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+        }
+        convertFunc()
+    }
+    
+    func convertFunc() {
+        guard let doubleValue = Double(FromLabelOutlet.text!) else { return }
+        let selectedUnit1 = selectedUnits[FromButtonOutlet]!
+        let selectedUnit2 = selectedUnits[ToButtonOutlet]!
+        
+        let measurement = Measurement(value: doubleValue, unit: selectedUnit1)
+        let convertValue = measurement.converted(to: selectedUnit2)
+        let formattedResult = String(describing: convertValue).components(separatedBy: " ").first ?? "0"
+        ToLabelOutlet.text = formatNumber(Double(formattedResult) ?? 0)
+    }
+    
+    func formatNumber(_ number: Double) -> String {
+        if abs(number) >= 1e6 || (abs(number) < 1e-6 && number != 0) {
+            return String(format: "%.8e", number)
+        } else {
+            let formattedString = String(format: "%.6f", number)
+            return formattedString.replacingOccurrences(of: "\\.?0+$", with: "", options: .regularExpression)
         }
     }
     

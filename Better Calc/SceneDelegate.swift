@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func applyTheme() {
         let selectedTintID = UserDefaults.standard.integer(forKey: "selectedTintID")
-        let isDarkMode = (selectedTintID == 7) // Якщо 8, то темний режим
+        let isDarkMode = (selectedTintID == 7)
         
         window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
     }

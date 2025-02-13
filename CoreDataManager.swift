@@ -7,7 +7,6 @@
 
 import UIKit
 import CoreData
-import Foundation
 
 public final class CoreDataManager: NSObject {
     public static let shared = CoreDataManager()
@@ -22,13 +21,13 @@ public final class CoreDataManager: NSObject {
     }
     
     func deleteHaptics() {
-        guard UserDefaults.standard.bool(forKey: "HapticState") else { return }
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
+        if UserDefaults.standard.bool(forKey: "HapticState") {
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        }
     }
     
     
-    // MARK: - CollectionView Buttons Logic
+    // MARK: - CollectionView Buttons
     
     public func saveCellPosition(positions: [IndexPath: Int]) {
         resetCellPosition()
@@ -66,7 +65,7 @@ public final class CoreDataManager: NSObject {
     }
     
     
-    //MARK: - History Logic
+    //MARK: - Calculator History
     
     public func createHistoryObject(_ id: Int16, date: Date, result: String, working: String) {
         guard let objectEntityDescription = NSEntityDescription.entity(forEntityName: "HistoryItem", in: context) else { return }
@@ -75,7 +74,6 @@ public final class CoreDataManager: NSObject {
         object.date = date
         object.result = result
         object.working = working
-        
         appDelegate.saveContext()
     }
     
@@ -144,7 +142,88 @@ public final class CoreDataManager: NSObject {
     }
     
     
-    //MARK: - Keep BasicState Data Logic
+    //MARK: - Converter History
+    
+    public func createConverterHistoryObject(_ id: Int16, date: Date, fromText: String, toText: String, fromButton: String, toButton: String) {
+        guard let objectEntityDescription = NSEntityDescription.entity(forEntityName: "ConverterHistoryItem", in: context) else { return }
+        let object = ConverterHistoryItem(entity: objectEntityDescription, insertInto: context)
+        object.id = id
+        object.date = date
+        object.fromText = fromText
+        object.toText = toText
+        object.fromButton = fromButton
+        object.toButton = toButton
+        appDelegate.saveContext()
+    }
+    
+    public func fetchConverterObjects(with id: Int16) -> [ConverterHistoryItem] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        do {
+            return (try context.fetch(fetchRequest) as? [ConverterHistoryItem]) ?? []
+        } catch {
+            print("Failed to fetch data for id: \(id)")
+            return []
+        }
+    }
+    
+    public func fetchConverterObject(with id: Int16) -> ConverterHistoryItem? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        do {
+            let objects = try? context.fetch(fetchRequest) as? [ConverterHistoryItem]
+            return objects?.first
+        }
+    }
+    
+    public func updateConverterObject(with id: Int16, fromText: String, toText: String, fromButton: String, toButton: String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        do {
+            guard let objects = try? context.fetch(fetchRequest) as? [ConverterHistoryItem],
+                  let object = objects.first else { return }
+            object.fromText = fromText
+            object.toText = toText
+            object.fromButton = fromButton
+            object.toButton = toButton
+        }
+        appDelegate.saveContext()
+    }
+    
+    public func deleteAllConverterObjects(with id: Int16) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        do {
+            let objects = try? context.fetch(fetchRequest) as? [ConverterHistoryItem]
+            objects?.forEach{context.delete($0)}
+        }
+        appDelegate.saveContext()
+        deleteHaptics()
+    }
+    
+    public func deleteConverterObject(object: NSManagedObject) {
+        context.delete(object)
+        do {
+            try context.save()
+        } catch {
+            print("Failed to delete object directly: \(error)")
+        }
+        deleteHaptics()
+    }
+    
+    public func deleteAllConverterHistory() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
+        do {
+            let objects = try? context.fetch(fetchRequest) as? [ConverterHistoryItem]
+            objects?.forEach{context.delete($0)}
+        }
+        appDelegate.saveContext()
+        deleteHaptics()
+    }
+    
+    
+    //MARK: - Calculator State
     
     public func saveBasicState(workings: String, results: String, isTypingNumber: Bool, firstOperand: Double?, currentOperation: Int?) {
         resetBasicState()
@@ -156,7 +235,6 @@ public final class CoreDataManager: NSObject {
         state.setValue(isTypingNumber, forKey: "isTypingNumber")
         state.setValue(firstOperand, forKey: "firstOperand")
         state.setValue(currentOperation, forKey: "currentOperation")
-        
         appDelegate.saveContext()
         print("Standard state saved.")
     }
@@ -180,7 +258,47 @@ public final class CoreDataManager: NSObject {
             appDelegate.saveContext()
             print("Standard state reset.")
         } catch {
-            print("Failed to reset standard state: \(error)")
+            print("Failed to reset converter state: \(error)")
+        }
+    }
+    
+    
+    //MARK: - Converter State
+    
+    public func saveConverterState(id: Int16, fromText: String, toText: String, fromButton: String, toButton: String) {
+        resetConverterState()
+        guard let entity = NSEntityDescription.entity(forEntityName: "ConverterState", in: context) else { return }
+        let state = NSManagedObject(entity: entity, insertInto: context)
+        
+        state.setValue(id, forKey: "converterId")
+        state.setValue(fromText, forKey: "fromText")
+        state.setValue(toText, forKey: "toText")
+        state.setValue(fromButton, forKey: "fromButton")
+        state.setValue(toButton, forKey: "toButton")
+        appDelegate.saveContext()
+        print("Converter state saved.")
+    }
+    
+    public func loadConverterState() -> ConverterState? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterState")
+        do {
+            let results = try context.fetch(fetchRequest) as? [ConverterState]
+            return results?.first
+        } catch {
+            print("Failed to load converter state: \(error)")
+            return nil
+        }
+    }
+    
+    public func resetConverterState() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterState")
+        do {
+            let results = try context.fetch(fetchRequest) as? [NSManagedObject]
+            results?.forEach { context.delete($0) }
+            appDelegate.saveContext()
+            print("Converter state reset.")
+        } catch {
+            print("Failed to reset converter state: \(error)")
         }
     }
     
