@@ -212,6 +212,7 @@ class BasicViewController: UIViewController {
         if UserDefaults.standard.bool(forKey: "HapticState") {
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
+        saveViewState()
     }
     
     @IBAction func plusMinusButton(_ sender: UIButton) {
@@ -231,6 +232,7 @@ class BasicViewController: UIViewController {
                 }
                 text = components.joined(separator: " ")
                 WorkingsLabelOutlet.text = text
+                saveViewState()
             }
         }
     }
@@ -255,7 +257,7 @@ class BasicViewController: UIViewController {
                         if operation == .percentage {
                             if let lastComponent = components.last, let secondOperand = Double(lastComponent) {
                                 let percentageValue = firstOperand! * (secondOperand * 0.01)
-                                let formattedValue = formatNumber(percentageValue)
+                                let formattedValue = LabelFormattingManager().formatNumber(percentageValue)
                                 components[components.count - 1] = formattedValue
                                 WorkingsLabelOutlet.text = components.joined(separator: " ")
                             }
@@ -278,11 +280,12 @@ class BasicViewController: UIViewController {
                                 WorkingsLabelOutlet.text = text + " ÷ "
                             case .percentage:
                                 let percentageValue = value * 0.01
-                                WorkingsLabelOutlet.text = formatNumber(percentageValue)
+                                WorkingsLabelOutlet.text = LabelFormattingManager().formatNumber(percentageValue)
                                 currentOperation = nil
                             }
                         }
                     }
+                    saveViewState()
                 }
             }
         }
@@ -332,7 +335,7 @@ class BasicViewController: UIViewController {
         }
 
         if let result = result {
-            ResultsLabelOutlet.text = formatNumber(result)
+            ResultsLabelOutlet.text = LabelFormattingManager().formatNumber(result)
 
             isTypingNumber = false
             
@@ -351,21 +354,13 @@ class BasicViewController: UIViewController {
                 } else {
                     CoreDataManager.shared.createHistoryObject(1, date: Date(), result: ResultsLabelOutlet.text!, working: WorkingsLabelOutlet.text!)
                     historyButton()
+                    saveViewState()
                 }
             }
         }
 
         if UserDefaults.standard.bool(forKey: "HapticState") {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        }
-    }
-
-    func formatNumber(_ number: Double) -> String {
-        if abs(number) >= 1e6 || (abs(number) < 1e-6 && number != 0) {
-            return String(format: "%.8e", number)
-        } else {
-            let formattedString = String(format: "%.6f", number)
-            return formattedString.replacingOccurrences(of: "\\.?0+$", with: "", options: .regularExpression)
         }
     }
     
@@ -379,6 +374,7 @@ class BasicViewController: UIViewController {
                 }
                 WorkingsLabelOutlet.text = text + "."
                 isTypingNumber = true
+                saveViewState()
             }
         }
     }
@@ -398,10 +394,11 @@ class BasicViewController: UIViewController {
                 text = String(text.dropLast(2))
                 currentOperation = nil
                 isTypingNumber = true
+                saveViewState()
             } else {
                 text = String(text.dropLast())
+                saveViewState()
             }
-            
             WorkingsLabelOutlet.text = text
             
             if text.isEmpty {
@@ -420,6 +417,7 @@ class BasicViewController: UIViewController {
                     self.PasteResultButtonOutlet.isHidden = true
                     self.EraseButtonOutlet.isHidden = true
                 }
+                saveViewState()
             }
         }
 
@@ -454,6 +452,7 @@ class BasicViewController: UIViewController {
         if isTypingNumber {
             let currentText = WorkingsLabelOutlet.text ?? " "
             WorkingsLabelOutlet.text = currentText + "\(number)"
+            saveViewState()
         } else {
             if let currentText = WorkingsLabelOutlet.text, currentOperation != nil {
                 WorkingsLabelOutlet.text = currentText + "\(number)"
@@ -465,6 +464,7 @@ class BasicViewController: UIViewController {
             if EraseButtonOutlet.isHidden == true {
                 checkEraseButton()
             }
+            saveViewState()
         }
     }
     
@@ -475,6 +475,7 @@ class BasicViewController: UIViewController {
             firstOperand = nil
             currentOperation = nil
             isTypingNumber = true
+            saveViewState()
         }
         
         UIView.animate(withDuration: 0.1, animations: {

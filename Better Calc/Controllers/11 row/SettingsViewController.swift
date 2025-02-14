@@ -602,6 +602,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             UserDefaults.standard.set(false, forKey: "KeepState")
             coreData.resetBasicState()
+            coreData.resetConverterState(with: 1)
         }
     }
     
@@ -685,10 +686,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             if count == 0 {
                 (self.navigationController as? NavigationController)?.historyError()
                 coreData.resetBasicState()
+                coreData.resetConverterState(with: 1)
             } else {
                 (self.navigationController as? NavigationController)?.delHistoryPill()
                 coreData.deleteAllHistory()
                 coreData.resetBasicState()
+                coreData.resetConverterState(with: 1)
             }
         } catch {
             print("deleteHistoryFetch: \(error.localizedDescription)")

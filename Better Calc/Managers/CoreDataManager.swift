@@ -144,15 +144,15 @@ public final class CoreDataManager: NSObject {
     
     //MARK: - Converter History
     
-    public func createConverterHistoryObject(_ id: Int16, date: Date, fromText: String, toText: String, fromButton: String, toButton: String) {
+    public func createConverterHistoryObject(_ id: Int16, date: Date, fromText: String, toText: String, fromUnit: Int16, toUnit: Int16) {
         guard let objectEntityDescription = NSEntityDescription.entity(forEntityName: "ConverterHistoryItem", in: context) else { return }
         let object = ConverterHistoryItem(entity: objectEntityDescription, insertInto: context)
         object.id = id
         object.date = date
         object.fromText = fromText
         object.toText = toText
-        object.fromButton = fromButton
-        object.toButton = toButton
+        object.fromUnit = fromUnit
+        object.toUnit = toUnit
         appDelegate.saveContext()
     }
     
@@ -177,7 +177,7 @@ public final class CoreDataManager: NSObject {
         }
     }
     
-    public func updateConverterObject(with id: Int16, fromText: String, toText: String, fromButton: String, toButton: String) {
+    public func updateConverterObject(with id: Int16, fromText: String, toText: String, fromUnit: Int16, toUnit: Int16) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {
@@ -185,8 +185,8 @@ public final class CoreDataManager: NSObject {
                   let object = objects.first else { return }
             object.fromText = fromText
             object.toText = toText
-            object.fromButton = fromButton
-            object.toButton = toButton
+            object.fromUnit = fromUnit
+            object.toUnit = toUnit
         }
         appDelegate.saveContext()
     }
@@ -265,22 +265,23 @@ public final class CoreDataManager: NSObject {
     
     //MARK: - Converter State
     
-    public func saveConverterState(id: Int16, fromText: String, toText: String, fromButton: String, toButton: String) {
-        resetConverterState()
+    public func saveConverterState(id: Int16, fromText: String, toText: String, fromUnit: Int16, toUnit: Int16) {
+        resetConverterState(with: id)
         guard let entity = NSEntityDescription.entity(forEntityName: "ConverterState", in: context) else { return }
-        let state = NSManagedObject(entity: entity, insertInto: context)
+        let state = ConverterState(entity: entity, insertInto: context)
         
-        state.setValue(id, forKey: "converterId")
-        state.setValue(fromText, forKey: "fromText")
-        state.setValue(toText, forKey: "toText")
-        state.setValue(fromButton, forKey: "fromButton")
-        state.setValue(toButton, forKey: "toButton")
+        state.id = id
+        state.fromText = fromText
+        state.toText = toText
+        state.fromUnit = fromUnit
+        state.toUnit = toUnit
         appDelegate.saveContext()
         print("Converter state saved.")
     }
     
-    public func loadConverterState() -> ConverterState? {
+    public func loadConverterState(with id: Int16) -> ConverterState? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterState")
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {
             let results = try context.fetch(fetchRequest) as? [ConverterState]
             return results?.first
@@ -290,8 +291,9 @@ public final class CoreDataManager: NSObject {
         }
     }
     
-    public func resetConverterState() {
+    public func resetConverterState(with id: Int16) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterState")
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {
             let results = try context.fetch(fetchRequest) as? [NSManagedObject]
             results?.forEach { context.delete($0) }

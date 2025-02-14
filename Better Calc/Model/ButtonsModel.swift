@@ -31,7 +31,7 @@ struct ButtonsModel {
         Button( id: 13,   text: NSLocalizedString("button_mass", comment: ""),         image: UIImage(systemName: "scalemass")!,                segue: "MassSegue"),
         Button( id: 14,   text: NSLocalizedString("button_count_system", comment: ""),  image: UIImage(systemName: "01.square")!,                segue: "CountSegue"),
 //        Button( id: 15,   text: NSLocalizedString("button_resolution", comment: ""),    image: UIImage(systemName: "4k.tv")!,                   segue: "ResolutionSegue"),
-//        Button( id: 16,   text: NSLocalizedString("button_data", comment: ""),         image: UIImage(systemName: "externaldrive")!,            segue: "DataSegue"),
+        Button( id: 16,   text: NSLocalizedString("button_data", comment: ""),         image: UIImage(systemName: "externaldrive")!,            segue: "DataSegue"),
 //        Button( id: 17,   text: NSLocalizedString("button_discount", comment: ""),      image: UIImage(systemName: "tag")!,                     segue: "DiscountSegue"),
 //        Button( id: 18,   text: NSLocalizedString("button_investment", comment: ""),   image: UIImage(systemName: "chart.line.uptrend.xyaxis")!,  segue: "InvestitionSegue"),
 //        Button( id: 19,   text: NSLocalizedString("button_loan", comment: ""),         image: UIImage(systemName: "creditcard")!,               segue: "LoanSegue"),

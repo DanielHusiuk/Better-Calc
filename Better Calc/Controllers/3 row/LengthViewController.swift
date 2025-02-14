@@ -23,6 +23,7 @@ class LengthViewController: UIViewController {
     
     let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")!
     var selectedUnits: [UIButton: UnitLength] = [:]
+    let converterId: Int16 = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +32,12 @@ class LengthViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadViewState()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        saveViewState()
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,7 +72,39 @@ class LengthViewController: UIViewController {
     
     // MARK: - Save/Load State
     
+    func saveViewState() {
+        guard UserDefaults.standard.bool(forKey: "KeepState") else { return }
+        let fromText = FromLabelOutlet.text ?? ""
+        let toText = ToLabelOutlet.text ?? ""
+        let fromUnit = Int16(1)
+        let toUnit = Int16(1)
+        
+        CoreDataManager.shared.saveConverterState(
+            id: converterId,
+            fromText: fromText,
+            toText: toText,
+            fromUnit: fromUnit,
+            toUnit: toUnit
+        )
+    }
     
+    func loadViewState() {
+        guard UserDefaults.standard.bool(forKey: "KeepState") else { return }
+        if let state = CoreDataManager.shared.loadConverterState(with: converterId) {
+            FromLabelOutlet.text = state.fromText ?? "0"
+            ToLabelOutlet.text = state.toText ?? "0"
+            FromButtonOutlet.tag = Int(state.fromUnit)
+            ToButtonOutlet.tag = Int(state.toUnit)
+            convertFunc()
+            
+            print(FromButtonOutlet.titleLabel?.text ?? "")
+            print(ToButtonOutlet.titleLabel?.text ?? "")
+            print("----------------------")
+            print("View state loaded.")
+        } else {
+            print("No saved view state found.")
+        }
+    }
 
     
     // MARK: - Button Preferences
@@ -111,6 +146,7 @@ class LengthViewController: UIViewController {
                 UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
             }
             convertFunc()
+            saveViewState()
         }
     }
     
@@ -129,6 +165,7 @@ class LengthViewController: UIViewController {
         })
         
         convertFunc()
+        saveViewState()
     }
     
     @IBAction func AllClearButton(_ sender: UIButton) {
@@ -139,12 +176,12 @@ class LengthViewController: UIViewController {
         if UserDefaults.standard.bool(forKey: "HapticState") {
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
+        saveViewState()
     }
     
     @IBAction func NumberButtons(_ sender: UIButton) {
         guard let buttonNumber = sender.titleLabel?.text else { return }
         guard var currentText = FromLabelOutlet.text else { return }
-        
         let parts = currentText.components(separatedBy: ".")
         let hasDecimal = currentText.contains(".")
         
@@ -152,14 +189,15 @@ class LengthViewController: UIViewController {
         if !hasDecimal, currentText.count >= 9 { return }
         if currentText == "0" { currentText = "" }
         FromLabelOutlet.text = currentText + buttonNumber
-        
         convertFunc()
+        saveViewState()
     }
     
     @IBAction func DecimalButton(_ sender: UIButton) {
         if let fromText = FromLabelOutlet.text {
             guard !fromText.contains(".") else { return }
             FromLabelOutlet.text = fromText + "."
+            saveViewState()
         }
     }
     
@@ -196,18 +234,20 @@ class LengthViewController: UIViewController {
                     button.setTitle("\(option.symbol) ", for: .normal)
                     self.UnitMenu(in: self.FromButtonOutlet)
                     self.UnitMenu(in: self.ToButtonOutlet)
+                    let buttonTag = (button.tag == self.FromButtonOutlet.tag) ? self.FromButtonOutlet.tag : self.ToButtonOutlet.tag
+                    let selectedIndex = [ index : option.symbol ]
+                    print("Selected index: \(selectedIndex), Button: \(String(describing: buttonTag))")
                 }
             }
-        
         let menu = UIMenu(title: "Choose unit:", options: .displayInline, children: actions)
         button.menu = menu
         button.showsMenuAsPrimaryAction = true
         button.setTitle("\(selectedUnit.symbol) ", for: .normal)
-        
         if UserDefaults.standard.bool(forKey: "HapticState") {
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         }
         convertFunc()
+        saveViewState()
     }
     
     func convertFunc() {
@@ -218,16 +258,7 @@ class LengthViewController: UIViewController {
         let measurement = Measurement(value: doubleValue, unit: selectedUnit1)
         let convertValue = measurement.converted(to: selectedUnit2)
         let formattedResult = String(describing: convertValue).components(separatedBy: " ").first ?? "0"
-        ToLabelOutlet.text = formatNumber(Double(formattedResult) ?? 0)
-    }
-    
-    func formatNumber(_ number: Double) -> String {
-        if abs(number) >= 1e6 || (abs(number) < 1e-6 && number != 0) {
-            return String(format: "%.8e", number)
-        } else {
-            let formattedString = String(format: "%.6f", number)
-            return formattedString.replacingOccurrences(of: "\\.?0+$", with: "", options: .regularExpression)
-        }
+        ToLabelOutlet.text = LabelFormattingManager().formatNumber(Double(formattedResult) ?? 0)
     }
     
 }

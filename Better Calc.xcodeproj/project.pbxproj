@@ -10,9 +10,12 @@
 		65195E842C5BCB2400D4BE8B /* ButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65195E832C5BCB2400D4BE8B /* ButtonsModel.swift */; };
 		652EA18A2C8B57CA00DD6803 /* BasicHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652EA1892C8B57CA00DD6803 /* BasicHistoryController.swift */; };
 		65464A762CB7DEA3008AB2AD /* PickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65464A752CB7DE9E008AB2AD /* PickerModel.swift */; };
+		654EB3352D5F91EB00BA2C3A /* LabelFormattingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654EB3342D5F91DF00BA2C3A /* LabelFormattingManager.swift */; };
 		6551081D2D57C55400ADF404 /* UnitsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6551081C2D57C54200ADF404 /* UnitsModel.swift */; };
 		655151EF2D2D6FD7000B99D8 /* PillboxView in Frameworks */ = {isa = PBXBuildFile; productRef = 655151EE2D2D6FD7000B99D8 /* PillboxView */; };
 		6557D71F2CAB247800381649 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557D71E2CAB247800381649 /* SettingsViewController.swift */; };
+		655BC2D72D5F956A0096AB38 /* ResolutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BC2D62D5F956A0096AB38 /* ResolutionViewController.swift */; };
+		655BC2D92D5F958C0096AB38 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BC2D82D5F958C0096AB38 /* DataViewController.swift */; };
 		656569672C7B37B8001D1F2B /* CopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656569662C7B37B8001D1F2B /* CopyLabel.swift */; };
 		65706BC52CAE7D1E0033398C /* IconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65706BC42CAE7D1E0033398C /* IconManager.swift */; };
 		6590AA3E2D2D7C3200B969EC /* PillboxView in Frameworks */ = {isa = PBXBuildFile; productRef = 6590AA3D2D2D7C3200B969EC /* PillboxView */; };
@@ -58,8 +61,11 @@
 		65195E832C5BCB2400D4BE8B /* ButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsModel.swift; sourceTree = "<group>"; };
 		652EA1892C8B57CA00DD6803 /* BasicHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHistoryController.swift; sourceTree = "<group>"; };
 		65464A752CB7DE9E008AB2AD /* PickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerModel.swift; sourceTree = "<group>"; };
+		654EB3342D5F91DF00BA2C3A /* LabelFormattingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFormattingManager.swift; sourceTree = "<group>"; };
 		6551081C2D57C54200ADF404 /* UnitsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsModel.swift; sourceTree = "<group>"; };
 		6557D71E2CAB247800381649 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		655BC2D62D5F956A0096AB38 /* ResolutionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolutionViewController.swift; sourceTree = "<group>"; };
+		655BC2D82D5F958C0096AB38 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		656569662C7B37B8001D1F2B /* CopyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyLabel.swift; sourceTree = "<group>"; };
 		65706BC42CAE7D1E0033398C /* IconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconManager.swift; sourceTree = "<group>"; };
 		6594D9042C5FC26D00218F02 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
@@ -164,19 +170,60 @@
 		65195E822C5BCA5700D4BE8B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				65464A752CB7DE9E008AB2AD /* PickerModel.swift */,
 				65195E832C5BCB2400D4BE8B /* ButtonsModel.swift */,
 				6594D9042C5FC26D00218F02 /* ButtonCell.swift */,
+				65C51E9F2CAEEA7600A2D164 /* IconsModel.swift */,
+				65C51EA32CAF17F900A2D164 /* IconCell.swift */,
 				65BFBB4A2CB2DE2700074527 /* TintModel.swift */,
+				65464A752CB7DE9E008AB2AD /* PickerModel.swift */,
 				6551081C2D57C54200ADF404 /* UnitsModel.swift */,
-				65B288172D4A8E4B00A84FC7 /* Localizable.xcstrings */,
-				65DFA3F02C5A9B6B0090F4CE /* Assets.xcassets */,
-				65DFA3ED2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		65AB716D2C6159AE0086FA36 /* Calculators */ = {
+		654EB3362D5F922F00BA2C3A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				659EE3462C9368D000B39776 /* HistoryItem+CoreDataProperties.swift */,
+				659EE3492C93690600B39776 /* CoreDataManager.swift */,
+				65706BC42CAE7D1E0033398C /* IconManager.swift */,
+				659C6A692D58F074007995D5 /* AnimationManager.swift */,
+				654EB3342D5F91DF00BA2C3A /* LabelFormattingManager.swift */,
+				656569662C7B37B8001D1F2B /* CopyLabel.swift */,
+				659536062C7B43FF0036D99D /* PasteLabel.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		654EB3372D5F924100BA2C3A /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				65DFA3E42C5A9B6A0090F4CE /* AppDelegate.swift */,
+				65DFA3E62C5A9B6A0090F4CE /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		654EB3382D5F928A00BA2C3A /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				65B288172D4A8E4B00A84FC7 /* Localizable.xcstrings */,
+				65DFA3F02C5A9B6B0090F4CE /* Assets.xcassets */,
+				65DFA3ED2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		655BC2DA2D5F95980096AB38 /* 8 row */ = {
+			isa = PBXGroup;
+			children = (
+				655BC2D62D5F956A0096AB38 /* ResolutionViewController.swift */,
+				655BC2D82D5F958C0096AB38 /* DataViewController.swift */,
+			);
+			path = "8 row";
+			sourceTree = "<group>";
+		};
+		65AB716D2C6159AE0086FA36 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				65B689632C628B34005259E7 /* 1 row */,
@@ -186,11 +233,12 @@
 				65B6897C2C628DB1005259E7 /* 5 row */,
 				65B6897D2C628DBA005259E7 /* 6 row */,
 				65B6897E2C628DC6005259E7 /* 7 row */,
-				65B6897F2C628DCF005259E7 /* 8 row */,
-				65B689822C628E38005259E7 /* 9 row */,
-				65B689832C628E3E005259E7 /* 10 row */,
+				655BC2DA2D5F95980096AB38 /* 8 row */,
+				65B6897F2C628DCF005259E7 /* 9 row */,
+				65B689822C628E38005259E7 /* 10 row */,
+				65B689832C628E3E005259E7 /* 11 row */,
 			);
-			path = Calculators;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		65B689632C628B34005259E7 /* 1 row */ = {
@@ -198,8 +246,6 @@
 			children = (
 				65B689502C620FFD005259E7 /* BasicViewController.swift */,
 				652EA1892C8B57CA00DD6803 /* BasicHistoryController.swift */,
-				656569662C7B37B8001D1F2B /* CopyLabel.swift */,
-				659536062C7B43FF0036D99D /* PasteLabel.swift */,
 				65B689552C628140005259E7 /* ScientificViewController.swift */,
 			);
 			path = "1 row";
@@ -259,42 +305,36 @@
 			path = "7 row";
 			sourceTree = "<group>";
 		};
-		65B6897F2C628DCF005259E7 /* 8 row */ = {
+		65B6897F2C628DCF005259E7 /* 9 row */ = {
 			isa = PBXGroup;
 			children = (
 				65B689712C628BF7005259E7 /* DiscountViewController.swift */,
 				65B689732C628C0B005259E7 /* InvestmentViewController.swift */,
 			);
-			path = "8 row";
+			path = "9 row";
 			sourceTree = "<group>";
 		};
-		65B689822C628E38005259E7 /* 9 row */ = {
+		65B689822C628E38005259E7 /* 10 row */ = {
 			isa = PBXGroup;
 			children = (
 				65B689762C628D57005259E7 /* LoanViewController.swift */,
 				65B689782C628D8E005259E7 /* TipsViewController.swift */,
 			);
-			path = "9 row";
+			path = "10 row";
 			sourceTree = "<group>";
 		};
-		65B689832C628E3E005259E7 /* 10 row */ = {
+		65B689832C628E3E005259E7 /* 11 row */ = {
 			isa = PBXGroup;
 			children = (
 				65B6897A2C628DA3005259E7 /* BmiViewController.swift */,
 				6557D71E2CAB247800381649 /* SettingsViewController.swift */,
-				65C51E9F2CAEEA7600A2D164 /* IconsModel.swift */,
-				65C51EA32CAF17F900A2D164 /* IconCell.swift */,
 			);
-			path = "10 row";
+			path = "11 row";
 			sourceTree = "<group>";
 		};
 		65DFA3D82C5A9B6A0090F4CE = {
 			isa = PBXGroup;
 			children = (
-				659EE3462C9368D000B39776 /* HistoryItem+CoreDataProperties.swift */,
-				659EE3492C93690600B39776 /* CoreDataManager.swift */,
-				65706BC42CAE7D1E0033398C /* IconManager.swift */,
-				659C6A692D58F074007995D5 /* AnimationManager.swift */,
 				65DFA3E32C5A9B6A0090F4CE /* Better Calc */,
 				65DFA3E22C5A9B6A0090F4CE /* Products */,
 			);
@@ -311,12 +351,13 @@
 		65DFA3E32C5A9B6A0090F4CE /* Better Calc */ = {
 			isa = PBXGroup;
 			children = (
-				65DFA3E42C5A9B6A0090F4CE /* AppDelegate.swift */,
-				65DFA3E62C5A9B6A0090F4CE /* SceneDelegate.swift */,
+				654EB3362D5F922F00BA2C3A /* Managers */,
+				654EB3372D5F924100BA2C3A /* Delegates */,
 				65195E812C5BCA4A00D4BE8B /* Main Controller */,
-				65AB716D2C6159AE0086FA36 /* Calculators */,
+				65AB716D2C6159AE0086FA36 /* Controllers */,
 				65195E7F2C5BCA2900D4BE8B /* View */,
 				65195E822C5BCA5700D4BE8B /* Model */,
+				654EB3382D5F928A00BA2C3A /* Other */,
 				65DFA3F52C5A9B6B0090F4CE /* Info.plist */,
 			);
 			path = "Better Calc";
@@ -417,12 +458,14 @@
 				65195E842C5BCB2400D4BE8B /* ButtonsModel.swift in Sources */,
 				65B6896A2C628B84005259E7 /* AgeViewController.swift in Sources */,
 				65464A762CB7DEA3008AB2AD /* PickerModel.swift in Sources */,
+				655BC2D72D5F956A0096AB38 /* ResolutionViewController.swift in Sources */,
 				65B689772C628D57005259E7 /* LoanViewController.swift in Sources */,
 				656569672C7B37B8001D1F2B /* CopyLabel.swift in Sources */,
 				65DFA3E92C5A9B6A0090F4CE /* ViewController.swift in Sources */,
 				6557D71F2CAB247800381649 /* SettingsViewController.swift in Sources */,
 				65B689532C6246EF005259E7 /* NavigationController.swift in Sources */,
 				65C51EA42CAF17F900A2D164 /* IconCell.swift in Sources */,
+				654EB3352D5F91EB00BA2C3A /* LabelFormattingManager.swift in Sources */,
 				652EA18A2C8B57CA00DD6803 /* BasicHistoryController.swift in Sources */,
 				65B6895A2C6285C7005259E7 /* CryptoViewController.swift in Sources */,
 				65B6897B2C628DA3005259E7 /* BmiViewController.swift in Sources */,
@@ -430,6 +473,7 @@
 				65B689622C628661005259E7 /* TemperatureViewController.swift in Sources */,
 				65B689792C628D8E005259E7 /* TipsViewController.swift in Sources */,
 				659EE3482C9368D000B39776 /* HistoryItem+CoreDataProperties.swift in Sources */,
+				655BC2D92D5F958C0096AB38 /* DataViewController.swift in Sources */,
 				65B6895C2C6285D9005259E7 /* LengthViewController.swift in Sources */,
 				65DFA3E72C5A9B6A0090F4CE /* SceneDelegate.swift in Sources */,
 				65B689562C628140005259E7 /* ScientificViewController.swift in Sources */,
