@@ -174,7 +174,7 @@ class BasicViewController: UIViewController {
         switch sender.state {
         case .began:
             isErasing = true
-            eraseTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(eraseButton), userInfo: nil, repeats: true)
+            eraseTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(eraseButton), userInfo: nil, repeats: true)
             RunLoop.current.add(eraseTimer!, forMode: .common)
         case .ended:
             isErasing = false
@@ -195,7 +195,7 @@ class BasicViewController: UIViewController {
         if ResultsLabelOutlet.text != "0" {
             AnimationManager().animateTextSlide(label: ResultsLabelOutlet, newText: "0")
         }
-
+        
         firstOperand = nil
         currentOperation = nil
         isTypingNumber = false
@@ -245,7 +245,7 @@ class BasicViewController: UIViewController {
                 print("Operation button pressed but tag is not valid")
                 return
             }
-
+            
             if let lastDot = WorkingsLabelOutlet.text, lastDot.last == "." {
                 return
             } else {
@@ -253,7 +253,7 @@ class BasicViewController: UIViewController {
                     if currentOperation != nil {
                         var components = text.components(separatedBy: " ")
                         guard components.count > 1 else { return }
-
+                        
                         if operation == .percentage {
                             if let lastComponent = components.last, let secondOperand = Double(lastComponent) {
                                 let percentageValue = firstOperand! * (secondOperand * 0.01)
@@ -268,7 +268,7 @@ class BasicViewController: UIViewController {
                             firstOperand = value
                             isTypingNumber = false
                             currentOperation = operation
-
+                            
                             switch operation {
                             case .addition:
                                 WorkingsLabelOutlet.text = text + " + "
@@ -293,15 +293,15 @@ class BasicViewController: UIViewController {
     
     @IBAction func equalsButton(_ sender: UIButton) {
         guard let operation = currentOperation, let text = WorkingsLabelOutlet.text else { return }
-
+        
         let components = text.components(separatedBy: " ")
         guard components.count >= 2 else { return }
-
+        
         let firstOperandString = components[0]
         guard let firstOperand = Double(firstOperandString) else { return }
-
+        
         var secondOperand: Double = 0.0
-
+        
         if components.count > 2 {
             var secondOperandString = components[2]
             if secondOperandString.contains("%") {
@@ -313,11 +313,11 @@ class BasicViewController: UIViewController {
                 secondOperand = Double(secondOperandString) ?? 0.0
             }
         }
-
+        
         if secondOperand == 0 {
             return
         }
-
+        
         var result: Double?
         switch operation {
         case .addition:
@@ -333,10 +333,10 @@ class BasicViewController: UIViewController {
         case .percentage:
             result = secondOperand
         }
-
+        
         if let result = result {
             ResultsLabelOutlet.text = LabelFormattingManager().formatNumber(result)
-
+            
             isTypingNumber = false
             
             if let resultText = ResultsLabelOutlet.text, resultText.contains("e") {
@@ -344,7 +344,7 @@ class BasicViewController: UIViewController {
             } else if PasteResultButtonOutlet.isHidden {
                 checkPasteButton()
             }
-
+            
             let historyItems = coreData.fetchObjects(with: 1)
             if let lastOperation = WorkingsLabelOutlet.text, lastOperation.last == " " {
                 return
@@ -358,7 +358,7 @@ class BasicViewController: UIViewController {
                 }
             }
         }
-
+        
         if UserDefaults.standard.bool(forKey: "HapticState") {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
@@ -383,13 +383,13 @@ class BasicViewController: UIViewController {
     //MARK: - Other Buttons
     
     @IBAction @objc func eraseButton(_ sender: UIButton) {
-        if var text = WorkingsLabelOutlet.text, !text.isEmpty {
+        if var text = WorkingsLabelOutlet.text, text != "0" {
             let operations = "+−×÷"
             
             if text.hasSuffix(" ") {
                 text.removeLast()
             }
-
+            
             if let lastChar = text.last, operations.contains(lastChar) {
                 text = String(text.dropLast(2))
                 currentOperation = nil
@@ -419,10 +419,9 @@ class BasicViewController: UIViewController {
                 }
                 saveViewState()
             }
-        }
-
-        if UserDefaults.standard.bool(forKey: "HapticState") {
-            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+            if UserDefaults.standard.bool(forKey: "HapticState") {
+                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+            }
         }
     }
     

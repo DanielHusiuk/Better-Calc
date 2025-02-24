@@ -541,7 +541,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3YF-cD-DFE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="XYZ-OH-NaS" userLabel="Erase Long Gesture">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.20000000000000001" id="XYZ-OH-NaS" userLabel="Erase Long Gesture">
                     <connections>
                         <action selector="EraseButtonLongPress:" destination="UDw-yk-iwJ" id="KQc-bn-MFO"/>
                     </connections>
@@ -779,6 +779,9 @@
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="7Dl-Kq-wVB">
                                                         <rect key="frame" x="15" y="0.0" width="53" height="120"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53" id="mLH-pr-cFT"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -847,7 +850,10 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:      " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="rBU-2f-Cp2">
-                                                        <rect key="frame" x="15.000000000000004" y="0.0" width="51.333333333333343" height="120"/>
+                                                        <rect key="frame" x="15" y="0.0" width="53" height="120"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53" id="Zxx-Wp-kqK"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -947,6 +953,7 @@
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGn-XG-0fR" userLabel="Erase">
                                                         <rect key="frame" x="257.33333333333331" y="0.0" width="72.666666666666686" height="72"/>
+                                                        <gestureRecognizers/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" cornerStyle="large">
                                                             <imageReference key="image" image="delete.left.fill" catalog="system" symbolScale="large"/>
@@ -956,6 +963,7 @@
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="EraseButton:" destination="wfu-ML-8A6" eventType="touchUpInside" id="BMW-5y-1EF"/>
+                                                            <outletCollection property="gestureRecognizers" destination="4x7-T1-oYy" appends="YES" id="dp9-bX-2Ul"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1200,6 +1208,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABt-gP-DSp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.20000000000000001" id="4x7-T1-oYy">
+                    <connections>
+                        <action selector="EraseButtonLongPress:" destination="wfu-ML-8A6" id="yQc-56-rtL"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1707.6923076923076" y="2527.9620853080569"/>
         </scene>

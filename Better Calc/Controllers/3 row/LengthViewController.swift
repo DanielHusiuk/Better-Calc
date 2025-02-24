@@ -22,12 +22,15 @@ class LengthViewController: UIViewController {
     @IBOutlet weak var ToButtonOutlet: UIButton!
     
     let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")!
+    private var eraseTimer: Timer?
+    
     var selectedUnits: [UIButton: UnitLength] = [:]
     let converterId: Int16 = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updatePreferences()
+        loadViewState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +56,14 @@ class LengthViewController: UIViewController {
     
     func updatePreferences() {
         overrideUserInterfaceStyle = .dark
+        
+        if selectedUnits[FromButtonOutlet] == nil {
+            selectedUnits[FromButtonOutlet] = .kilometers
+        }
+        if selectedUnits[ToButtonOutlet] == nil {
+            selectedUnits[ToButtonOutlet] = .miles
+        }
+        
         UnitMenu(in: FromButtonOutlet)
         UnitMenu(in: ToButtonOutlet)
     }
@@ -74,17 +85,19 @@ class LengthViewController: UIViewController {
     
     func saveViewState() {
         guard UserDefaults.standard.bool(forKey: "KeepState") else { return }
-        let fromText = FromLabelOutlet.text ?? ""
-        let toText = ToLabelOutlet.text ?? ""
-        let fromUnit = Int16(1)
-        let toUnit = Int16(1)
+        let fromText = FromLabelOutlet.text
+        let toText = ToLabelOutlet.text
+        
+        let sortedUnits = UnitsModel().lengthDictionary.keys.sorted{ ($0.description) < ($1.description) }
+        let fromUnitIndex = selectedUnits[FromButtonOutlet].flatMap{ sortedUnits.firstIndex(of: $0) } ?? 0
+        let toUnitIndex = selectedUnits[ToButtonOutlet].flatMap { sortedUnits.firstIndex(of: $0) } ?? 0
         
         CoreDataManager.shared.saveConverterState(
             id: converterId,
-            fromText: fromText,
-            toText: toText,
-            fromUnit: fromUnit,
-            toUnit: toUnit
+            fromText: fromText!,
+            toText: toText!,
+            fromUnit: Int16(fromUnitIndex),
+            toUnit: Int16(toUnitIndex)
         )
     }
     
@@ -93,19 +106,30 @@ class LengthViewController: UIViewController {
         if let state = CoreDataManager.shared.loadConverterState(with: converterId) {
             FromLabelOutlet.text = state.fromText ?? "0"
             ToLabelOutlet.text = state.toText ?? "0"
-            FromButtonOutlet.tag = Int(state.fromUnit)
-            ToButtonOutlet.tag = Int(state.toUnit)
-            convertFunc()
             
-            print(FromButtonOutlet.titleLabel?.text ?? "")
-            print(ToButtonOutlet.titleLabel?.text ?? "")
-            print("----------------------")
+            let sortedUnits = UnitsModel().lengthDictionary.keys.sorted{ ($0.description) < ($1.description) }
+            if sortedUnits.indices.contains(Int(state.fromUnit)) {
+                let fromUnit = sortedUnits[Int(state.fromUnit)]
+                selectedUnits[FromButtonOutlet] = fromUnit
+                FromButtonOutlet.setTitle("\(fromUnit.symbol) ", for: .normal)
+                print(fromUnit.symbol)
+            }
+            if sortedUnits.indices.contains(Int(state.toUnit)) {
+                let toUnit = sortedUnits[Int(state.toUnit)]
+                selectedUnits[ToButtonOutlet] = toUnit
+                ToButtonOutlet.setTitle("\(toUnit.symbol) ", for: .normal)
+                print(toUnit.symbol)
+            }
+            
+            UnitMenu(in: FromButtonOutlet)
+            UnitMenu(in: ToButtonOutlet)
+            convertFunc()
             print("View state loaded.")
         } else {
             print("No saved view state found.")
         }
     }
-
+    
     
     // MARK: - Button Preferences
     
@@ -128,6 +152,19 @@ class LengthViewController: UIViewController {
         }
     }
     
+    @IBAction func EraseButtonLongPress(_ sender: UILongPressGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            eraseTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(EraseButton), userInfo: nil, repeats: true)
+            RunLoop.current.add(eraseTimer!, forMode: .common)
+        case .ended:
+            eraseTimer?.invalidate()
+            eraseTimer = nil
+        default:
+            break
+        }
+    }
+    
     
     //MARK: - Buttons Functions
     
@@ -136,6 +173,7 @@ class LengthViewController: UIViewController {
             if !text.isEmpty {
                 text.removeLast()
             }
+            
             FromLabelOutlet.text = text
             if text.isEmpty {
                 AnimationManager().animateTextSlide(label: FromLabelOutlet, newText: "0")
@@ -153,18 +191,15 @@ class LengthViewController: UIViewController {
     @IBAction func ChangeUnitButton(_ sender: UIButton) {
         let selectedUnit1 = selectedUnits[FromButtonOutlet]!
         let selectedUnit2 = selectedUnits[ToButtonOutlet]!
-        
         selectedUnits[FromButtonOutlet] = selectedUnit2
         selectedUnits[ToButtonOutlet] = selectedUnit1
-
+        
         UIView.animate(withDuration: 0.3, animations: {
             UIView.transition(with: self.FromButtonOutlet, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
             UIView.transition(with: self.ToButtonOutlet, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
             UIView.transition(with: self.ToLabelOutlet, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
             self.updatePreferences()
         })
-        
-        convertFunc()
         saveViewState()
     }
     
@@ -205,19 +240,11 @@ class LengthViewController: UIViewController {
     //MARK: - Units Logic
     
     func UnitMenu(in button: UIButton) {
-        if selectedUnits[FromButtonOutlet] == nil {
-            selectedUnits[FromButtonOutlet] = .kilometers
-        }
-        
-        if selectedUnits[ToButtonOutlet] == nil {
-            selectedUnits[ToButtonOutlet] = .miles
-        }
-        
         let isFromButton = (button == FromButtonOutlet)
-        let selectedUnit = selectedUnits[button] ?? .meters
+        let selectedUnit = selectedUnits[button]!
         let disabledUnit = isFromButton ? selectedUnits[ToButtonOutlet] : selectedUnits[FromButtonOutlet]
-        
         let checkmarkImage = UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+        
         let actions = UnitsModel().lengthDictionary.keys
             .sorted{ ($0.description) < ($1.description) }
             .enumerated()
@@ -232,22 +259,24 @@ class LengthViewController: UIViewController {
                 ) { _ in
                     self.selectedUnits[button] = option
                     button.setTitle("\(option.symbol) ", for: .normal)
+                    DispatchQueue.main.async {
+                        self.saveViewState()
+                    }
                     self.UnitMenu(in: self.FromButtonOutlet)
                     self.UnitMenu(in: self.ToButtonOutlet)
-                    let buttonTag = (button.tag == self.FromButtonOutlet.tag) ? self.FromButtonOutlet.tag : self.ToButtonOutlet.tag
-                    let selectedIndex = [ index : option.symbol ]
-                    print("Selected index: \(selectedIndex), Button: \(String(describing: buttonTag))")
+                    print("Selected index: \(index)")
                 }
             }
+        
         let menu = UIMenu(title: "Choose unit:", options: .displayInline, children: actions)
         button.menu = menu
         button.showsMenuAsPrimaryAction = true
         button.setTitle("\(selectedUnit.symbol) ", for: .normal)
+        
         if UserDefaults.standard.bool(forKey: "HapticState") {
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         }
         convertFunc()
-        saveViewState()
     }
     
     func convertFunc() {

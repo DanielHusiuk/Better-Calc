@@ -519,7 +519,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сист. Числення"
+            "value" : "Система Числення"
           }
         },
         "zh-Hans" : {
@@ -710,86 +710,86 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Daten"
+            "state" : "translated",
+            "value" : "Datengröße"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Data Storage"
+            "value" : "Data Size"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Datos"
+            "state" : "translated",
+            "value" : "Tamaño de los datos"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Données"
+            "state" : "translated",
+            "value" : "Taille des données"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Dati"
+            "state" : "translated",
+            "value" : "Dimensione dei dati"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "データ"
+            "state" : "translated",
+            "value" : "データサイズ "
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "데이터"
+            "state" : "translated",
+            "value" : "데이터 크기"
           }
         },
         "nl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Gegevens"
+            "state" : "translated",
+            "value" : "Gegevensgrootte"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Dane"
+            "state" : "translated",
+            "value" : "Rozmiar danych"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Dados"
+            "state" : "translated",
+            "value" : "Tamanho dos dados"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Data"
+            "state" : "translated",
+            "value" : "Datastorlek"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Veri"
+            "state" : "translated",
+            "value" : "Veri boyutu"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Дані"
+            "state" : "translated",
+            "value" : "Розмір даних"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "数据"
+            "state" : "translated",
+            "value" : "数据大小"
           }
         }
       }
