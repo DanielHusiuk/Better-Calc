@@ -4671,85 +4671,85 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Taschenrechner"
+            "value" : "Öffnen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Calculator"
+            "value" : "Open"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Calculadora"
+            "value" : "Abrir"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Calculatrice"
+            "value" : "Ouvrir"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Calcolatrice"
+            "value" : "Apri"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "電卓"
+            "value" : "開く"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "계산자"
+            "value" : "열기"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rekenmachine"
+            "value" : "Openen"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kalkulator"
+            "value" : "Otwórz"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Calculadora"
+            "value" : "Abrir"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kalkylator"
+            "value" : "Öppna"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hesap Makinesi"
+            "value" : "Aç"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Калькулятор"
+            "value" : "Відкрити"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "计算器"
+            "value" : "打开"
           }
         }
       }
@@ -4759,85 +4759,85 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nach dem Start öffnen:"
+            "value" : "Nach dem Start:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open after launch:"
+            "value" : "After launch:"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abierto después del lanzamiento:"
+            "value" : "Después del lanzamiento:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ouvert après le lancement :"
+            "value" : "Après le lancement :"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aperto dopo il lancio:"
+            "value" : "Dopo il lancio:"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "起動後に開く:"
+            "value" : "起動後："
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "출시 후 오픈:"
+            "value" : "시작 후:"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open na lancering:"
+            "value" : "Na de lancering:"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otwórz po uruchomieniu:"
+            "value" : "Po uruchomieniu:"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir após o lançamento:"
+            "value" : "Após o arranque:"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öppet efter lansering:"
+            "value" : "Efter start:"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lansmandan sonra aç:"
+            "value" : "Çalıştırdıktan sonra:"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Відкрити після запуску:"
+            "value" : "Після запуску:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "发射后打开："
+            "value" : "启动后："
           }
         }
       }

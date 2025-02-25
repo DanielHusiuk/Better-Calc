@@ -470,7 +470,7 @@ class BasicViewController: UIViewController {
     @IBAction func pasteResult(_ sender: UIButton) {
         if let resultText = ResultsLabelOutlet.text, resultText != "0" {
             WorkingsLabelOutlet.text = resultText
-            ResultsLabelOutlet.text = "0"
+            AnimationManager().animateTextSlide(label: ResultsLabelOutlet, newText: "0")
             firstOperand = nil
             currentOperation = nil
             isTypingNumber = true

@@ -49,7 +49,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        rightNavBarButtonIcon()
+        RightNavBarButton.image = UIImage(named: "exclamationmark.arrow.trianglehead.counterclockwise.rotate.90.svg")
         loadSavePicker()
         loadNavBar()
     }
@@ -70,7 +70,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if UserDefaults.standard.object(forKey: "HapticState") == nil {
             UserDefaults.standard.set(true, forKey: "HapticState")
         }
-        
         if UserDefaults.standard.object(forKey: "KeepState") == nil {
             UserDefaults.standard.set(true, forKey: "KeepState")
         }
@@ -144,14 +143,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             
             let generator = UIImpactFeedbackGenerator(style: .heavy)
             generator.impactOccurred()
-        }
-    }
-    
-    func rightNavBarButtonIcon() {
-        if #available(iOS 17.0, *) {
-            RightNavBarButton.image = UIImage(systemName: "exclamationmark.arrow.trianglehead.counterclockwise.rotate.90")
-        } else {
-            RightNavBarButton.image = UIImage(systemName: "exclamationmark.arrow.circlepath")
         }
     }
     
@@ -493,32 +484,48 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - Open With Launch
     
     func pickerHeader(in cell: UITableViewCell) {
-        let CalcTextLabel = UILabel()
-        CalcTextLabel.text = NSLocalizedString("settings_o_w_l_calculator", comment: "")
-        CalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        CalcTextLabel.textColor = .white
-        CalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(CalcTextLabel)
-        
-        NSLayoutConstraint.activate([
-            CalcTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-            CalcTextLabel.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18)
-        ])
-        
-        let choosedCalcTextLabel = UILabel()
-        choosedCalcTextLabel.text = selectedPickerText
-        choosedCalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
-            choosedCalcTextLabel.textColor = selectedTintColor
-        }
-        choosedCalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(choosedCalcTextLabel)
-        
-        NSLayoutConstraint.activate([
-            choosedCalcTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-            choosedCalcTextLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
-        ])
-    }
+         let CalcTextLabel = UILabel()
+         CalcTextLabel.text = NSLocalizedString("settings_o_w_l_calculator", comment: "")
+         CalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+         CalcTextLabel.textColor = .white
+         CalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
+         cell.contentView.addSubview(CalcTextLabel)
+         
+         NSLayoutConstraint.activate([
+             CalcTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+             CalcTextLabel.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18)
+         ])
+         
+         let choosedCalcTextLabel = UILabel()
+         choosedCalcTextLabel.text = selectedPickerText
+         choosedCalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+             choosedCalcTextLabel.textColor = selectedTintColor
+         }
+         choosedCalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
+         cell.contentView.addSubview(choosedCalcTextLabel)
+         
+         NSLayoutConstraint.activate([
+             choosedCalcTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+             choosedCalcTextLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40)
+         ])
+         
+         let choosedCalcIcon = UIImageView()
+        choosedCalcIcon.image = UIImage(systemName: "chevron.up.chevron.down")
+         choosedCalcIcon.image?.withRenderingMode(.alwaysOriginal)
+         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+             choosedCalcIcon.tintColor = selectedTintColor
+         }
+         choosedCalcIcon.translatesAutoresizingMaskIntoConstraints = false
+         cell.contentView.addSubview(choosedCalcIcon)
+         
+         NSLayoutConstraint.activate([
+             choosedCalcIcon.widthAnchor.constraint(equalToConstant: 14),
+             choosedCalcIcon.heightAnchor.constraint(equalToConstant: 20),
+             choosedCalcIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+             choosedCalcIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
+         ])
+     }
     
     func pickerDetail(in cell: UITableViewCell) {
         pickerView = UIPickerView()

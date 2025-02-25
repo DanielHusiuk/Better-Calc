@@ -50,12 +50,11 @@ class ButtonCell: UICollectionViewCell {
         shadowView.addSubview(button)
         button.addSubview(innerView)
         
-        let padding: CGFloat = 3
         NSLayoutConstraint.activate([
-            shadowView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
-            shadowView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            shadowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            shadowView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
+            shadowView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3),
+            shadowView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 3),
+            shadowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -3),
+            shadowView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -3),
             
             button.topAnchor.constraint(equalTo: shadowView.topAnchor),
             button.leadingAnchor.constraint(equalTo: shadowView.leadingAnchor),
@@ -104,16 +103,14 @@ class ButtonCell: UICollectionViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         innerView.addSubview(titleLabel)
         
-        let padding: CGFloat = 15
-        let imageTopPadding: CGFloat = 50
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: innerView.centerXAnchor),
-            imageView.topAnchor.constraint(equalTo: innerView.topAnchor, constant: imageTopPadding),
-            imageView.widthAnchor.constraint(equalTo: innerView.widthAnchor, multiplier: 0.25),
-            imageView.heightAnchor.constraint(equalTo: innerView.heightAnchor, multiplier: 0.25),
+            imageView.topAnchor.constraint(equalTo: innerView.topAnchor, constant: 50),
+            imageView.widthAnchor.constraint(equalTo: innerView.widthAnchor, multiplier: 0.23),
+            imageView.heightAnchor.constraint(equalTo: innerView.heightAnchor, multiplier: 0.23),
             
             titleLabel.centerXAnchor.constraint(equalTo: innerView.centerXAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: innerView.bottomAnchor, constant: -padding),
+            titleLabel.bottomAnchor.constraint(equalTo: innerView.bottomAnchor, constant: -15),
             titleLabel.leadingAnchor.constraint(equalTo: innerView.leadingAnchor, constant: 10),
             titleLabel.trailingAnchor.constraint(equalTo: innerView.trailingAnchor, constant: -10)
         ])
