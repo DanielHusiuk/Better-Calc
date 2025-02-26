@@ -268,7 +268,7 @@ class LengthViewController: UIViewController {
                 }
             }
         
-        let menu = UIMenu(title: "Choose unit:", options: .displayInline, children: actions)
+        let menu = UIMenu(title: NSLocalizedString("choose_unit", comment: ""), options: .displayInline, children: actions)
         button.menu = menu
         button.showsMenuAsPrimaryAction = true
         button.setTitle("\(selectedUnit.symbol) ", for: .normal)
