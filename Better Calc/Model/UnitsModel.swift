@@ -90,7 +90,7 @@ class UnitsModel {
     //temperature
     var temperatureDictionary: [UnitTemperature: String] = [
         .kelvin            : NSLocalizedString("unit_temperature_kelvin", comment: ""),
-        .celsius           : NSLocalizedString("unit_temperature_celcius", comment: ""),
+        .celsius           : NSLocalizedString("unit_temperature_celsius", comment: ""),
         .fahrenheit        : NSLocalizedString("unit_temperature_fahrenheit", comment: "")
     ]
     

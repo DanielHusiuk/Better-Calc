@@ -520,8 +520,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
          cell.contentView.addSubview(choosedCalcIcon)
          
          NSLayoutConstraint.activate([
-             choosedCalcIcon.widthAnchor.constraint(equalToConstant: 14),
-             choosedCalcIcon.heightAnchor.constraint(equalToConstant: 20),
+             choosedCalcIcon.widthAnchor.constraint(equalToConstant: 16),
+             choosedCalcIcon.heightAnchor.constraint(equalToConstant: 22),
              choosedCalcIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
              choosedCalcIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
          ])
