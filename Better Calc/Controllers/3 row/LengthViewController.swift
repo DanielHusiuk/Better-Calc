@@ -271,6 +271,7 @@ class LengthViewController: UIViewController {
         let menu = UIMenu(title: NSLocalizedString("choose_unit", comment: ""), options: .displayInline, children: actions)
         button.menu = menu
         button.showsMenuAsPrimaryAction = true
+        button.titleLabel?.numberOfLines = 2
         button.setTitle("\(selectedUnit.symbol) ", for: .normal)
         
         if UserDefaults.standard.bool(forKey: "HapticState") {

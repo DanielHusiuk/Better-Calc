@@ -14,6 +14,7 @@ enum Section: Int, CaseIterable {
     case colorTheme
     case openLaunch
     case preferences
+    case preferences2
     case data
     case info
 }
@@ -30,6 +31,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     var tableView: UITableView!
     var choosedCalcTextLabel: UILabel?
     var selectedPickerText: String = NSLocalizedString("settings_none", comment: "")
+    var selectedAutoDeleteText: String = NSLocalizedString("never", comment: "")
     
     var pickerView: UIPickerView?
     let pickersModel = PickerModel()
@@ -215,6 +217,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PickerDetailCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "HapticCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "KeepCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AutoDeleteCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ChangeLangCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ResetMenuCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DeleteCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DevInfoCell")
@@ -232,9 +236,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             return NSLocalizedString("settings_open_after_launch", comment: "")
         case 2:
             return NSLocalizedString("settings_preferences", comment: "")
-        case 3:
-            return NSLocalizedString("settings_data", comment: "")
         case 4:
+            return NSLocalizedString("settings_data", comment: "")
+        case 5:
             return NSLocalizedString("settings_info", comment: "")
         default:
             return nil
@@ -243,7 +247,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
-        case 4:
+        case 2:
+            return " "
+        case 5:
             return "© Better Calc  v\(String(describing: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""))"
         default:
             return nil
@@ -258,7 +264,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             } else {
                 return 1
             }
-        case 2, 3:
+        case 2:
+            return 2
+        case 3:
+            return 2
+        case 4:
             return 2
         default:
             return 1
@@ -276,7 +286,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             default:
                 return 44
             }
-        case 2, 3, 4:
+        case 2, 3, 4, 5:
             return 44
         default:
             return UITableView.automaticDimension
@@ -311,6 +321,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 let keepCell = tableView.dequeueReusableCell(withIdentifier: "KeepCell", for: indexPath)
                 keepData(in: keepCell)
                 return keepCell
+            }
+        case .preferences2:
+            if indexPath.row == 0 {
+                let autoDeleteCell = tableView.dequeueReusableCell(withIdentifier: "AutoDeleteCell", for: indexPath)
+                autoDelete(in:  autoDeleteCell)
+                return  autoDeleteCell
+            } else {
+                let changeLangCell = tableView.dequeueReusableCell(withIdentifier: "ChangeLangCell", for: indexPath)
+                changeLanguage(in: changeLangCell)
+                return changeLangCell
             }
         case .data:
             if indexPath.row == 0 {
@@ -354,13 +374,22 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 3:
             switch indexPath.row {
             case 0:
+                autoDeleteFunc()
+            case 1:
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            default:
+                return
+            }
+        case 4:
+            switch indexPath.row {
+            case 0:
                 resetButtonFunc()
             case 1:
                 deleteHistoryFunc()
             default:
                 return
             }
-        case 4:
+        case 5:
             devGitFunc()
         default:
             return
@@ -392,7 +421,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 35
+        switch section {
+        case 2:
+            return 10
+        default:
+            return 35
+        }
     }
     
     
@@ -566,7 +600,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         NSLayoutConstraint.activate([
             hapticText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             hapticText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
-            hapticText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
+            hapticText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -100)
         ])
     }
     
@@ -599,7 +633,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         NSLayoutConstraint.activate([
             keepDataText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             keepDataText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
-            keepDataText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
+            keepDataText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -100)
         ])
     }
     
@@ -611,6 +645,147 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             coreData.resetBasicState()
             coreData.resetConverterState(with: 1)
         }
+    }
+    
+    
+    //MARK: - Preferences 2
+    
+    //autodelete
+    func autoDelete(in cell: UITableViewCell) {
+        cell.contentView.subviews.forEach { $0.removeFromSuperview() }
+        
+        let changeLangText = UILabel()
+        changeLangText.text = NSLocalizedString("settings_p_auto_delete", comment: "")
+        changeLangText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        changeLangText.textColor = .white
+        changeLangText.adjustsFontSizeToFitWidth = true
+        changeLangText.minimumScaleFactor = 0.6
+        changeLangText.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(changeLangText)
+        NSLayoutConstraint.activate([
+            changeLangText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            changeLangText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
+            changeLangText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -140)
+        ])
+        
+        let settingsTextLabel = UILabel()
+        settingsTextLabel.text = selectedAutoDeleteText
+        settingsTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+            settingsTextLabel.textColor = selectedTintColor
+        }
+        settingsTextLabel.adjustsFontSizeToFitWidth = true
+        settingsTextLabel.minimumScaleFactor = 0.6
+        settingsTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(settingsTextLabel)
+        
+        NSLayoutConstraint.activate([
+            settingsTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            settingsTextLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40)
+        ])
+        
+        let chevronIcon = UIImageView()
+        chevronIcon.image = UIImage(systemName: "chevron.right")
+        chevronIcon.image?.withRenderingMode(.alwaysOriginal)
+        if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+            chevronIcon.tintColor = selectedTintColor
+        }
+        chevronIcon.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(chevronIcon)
+        
+        NSLayoutConstraint.activate([
+            chevronIcon.widthAnchor.constraint(equalToConstant: 14),
+            chevronIcon.heightAnchor.constraint(equalToConstant: 20),
+            chevronIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            chevronIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
+        ])
+    }
+    
+    func autoDeleteFunc() {
+        let indexPath = IndexPath(row: 0, section: 3)
+        let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
+        let alert = UIAlertController(title: "\(NSLocalizedString("settings_p_auto_delete", comment: "")):", message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel)
+        cancelAction.setValue(selectedTintColor, forKey: "titleTextColor")
+        alert.addAction(cancelAction)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("older_than_1_week", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
+            guard self != nil else { return }
+            self!.selectedAutoDeleteText = NSLocalizedString("auto_delete_1_week", comment: "")
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self!.tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("older_than_1_month", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
+            guard self != nil else { return }
+            self!.selectedAutoDeleteText = NSLocalizedString("auto_delete_1_month", comment: "")
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self!.tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("older_than_3_months", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
+            guard self != nil else { return }
+            self!.selectedAutoDeleteText = NSLocalizedString("auto_delete_3_months", comment: "")
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self!.tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("never", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
+            guard self != nil else { return }
+            self!.selectedAutoDeleteText = NSLocalizedString("never", comment: "")
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self!.tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    //language
+    func changeLanguage(in cell: UITableViewCell) {
+        let changeLangText = UILabel()
+        changeLangText.text = NSLocalizedString("settings_p_change_language", comment: "")
+        changeLangText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        changeLangText.textColor = .white
+        changeLangText.adjustsFontSizeToFitWidth = true
+        changeLangText.minimumScaleFactor = 0.6
+        changeLangText.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(changeLangText)
+        NSLayoutConstraint.activate([
+            changeLangText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            changeLangText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
+            changeLangText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -100)
+        ])
+        
+        let settingsTextLabel = UILabel()
+        settingsTextLabel.text = NSLocalizedString("button_settings", comment: "")
+        settingsTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+            settingsTextLabel.textColor = selectedTintColor
+        }
+        settingsTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(settingsTextLabel)
+        
+        NSLayoutConstraint.activate([
+            settingsTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            settingsTextLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40)
+        ])
+        
+        let chevronIcon = UIImageView()
+        chevronIcon.image = UIImage(systemName: "chevron.right")
+        chevronIcon.image?.withRenderingMode(.alwaysOriginal)
+        if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+            chevronIcon.tintColor = selectedTintColor
+        }
+        chevronIcon.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(chevronIcon)
+        
+        NSLayoutConstraint.activate([
+            chevronIcon.widthAnchor.constraint(equalToConstant: 14),
+            chevronIcon.heightAnchor.constraint(equalToConstant: 20),
+            chevronIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            chevronIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
+        ])
     }
     
     

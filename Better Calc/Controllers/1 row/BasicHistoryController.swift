@@ -18,6 +18,8 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     
     var coreData = CoreDataManager.shared
     var historyId: Int16 = 1
+    let dateFormatter = DateFormatter()
+    
     var isEdit: Bool = false
     let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
     
@@ -211,7 +213,6 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     
     func loadHistory() {
         let fetchedHistory = coreData.fetchObjects(with: self.historyId)
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d, yyyy"
         
         groupedHistory = Dictionary(grouping: fetchedHistory) { historyItem in
@@ -221,13 +222,15 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         sortedSectionKeys = groupedHistory.keys.sorted { key1, key2 in
             let date1 = dateFormatter.date(from: key1) ?? Date.distantPast
             let date2 = dateFormatter.date(from: key2) ?? Date.distantPast
-            return date1 < date2
+            return date1 > date2
         }
         HistoryTableView.reloadData()
     }
     
     
     //MARK: - History Table View
+    
+    func isDateInToday(_ date: Date) -> Bool { return true }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sortedSectionKeys.count
@@ -243,7 +246,21 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sortedSectionKeys[section]
+        let today = Date.now
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
+        
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        print("today date: \(dateFormatter.string(from: today))")
+        print("yesterday date: \(dateFormatter.string(from: yesterday))")
+        print("sortedSectionKeys: \(sortedSectionKeys[section])")
+        
+        if sortedSectionKeys[section] == dateFormatter.string(from: today) {
+            return NSLocalizedString("today", comment: "")
+        } else if sortedSectionKeys[section] == dateFormatter.string(from: yesterday) {
+            return NSLocalizedString("yesterday", comment: "")
+        } else {
+            return sortedSectionKeys[section]
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

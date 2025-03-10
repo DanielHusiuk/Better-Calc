@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650816452D7BA686000F8B68 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 650816442D7BA686000F8B68 /* Settings.bundle */; };
 		65195E842C5BCB2400D4BE8B /* ButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65195E832C5BCB2400D4BE8B /* ButtonsModel.swift */; };
 		652EA18A2C8B57CA00DD6803 /* BasicHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652EA1892C8B57CA00DD6803 /* BasicHistoryController.swift */; };
 		65464A762CB7DEA3008AB2AD /* PickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65464A752CB7DE9E008AB2AD /* PickerModel.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		650816442D7BA686000F8B68 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		65195E832C5BCB2400D4BE8B /* ButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsModel.swift; sourceTree = "<group>"; };
 		652EA1892C8B57CA00DD6803 /* BasicHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHistoryController.swift; sourceTree = "<group>"; };
 		65464A752CB7DE9E008AB2AD /* PickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerModel.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 		65DFA3D82C5A9B6A0090F4CE = {
 			isa = PBXGroup;
 			children = (
+				650816442D7BA686000F8B68 /* Settings.bundle */,
 				65DFA3E32C5A9B6A0090F4CE /* Better Calc */,
 				65DFA3E22C5A9B6A0090F4CE /* Products */,
 			);
@@ -439,6 +442,7 @@
 			files = (
 				65DFA3F12C5A9B6B0090F4CE /* Assets.xcassets in Resources */,
 				65B288182D4A8E4B00A84FC7 /* Localizable.xcstrings in Resources */,
+				650816452D7BA686000F8B68 /* Settings.bundle in Resources */,
 				65B2883C2D4ABB3300A84FC7 /* Main.storyboard in Resources */,
 				65DFA3F42C5A9B6B0090F4CE /* Base in Resources */,
 			);
@@ -757,7 +761,7 @@
 				65DFA3F72C5A9B6B0090F4CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		65DFA3F82C5A9B6B0090F4CE /* Build configuration list for PBXNativeTarget "Better Calc" */ = {
 			isa = XCConfigurationList;
@@ -766,7 +770,7 @@
 				65DFA3FA2C5A9B6B0090F4CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

@@ -63,6 +63,7 @@ class UnitsModel {
         .metricCups            : NSLocalizedString("unit_volume_metric_cups", comment: ""),
         .kiloliters            : NSLocalizedString("unit_volume_kiloliters", comment: ""),
         .megaliters            : NSLocalizedString("unit_volume_megaliters", comment: ""),
+        .cubicCentimeters       : NSLocalizedString("unit_volume_cubic_centimeters", comment: ""),
         .cubicDecimeters        : NSLocalizedString("unit_volume_cubic_decimeters", comment: ""),
         .cubicMeters           : NSLocalizedString("unit_volume_cubic_meters", comment: ""),
         .cubicKilometers        : NSLocalizedString("unit_volume_cubic_kilometers", comment: ""),
@@ -84,7 +85,7 @@ class UnitsModel {
         .cubicYards            : NSLocalizedString("unit_volume_cubic_yards", comment: ""),
         .cubicMiles            : NSLocalizedString("unit_volume_cubic_miles", comment: ""),
         .acreFeet             : NSLocalizedString("unit_volume_acre_feet", comment: ""),
-        .bushels              : NSLocalizedString("unit_volume_bushels", comment: ""),
+        .bushels              : NSLocalizedString("unit_volume_bushels", comment: "")
     ]
     
     //temperature

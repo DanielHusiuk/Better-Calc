@@ -18,10 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let _ = (scene as? UIWindowScene) else { return }
         applyTheme()
-        NotificationCenter.default.addObserver(self, selector: #selector(userDefaultsDidChange), name: UserDefaults.didChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userThemeDidChange), name: UserDefaults.didChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userThemeDidChange), name: UIAccessibility.darkerSystemColorsStatusDidChangeNotification, object: nil)
     }
     
-    @objc func userDefaultsDidChange() {
+    @objc func userThemeDidChange() {
         applyTheme()
     }
     
@@ -29,7 +30,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let selectedTintID = UserDefaults.standard.integer(forKey: "selectedTintID")
         let isDarkMode = (selectedTintID == 7)
         
-        window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
+        if isDarkMode {
+            window?.overrideUserInterfaceStyle = .dark
+        } else {
+            window?.overrideUserInterfaceStyle = .unspecified
+        }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -42,6 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        applyTheme()
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
