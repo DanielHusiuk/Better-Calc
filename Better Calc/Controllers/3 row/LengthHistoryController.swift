@@ -1,14 +1,14 @@
 //
-//  BasicHistoryController.swift
+//  LengthHistoryController.swift
 //  Better Calc
 //
-//  Created by Daniel Husiuk on 06.09.2024.
+//  Created by Daniel Husiuk on 12.03.2025.
 //
 
 import UIKit
 import CoreData
 
-class BasicHistoryController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LengthHistoryController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var HistoryTableView: UITableView!
     @IBOutlet weak var CloseBarButton: UIBarButtonItem!
@@ -17,7 +17,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var NavigationTitleOutlet: UINavigationItem!
     
     var coreData = CoreDataManager.shared
-    var historyId: Int64 = 1
+    var converterId: Int64 = 1
     let dateFormatter = DateFormatter()
     
     var isEdit: Bool = false
@@ -129,10 +129,10 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         
         deleteAlert.addAction(UIAlertAction(title: NSLocalizedString("confirm", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard let self = self else { return }
-            self.coreData.deleteAllCalculatorObjects(with: self.historyId)
+            self.coreData.deleteAllConverterObjects(with: self.converterId)
             
             if let navigationController = self.presentingViewController as? UINavigationController,
-               let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
+               let basicVC = navigationController.viewControllers.first(where: { $0 is LengthViewController }) as? LengthViewController {
                 basicVC.HistoryButtonOutlet.isEnabled = false
             }
             
@@ -168,7 +168,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
             let key = sortedSectionKeys[indexPath.section]
             if var group = groupedHistory[key] {
                 let deleteItem = group[indexPath.row]
-                coreData.deleteCalculatorObject(object: deleteItem)
+                coreData.deleteConverterObject(object: deleteItem)
                 group.remove(at: indexPath.row)
                 
                 if group.isEmpty {
@@ -185,7 +185,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         
         if groupedHistory.isEmpty {
             if let navigationController = self.presentingViewController as? UINavigationController,
-               let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
+               let basicVC = navigationController.viewControllers.first(where: { $0 is LengthViewController }) as? LengthViewController {
                 basicVC.HistoryButtonOutlet.isEnabled = false
             }
             self.dismiss(animated: true, completion: nil)
@@ -208,11 +208,11 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK: - History Grouping Logic
     
-    var groupedHistory: [String: [CalculatorHistoryItem]] = [:]
+    var groupedHistory: [String: [ConverterHistoryItem]] = [:]
     var sortedSectionKeys: [String] = []
     
     func loadHistory() {
-        let fetchedHistory = coreData.fetchCalculatorObjects(with: self.historyId)
+        let fetchedHistory = coreData.fetchConverterObjects(with: self.converterId)
         dateFormatter.dateFormat = "d MMM, yyyy"
         
         groupedHistory = Dictionary(grouping: fetchedHistory) { historyItem in
@@ -267,8 +267,8 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let key = sortedSectionKeys[indexPath.section]
         if let historyItem = groupedHistory[key]?[indexPath.row] {
-            cell.textLabel?.text = historyItem.working
-            cell.detailTextLabel?.text = historyItem.result
+            cell.textLabel?.text = "\(String(describing: historyItem.fromText))  (\(historyItem.fromUnit))"
+            cell.detailTextLabel?.text = "\(String(describing: historyItem.toText))   (\(historyItem.toUnit)"
         }
         
         let customBackgroundView = UIView()
@@ -285,51 +285,52 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if HistoryTableView.isEditing == true {
-            return
-        } else {
-            let key = sortedSectionKeys[indexPath.section]
-            let selectedHistory = groupedHistory[key]?[indexPath.row]
-            
-            if let navigationController = self.presentingViewController as? UINavigationController,
-               let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
-                if let workingText = selectedHistory?.working, let resultText = selectedHistory?.result {
-                    basicVC.WorkingsLabelOutlet.text = ""
-                    basicVC.ResultsLabelOutlet.text = ""
-                    basicVC.WorkingsLabelOutlet.text = workingText
-                    basicVC.ResultsLabelOutlet.text = resultText
-                    
-                    let symbolRange = CharacterSet(charactersIn: "+−×÷")
-                    if let currentOperationRange = workingText.rangeOfCharacter(from: symbolRange) {
-                        let symbol = workingText[currentOperationRange]
-                        switch symbol {
-                        case "+":
-                            basicVC.currentOperation = .addition
-                        case "−":
-                            basicVC.currentOperation = .subtraction
-                        case "×":
-                            basicVC.currentOperation = .multiplication
-                        case "÷":
-                            basicVC.currentOperation = .division
-                        default:
-                            break
-                        }
-                    }
-                    basicVC.isTypingNumber = true
-                    
-                    if basicVC.EraseButtonOutlet.isHidden == true || basicVC.PasteResultButtonOutlet.isHidden == true {
-                        basicVC.checkEraseButton()
-                        basicVC.checkPasteButton()
-                    }
-                }
-            } else {
-                print("Previous Controller not found")
-            }
-            self.dismiss(animated: true, completion: nil)
-        }
+//        if HistoryTableView.isEditing == true {
+//            return
+//        } else {
+//            let key = sortedSectionKeys[indexPath.section]
+//            let selectedHistory = groupedHistory[key]?[indexPath.row]
+//            
+//            if let navigationController = self.presentingViewController as? UINavigationController,
+//               let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
+//                if let workingText = selectedHistory?.working, let resultText = selectedHistory?.result {
+//                    basicVC.WorkingsLabelOutlet.text = ""
+//                    basicVC.ResultsLabelOutlet.text = ""
+//                    basicVC.WorkingsLabelOutlet.text = workingText
+//                    basicVC.ResultsLabelOutlet.text = resultText
+//                    
+//                    let symbolRange = CharacterSet(charactersIn: "+−×÷")
+//                    if let currentOperationRange = workingText.rangeOfCharacter(from: symbolRange) {
+//                        let symbol = workingText[currentOperationRange]
+//                        switch symbol {
+//                        case "+":
+//                            basicVC.currentOperation = .addition
+//                        case "−":
+//                            basicVC.currentOperation = .subtraction
+//                        case "×":
+//                            basicVC.currentOperation = .multiplication
+//                        case "÷":
+//                            basicVC.currentOperation = .division
+//                        default:
+//                            break
+//                        }
+//                    }
+//                    basicVC.isTypingNumber = true
+//                    
+//                    if basicVC.EraseButtonOutlet.isHidden == true || basicVC.PasteResultButtonOutlet.isHidden == true {
+//                        basicVC.checkEraseButton()
+//                        basicVC.checkPasteButton()
+//                    }
+//                }
+//            } else {
+//                print("Previous Controller not found")
+//            }
+//            self.dismiss(animated: true, completion: nil)
+//        }
         if UserDefaults.standard.bool(forKey: "HapticState") {
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         }
     }
     
 }
+

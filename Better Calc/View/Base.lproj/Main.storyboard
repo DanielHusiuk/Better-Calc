@@ -1185,6 +1185,7 @@
                         <outlet property="FromButtonOutlet" destination="xOW-Zd-zs3" id="g6N-Uq-1fQ"/>
                         <outlet property="FromLabelOutlet" destination="ZpE-7j-gnM" id="EwB-mO-yLm"/>
                         <outlet property="FromNumberImageOutlet" destination="MsC-pX-bLg" id="QNw-sY-gq3"/>
+                        <outlet property="HistoryButtonOutlet" destination="rk5-Lq-mlp" id="QnU-Jd-lEx"/>
                         <outlet property="ToButtonOutlet" destination="38k-dM-wz4" id="vvR-7h-xTh"/>
                         <outlet property="ToLabelOutlet" destination="ygO-qP-6kG" id="qxd-yX-0Vh"/>
                         <outlet property="ToNumberImageOutlet" destination="ygT-sI-8GQ" id="zs8-VB-fy0"/>
@@ -1763,10 +1764,10 @@
             </objects>
             <point key="canvasLocation" x="2622" y="1653"/>
         </scene>
-        <!--Basic History-->
+        <!--Length History-->
         <scene sceneID="6jZ-v1-BpZ">
             <objects>
-                <viewController id="dun-Cr-cYS" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dun-Cr-cYS" userLabel="Length History" customClass="LengthHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="hHz-Ks-jzc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4241,16 +4242,16 @@
             <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

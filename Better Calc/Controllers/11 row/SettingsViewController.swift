@@ -41,7 +41,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     private var mainView = ViewController()
     
     private var tintModel = TintModel()
-    private var selectedTintId: Int16 = 1
+    private var selectedTintId: Int64 = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let savedIndex = UserDefaults.standard.integer(forKey: "selectedTintID")
         let indexToUse = savedIndex
         selectedIndexPath = IndexPath(row: indexToUse, section: 0)
-        selectedTintId = Int16(UserDefaults.standard.integer(forKey: "selectedTintID"))
+        selectedTintId = Int64(UserDefaults.standard.integer(forKey: "selectedTintID"))
         
         if UserDefaults.standard.object(forKey: "HapticState") == nil {
             UserDefaults.standard.set(true, forKey: "HapticState")
@@ -499,7 +499,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         NotificationCenter.default.post(name: UserDefaults.didChangeNotification, object: nil)
         collectionView?.reloadData()
         
-        selectedTintId = tintModel.tints[sender.tag].id
+        selectedTintId = Int64(tintModel.tints[sender.tag].id)
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             UserDefaults.standard.setColor(selectedTintColor, forKey: "selectedTintColor")
         }
@@ -600,7 +600,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         NSLayoutConstraint.activate([
             hapticText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             hapticText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
-            hapticText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -100)
+            hapticText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40)
         ])
     }
     
@@ -633,7 +633,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         NSLayoutConstraint.activate([
             keepDataText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             keepDataText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
-            keepDataText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -100)
+            keepDataText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40)
         ])
     }
     
@@ -855,7 +855,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         alert.addAction(UIAlertAction(title: NSLocalizedString("confirm", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            self?.deleteHistoryFetch(entityName: "HistoryItem", context: context)
+            self?.deleteHistoryFetch(entityName: "CalculatorHistoryItem", context: context)
+            self?.deleteHistoryFetch(entityName: "ConverterHistoryItem", context: context)
         }))
         present(alert, animated: true, completion: nil)
     }
@@ -871,7 +872,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 coreData.resetConverterState(with: 1)
             } else {
                 (self.navigationController as? NavigationController)?.delHistoryPill()
-                coreData.deleteAllHistory()
+                coreData.deleteAllCalculatorHistory()
+                coreData.deleteAllConverterHistory()
                 coreData.resetBasicState()
                 coreData.resetConverterState(with: 1)
             }

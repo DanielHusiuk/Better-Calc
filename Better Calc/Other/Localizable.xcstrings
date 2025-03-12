@@ -3527,7 +3527,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nie"
+            "value" : "Niemals"
           }
         },
         "en" : {
@@ -3563,7 +3563,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "절대"
+            "value" : "절대로"
           }
         },
         "nl" : {
@@ -5587,7 +5587,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "기록 자동 삭제"
+            "value" : "히스토리 자동 삭제"
           }
         },
         "nl" : {

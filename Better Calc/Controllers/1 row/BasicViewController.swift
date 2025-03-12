@@ -31,6 +31,8 @@ class BasicViewController: UIViewController {
     private var isErasing = false
     
     var coreData = CoreDataManager.shared
+    var calculatorId: Int64 = 1
+    
     var isTypingNumber = false
     let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")!
     
@@ -162,11 +164,10 @@ class BasicViewController: UIViewController {
     }
     
     func historyButton() {
-        let historyButton = HistoryButtonOutlet
-        if coreData.fetchObjects(with: 1).count == 0 {
-            historyButton!.isEnabled = false
+        if coreData.fetchCalculatorObjects(with: calculatorId).count == 0 {
+            HistoryButtonOutlet.isEnabled = false
         } else {
-            historyButton!.isEnabled = true
+            HistoryButtonOutlet.isEnabled = true
         }
     }
     
@@ -345,14 +346,14 @@ class BasicViewController: UIViewController {
                 checkPasteButton()
             }
             
-            let historyItems = coreData.fetchObjects(with: 1)
+            let historyItems = coreData.fetchCalculatorObjects(with: calculatorId)
             if let lastOperation = WorkingsLabelOutlet.text, lastOperation.last == " " {
                 return
             } else {
                 if historyItems.contains(where: { $0.working == WorkingsLabelOutlet.text }) {
                     return
                 } else {
-                    CoreDataManager.shared.createHistoryObject(1, date: Date(), result: ResultsLabelOutlet.text!, working: WorkingsLabelOutlet.text!)
+                    CoreDataManager.shared.createCalculatorHistoryObject(1, date: Date(), result: ResultsLabelOutlet.text!, working: WorkingsLabelOutlet.text!)
                     historyButton()
                     saveViewState()
                 }

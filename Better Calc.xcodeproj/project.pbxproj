@@ -23,8 +23,8 @@
 		6594D9052C5FC26D00218F02 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6594D9042C5FC26D00218F02 /* ButtonCell.swift */; };
 		659536072C7B43FF0036D99D /* PasteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659536062C7B43FF0036D99D /* PasteLabel.swift */; };
 		659C6A6A2D58F084007995D5 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C6A692D58F074007995D5 /* AnimationManager.swift */; };
-		659EE3482C9368D000B39776 /* HistoryItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EE3462C9368D000B39776 /* HistoryItem+CoreDataProperties.swift */; };
 		659EE34A2C93690600B39776 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EE3492C93690600B39776 /* CoreDataManager.swift */; };
+		65A98AB62D822663002B76B9 /* LengthHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A98AB52D822663002B76B9 /* LengthHistoryController.swift */; };
 		65B288182D4A8E4B00A84FC7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 65B288172D4A8E4B00A84FC7 /* Localizable.xcstrings */; };
 		65B2883C2D4ABB3300A84FC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3EA2C5A9B6A0090F4CE /* Main.storyboard */; };
 		65B689512C620FFD005259E7 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689502C620FFD005259E7 /* BasicViewController.swift */; };
@@ -73,8 +73,8 @@
 		6594D9042C5FC26D00218F02 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		659536062C7B43FF0036D99D /* PasteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteLabel.swift; sourceTree = "<group>"; };
 		659C6A692D58F074007995D5 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
-		659EE3462C9368D000B39776 /* HistoryItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HistoryItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		659EE3492C93690600B39776 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		65A98AB52D822663002B76B9 /* LengthHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthHistoryController.swift; sourceTree = "<group>"; };
 		65B288172D4A8E4B00A84FC7 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		65B288192D4A93B900A84FC7 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
 		65B2881A2D4A93BA00A84FC7 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -186,7 +186,6 @@
 		654EB3362D5F922F00BA2C3A /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				659EE3462C9368D000B39776 /* HistoryItem+CoreDataProperties.swift */,
 				659EE3492C93690600B39776 /* CoreDataManager.swift */,
 				65706BC42CAE7D1E0033398C /* IconManager.swift */,
 				659C6A692D58F074007995D5 /* AnimationManager.swift */,
@@ -266,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				65B6895B2C6285D9005259E7 /* LengthViewController.swift */,
+				65A98AB52D822663002B76B9 /* LengthHistoryController.swift */,
 				65B6895D2C6285F1005259E7 /* AreaViewController.swift */,
 			);
 			path = "3 row";
@@ -475,8 +475,8 @@
 				65B6897B2C628DA3005259E7 /* BmiViewController.swift in Sources */,
 				65DFA3E52C5A9B6A0090F4CE /* AppDelegate.swift in Sources */,
 				65B689622C628661005259E7 /* TemperatureViewController.swift in Sources */,
+				65A98AB62D822663002B76B9 /* LengthHistoryController.swift in Sources */,
 				65B689792C628D8E005259E7 /* TipsViewController.swift in Sources */,
-				659EE3482C9368D000B39776 /* HistoryItem+CoreDataProperties.swift in Sources */,
 				655BC2D92D5F958C0096AB38 /* DataViewController.swift in Sources */,
 				65B6895C2C6285D9005259E7 /* LengthViewController.swift in Sources */,
 				65DFA3E72C5A9B6A0090F4CE /* SceneDelegate.swift in Sources */,

@@ -67,9 +67,9 @@ public final class CoreDataManager: NSObject {
     
     //MARK: - Calculator History
     
-    public func createHistoryObject(_ id: Int16, date: Date, result: String, working: String) {
-        guard let objectEntityDescription = NSEntityDescription.entity(forEntityName: "HistoryItem", in: context) else { return }
-        let object = HistoryItem(entity: objectEntityDescription, insertInto: context)
+    public func createCalculatorHistoryObject(_ id: Int64, date: Date, result: String, working: String) {
+        guard let objectEntityDescription = NSEntityDescription.entity(forEntityName: "CalculatorHistoryItem", in: context) else { return }
+        let object = CalculatorHistoryItem(entity: objectEntityDescription, insertInto: context)
         object.id = id
         object.date = date
         object.result = result
@@ -77,32 +77,32 @@ public final class CoreDataManager: NSObject {
         appDelegate.saveContext()
     }
     
-    public func fetchObjects(with id: Int16) -> [HistoryItem] {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HistoryItem")
+    public func fetchCalculatorObjects(with id: Int64) -> [CalculatorHistoryItem] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CalculatorHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {
-            return (try context.fetch(fetchRequest) as? [HistoryItem]) ?? []
+            return (try context.fetch(fetchRequest) as? [CalculatorHistoryItem]) ?? []
         } catch {
             print("Failed to fetch data for id: \(id)")
             return []
         }
     }
     
-    public func fetchObject(with id: Int16) -> HistoryItem? {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HistoryItem")
+    public func fetchCalculatorObject(with id: Int64) -> CalculatorHistoryItem? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CalculatorHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         do {
-            let objects = try? context.fetch(fetchRequest) as? [HistoryItem]
+            let objects = try? context.fetch(fetchRequest) as? [CalculatorHistoryItem]
             return objects?.first
         }
     }
     
-    public func updateObject(with id: Int16, result: String, working: String) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HistoryItem")
+    public func updateCalculatorObject(with id: Int64, result: String, working: String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CalculatorHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {
-            guard let objects = try? context.fetch(fetchRequest) as? [HistoryItem],
+            guard let objects = try? context.fetch(fetchRequest) as? [CalculatorHistoryItem],
                   let object = objects.first else { return }
             object.result = result
             object.working = working
@@ -110,18 +110,18 @@ public final class CoreDataManager: NSObject {
         appDelegate.saveContext()
     }
     
-    public func deleteAllObjects(with id: Int16) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HistoryItem")
+    public func deleteAllCalculatorObjects(with id: Int64) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CalculatorHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {
-            let objects = try? context.fetch(fetchRequest) as? [HistoryItem]
+            let objects = try? context.fetch(fetchRequest) as? [CalculatorHistoryItem]
             objects?.forEach{context.delete($0)}
         }
         appDelegate.saveContext()
         deleteHaptics()
     }
     
-    public func deleteObject(object: NSManagedObject) {
+    public func deleteCalculatorObject(object: NSManagedObject) {
         context.delete(object)
         do {
             try context.save()
@@ -131,10 +131,10 @@ public final class CoreDataManager: NSObject {
         deleteHaptics()
     }
     
-    public func deleteAllHistory() {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HistoryItem")
+    public func deleteAllCalculatorHistory() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CalculatorHistoryItem")
         do {
-            let objects = try? context.fetch(fetchRequest) as? [HistoryItem]
+            let objects = try? context.fetch(fetchRequest) as? [CalculatorHistoryItem]
             objects?.forEach{context.delete($0)}
         }
         appDelegate.saveContext()
@@ -144,7 +144,7 @@ public final class CoreDataManager: NSObject {
     
     //MARK: - Converter History
     
-    public func createConverterHistoryObject(_ id: Int16, date: Date, fromText: String, toText: String, fromUnit: Int16, toUnit: Int16) {
+    public func createConverterHistoryObject(_ id: Int64, date: Date, fromText: String, toText: String, fromUnit: Int64, toUnit: Int64) {
         guard let objectEntityDescription = NSEntityDescription.entity(forEntityName: "ConverterHistoryItem", in: context) else { return }
         let object = ConverterHistoryItem(entity: objectEntityDescription, insertInto: context)
         object.id = id
@@ -156,7 +156,7 @@ public final class CoreDataManager: NSObject {
         appDelegate.saveContext()
     }
     
-    public func fetchConverterObjects(with id: Int16) -> [ConverterHistoryItem] {
+    public func fetchConverterObjects(with id: Int64) -> [ConverterHistoryItem] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {
@@ -167,7 +167,7 @@ public final class CoreDataManager: NSObject {
         }
     }
     
-    public func fetchConverterObject(with id: Int16) -> ConverterHistoryItem? {
+    public func fetchConverterObject(with id: Int64) -> ConverterHistoryItem? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
@@ -177,7 +177,7 @@ public final class CoreDataManager: NSObject {
         }
     }
     
-    public func updateConverterObject(with id: Int16, fromText: String, toText: String, fromUnit: Int16, toUnit: Int16) {
+    public func updateConverterObject(with id: Int64, fromText: String, toText: String, fromUnit: Int64, toUnit: Int64) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {
@@ -191,7 +191,7 @@ public final class CoreDataManager: NSObject {
         appDelegate.saveContext()
     }
     
-    public func deleteAllConverterObjects(with id: Int16) {
+    public func deleteAllConverterObjects(with id: Int64) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {
@@ -265,7 +265,7 @@ public final class CoreDataManager: NSObject {
     
     //MARK: - Converter State
     
-    public func saveConverterState(id: Int16, fromText: String, toText: String, fromUnit: Int16, toUnit: Int16) {
+    public func saveConverterState(id: Int64, fromText: String, toText: String, fromUnit: Int64, toUnit: Int64) {
         resetConverterState(with: id)
         guard let entity = NSEntityDescription.entity(forEntityName: "ConverterState", in: context) else { return }
         let state = ConverterState(entity: entity, insertInto: context)
@@ -279,7 +279,7 @@ public final class CoreDataManager: NSObject {
         print("Converter state saved.")
     }
     
-    public func loadConverterState(with id: Int16) -> ConverterState? {
+    public func loadConverterState(with id: Int64) -> ConverterState? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterState")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {
@@ -291,7 +291,7 @@ public final class CoreDataManager: NSObject {
         }
     }
     
-    public func resetConverterState(with id: Int16) {
+    public func resetConverterState(with id: Int64) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterState")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {

@@ -12,6 +12,7 @@ class LengthViewController: UIViewController {
     
     @IBOutlet weak var CalculatorImageOutlet: UIImageView!
     @IBOutlet var ShadowButtonsOutlet: [UIButton]!
+    @IBOutlet weak var HistoryButtonOutlet: UIBarButtonItem!
     
     @IBOutlet weak var FromNumberImageOutlet: UIImageView!
     @IBOutlet weak var FromLabelOutlet: UILabel!
@@ -21,11 +22,12 @@ class LengthViewController: UIViewController {
     @IBOutlet weak var ToLabelOutlet: UILabel!
     @IBOutlet weak var ToButtonOutlet: UIButton!
     
+    let coreData = CoreDataManager.shared
     let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")!
     private var eraseTimer: Timer?
     
     var selectedUnits: [UIButton: UnitLength] = [:]
-    let converterId: Int16 = 1
+    let converterId: Int64 = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +83,41 @@ class LengthViewController: UIViewController {
     }
     
     
+    // MARK: - Button Preferences
+    
+    func buttonShadows() {
+        let shadowColor = UIColor.black.cgColor
+        let shadowOffset = CGSize(width: 0, height: 0)
+        let shadowOpacity: Float = 0.4
+        let shadowRadius: CGFloat = 8
+        
+        for button in ShadowButtonsOutlet {
+            if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
+                button.tintColor = selectedTintColor
+            }
+            button.layer.shadowColor = shadowColor
+            button.layer.shadowOffset = shadowOffset
+            button.layer.shadowOpacity = shadowOpacity
+            button.layer.shadowRadius = shadowRadius
+            button.layer.shadowPath = UIBezierPath(roundedRect: button.bounds, cornerRadius: button.layer.cornerRadius).cgPath
+            button.layer.masksToBounds = false
+        }
+    }
+    
+    @IBAction func EraseButtonLongPress(_ sender: UILongPressGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            eraseTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(EraseButton), userInfo: nil, repeats: true)
+            RunLoop.current.add(eraseTimer!, forMode: .common)
+        case .ended:
+            eraseTimer?.invalidate()
+            eraseTimer = nil
+        default:
+            break
+        }
+    }
+    
+    
     // MARK: - Save/Load State
     
     func saveViewState() {
@@ -96,8 +133,8 @@ class LengthViewController: UIViewController {
             id: converterId,
             fromText: fromText!,
             toText: toText!,
-            fromUnit: Int16(fromUnitIndex),
-            toUnit: Int16(toUnitIndex)
+            fromUnit: Int64(fromUnitIndex),
+            toUnit: Int64(toUnitIndex)
         )
     }
     
@@ -131,38 +168,34 @@ class LengthViewController: UIViewController {
     }
     
     
-    // MARK: - Button Preferences
+    //MARK: - History Logic
     
-    func buttonShadows() {
-        let shadowColor = UIColor.black.cgColor
-        let shadowOffset = CGSize(width: 0, height: 0)
-        let shadowOpacity: Float = 0.4
-        let shadowRadius: CGFloat = 8
-        
-        for button in ShadowButtonsOutlet {
-            if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
-                button.tintColor = selectedTintColor
-            }
-            button.layer.shadowColor = shadowColor
-            button.layer.shadowOffset = shadowOffset
-            button.layer.shadowOpacity = shadowOpacity
-            button.layer.shadowRadius = shadowRadius
-            button.layer.shadowPath = UIBezierPath(roundedRect: button.bounds, cornerRadius: button.layer.cornerRadius).cgPath
-            button.layer.masksToBounds = false
+    func historyButton() {
+        if coreData.fetchConverterObjects(with: converterId).count == 0 {
+            HistoryButtonOutlet.isEnabled = false
+        } else {
+            HistoryButtonOutlet.isEnabled = true
         }
     }
     
-    @IBAction func EraseButtonLongPress(_ sender: UILongPressGestureRecognizer) {
-        switch sender.state {
-        case .began:
-            eraseTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(EraseButton), userInfo: nil, repeats: true)
-            RunLoop.current.add(eraseTimer!, forMode: .common)
-        case .ended:
-            eraseTimer?.invalidate()
-            eraseTimer = nil
-        default:
-            break
+    func saveCoreData() {
+        let historyItems = coreData.fetchConverterObjects(with: converterId)
+        let sortedUnits = UnitsModel().lengthDictionary.keys.sorted{ ($0.description) < ($1.description) }
+        let fromUnitIndex = selectedUnits[FromButtonOutlet].flatMap{ sortedUnits.firstIndex(of: $0) } ?? 0
+        let toUnitIndex = selectedUnits[ToButtonOutlet].flatMap { sortedUnits.firstIndex(of: $0) } ?? 0
+        
+        if historyItems.contains(where: { $0.fromText == FromLabelOutlet.text }) && historyItems.contains(where: { $0.toText == ToLabelOutlet.text }) && historyItems.contains(where: { $0.fromUnit == Int64(fromUnitIndex) }) && historyItems.contains(where: { $0.toUnit == Int64(toUnitIndex) }) {
+            return
+        } else {
+            CoreDataManager.shared.createConverterHistoryObject(converterId, date: Date(), fromText: FromLabelOutlet.text!, toText: ToLabelOutlet.text!, fromUnit: Int64(fromUnitIndex), toUnit: Int64(toUnitIndex))
+            historyButton()
         }
+        print(String(describing: CoreDataManager.shared.fetchConverterObjects(with: converterId)))
+    }
+    
+    func saveInHistory() {
+        //implement 2 second delay logic
+        saveCoreData()
     }
     
     
@@ -278,6 +311,7 @@ class LengthViewController: UIViewController {
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         }
         convertFunc()
+        saveInHistory()
     }
     
     func convertFunc() {
