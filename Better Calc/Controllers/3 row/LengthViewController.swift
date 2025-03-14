@@ -28,21 +28,23 @@ class LengthViewController: UIViewController {
     
     var selectedUnits: [UIButton: UnitLength] = [:]
     let converterId: Int64 = 1
+    var inactivityTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updatePreferences()
-        loadViewState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        historyButton()
         loadViewState()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         saveViewState()
+        saveCoreData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -117,24 +119,28 @@ class LengthViewController: UIViewController {
         }
     }
     
+    @IBAction func HistoryButtonAction(_ sender: UIBarButtonItem) {
+        saveCoreData()
+        performSegue(withIdentifier: "LengthHistory", sender: self)
+    }
     
     // MARK: - Save/Load State
     
     func saveViewState() {
         guard UserDefaults.standard.bool(forKey: "KeepState") else { return }
-        let fromText = FromLabelOutlet.text
-        let toText = ToLabelOutlet.text
+        let fromTextObject = FromLabelOutlet.text
+        let toTextObject = ToLabelOutlet.text
         
         let sortedUnits = UnitsModel().lengthDictionary.keys.sorted{ ($0.description) < ($1.description) }
-        let fromUnitIndex = selectedUnits[FromButtonOutlet].flatMap{ sortedUnits.firstIndex(of: $0) } ?? 0
-        let toUnitIndex = selectedUnits[ToButtonOutlet].flatMap { sortedUnits.firstIndex(of: $0) } ?? 0
+        let fromUnitIndexObject = selectedUnits[FromButtonOutlet].flatMap{ sortedUnits.firstIndex(of: $0) } ?? 0
+        let toUnitIndexObject = selectedUnits[ToButtonOutlet].flatMap { sortedUnits.firstIndex(of: $0) } ?? 0
         
         CoreDataManager.shared.saveConverterState(
             id: converterId,
-            fromText: fromText!,
-            toText: toText!,
-            fromUnit: Int64(fromUnitIndex),
-            toUnit: Int64(toUnitIndex)
+            fromText: fromTextObject!,
+            toText: toTextObject!,
+            fromUnit: Int64(fromUnitIndexObject),
+            toUnit: Int64(toUnitIndexObject)
         )
     }
     
@@ -146,21 +152,22 @@ class LengthViewController: UIViewController {
             
             let sortedUnits = UnitsModel().lengthDictionary.keys.sorted{ ($0.description) < ($1.description) }
             if sortedUnits.indices.contains(Int(state.fromUnit)) {
-                let fromUnit = sortedUnits[Int(state.fromUnit)]
-                selectedUnits[FromButtonOutlet] = fromUnit
-                FromButtonOutlet.setTitle("\(fromUnit.symbol) ", for: .normal)
-                print(fromUnit.symbol)
+                let fromUnits = sortedUnits[Int(state.fromUnit)]
+                selectedUnits[FromButtonOutlet] = fromUnits
+                FromButtonOutlet.setTitle("\(fromUnits.symbol) ", for: .normal)
+                print(fromUnits.symbol)
             }
             if sortedUnits.indices.contains(Int(state.toUnit)) {
-                let toUnit = sortedUnits[Int(state.toUnit)]
-                selectedUnits[ToButtonOutlet] = toUnit
-                ToButtonOutlet.setTitle("\(toUnit.symbol) ", for: .normal)
-                print(toUnit.symbol)
+                let toUnits = sortedUnits[Int(state.toUnit)]
+                selectedUnits[ToButtonOutlet] = toUnits
+                ToButtonOutlet.setTitle("\(toUnits.symbol) ", for: .normal)
+                print(toUnits.symbol)
             }
             
             UnitMenu(in: FromButtonOutlet)
             UnitMenu(in: ToButtonOutlet)
             convertFunc()
+            
             print("View state loaded.")
         } else {
             print("No saved view state found.")
@@ -184,18 +191,30 @@ class LengthViewController: UIViewController {
         let fromUnitIndex = selectedUnits[FromButtonOutlet].flatMap{ sortedUnits.firstIndex(of: $0) } ?? 0
         let toUnitIndex = selectedUnits[ToButtonOutlet].flatMap { sortedUnits.firstIndex(of: $0) } ?? 0
         
-        if historyItems.contains(where: { $0.fromText == FromLabelOutlet.text }) && historyItems.contains(where: { $0.toText == ToLabelOutlet.text }) && historyItems.contains(where: { $0.fromUnit == Int64(fromUnitIndex) }) && historyItems.contains(where: { $0.toUnit == Int64(toUnitIndex) }) {
+        if FromLabelOutlet.text == "0" || FromLabelOutlet.text == "0." {
+            return
+        } else if historyItems.contains(where: { $0.fromText == FromLabelOutlet.text }) &&
+                    historyItems.contains(where: { $0.toText == ToLabelOutlet.text }) &&
+                    historyItems.contains(where: { $0.fromUnit == Int64(fromUnitIndex) }) &&
+                    historyItems.contains(where: { $0.toUnit == Int64(toUnitIndex) }) {
             return
         } else {
-            CoreDataManager.shared.createConverterHistoryObject(converterId, date: Date(), fromText: FromLabelOutlet.text!, toText: ToLabelOutlet.text!, fromUnit: Int64(fromUnitIndex), toUnit: Int64(toUnitIndex))
+            if FromLabelOutlet.text?.last == "." { FromLabelOutlet.text?.removeLast() }
+            CoreDataManager.shared.createConverterHistoryObject(
+                converterId,
+                date: Date(),
+                
+                fromText: FromLabelOutlet.text!,
+                fromUnit: Int64(fromUnitIndex),
+                fromUnitText: (FromButtonOutlet.titleLabel?.text)!,
+                
+                toText: ToLabelOutlet.text!,
+                toUnit: Int64(toUnitIndex),
+                toUnitText: (ToButtonOutlet.titleLabel?.text)!)
+            
             historyButton()
         }
         print(String(describing: CoreDataManager.shared.fetchConverterObjects(with: converterId)))
-    }
-    
-    func saveInHistory() {
-        //implement 2 second delay logic
-        saveCoreData()
     }
     
     
@@ -211,11 +230,15 @@ class LengthViewController: UIViewController {
             if text.isEmpty {
                 AnimationManager().animateTextSlide(label: FromLabelOutlet, newText: "0")
                 AnimationManager().animateTextSlide(label: ToLabelOutlet, newText: "0")
+                if coreData.fetchConverterObjects(with: converterId).count == 0 {
+                    HistoryButtonOutlet.isEnabled = false
+                }
             }
             
             if UserDefaults.standard.bool(forKey: "HapticState") {
                 UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
             }
+            
             convertFunc()
             saveViewState()
         }
@@ -233,7 +256,9 @@ class LengthViewController: UIViewController {
             UIView.transition(with: self.ToLabelOutlet, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
             self.updatePreferences()
         })
+        
         saveViewState()
+        saveCoreData()
     }
     
     @IBAction func AllClearButton(_ sender: UIButton) {
@@ -245,6 +270,9 @@ class LengthViewController: UIViewController {
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
         saveViewState()
+        if coreData.fetchConverterObjects(with: converterId).count == 0 {
+            HistoryButtonOutlet.isEnabled = false
+        }
     }
     
     @IBAction func NumberButtons(_ sender: UIButton) {
@@ -257,14 +285,19 @@ class LengthViewController: UIViewController {
         if !hasDecimal, currentText.count >= 9 { return }
         if currentText == "0" { currentText = "" }
         FromLabelOutlet.text = currentText + buttonNumber
+        
         convertFunc()
         saveViewState()
+        if coreData.fetchConverterObjects(with: converterId).count == 0 {
+            HistoryButtonOutlet.isEnabled = true
+        }
     }
     
     @IBAction func DecimalButton(_ sender: UIButton) {
         if let fromText = FromLabelOutlet.text {
             guard !fromText.contains(".") else { return }
             FromLabelOutlet.text = fromText + "."
+            
             saveViewState()
         }
     }
@@ -298,6 +331,10 @@ class LengthViewController: UIViewController {
                     self.UnitMenu(in: self.FromButtonOutlet)
                     self.UnitMenu(in: self.ToButtonOutlet)
                     print("Selected index: \(index)")
+                    
+                    if UserDefaults.standard.bool(forKey: "HapticState") {
+                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                    }
                 }
             }
         
@@ -306,12 +343,7 @@ class LengthViewController: UIViewController {
         button.showsMenuAsPrimaryAction = true
         button.titleLabel?.numberOfLines = 2
         button.setTitle("\(selectedUnit.symbol) ", for: .normal)
-        
-        if UserDefaults.standard.bool(forKey: "HapticState") {
-            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-        }
         convertFunc()
-        saveInHistory()
     }
     
     func convertFunc() {

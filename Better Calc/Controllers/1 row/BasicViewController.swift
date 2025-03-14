@@ -89,16 +89,16 @@ class BasicViewController: UIViewController {
     
     func saveViewState() {
         guard UserDefaults.standard.bool(forKey: "KeepState") else { return }
-        let workings = WorkingsLabelOutlet.text ?? ""
-        let results = ResultsLabelOutlet.text ?? ""
-        let operationValue = currentOperation?.rawValue
+        let workingsObject = WorkingsLabelOutlet.text ?? ""
+        let resultsObject = ResultsLabelOutlet.text ?? ""
+        let operationValueObject = currentOperation?.rawValue
         
         CoreDataManager.shared.saveBasicState(
-            workings: workings,
-            results: results,
+            workings: workingsObject,
+            results: resultsObject,
             isTypingNumber: isTypingNumber,
             firstOperand: firstOperand,
-            currentOperation: operationValue
+            currentOperation: operationValueObject
         )
     }
     

@@ -560,7 +560,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qL6-gJ-W6F">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -646,11 +645,11 @@
                     <navigationItem key="navigationItem" title="Scientific" style="editor" id="HjZ-kC-LK9">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="VH2-Yr-cZs">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <segue destination="xlW-LJ-VWz" kind="presentation" identifier="ScientificHistory" modalPresentationStyle="overFullScreen" id="4ky-Tg-Kkf"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="xlW-LJ-VWz" kind="presentation" identifier="ScientificHistory" modalPresentationStyle="overFullScreen" id="uYU-BH-bll"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKg-op-zXE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -722,11 +721,11 @@
                     <navigationItem key="navigationItem" title="Area" style="editor" id="Tea-qD-3to">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="e7U-f5-NUA">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <segue destination="ehW-uk-778" kind="presentation" identifier="AreaHistory" modalPresentationStyle="overFullScreen" id="Npn-AE-VOc"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ehW-uk-778" kind="presentation" identifier="AreaHistory" modalPresentationStyle="overFullScreen" id="3eo-Q4-hbK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIb-eW-EJb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1176,7 +1175,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" id="rk5-Lq-mlp">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
                             <connections>
-                                <segue destination="MIt-8S-WS7" kind="presentation" identifier="LengthHistory" modalPresentationStyle="overFullScreen" id="Ab2-3L-7ou"/>
+                                <action selector="HistoryButtonAction:" destination="wfu-ML-8A6" id="TcN-dQ-MQe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1203,6 +1202,7 @@
                         <outletCollection property="ShadowButtonsOutlet" destination="hhq-NP-w90" collectionClass="NSMutableArray" id="olZ-v1-YDb"/>
                         <outletCollection property="ShadowButtonsOutlet" destination="Z5l-3i-2Ms" collectionClass="NSMutableArray" id="mOf-74-8VI"/>
                         <outletCollection property="ShadowButtonsOutlet" destination="21K-7x-ZhZ" collectionClass="NSMutableArray" id="a3L-Jp-vpZ"/>
+                        <segue destination="MIt-8S-WS7" kind="presentation" identifier="LengthHistory" modalPresentationStyle="overFullScreen" id="8LZ-fN-cXp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABt-gP-DSp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1227,11 +1227,11 @@
                     <navigationItem key="navigationItem" title="Temperature" style="editor" id="zSD-Yn-H4y">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="hva-Xu-TL0">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <segue destination="R7C-Wk-C0E" kind="presentation" identifier="TemperatureHistory" modalPresentationStyle="overFullScreen" id="mt4-da-zNK"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="R7C-Wk-C0E" kind="presentation" modalPresentationStyle="overFullScreen" id="Naj-80-Eym"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3K4-Ua-beQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1257,11 +1257,11 @@
                     <navigationItem key="navigationItem" title="Volume" style="editor" id="PBy-Rm-LYV">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="0Sj-FQ-dnK">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <segue destination="b2y-q8-f9c" kind="presentation" identifier="VolumeHistory" modalPresentationStyle="overFullScreen" id="3Ti-Sd-Zg0"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="b2y-q8-f9c" kind="presentation" identifier="VolumeHistory" modalPresentationStyle="overFullScreen" id="UuZ-47-jj6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NS9-qG-7bC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1310,11 +1310,11 @@
                     <navigationItem key="navigationItem" title="Time" style="editor" id="Jtf-ui-0r7">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="j8E-GZ-fhj">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <segue destination="rnV-md-B3b" kind="presentation" identifier="TimeHistory" modalPresentationStyle="overFullScreen" id="5Pb-ky-tQM"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="rnV-md-B3b" kind="presentation" identifier="TimeHistory" modalPresentationStyle="overFullScreen" id="B34-iy-ydW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlR-Sv-Sd2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1340,11 +1340,11 @@
                     <navigationItem key="navigationItem" title="Mass" style="editor" id="gG7-TY-ssH">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="d3V-SD-3Qs">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <segue destination="1XJ-Bh-r6x" kind="presentation" identifier="MassHistory" modalPresentationStyle="overFullScreen" id="Zi0-Sp-iNz"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="1XJ-Bh-r6x" kind="presentation" identifier="MassHistory" modalPresentationStyle="overFullScreen" id="rzA-9N-1ST"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1VX-VH-Ewn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1370,11 +1370,11 @@
                     <navigationItem key="navigationItem" title="Discount" style="editor" id="pz6-gH-5cd">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="NmN-aR-WSY">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <segue destination="Y9V-z9-J3j" kind="presentation" identifier="DiscountHistory" modalPresentationStyle="overFullScreen" id="eoY-Ip-O75"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Y9V-z9-J3j" kind="presentation" identifier="DiscountHistory" modalPresentationStyle="overFullScreen" id="fcj-Ph-7Tx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="akJ-q0-zJv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1393,11 +1393,11 @@
                     <navigationItem key="navigationItem" title="Speed" style="editor" id="e9c-JV-7PK">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="qrA-yD-vX2">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <segue destination="c2s-i6-a0d" kind="presentation" identifier="SpeedHistory" modalPresentationStyle="overFullScreen" id="qKa-sD-8BY"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="c2s-i6-a0d" kind="presentation" identifier="SpeedHistory" modalPresentationStyle="overFullScreen" id="HGG-Gz-OXZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kje-Un-ux9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1446,11 +1446,11 @@
                     <navigationItem key="navigationItem" title="Count System" style="editor" id="EK5-3u-WWZ">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="KLN-XU-lfD">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <segue destination="4ff-29-6cs" kind="presentation" identifier="CountHistory" modalPresentationStyle="overFullScreen" id="S5g-Zs-bcU"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="4ff-29-6cs" kind="presentation" identifier="CountHistory" modalPresentationStyle="overFullScreen" id="fCz-ws-UB7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rah-i4-LpL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1562,10 +1562,10 @@
             </objects>
             <point key="canvasLocation" x="16120" y="3340"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Basic Navigation Controller-->
         <scene sceneID="0bJ-aE-2nh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" keyboardType="off" toolbarHidden="NO" id="wZW-7r-Pwn" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" keyboardType="off" toolbarHidden="NO" id="wZW-7r-Pwn" userLabel="Basic Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -1648,7 +1648,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xA6-py-7qv">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1720,10 +1719,10 @@
             </objects>
             <point key="canvasLocation" x="3568" y="1653"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Currency Navigation Controller-->
         <scene sceneID="ICf-GE-WQO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="VgF-o2-R0w" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="VgF-o2-R0w" userLabel="Currency Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -1775,7 +1774,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Dfu-LS-vbt">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1847,10 +1845,10 @@
             </objects>
             <point key="canvasLocation" x="3568" y="2528"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Length Navigation Controller-->
         <scene sceneID="7TI-qg-DPh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="MIt-8S-WS7" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="MIt-8S-WS7" userLabel="Length Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -1902,7 +1900,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nGg-FL-TaC">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1974,10 +1971,10 @@
             </objects>
             <point key="canvasLocation" x="3566" y="3328"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Volume Navigation Controller-->
         <scene sceneID="lXw-CV-ZZ7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="b2y-q8-f9c" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="b2y-q8-f9c" userLabel="Volume Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2029,7 +2026,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wFB-co-w6k">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2101,10 +2097,10 @@
             </objects>
             <point key="canvasLocation" x="7238" y="841"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Scientific Navigation Controller-->
         <scene sceneID="qg6-G5-HZ0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="xlW-LJ-VWz" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="xlW-LJ-VWz" userLabel="Scientific Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2156,7 +2152,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lll-Ik-jvm">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2228,10 +2223,10 @@
             </objects>
             <point key="canvasLocation" x="7238" y="1653"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Crypto Navigation Controller-->
         <scene sceneID="XUF-pS-jmz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="N7f-ES-Lq9" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="N7f-ES-Lq9" userLabel="Crypto Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2283,7 +2278,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="C0u-g5-cwV">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2355,10 +2349,10 @@
             </objects>
             <point key="canvasLocation" x="7238" y="2528"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Area Navigation Controller-->
         <scene sceneID="QJK-5j-zYc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="ehW-uk-778" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="ehW-uk-778" userLabel="Area Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2410,7 +2404,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="aPV-kq-XSj">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2482,10 +2475,10 @@
             </objects>
             <point key="canvasLocation" x="7235" y="3328"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Temperature Navigation Controller-->
         <scene sceneID="cGG-gK-Jg3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="R7C-Wk-C0E" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="R7C-Wk-C0E" userLabel="Temperature Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2537,7 +2530,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YNn-Q6-2bs">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2609,10 +2601,10 @@
             </objects>
             <point key="canvasLocation" x="11017" y="841"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Date Navigation Controller-->
         <scene sceneID="N1H-xb-owF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Vhp-0Y-DMG" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Vhp-0Y-DMG" userLabel="Date Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2664,7 +2656,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T6Z-gH-eSW">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2736,10 +2727,10 @@
             </objects>
             <point key="canvasLocation" x="11017" y="1653"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Time Navigation Controller-->
         <scene sceneID="HFN-OW-vpj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="rnV-md-B3b" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="rnV-md-B3b" userLabel="Time Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2791,7 +2782,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oFE-2t-dVB">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2863,10 +2853,10 @@
             </objects>
             <point key="canvasLocation" x="11017" y="2528"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Mass Navigation Controller-->
         <scene sceneID="YuX-zq-wBt">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="1XJ-Bh-r6x" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="1XJ-Bh-r6x" userLabel="Mass Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2918,7 +2908,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ftq-CA-Ish">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2990,10 +2979,10 @@
             </objects>
             <point key="canvasLocation" x="11017" y="3328"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Discount Navigation Controller-->
         <scene sceneID="1O5-UK-zMq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Y9V-z9-J3j" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Y9V-z9-J3j" userLabel="Discount Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -3045,7 +3034,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-2b-qDp">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3117,10 +3105,10 @@
             </objects>
             <point key="canvasLocation" x="14411" y="841"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Age Navigation Controller-->
         <scene sceneID="lfJ-m8-dhm">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="W42-xw-wfP" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="W42-xw-wfP" userLabel="Age Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -3172,7 +3160,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XAc-4h-FzH">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3244,10 +3231,10 @@
             </objects>
             <point key="canvasLocation" x="14411" y="1653"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Speed Navigation Controller-->
         <scene sceneID="5Il-k7-ZLx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="c2s-i6-a0d" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="c2s-i6-a0d" userLabel="Speed Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -3299,7 +3286,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TOW-ko-fCL">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3371,10 +3357,10 @@
             </objects>
             <point key="canvasLocation" x="14411" y="2528"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Count System Navigation Controller-->
         <scene sceneID="9EH-4x-c6x">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="4ff-29-6cs" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="4ff-29-6cs" userLabel="Count System Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -3426,7 +3412,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SxJ-RD-803">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3498,10 +3483,10 @@
             </objects>
             <point key="canvasLocation" x="17974" y="1653"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Investment Navigation Controller-->
         <scene sceneID="D9i-QI-puK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="hat-PI-CeD" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="hat-PI-CeD" userLabel="Investment Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -3553,7 +3538,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZdD-75-3lP">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3625,10 +3609,10 @@
             </objects>
             <point key="canvasLocation" x="17974" y="2528"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Loan Navigation Controller-->
         <scene sceneID="LLy-DV-Jhf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Cvs-TL-7Cl" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Cvs-TL-7Cl" userLabel="Loan Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -3680,7 +3664,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wyY-6A-7J7">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3752,10 +3735,10 @@
             </objects>
             <point key="canvasLocation" x="17974" y="3340"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--BMI Navigation Controller-->
         <scene sceneID="pGV-cI-80D">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="0s8-zT-zo5" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="0s8-zT-zo5" userLabel="BMI Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -3807,7 +3790,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yAE-5W-QNq">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3879,10 +3861,10 @@
             </objects>
             <point key="canvasLocation" x="21026" y="841"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tips Navigation Controller-->
         <scene sceneID="rgU-aV-6WV">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="bPv-bv-WRM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="bPv-bv-WRM" userLabel="Tips Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -3923,7 +3905,7 @@
             </objects>
             <point key="canvasLocation" x="20083" y="841"/>
         </scene>
-        <!--Data Storage-->
+        <!--Data Size-->
         <scene sceneID="bZa-hn-XG9">
             <objects>
                 <viewController id="xHG-SO-PWF" customClass="DataViewController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
@@ -3933,14 +3915,14 @@
                         <viewLayoutGuide key="safeArea" id="xnE-gy-R9L"/>
                         <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Data Storage" style="editor" id="hbn-8t-xdY">
+                    <navigationItem key="navigationItem" title="Data Size" style="editor" id="hbn-8t-xdY">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="yY6-tB-rns">
                             <imageReference key="image" image="list.clipboard" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <segue destination="4H9-4o-NiJ" kind="presentation" identifier="DataHistory" modalPresentationStyle="overFullScreen" id="cEi-3N-uG5"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="4H9-4o-NiJ" kind="presentation" identifier="DataHistory" modalPresentationStyle="overFullScreen" id="Ssq-05-bF5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="829-KY-45k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3957,7 +3939,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Uap-LZ-zgZ">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4029,10 +4010,10 @@
             </objects>
             <point key="canvasLocation" x="17974" y="841"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Data Storage Navigation Controller-->
         <scene sceneID="uwn-0I-iVf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="4H9-4o-NiJ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="4H9-4o-NiJ" userLabel="Data Storage Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -4107,7 +4088,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="q3d-m3-rdg">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <color key="separatorColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4179,10 +4159,10 @@
             </objects>
             <point key="canvasLocation" x="14411" y="3340"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Resolution Navigation Controller-->
         <scene sceneID="1Lz-86-LxR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="T7B-oh-Zqh" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="T7B-oh-Zqh" userLabel="Resolution Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -4243,9 +4223,6 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

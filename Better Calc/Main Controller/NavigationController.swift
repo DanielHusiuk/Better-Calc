@@ -71,6 +71,10 @@ class NavigationController: UINavigationController {
         NavigationController.showPill(message: NSLocalizedString("pill_cannot_reset", comment: ""), state: false, vcView: self.view)
     }
     
+    func positionsError() {
+        NavigationController.showPill(message: NSLocalizedString("pill_positions_already_standard", comment: ""), state: false, vcView: self.view)
+    }
+    
     func delHistoryPill() {
         NavigationController.showPill(message: NSLocalizedString("pill_history_deleted", comment: ""), state: true, vcView: self.view)
     }

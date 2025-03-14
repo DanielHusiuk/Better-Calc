@@ -22,25 +22,11 @@ class PasteLabel: UILabel {
         self.sharedInit()
     }
     
-    
-    //MARK: - Preferences
-    
-    func findNavigationController() -> NavigationController? {
+    func findExternalController<T: UIViewController>(_ viewControllerType: T.Type) -> T? {
         var responder: UIResponder? = self
         while let nextResponder = responder?.next {
-            if let navigationController = nextResponder as? NavigationController {
+            if let navigationController = nextResponder as? T {
                 return navigationController
-            }
-            responder = nextResponder
-        }
-        return nil
-    }
-    
-    func findBasicController() -> BasicViewController? {
-        var responder: UIResponder? = self
-        while let nextResponder = responder?.next {
-            if let basicController = nextResponder as? BasicViewController {
-                return basicController
             }
             responder = nextResponder
         }
@@ -57,7 +43,7 @@ class PasteLabel: UILabel {
         } else {
             self.overrideUserInterfaceStyle = .light
         }
-        self.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.showMenu)))
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.showMenu)))
     }
     
     @objc func showMenu(sender: AnyObject?) {
@@ -91,8 +77,8 @@ class PasteLabel: UILabel {
                     
                     if secondPart.contains(".") {
                         if normalizedText.contains(".") {
-                            if let navController = findNavigationController() {
-                                navController.cannotPasteError()
+                            if let navigVC = findExternalController(NavigationController.self) {
+                                navigVC.cannotPasteError()
                             }
                             print("Cannot paste")
                             return
@@ -103,8 +89,8 @@ class PasteLabel: UILabel {
                 } else {
                     if workingText.contains(".") {
                         if normalizedText.contains(".") {
-                            if let navController = findNavigationController() {
-                                navController.cannotPasteError()
+                            if let navigVC = findExternalController(NavigationController.self) {
+                                navigVC.cannotPasteError()
                             }
                             print("Cannot paste")
                             return
@@ -120,12 +106,15 @@ class PasteLabel: UILabel {
                     self.text = workingText + normalizedText
                 }
                 
-                if let basicController = findBasicController() {
-                    basicController.checkEraseButton()
+                if let basicVC = findExternalController(BasicViewController.self) {
+                    basicVC.checkEraseButton()
+                }
+                if let lengthVC = findExternalController(LengthViewController.self) {
+                    lengthVC.convertFunc()
                 }
             } else {
-                if let navController = findNavigationController() {
-                    navController.cannotPasteError()
+                if let navigVC = findExternalController(NavigationController.self) {
+                    navigVC.cannotPasteError()
                 }
                 print("Cannot paste")
                 return

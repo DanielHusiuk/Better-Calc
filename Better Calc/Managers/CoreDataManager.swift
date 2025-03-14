@@ -80,6 +80,7 @@ public final class CoreDataManager: NSObject {
     public func fetchCalculatorObjects(with id: Int64) -> [CalculatorHistoryItem] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CalculatorHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         do {
             return (try context.fetch(fetchRequest) as? [CalculatorHistoryItem]) ?? []
         } catch {
@@ -91,7 +92,7 @@ public final class CoreDataManager: NSObject {
     public func fetchCalculatorObject(with id: Int64) -> CalculatorHistoryItem? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CalculatorHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         do {
             let objects = try? context.fetch(fetchRequest) as? [CalculatorHistoryItem]
             return objects?.first
@@ -144,22 +145,30 @@ public final class CoreDataManager: NSObject {
     
     //MARK: - Converter History
     
-    public func createConverterHistoryObject(_ id: Int64, date: Date, fromText: String, toText: String, fromUnit: Int64, toUnit: Int64) {
+    public func createConverterHistoryObject(_ id: Int64, date: Date, fromText: String, fromUnit: Int64, fromUnitText: String, toText: String, toUnit: Int64, toUnitText: String) {
         guard let objectEntityDescription = NSEntityDescription.entity(forEntityName: "ConverterHistoryItem", in: context) else { return }
         let object = ConverterHistoryItem(entity: objectEntityDescription, insertInto: context)
         object.id = id
         object.date = date
+        
         object.fromText = fromText
-        object.toText = toText
         object.fromUnit = fromUnit
+        object.fromUnitText = fromUnitText
+        
+        object.toText = toText
         object.toUnit = toUnit
+        object.toUnitText = toUnitText
+        
+        print("Converter history created.")
         appDelegate.saveContext()
     }
     
     public func fetchConverterObjects(with id: Int64) -> [ConverterHistoryItem] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         do {
+            print("Converter histories fetched.")
             return (try context.fetch(fetchRequest) as? [ConverterHistoryItem]) ?? []
         } catch {
             print("Failed to fetch data for id: \(id)")
@@ -170,24 +179,29 @@ public final class CoreDataManager: NSObject {
     public func fetchConverterObject(with id: Int64) -> ConverterHistoryItem? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         do {
             let objects = try? context.fetch(fetchRequest) as? [ConverterHistoryItem]
+            print("Converter history fetched.")
             return objects?.first
         }
     }
     
-    public func updateConverterObject(with id: Int64, fromText: String, toText: String, fromUnit: Int64, toUnit: Int64) {
+    public func updateConverterObject(with id: Int64, date: Date, fromText: String, fromUnit: Int64, fromUnitText: String, toText: String, toUnit: Int64, toUnitText: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         do {
             guard let objects = try? context.fetch(fetchRequest) as? [ConverterHistoryItem],
                   let object = objects.first else { return }
             object.fromText = fromText
-            object.toText = toText
             object.fromUnit = fromUnit
+            object.fromUnitText = fromUnitText
+            
+            object.toText = toText
             object.toUnit = toUnit
+            object.toUnitText = toUnitText
         }
+        print("Converter history updated.")
         appDelegate.saveContext()
     }
     

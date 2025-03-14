@@ -34,7 +34,7 @@ class LengthHistoryController: UIViewController, UITableViewDelegate, UITableVie
         
         HistoryTableView.delegate = self
         HistoryTableView.dataSource = self
-        saveBasicState()
+        saveConverterState()
     }
     
     
@@ -59,7 +59,7 @@ class LengthHistoryController: UIViewController, UITableViewDelegate, UITableVie
     func toolBar(_ sender:UIToolbar) {
         navigationController?.isToolbarHidden = true
         let deleteAll = UIBarButtonItem(title: NSLocalizedString("history_delete_all", comment: ""), style: .plain, target: self, action: #selector(deleteAll))
-        deleteAll.tintColor = .red
+        deleteAll.tintColor = .systemRed
         let trashButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteObject))
         if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
             trashButton.tintColor = selectedTintColor
@@ -68,11 +68,15 @@ class LengthHistoryController: UIViewController, UITableViewDelegate, UITableVie
         self.toolbarItems = [deleteAll, flexibleSpace, trashButton]
     }
     
-    func saveBasicState() {
+    func executeExternalFunction<T: UIViewController>(_ viewControllerType: T.Type, action: (T) -> (Void)) {
         if let navigationController = self.presentingViewController as? UINavigationController,
-           let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
-            basicVC.saveViewState()
+           let externalVC = navigationController.viewControllers.first(where: { $0 is T }) as? T {
+            action(externalVC)
         }
+    }
+    
+    func saveConverterState() {
+        executeExternalFunction(LengthViewController.self) { $0.saveViewState() }
     }
     
     
@@ -80,10 +84,7 @@ class LengthHistoryController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func unwindHome(_ segue: UIStoryboardSegue) {
         self.dismiss(animated: true, completion: nil)
-        if let navigationController = self.presentingViewController as? UINavigationController,
-           let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
-            basicVC.loadViewState()
-        }
+        executeExternalFunction(LengthViewController.self, action: { $0.loadViewState() })
     }
     
     @IBAction func editButton(_ sender: UIBarButtonItem) {
@@ -99,10 +100,6 @@ class LengthHistoryController: UIViewController, UITableViewDelegate, UITableVie
             UIView.animate(withDuration: 0.3, animations: {
                 self.CloseBarButton.isEnabled = true
             })
-            
-            if UserDefaults.standard.bool(forKey: "HapticState") {
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            }
         } else {
             navigationController?.setToolbarHidden(false, animated: true)
             HistoryTableView.setEditing(true, animated: true)
@@ -116,6 +113,10 @@ class LengthHistoryController: UIViewController, UITableViewDelegate, UITableVie
             UIView.animate(withDuration: 0.3, animations: {
                 self.CloseBarButton.isEnabled = false
             })
+            
+            if UserDefaults.standard.bool(forKey: "HapticState") {
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            }
         }
     }
     
@@ -130,11 +131,7 @@ class LengthHistoryController: UIViewController, UITableViewDelegate, UITableVie
         deleteAlert.addAction(UIAlertAction(title: NSLocalizedString("confirm", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard let self = self else { return }
             self.coreData.deleteAllConverterObjects(with: self.converterId)
-            
-            if let navigationController = self.presentingViewController as? UINavigationController,
-               let basicVC = navigationController.viewControllers.first(where: { $0 is LengthViewController }) as? LengthViewController {
-                basicVC.HistoryButtonOutlet.isEnabled = false
-            }
+            executeExternalFunction(LengthViewController.self, action: { $0.HistoryButtonOutlet.isEnabled = false })
             
             self.dismiss(animated: true, completion: nil)
             self.navigationController?.setToolbarHidden(true, animated: true)
@@ -184,10 +181,7 @@ class LengthHistoryController: UIViewController, UITableViewDelegate, UITableVie
         HistoryTableView.endUpdates()
         
         if groupedHistory.isEmpty {
-            if let navigationController = self.presentingViewController as? UINavigationController,
-               let basicVC = navigationController.viewControllers.first(where: { $0 is LengthViewController }) as? LengthViewController {
-                basicVC.HistoryButtonOutlet.isEnabled = false
-            }
+            executeExternalFunction(LengthViewController.self, action: { $0.HistoryButtonOutlet.isEnabled = false })
             self.dismiss(animated: true, completion: nil)
         }
         
@@ -213,6 +207,7 @@ class LengthHistoryController: UIViewController, UITableViewDelegate, UITableVie
     
     func loadHistory() {
         let fetchedHistory = coreData.fetchConverterObjects(with: self.converterId)
+        print("Fetched History: \(fetchedHistory)")
         dateFormatter.dateFormat = "d MMM, yyyy"
         
         groupedHistory = Dictionary(grouping: fetchedHistory) { historyItem in
@@ -267,8 +262,8 @@ class LengthHistoryController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let key = sortedSectionKeys[indexPath.section]
         if let historyItem = groupedHistory[key]?[indexPath.row] {
-            cell.textLabel?.text = "\(String(describing: historyItem.fromText))  (\(historyItem.fromUnit))"
-            cell.detailTextLabel?.text = "\(String(describing: historyItem.toText))   (\(historyItem.toUnit)"
+            cell.textLabel?.text = "\(String(describing: historyItem.fromUnitText!)) -  \(String(describing: historyItem.fromText!))"
+            cell.detailTextLabel?.text = "\(String(describing: historyItem.toUnitText!)) -  \(String(describing: historyItem.toText!))"
         }
         
         let customBackgroundView = UIView()
@@ -285,48 +280,40 @@ class LengthHistoryController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if HistoryTableView.isEditing == true {
-//            return
-//        } else {
-//            let key = sortedSectionKeys[indexPath.section]
-//            let selectedHistory = groupedHistory[key]?[indexPath.row]
-//            
-//            if let navigationController = self.presentingViewController as? UINavigationController,
-//               let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
-//                if let workingText = selectedHistory?.working, let resultText = selectedHistory?.result {
-//                    basicVC.WorkingsLabelOutlet.text = ""
-//                    basicVC.ResultsLabelOutlet.text = ""
-//                    basicVC.WorkingsLabelOutlet.text = workingText
-//                    basicVC.ResultsLabelOutlet.text = resultText
-//                    
-//                    let symbolRange = CharacterSet(charactersIn: "+−×÷")
-//                    if let currentOperationRange = workingText.rangeOfCharacter(from: symbolRange) {
-//                        let symbol = workingText[currentOperationRange]
-//                        switch symbol {
-//                        case "+":
-//                            basicVC.currentOperation = .addition
-//                        case "−":
-//                            basicVC.currentOperation = .subtraction
-//                        case "×":
-//                            basicVC.currentOperation = .multiplication
-//                        case "÷":
-//                            basicVC.currentOperation = .division
-//                        default:
-//                            break
-//                        }
-//                    }
-//                    basicVC.isTypingNumber = true
-//                    
-//                    if basicVC.EraseButtonOutlet.isHidden == true || basicVC.PasteResultButtonOutlet.isHidden == true {
-//                        basicVC.checkEraseButton()
-//                        basicVC.checkPasteButton()
-//                    }
-//                }
-//            } else {
-//                print("Previous Controller not found")
-//            }
-//            self.dismiss(animated: true, completion: nil)
-//        }
+        let key = sortedSectionKeys[indexPath.section]
+        let selectedHistory = groupedHistory[key]?[indexPath.row]
+        let sortedUnits = UnitsModel().lengthDictionary.keys.sorted{ ($0.description) < ($1.description) }
+        
+        if HistoryTableView.isEditing == true {
+            return
+        } else {
+            if let navigationController = self.presentingViewController as? UINavigationController,
+               let converterVC = navigationController.viewControllers.first(where: { $0 is LengthViewController }) as? LengthViewController {
+                if let fromText = selectedHistory?.fromText {
+                    converterVC.FromLabelOutlet.text = ""
+                    converterVC.ToLabelOutlet.text = ""
+                    converterVC.FromLabelOutlet.text = fromText
+                    
+                    if sortedUnits.indices.contains(Int(selectedHistory!.fromUnit)) {
+                        let fromUnits = sortedUnits[Int(selectedHistory!.fromUnit)]
+                        converterVC.selectedUnits[converterVC.FromButtonOutlet] = fromUnits
+                        converterVC.FromButtonOutlet.setTitle("\(fromUnits.symbol) ", for: .normal)
+                    }
+                    if sortedUnits.indices.contains(Int(selectedHistory!.toUnit)) {
+                        let toUnits = sortedUnits[Int(selectedHistory!.toUnit)]
+                        converterVC.selectedUnits[converterVC.ToButtonOutlet] = toUnits
+                        converterVC.ToButtonOutlet.setTitle("\(toUnits.symbol) ", for: .normal)
+                    }
+                    
+                    converterVC.UnitMenu(in: converterVC.FromButtonOutlet)
+                    converterVC.UnitMenu(in: converterVC.ToButtonOutlet)
+                    converterVC.convertFunc()
+                }
+            } else {
+                print("Previous Controller not found")
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
         if UserDefaults.standard.bool(forKey: "HapticState") {
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         }

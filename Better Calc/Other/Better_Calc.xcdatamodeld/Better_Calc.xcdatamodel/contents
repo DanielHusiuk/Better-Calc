@@ -21,9 +21,11 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="fromText" optional="YES" attributeType="String"/>
         <attribute name="fromUnit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fromUnitText" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="toText" optional="YES" attributeType="String"/>
         <attribute name="toUnit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="toUnitText" optional="YES" attributeType="String"/>
     </entity>
     <entity name="ConverterState" representedClassName="ConverterState" syncable="YES" codeGenerationType="class">
         <attribute name="fromText" optional="YES" attributeType="String"/>

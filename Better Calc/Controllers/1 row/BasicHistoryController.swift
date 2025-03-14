@@ -34,7 +34,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         
         HistoryTableView.delegate = self
         HistoryTableView.dataSource = self
-        saveBasicState()
+        saveCalculatorState()
     }
     
     
@@ -59,7 +59,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     func toolBar(_ sender:UIToolbar) {
         navigationController?.isToolbarHidden = true
         let deleteAll = UIBarButtonItem(title: NSLocalizedString("history_delete_all", comment: ""), style: .plain, target: self, action: #selector(deleteAll))
-        deleteAll.tintColor = .red
+        deleteAll.tintColor = .systemRed
         let trashButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteObject))
         if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
             trashButton.tintColor = selectedTintColor
@@ -68,11 +68,15 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         self.toolbarItems = [deleteAll, flexibleSpace, trashButton]
     }
     
-    func saveBasicState() {
+    func executeExternalFunction<T: UIViewController>(_ viewControllerType: T.Type, action: (T) -> (Void)) {
         if let navigationController = self.presentingViewController as? UINavigationController,
-           let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
-            basicVC.saveViewState()
+           let externalVC = navigationController.viewControllers.first(where: { $0 is T }) as? T {
+            action(externalVC)
         }
+    }
+    
+    func saveCalculatorState() {
+        executeExternalFunction(BasicViewController.self, action: { $0.saveViewState() })
     }
     
     
@@ -80,10 +84,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func unwindHome(_ segue: UIStoryboardSegue) {
         self.dismiss(animated: true, completion: nil)
-        if let navigationController = self.presentingViewController as? UINavigationController,
-           let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
-            basicVC.loadViewState()
-        }
+        executeExternalFunction(BasicViewController.self, action: { $0.loadViewState() })
     }
     
     @IBAction func editButton(_ sender: UIBarButtonItem) {
@@ -99,10 +100,6 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
             UIView.animate(withDuration: 0.3, animations: {
                 self.CloseBarButton.isEnabled = true
             })
-            
-            if UserDefaults.standard.bool(forKey: "HapticState") {
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            }
         } else {
             navigationController?.setToolbarHidden(false, animated: true)
             HistoryTableView.setEditing(true, animated: true)
@@ -116,6 +113,10 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
             UIView.animate(withDuration: 0.3, animations: {
                 self.CloseBarButton.isEnabled = false
             })
+            
+            if UserDefaults.standard.bool(forKey: "HapticState") {
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            }
         }
     }
     
@@ -130,11 +131,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         deleteAlert.addAction(UIAlertAction(title: NSLocalizedString("confirm", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard let self = self else { return }
             self.coreData.deleteAllCalculatorObjects(with: self.historyId)
-            
-            if let navigationController = self.presentingViewController as? UINavigationController,
-               let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
-                basicVC.HistoryButtonOutlet.isEnabled = false
-            }
+            executeExternalFunction(BasicViewController.self, action: { $0.HistoryButtonOutlet.isEnabled = false })
             
             self.dismiss(animated: true, completion: nil)
             self.navigationController?.setToolbarHidden(true, animated: true)
@@ -184,10 +181,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
         HistoryTableView.endUpdates()
         
         if groupedHistory.isEmpty {
-            if let navigationController = self.presentingViewController as? UINavigationController,
-               let basicVC = navigationController.viewControllers.first(where: { $0 is BasicViewController }) as? BasicViewController {
-                basicVC.HistoryButtonOutlet.isEnabled = false
-            }
+            executeExternalFunction(BasicViewController.self, action: { $0.HistoryButtonOutlet.isEnabled = false })
             self.dismiss(animated: true, completion: nil)
         }
         

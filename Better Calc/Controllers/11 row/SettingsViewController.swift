@@ -819,7 +819,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let defaultPositions = model.buttons.map { Int($0.id) }
         
         if savedPositions == [] || savedPositions == defaultPositions {
-            (self.navigationController as? NavigationController)?.resetError()
+            (self.navigationController as? NavigationController)?.positionsError()
         } else if savedPositions != defaultPositions {
             mainView.resetMenuFunc()
             (self.navigationController as? NavigationController)?.resButtonPill()
@@ -831,7 +831,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let deleteText = UILabel()
         deleteText.text = NSLocalizedString("settings_d_delete_all_history", comment: "")
         deleteText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        deleteText.textColor = .red
+        deleteText.textColor = .systemRed
         deleteText.textAlignment = .center
         deleteText.adjustsFontSizeToFitWidth = true
         deleteText.minimumScaleFactor = 0.6
@@ -874,6 +874,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 (self.navigationController as? NavigationController)?.delHistoryPill()
                 coreData.deleteAllCalculatorHistory()
                 coreData.deleteAllConverterHistory()
+                
                 coreData.resetBasicState()
                 coreData.resetConverterState(with: 1)
             }
