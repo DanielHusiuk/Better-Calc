@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "GitHubIcon_Dark.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

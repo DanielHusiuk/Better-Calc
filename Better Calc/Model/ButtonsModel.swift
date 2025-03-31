@@ -29,7 +29,7 @@ struct ButtonsModel {
         Button( id: 11,   text: NSLocalizedString("button_time", comment: ""),         image: UIImage(named: "clock.svg")!,                   segue: "TimeSegue"),
         Button( id: 12,   text: NSLocalizedString("button_speed", comment: ""),        image: UIImage(named: "gauge.open.with.lines.needle.33percent.svg")!,      segue: "SpeedSegue"),
         Button( id: 13,   text: NSLocalizedString("button_mass", comment: ""),         image: UIImage(named: "scalemass.svg")!,                segue: "MassSegue"),
-        Button( id: 14,   text: NSLocalizedString("button_count_system", comment: ""),  image: UIImage(named: "01.square.svg")!,                segue: "CountSegue"),
+//        Button( id: 14,   text: NSLocalizedString("button_count_system", comment: ""),  image: UIImage(named: "01.square.svg")!,                segue: "CountSegue"),
 //        Button( id: 15,   text: NSLocalizedString("button_resolution", comment: ""),    image: UIImage(named: "4k.tv.svg")!,                   segue: "ResolutionSegue"),
         Button( id: 16,   text: NSLocalizedString("button_data", comment: ""),         image: UIImage(named: "externaldrive.svg")!,            segue: "DataSegue"),
 //        Button( id: 17,   text: NSLocalizedString("button_discount", comment: ""),      image: UIImage(named: "tag.svg")!,                     segue: "DiscountSegue"),

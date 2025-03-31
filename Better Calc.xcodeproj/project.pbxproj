@@ -22,6 +22,11 @@
 		6590AA3E2D2D7C3200B969EC /* PillboxView in Frameworks */ = {isa = PBXBuildFile; productRef = 6590AA3D2D2D7C3200B969EC /* PillboxView */; };
 		6594D9052C5FC26D00218F02 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6594D9042C5FC26D00218F02 /* ButtonCell.swift */; };
 		659536072C7B43FF0036D99D /* PasteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659536062C7B43FF0036D99D /* PasteLabel.swift */; };
+		659B700D2D969A0A00214456 /* TimeHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659B700C2D969A0A00214456 /* TimeHistoryController.swift */; };
+		659B700F2D96A48A00214456 /* SpeedHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659B700E2D96A48A00214456 /* SpeedHistoryController.swift */; };
+		659B70112D96AA0F00214456 /* MassHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659B70102D96AA0F00214456 /* MassHistoryController.swift */; };
+		659B70132D96ADB300214456 /* CountHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659B70122D96ADB300214456 /* CountHistoryController.swift */; };
+		659B70172D96AE9700214456 /* DataHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659B70162D96AE9700214456 /* DataHistoryController.swift */; };
 		659C6A6A2D58F084007995D5 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C6A692D58F074007995D5 /* AnimationManager.swift */; };
 		659EE34A2C93690600B39776 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EE3492C93690600B39776 /* CoreDataManager.swift */; };
 		65A98AB62D822663002B76B9 /* LengthHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A98AB52D822663002B76B9 /* LengthHistoryController.swift */; };
@@ -56,6 +61,9 @@
 		65DFA3EF2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65DFA3ED2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld */; };
 		65DFA3F12C5A9B6B0090F4CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3F02C5A9B6B0090F4CE /* Assets.xcassets */; };
 		65DFA3F42C5A9B6B0090F4CE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3F32C5A9B6B0090F4CE /* Base */; };
+		65EE7A312D95A521006F2F84 /* TemperatureHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EE7A302D95A521006F2F84 /* TemperatureHistoryController.swift */; };
+		65F119BA2D95472500B2EDB7 /* AreaHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F119B92D95472500B2EDB7 /* AreaHistoryController.swift */; };
+		65F119BC2D95A0E400B2EDB7 /* VolumeHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F119BB2D95A0E400B2EDB7 /* VolumeHistoryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +80,11 @@
 		65706BC42CAE7D1E0033398C /* IconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconManager.swift; sourceTree = "<group>"; };
 		6594D9042C5FC26D00218F02 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		659536062C7B43FF0036D99D /* PasteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteLabel.swift; sourceTree = "<group>"; };
+		659B700C2D969A0A00214456 /* TimeHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHistoryController.swift; sourceTree = "<group>"; };
+		659B700E2D96A48A00214456 /* SpeedHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedHistoryController.swift; sourceTree = "<group>"; };
+		659B70102D96AA0F00214456 /* MassHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassHistoryController.swift; sourceTree = "<group>"; };
+		659B70122D96ADB300214456 /* CountHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountHistoryController.swift; sourceTree = "<group>"; };
+		659B70162D96AE9700214456 /* DataHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHistoryController.swift; sourceTree = "<group>"; };
 		659C6A692D58F074007995D5 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		659EE3492C93690600B39776 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		65A98AB52D822663002B76B9 /* LengthHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthHistoryController.swift; sourceTree = "<group>"; };
@@ -136,6 +149,9 @@
 		65DFA3F02C5A9B6B0090F4CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65DFA3F32C5A9B6B0090F4CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65DFA3F52C5A9B6B0090F4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65EE7A302D95A521006F2F84 /* TemperatureHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureHistoryController.swift; sourceTree = "<group>"; };
+		65F119B92D95472500B2EDB7 /* AreaHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaHistoryController.swift; sourceTree = "<group>"; };
+		65F119BB2D95A0E400B2EDB7 /* VolumeHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeHistoryController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +236,7 @@
 			children = (
 				655BC2D62D5F956A0096AB38 /* ResolutionViewController.swift */,
 				655BC2D82D5F958C0096AB38 /* DataViewController.swift */,
+				659B70162D96AE9700214456 /* DataHistoryController.swift */,
 			);
 			path = "8 row";
 			sourceTree = "<group>";
@@ -267,6 +284,7 @@
 				65B6895B2C6285D9005259E7 /* LengthViewController.swift */,
 				65A98AB52D822663002B76B9 /* LengthHistoryController.swift */,
 				65B6895D2C6285F1005259E7 /* AreaViewController.swift */,
+				65F119B92D95472500B2EDB7 /* AreaHistoryController.swift */,
 			);
 			path = "3 row";
 			sourceTree = "<group>";
@@ -275,7 +293,9 @@
 			isa = PBXGroup;
 			children = (
 				65B6895F2C62864A005259E7 /* VolumeViewController.swift */,
+				65F119BB2D95A0E400B2EDB7 /* VolumeHistoryController.swift */,
 				65B689612C628661005259E7 /* TemperatureViewController.swift */,
+				65EE7A302D95A521006F2F84 /* TemperatureHistoryController.swift */,
 			);
 			path = "4 row";
 			sourceTree = "<group>";
@@ -293,7 +313,9 @@
 			isa = PBXGroup;
 			children = (
 				65B6896B2C628B99005259E7 /* TimeViewController.swift */,
+				659B700C2D969A0A00214456 /* TimeHistoryController.swift */,
 				65B6896D2C628BD3005259E7 /* SpeedViewController.swift */,
+				659B700E2D96A48A00214456 /* SpeedHistoryController.swift */,
 			);
 			path = "6 row";
 			sourceTree = "<group>";
@@ -302,7 +324,9 @@
 			isa = PBXGroup;
 			children = (
 				65B6896F2C628BE5005259E7 /* MassViewController.swift */,
+				659B70102D96AA0F00214456 /* MassHistoryController.swift */,
 				65B689802C628E22005259E7 /* CountViewController.swift */,
+				659B70122D96ADB300214456 /* CountHistoryController.swift */,
 			);
 			path = "7 row";
 			sourceTree = "<group>";
@@ -462,6 +486,7 @@
 				65195E842C5BCB2400D4BE8B /* ButtonsModel.swift in Sources */,
 				65B6896A2C628B84005259E7 /* AgeViewController.swift in Sources */,
 				65464A762CB7DEA3008AB2AD /* PickerModel.swift in Sources */,
+				659B70132D96ADB300214456 /* CountHistoryController.swift in Sources */,
 				655BC2D72D5F956A0096AB38 /* ResolutionViewController.swift in Sources */,
 				65B689772C628D57005259E7 /* LoanViewController.swift in Sources */,
 				656569672C7B37B8001D1F2B /* CopyLabel.swift in Sources */,
@@ -469,8 +494,14 @@
 				6557D71F2CAB247800381649 /* SettingsViewController.swift in Sources */,
 				65B689532C6246EF005259E7 /* NavigationController.swift in Sources */,
 				65C51EA42CAF17F900A2D164 /* IconCell.swift in Sources */,
+				659B700F2D96A48A00214456 /* SpeedHistoryController.swift in Sources */,
+				659B70172D96AE9700214456 /* DataHistoryController.swift in Sources */,
 				654EB3352D5F91EB00BA2C3A /* LabelFormattingManager.swift in Sources */,
+				659B70112D96AA0F00214456 /* MassHistoryController.swift in Sources */,
+				659B700D2D969A0A00214456 /* TimeHistoryController.swift in Sources */,
 				652EA18A2C8B57CA00DD6803 /* BasicHistoryController.swift in Sources */,
+				65F119BA2D95472500B2EDB7 /* AreaHistoryController.swift in Sources */,
+				65EE7A312D95A521006F2F84 /* TemperatureHistoryController.swift in Sources */,
 				65B6895A2C6285C7005259E7 /* CryptoViewController.swift in Sources */,
 				65B6897B2C628DA3005259E7 /* BmiViewController.swift in Sources */,
 				65DFA3E52C5A9B6A0090F4CE /* AppDelegate.swift in Sources */,
@@ -480,6 +511,7 @@
 				655BC2D92D5F958C0096AB38 /* DataViewController.swift in Sources */,
 				65B6895C2C6285D9005259E7 /* LengthViewController.swift in Sources */,
 				65DFA3E72C5A9B6A0090F4CE /* SceneDelegate.swift in Sources */,
+				65F119BC2D95A0E400B2EDB7 /* VolumeHistoryController.swift in Sources */,
 				65B689562C628140005259E7 /* ScientificViewController.swift in Sources */,
 				65B689742C628C0B005259E7 /* InvestmentViewController.swift in Sources */,
 				65706BC52CAE7D1E0033398C /* IconManager.swift in Sources */,

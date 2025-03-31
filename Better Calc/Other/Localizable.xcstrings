@@ -6514,6 +6514,9 @@
         }
       }
     },
+    "Tip:\nLong Press the button to rearrange them like you want" : {
+
+    },
     "today" : {
       "localizations" : {
         "de" : {
@@ -11178,6 +11181,15 @@
         }
       }
     },
+    "unit_speed_centimeters_per_second" : {
+
+    },
+    "unit_speed_feet_per_second" : {
+
+    },
+    "unit_speed_furlongs_per_fortnight" : {
+
+    },
     "unit_speed_kilometers_per_hour" : {
       "localizations" : {
         "de" : {
@@ -11354,6 +11366,9 @@
         }
       }
     },
+    "unit_speed_mach" : {
+
+    },
     "unit_speed_meters_per_second" : {
       "localizations" : {
         "de" : {
@@ -11529,6 +11544,9 @@
           }
         }
       }
+    },
+    "unit_speed_yards_per_second" : {
+
     },
     "unit_storage_bits" : {
       "localizations" : {
@@ -13730,6 +13748,12 @@
         }
       }
     },
+    "unit_time_commonYears" : {
+
+    },
+    "unit_time_days" : {
+
+    },
     "unit_time_hours" : {
       "localizations" : {
         "de" : {
@@ -13817,6 +13841,9 @@
           }
         }
       }
+    },
+    "unit_time_LeapYears" : {
+
     },
     "unit_time_microseconds" : {
       "localizations" : {
@@ -14082,6 +14109,9 @@
         }
       }
     },
+    "unit_time_months" : {
+
+    },
     "unit_time_nanoseconds" : {
       "localizations" : {
         "de" : {
@@ -14345,6 +14375,9 @@
           }
         }
       }
+    },
+    "unit_time_weeks" : {
+
     },
     "unit_volume_acre_feet" : {
       "localizations" : {

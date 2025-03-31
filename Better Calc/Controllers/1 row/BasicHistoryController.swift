@@ -14,8 +14,6 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var CloseBarButton: UIBarButtonItem!
     @IBOutlet weak var EditBarButton: UIBarButtonItem!
     
-    @IBOutlet weak var NavigationTitleOutlet: UINavigationItem!
-    
     var coreData = CoreDataManager.shared
     var historyId: Int64 = 1
     let dateFormatter = DateFormatter()
@@ -119,7 +117,6 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
-    
     
     @IBAction func deleteAll(_ sender: UIBarButtonItem) {
         let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")

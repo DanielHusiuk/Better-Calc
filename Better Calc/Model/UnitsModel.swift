@@ -60,7 +60,7 @@ class UnitsModel {
         .centiliters           : NSLocalizedString("unit_volume_centiliters", comment: ""),
         .deciliters            : NSLocalizedString("unit_volume_deciliters", comment: ""),
         .liters               : NSLocalizedString("unit_volume_liters", comment: ""),
-        .metricCups            : NSLocalizedString("unit_volume_metric_cups", comment: ""),
+        .metricCup             : NSLocalizedString("unit_volume_metric_cups", comment: ""),
         .kiloliters            : NSLocalizedString("unit_volume_kiloliters", comment: ""),
         .megaliters            : NSLocalizedString("unit_volume_megaliters", comment: ""),
         .cubicCentimeters       : NSLocalizedString("unit_volume_cubic_centimeters", comment: ""),
@@ -103,15 +103,25 @@ class UnitsModel {
         .milliseconds     : NSLocalizedString("unit_time_milliseconds", comment: ""),
         .seconds         : NSLocalizedString("unit_time_seconds", comment: ""),
         .minutes         : NSLocalizedString("unit_time_minutes", comment: ""),
-        .hours           : NSLocalizedString("unit_time_hours", comment: "")
+        .hours           : NSLocalizedString("unit_time_hours", comment: ""),
+        .days           : NSLocalizedString("unit_time_days", comment: ""),
+        .weeks          : NSLocalizedString("unit_time_weeks", comment: ""),
+        .months         : NSLocalizedString("unit_time_months", comment: ""),
+        .commonYears    : NSLocalizedString("unit_time_commonYears", comment: ""),
+        .leapYears      : NSLocalizedString("unit_time_LeapYears", comment: "")
     ]
     
     //speed
     var speedDictionary: [UnitSpeed: String] = [
-        .knots             : NSLocalizedString("unit_speed_knots", comment: ""),
-        .milesPerHour       : NSLocalizedString("unit_speed_miles_per_hour", comment: ""),
-        .kilometersPerHour   : NSLocalizedString("unit_speed_kilometers_per_hour", comment: ""),
-        .metersPerSecond     : NSLocalizedString("unit_speed_meters_per_second", comment: "")
+        .knots                : NSLocalizedString("unit_speed_knots", comment: ""),
+        .milesPerHour          : NSLocalizedString("unit_speed_miles_per_hour", comment: ""),
+        .kilometersPerHour      : NSLocalizedString("unit_speed_kilometers_per_hour", comment: ""),
+        .metersPerSecond        : NSLocalizedString("unit_speed_meters_per_second", comment: ""),
+        .mach                 : NSLocalizedString("unit_speed_mach", comment: ""),
+        .furlongsPerFortnight   : NSLocalizedString("unit_speed_furlongs_per_fortnight", comment: ""),
+        .feetPerSecond         : NSLocalizedString("unit_speed_feet_per_second", comment: ""),
+        .yardsPerSecond        : NSLocalizedString("unit_speed_yards_per_second", comment: ""),
+        .centimitersPerSecond   : NSLocalizedString("unit_speed_centimeters_per_second", comment: "")
     ]
     
     //mass
@@ -160,4 +170,25 @@ class UnitsModel {
         .mebibytes      : NSLocalizedString("unit_storage_mebibytes", comment: "")
     ]
     
+}
+
+
+extension UnitDuration {
+    static let days =         UnitDuration(symbol: "day", converter:  UnitConverterLinear(coefficient: 86400, constant: 0))
+    static let weeks =        UnitDuration(symbol: "wk", converter:   UnitConverterLinear(coefficient: 604800, constant: 0))
+    static let months =       UnitDuration(symbol: "mo", converter:   UnitConverterLinear(coefficient: 2629800, constant: 0))
+    static let commonYears =   UnitDuration(symbol: "cYr", converter:  UnitConverterLinear(coefficient: 31536000, constant: 0))
+    static let leapYears =     UnitDuration(symbol: "lYr", converter:  UnitConverterLinear(coefficient: 31622400, constant: 0))
+}
+
+extension UnitSpeed {
+    static let mach =                     UnitSpeed(symbol: "M", converter: UnitConverterLinear(coefficient: 343, constant: 0))
+    static let furlongsPerFortnight =       UnitSpeed(symbol: "ff", converter: UnitConverterLinear(coefficient: 0.05472, constant: 0))
+    static let feetPerSecond =             UnitSpeed(symbol: "ft/s", converter: UnitConverterLinear(coefficient: 0.03048, constant: 0))
+    static let yardsPerSecond =            UnitSpeed(symbol: "yd/s", converter: UnitConverterLinear(coefficient: 0.9144, constant: 0))
+    static let centimitersPerSecond =       UnitSpeed(symbol: "cm/s", converter: UnitConverterLinear(coefficient: 0.01, constant: 0))
+}
+
+extension UnitVolume {
+    static let metricCup = UnitVolume(symbol: "m\ncup", converter: UnitConverterLinear(coefficient: 0.25, constant: 0))
 }

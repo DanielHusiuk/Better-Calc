@@ -42,6 +42,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private var tintModel = TintModel()
     private var selectedTintId: Int64 = 1
+    var isDarkTheme: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +76,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if UserDefaults.standard.object(forKey: "KeepState") == nil {
             UserDefaults.standard.set(true, forKey: "KeepState")
         }
+    }
+    
+    func updateTheme( scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let _ = (scene as? UIWindowScene) else { return }
+        NotificationCenter.default.addObserver(self, selector: #selector(userThemeDidChange), name: UserDefaults.didChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userThemeDidChange), name: UIAccessibility.darkerSystemColorsStatusDidChangeNotification, object: nil)
+    }
+    
+    @objc func userThemeDidChange() {
+        isDarkTheme = true
     }
     
     
@@ -911,7 +922,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         //git image
         let developerImage = UIImageView()
-        developerImage.image = UIImage(named: "GitHubIcon_small.png")
+        developerImage.image = UIImage(named: "GitHubIcon_Dark.png")
+//        developerImage.image = UIImage(named: "GitHubIcon.png")
+        print(String(describing: isDarkTheme))
         developerImage.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(developerImage)
         NSLayoutConstraint.activate([

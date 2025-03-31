@@ -92,6 +92,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 model.buttons.first { $0.id == id }
             }
         }
+        tipLabel()
     }
     
     func resetMenuFunc() {
@@ -222,4 +223,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    //MARK: - Tip Label
+    
+    func tipLabel() {
+        let tipText = UILabel()
+        tipText.text = NSLocalizedString("Tip:\nLong Press the button to rearrange them like you want", comment: "")
+        tipText.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        tipText.textColor = #colorLiteral(red: 0.3789286613, green: 0.3789286017, blue: 0.3789286613, alpha: 1)
+        tipText.textAlignment = .center
+        tipText.numberOfLines = 2
+        tipText.adjustsFontSizeToFitWidth = true
+        tipText.minimumScaleFactor = 0.6
+        tipText.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView!.addSubview(tipText)
+        NSLayoutConstraint.activate([
+            tipText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            tipText.bottomAnchor.constraint(equalTo: collectionView!.bottomAnchor, constant: 1010)
+        ])
+    }
+    
+    //Tip: Long Press the button to rearrange them like you want
 }
