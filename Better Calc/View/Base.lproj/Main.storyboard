@@ -552,7 +552,7 @@
         <!--Basic History-->
         <scene sceneID="BUb-0u-z7H">
             <objects>
-                <viewController keyboardType="off" id="QAd-AT-VRl" userLabel="Basic History" customClass="AreaHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController keyboardType="off" id="QAd-AT-VRl" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="1WZ-3H-LPD">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1854,7 +1854,6 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="Qr5-Ba-kSW"/>
                                                             <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="TjI-6e-GKE"/>
                                                         </connections>
                                                     </button>
@@ -1868,7 +1867,6 @@
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="Lz3-cr-SoF"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="MaJ-Hi-gz1"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rES-JB-Iow">
@@ -1881,7 +1879,6 @@
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="9Lc-GC-W4D"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="LQZ-Aw-nSQ"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOB-a3-rdO" userLabel="Erase">
@@ -1895,7 +1892,6 @@
                                                             <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="EraseButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="HAL-PF-M91"/>
                                                             <action selector="EraseButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="lq7-eF-HXc"/>
                                                             <outletCollection property="gestureRecognizers" destination="JK7-uu-LuO" appends="YES" id="z6l-Fn-eFk"/>
                                                         </connections>
@@ -1923,7 +1919,6 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="4C0-QS-PhU"/>
                                                                             <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="vCk-Nk-1sX"/>
                                                                         </connections>
                                                                     </button>
@@ -1936,7 +1931,6 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="SnQ-UQ-gaC"/>
                                                                             <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="T9C-Fj-Zun"/>
                                                                         </connections>
                                                                     </button>
@@ -1955,7 +1949,6 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="9AG-Fe-FZ2"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="ts0-YN-6E7"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbl-p3-B2e">
@@ -1967,7 +1960,6 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="19p-uT-vmD"/>
                                                                             <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="BCB-Fs-ZfH"/>
                                                                         </connections>
                                                                     </button>
@@ -1990,7 +1982,6 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="nUw-Zv-X85"/>
                                                                             <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="obH-2D-Imd"/>
                                                                         </connections>
                                                                     </button>
@@ -2003,7 +1994,6 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="CEH-3K-b60"/>
                                                                             <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="TAd-qi-tyR"/>
                                                                         </connections>
                                                                     </button>
@@ -2022,7 +2012,6 @@
                                                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="ChangeUnitButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="CCd-Rv-VXq"/>
                                                                     <action selector="ChangeUnitButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="njr-g5-Mvf"/>
                                                                 </connections>
                                                             </button>
@@ -2046,7 +2035,6 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="50Q-hB-6qH"/>
                                                             <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="bgk-NH-CBz"/>
                                                         </connections>
                                                     </button>
@@ -2063,7 +2051,6 @@
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="DecimalButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="QgV-bc-YHC"/>
-                                                                    <action selector="DecimalButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="dwC-ru-74h"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLf-HU-6al" userLabel="Clear">
@@ -2076,7 +2063,6 @@
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="AllClearButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="ycv-fJ-fBr"/>
-                                                                    <action selector="AllClearButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="zfr-vi-eOy"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -2843,8 +2829,6 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="Gsh-gp-YyD"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="PjL-fI-d1E"/>
                                                             <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="ajD-Lj-SO3"/>
                                                         </connections>
                                                     </button>
@@ -2857,8 +2841,6 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="1Bh-Ws-y9c"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="KKD-CG-P5D"/>
                                                             <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="sJP-Qw-5Kq"/>
                                                         </connections>
                                                     </button>
@@ -2872,8 +2854,6 @@
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="Ktd-S9-HQ8"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="m2S-O6-05g"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="toW-HE-sjQ"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qli-7W-6Nw" userLabel="Erase">
@@ -2887,8 +2867,6 @@
                                                             <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="EraseButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="QrC-bm-PEp"/>
-                                                            <action selector="EraseButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="b4f-zl-Gof"/>
                                                             <action selector="EraseButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="npa-sm-65x"/>
                                                             <outletCollection property="gestureRecognizers" destination="vuy-93-oS4" appends="YES" id="nnY-xY-enL"/>
                                                         </connections>
@@ -2916,9 +2894,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="1ea-GG-wY6"/>
                                                                             <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="KZe-Ih-XbL"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="QMj-Hr-Ivd"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1A-EY-p7i">
@@ -2930,9 +2906,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="gdx-8r-FhI"/>
                                                                             <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="nsn-lS-N3i"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="xIx-hv-5ea"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -2949,9 +2923,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="2FO-Qz-pR9"/>
                                                                             <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="qD4-Gp-RwU"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="xIo-WX-7BJ"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFP-KZ-2Ww">
@@ -2963,9 +2935,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="XMq-4U-TpN"/>
                                                                             <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="s9N-Z2-TJV"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="tFE-bl-Xnh"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -2988,8 +2958,6 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="1Ea-Cb-lQ6"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="8yd-Ve-67d"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="VAs-Za-B06"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZy-9h-aMe">
@@ -3001,8 +2969,6 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="7kz-fC-DQ3"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="Tcb-Fq-adE"/>
                                                                             <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="bS3-dw-3pA"/>
                                                                         </connections>
                                                                     </button>
@@ -3021,9 +2987,7 @@
                                                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="ChangeUnitButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="lTM-cX-poh"/>
                                                                     <action selector="ChangeUnitButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="vvE-Ne-A0Y"/>
-                                                                    <action selector="ChangeUnitButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="xKL-Po-jd6"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -3046,9 +3010,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="1ts-44-qIw"/>
                                                             <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="czj-Rn-3eE"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="x24-TE-XsG"/>
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="uux-WP-nN6">
@@ -3063,9 +3025,7 @@
                                                                     <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="DecimalButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="8dN-kN-3Eo"/>
                                                                     <action selector="DecimalButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="Mxf-uX-DOU"/>
-                                                                    <action selector="DecimalButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="om2-Bd-FAf"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YT5-Kz-8C7" userLabel="Clear">
@@ -3078,8 +3038,6 @@
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="AllClearButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="04a-6r-JDx"/>
-                                                                    <action selector="AllClearButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="XUS-nb-41D"/>
-                                                                    <action selector="AllClearButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="ZuR-v5-ksg"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -3347,11 +3305,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="4Fe-xt-UOk"/>
                                                             <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="JKQ-t6-vZ0"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="X7i-bV-hcc"/>
-                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="med-h9-gew"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="rnd-VF-ANH"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tv5-vc-Wcq">
@@ -3363,11 +3317,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="2a5-dQ-kAB"/>
                                                             <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="AHo-PX-X7B"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="VYi-fe-fdv"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="k1c-92-26d"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="qxe-Wx-flG"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XrD-RZ-ODI">
@@ -3380,10 +3330,6 @@
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="72N-dS-AUE"/>
-                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="BXq-94-xeg"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="Pyb-NA-sO6"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="Qq5-iL-RVz"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="WZD-ii-8bX"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86r-hq-2jq" userLabel="Erase">
@@ -3397,11 +3343,7 @@
                                                             <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="EraseButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="NnH-yK-1z4"/>
-                                                            <action selector="EraseButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="ctu-99-8Qn"/>
-                                                            <action selector="EraseButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="eT1-D5-Ibr"/>
                                                             <action selector="EraseButton:" destination="0pS-hM-e0C" eventType="touchUpInside" id="kyq-9L-mOS"/>
-                                                            <action selector="EraseButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="tDr-PX-gdu"/>
                                                             <outletCollection property="gestureRecognizers" destination="HBN-VD-WeU" appends="YES" id="zj7-V4-hr0"/>
                                                         </connections>
                                                     </button>
@@ -3429,10 +3371,6 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="Y9s-gz-JS9"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="fWP-6a-3k4"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="fo4-mt-xmH"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="meZ-JO-onH"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="zgn-Jf-Zh0"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyy-gj-YXP">
@@ -3445,10 +3383,6 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="9Tx-bg-bwx"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="BEd-69-FAd"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="LPb-zA-yMG"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="VX4-CP-wvq"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="fg4-o1-st7"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -3466,10 +3400,6 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="AIS-zm-CBr"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="aVX-qT-sS7"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="jp9-NZ-WZ6"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="vds-OA-WCi"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="zuY-bF-5Pk"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bc-kI-0fe">
@@ -3481,10 +3411,6 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="AL8-gE-Hbu"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="BJ2-ES-FWl"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="BQQ-Eb-yFZ"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="xE6-Ua-99F"/>
                                                                             <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="zjf-Cz-oBT"/>
                                                                         </connections>
                                                                     </button>
@@ -3507,11 +3433,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="0Pw-Ep-4rQ"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="1PU-n2-PJP"/>
                                                                             <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="J2V-c1-eWG"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="f65-Ft-Dw4"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="rSE-TY-fD0"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="635-IJ-AHd">
@@ -3523,11 +3445,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="3xT-62-g2Q"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="GFr-VK-xZe"/>
                                                                             <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="w62-FI-DDM"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="yHY-E1-32c"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="zwe-a8-JDh"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -3545,10 +3463,6 @@
                                                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="ChangeUnitButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="1IS-tn-rqU"/>
-                                                                    <action selector="ChangeUnitButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="2r8-9S-JjZ"/>
-                                                                    <action selector="ChangeUnitButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="Q6S-f3-5l5"/>
-                                                                    <action selector="ChangeUnitButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="W6O-oQ-aE5"/>
                                                                     <action selector="ChangeUnitButton:" destination="0pS-hM-e0C" eventType="touchUpInside" id="uz5-YV-pEi"/>
                                                                 </connections>
                                                             </button>
@@ -3572,10 +3486,6 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="Oii-F1-oO5"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="Ukv-Zf-2ts"/>
-                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="ba6-at-8uZ"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="k8e-Bi-Kak"/>
                                                             <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="xdF-2D-9rS"/>
                                                         </connections>
                                                     </button>
@@ -3591,11 +3501,7 @@
                                                                     <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="DecimalButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="JVL-mS-ddr"/>
                                                                     <action selector="DecimalButton:" destination="0pS-hM-e0C" eventType="touchUpInside" id="ddh-g8-NYb"/>
-                                                                    <action selector="DecimalButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="iyU-ul-yOB"/>
-                                                                    <action selector="DecimalButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="lxd-al-3Vz"/>
-                                                                    <action selector="DecimalButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="tYC-r1-sJa"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Srz-gh-NVF" userLabel="Clear">
@@ -3607,10 +3513,6 @@
                                                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="AllClearButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="3tm-Gc-6oj"/>
-                                                                    <action selector="AllClearButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="5CK-3b-hmM"/>
-                                                                    <action selector="AllClearButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="ANF-9R-UIL"/>
-                                                                    <action selector="AllClearButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="DGA-0L-ikJ"/>
                                                                     <action selector="AllClearButton:" destination="0pS-hM-e0C" eventType="touchUpInside" id="h7G-IJ-ord"/>
                                                                 </connections>
                                                             </button>
@@ -3910,9 +3812,6 @@
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="7u6-Vz-gm7"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="Uox-KA-OUi"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="eLh-dS-NY8"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="nqS-ge-HKP"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4b0-0f-LGF">
@@ -3924,10 +3823,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="I45-gb-Yq2"/>
                                                             <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="IEE-DR-9TA"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="Uud-h1-nkX"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="mte-P8-UPX"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRP-ex-qyk">
@@ -3939,10 +3835,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="Ng3-PV-CfD"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="jti-i9-RpS"/>
                                                             <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="nNN-3m-LxI"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="yAC-Td-vFJ"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhv-y8-rOF" userLabel="Erase">
@@ -3956,10 +3849,7 @@
                                                             <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="EraseButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="3IG-lB-VLk"/>
                                                             <action selector="EraseButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="8js-JJ-6vk"/>
-                                                            <action selector="EraseButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="hhJ-ma-gmb"/>
-                                                            <action selector="EraseButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="iGL-nv-mCg"/>
                                                             <outletCollection property="gestureRecognizers" destination="dpJ-Eb-rX1" appends="YES" id="yqV-rx-d8N"/>
                                                         </connections>
                                                     </button>
@@ -3986,10 +3876,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="D2j-79-ITr"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="MyN-cx-urr"/>
                                                                             <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="OMp-1p-M7Z"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="ek3-KV-r5v"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goz-sY-rKf">
@@ -4002,9 +3889,6 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="56T-wh-Bdr"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="JWq-1y-xxN"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="Rnu-DR-NKf"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="Z96-Te-6jH"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -4021,9 +3905,6 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="2qs-VT-mQe"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="Rtf-cO-bGF"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="XGm-iG-fXo"/>
                                                                             <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="x66-xA-TaU"/>
                                                                         </connections>
                                                                     </button>
@@ -4037,9 +3918,6 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="1xF-dQ-rlx"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="8Bs-nR-T3g"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="Xnl-Ih-LAh"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="hiG-BO-QeJ"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -4062,9 +3940,6 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="Hpe-91-Q0a"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="NIZ-5S-LgC"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="W0U-IH-Ghk"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="nXp-GL-NzX"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99G-aR-q8b">
@@ -4076,9 +3951,6 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="AsF-bb-0kb"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="EaJ-4P-8Ku"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="Mm1-ST-O5v"/>
                                                                             <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="eZy-wd-BwL"/>
                                                                         </connections>
                                                                     </button>
@@ -4097,9 +3969,6 @@
                                                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="ChangeUnitButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="KbR-B7-UFN"/>
-                                                                    <action selector="ChangeUnitButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="aud-Mj-okC"/>
-                                                                    <action selector="ChangeUnitButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="ibG-eH-kyU"/>
                                                                     <action selector="ChangeUnitButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="zM1-M5-CMf"/>
                                                                 </connections>
                                                             </button>
@@ -4123,10 +3992,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="Dfm-7P-0y5"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="Ng1-64-sNT"/>
                                                             <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="YpD-sy-sEp"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="ylP-62-65V"/>
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="GXW-d6-Gwe">
@@ -4142,9 +4008,6 @@
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="DecimalButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="53y-fG-Ujf"/>
-                                                                    <action selector="DecimalButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="9yR-og-1Eh"/>
-                                                                    <action selector="DecimalButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="aQg-sQ-eMV"/>
-                                                                    <action selector="DecimalButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="qEd-60-R9X"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3x-F7-YgM" userLabel="Clear">
@@ -4156,10 +4019,7 @@
                                                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="AllClearButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="Fau-Rq-zhg"/>
                                                                     <action selector="AllClearButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="PYC-ut-AgH"/>
-                                                                    <action selector="AllClearButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="eMz-5f-TYg"/>
-                                                                    <action selector="AllClearButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="v9z-nr-tkX"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -4456,13 +4316,6 @@
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="054-tg-Ru8"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="27R-3A-hB6"/>
-                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="47r-Jz-r1s"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="4Rs-bU-15q"/>
-                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="WzI-LM-7Hn"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3T-zS-TbB">
                                                         <rect key="frame" x="85.666666666666671" y="0.0" width="73.000000000000014" height="72"/>
@@ -4472,13 +4325,6 @@
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="QZ7-Gi-dPZ"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="cSb-dc-Whd"/>
-                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="cjV-tg-2Kj"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="mnh-32-xsC"/>
-                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="oFQ-u9-Kcc"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Tc-bd-cIm">
                                                         <rect key="frame" x="171.66666666666666" y="0.0" width="72.666666666666657" height="72"/>
@@ -4488,13 +4334,6 @@
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="JKJ-CJ-AiL"/>
-                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="WUV-Pc-tAM"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="ZGP-1V-b1k"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="goa-Bn-IUm"/>
-                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="vnG-Mh-NSS"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8y-gw-YwR" userLabel="Erase">
                                                         <rect key="frame" x="257.33333333333331" y="0.0" width="72.666666666666686" height="72"/>
@@ -4506,13 +4345,6 @@
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                         </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="EraseButton:" destination="0pS-hM-e0C" eventType="touchUpInside" id="16p-jU-Zgc"/>
-                                                            <action selector="EraseButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="8sv-cM-m0l"/>
-                                                            <action selector="EraseButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="ENT-1q-RxH"/>
-                                                            <action selector="EraseButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="GK4-QC-nfq"/>
-                                                            <action selector="EraseButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="tmh-fl-FsW"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -4536,13 +4368,6 @@
                                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
-                                                                        <connections>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="2P7-Us-SgK"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="8kM-wa-I7m"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="EOu-9a-ZO4"/>
-                                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="RbF-lG-2UF"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="VjN-Pg-5wh"/>
-                                                                        </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5WJ-H6-R0l">
                                                                         <rect key="frame" x="0.0" y="85" width="72.666666666666671" height="72"/>
@@ -4552,13 +4377,6 @@
                                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
-                                                                        <connections>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="3oW-rp-iEw"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="Ksz-i0-Cfk"/>
-                                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="M8m-3B-78j"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="b1y-VT-htv"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="sag-Sz-hgl"/>
-                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -4573,13 +4391,6 @@
                                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
-                                                                        <connections>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="7J2-KU-9Fq"/>
-                                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="IPN-qQ-9yt"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="PH7-e4-onu"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="Psb-HX-fpF"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="tDT-in-fgU"/>
-                                                                        </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEz-IK-06N">
                                                                         <rect key="frame" x="0.0" y="85" width="73" height="72"/>
@@ -4589,13 +4400,6 @@
                                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
-                                                                        <connections>
-                                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="JBr-5T-Xs4"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="dF7-hv-N34"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="hsj-rC-1fP"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="iyF-SB-kA1"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="kmA-J9-NuY"/>
-                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -4615,13 +4419,6 @@
                                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
-                                                                        <connections>
-                                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="0V1-Of-SoW"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="WNb-Cm-SAq"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="b4F-Su-BjT"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="cWu-GY-YSD"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="fNX-3Z-AoH"/>
-                                                                        </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRH-zh-UEl">
                                                                         <rect key="frame" x="0.0" y="85" width="72.666666666666671" height="72"/>
@@ -4631,13 +4428,6 @@
                                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
-                                                                        <connections>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="4bb-bH-Hz9"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="RiZ-YA-Cce"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="bcK-3s-yqZ"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="m3k-6u-qd4"/>
-                                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="mEk-Yz-cgv"/>
-                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -4653,13 +4443,6 @@
                                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                                 </buttonConfiguration>
-                                                                <connections>
-                                                                    <action selector="ChangeUnitButton:" destination="0pS-hM-e0C" eventType="touchUpInside" id="53q-BQ-vvk"/>
-                                                                    <action selector="ChangeUnitButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="7ES-B0-k7P"/>
-                                                                    <action selector="ChangeUnitButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="7it-8z-WeU"/>
-                                                                    <action selector="ChangeUnitButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="f3j-d7-9F7"/>
-                                                                    <action selector="ChangeUnitButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="zSJ-jr-D9a"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -4680,13 +4463,6 @@
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="YQq-o4-L6L"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="b1O-k8-ld1"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="e8v-Zc-miK"/>
-                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="jrq-GP-UdX"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="nlj-2a-0Kf"/>
-                                                        </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="lv3-TV-XQz">
                                                         <rect key="frame" x="171.66666666666663" y="0.0" width="158.33333333333337" height="72"/>
@@ -4699,13 +4475,6 @@
                                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </buttonConfiguration>
-                                                                <connections>
-                                                                    <action selector="DecimalButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="8rR-Ul-469"/>
-                                                                    <action selector="DecimalButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="I3F-9n-duq"/>
-                                                                    <action selector="DecimalButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="KRi-hp-X00"/>
-                                                                    <action selector="DecimalButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="SKE-Ls-ggB"/>
-                                                                    <action selector="DecimalButton:" destination="0pS-hM-e0C" eventType="touchUpInside" id="aMk-1F-Dku"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WT-3u-yyU" userLabel="Clear">
                                                                 <rect key="frame" x="85.666666666666657" y="0.0" width="72.666666666666657" height="72"/>
@@ -4715,13 +4484,6 @@
                                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                                 </buttonConfiguration>
-                                                                <connections>
-                                                                    <action selector="AllClearButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="SgR-FX-lXz"/>
-                                                                    <action selector="AllClearButton:" destination="0pS-hM-e0C" eventType="touchUpInside" id="el6-d6-DME"/>
-                                                                    <action selector="AllClearButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="kfo-fT-d5X"/>
-                                                                    <action selector="AllClearButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="nfX-o9-yrd"/>
-                                                                    <action selector="AllClearButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="ngc-rO-eZX"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -4950,10 +4712,10 @@
             </objects>
             <point key="canvasLocation" x="19169" y="1653"/>
         </scene>
-        <!--Basic History-->
+        <!--Currency History-->
         <scene sceneID="sJQ-DY-xLt">
             <objects>
-                <viewController id="aiM-8F-Qa9" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aiM-8F-Qa9" userLabel="Currency History" customClass="CurrencyHistoryController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="K3N-6a-xMZ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5328,10 +5090,10 @@
             </objects>
             <point key="canvasLocation" x="2622" y="3328"/>
         </scene>
-        <!--Basic History-->
+        <!--Scientific History-->
         <scene sceneID="kbK-OY-n0p">
             <objects>
-                <viewController id="YJj-eb-TdO" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YJj-eb-TdO" userLabel="Scientific History" customClass="ScientificHistoryController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="dtR-dx-W3t">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5454,10 +5216,10 @@
             </objects>
             <point key="canvasLocation" x="6292" y="841"/>
         </scene>
-        <!--Basic History-->
+        <!--Crypto History-->
         <scene sceneID="fYH-mz-ukP">
             <objects>
-                <viewController id="eUz-l9-QRS" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eUz-l9-QRS" userLabel="Crypto History" customClass="CryptoHistoryController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="8jv-Dt-1if">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5832,10 +5594,10 @@
             </objects>
             <point key="canvasLocation" x="6292" y="3328"/>
         </scene>
-        <!--Basic History-->
+        <!--Date History-->
         <scene sceneID="Ptd-4L-vyT">
             <objects>
-                <viewController id="dkL-TT-JXJ" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dkL-TT-JXJ" userLabel="Date History" customClass="DateHistoryController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="wYm-IG-VQk">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6210,10 +5972,10 @@
             </objects>
             <point key="canvasLocation" x="10074" y="2528"/>
         </scene>
-        <!--Basic History-->
+        <!--Discount History-->
         <scene sceneID="rW9-xr-fNG">
             <objects>
-                <viewController id="gzW-7N-8iu" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gzW-7N-8iu" userLabel="Discount History" customClass="DiscountHistoryController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="phX-CW-CGY">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6336,10 +6098,10 @@
             </objects>
             <point key="canvasLocation" x="10074" y="3328"/>
         </scene>
-        <!--Basic History-->
+        <!--Age History-->
         <scene sceneID="5jF-21-lz1">
             <objects>
-                <viewController id="r8m-EG-4h4" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="r8m-EG-4h4" userLabel="Age History" customClass="AgeHistoryController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="FeR-mR-DYa">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6714,10 +6476,10 @@
             </objects>
             <point key="canvasLocation" x="13468" y="2528"/>
         </scene>
-        <!--Basic History-->
+        <!--Investment History-->
         <scene sceneID="hp9-Vv-wSK">
             <objects>
-                <viewController id="ury-xl-356" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ury-xl-356" userLabel="Investment History" customClass="InvestmentHistoryController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="Dec-xT-fYi">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6840,10 +6602,10 @@
             </objects>
             <point key="canvasLocation" x="17031" y="1653"/>
         </scene>
-        <!--Basic History-->
+        <!--Loan History-->
         <scene sceneID="ARY-LI-98B">
             <objects>
-                <viewController id="O7j-x3-sg1" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="O7j-x3-sg1" userLabel="Loan History" customClass="LoanHistoryController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="0lC-e4-jYa">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6966,10 +6728,10 @@
             </objects>
             <point key="canvasLocation" x="17031" y="2528"/>
         </scene>
-        <!--Basic History-->
+        <!--Bmi History-->
         <scene sceneID="G1K-03-4mp">
             <objects>
-                <viewController id="7xu-dy-bsb" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7xu-dy-bsb" userLabel="Bmi History" customClass="BmiHistoryController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="8Ng-Sd-yvn">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7092,10 +6854,10 @@
             </objects>
             <point key="canvasLocation" x="17031" y="3340"/>
         </scene>
-        <!--Basic History-->
+        <!--Tips History-->
         <scene sceneID="SPx-dk-y3S">
             <objects>
-                <viewController id="HYS-9c-NQG" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HYS-9c-NQG" userLabel="Tips History" customClass="TipsHistoryController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="OAo-A7-Ojp">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7408,11 +7170,6 @@
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="NumberButtons:" destination="xHG-SO-PWF" eventType="touchUpInside" id="1Gp-pS-zg0"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="AcI-mH-bcN"/>
-                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="RJ5-Lp-UDs"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="ejj-2x-8c7"/>
-                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="k1w-fK-CNj"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="ujJ-fG-cFV"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLF-sa-2yG">
@@ -7424,12 +7181,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="0hg-8z-D5P"/>
-                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="aCz-PB-B7U"/>
-                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="dLp-VR-wl3"/>
                                                             <action selector="NumberButtons:" destination="xHG-SO-PWF" eventType="touchUpInside" id="mzb-s6-HCD"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="uhD-Nj-rDU"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="vlo-e8-wFw"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqu-Sf-AFG">
@@ -7441,12 +7193,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="3QW-0E-svI"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="3dJ-7K-Bi3"/>
-                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="4C0-7k-0FD"/>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="XGK-Dr-1eH"/>
                                                             <action selector="NumberButtons:" destination="xHG-SO-PWF" eventType="touchUpInside" id="azc-j2-msg"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="ywW-EU-dBU"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kV-Ve-Dfs" userLabel="Erase">
@@ -7460,12 +7207,7 @@
                                                             <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="EraseButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="4z5-hi-1CU"/>
-                                                            <action selector="EraseButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="Aj8-AK-8DT"/>
                                                             <action selector="EraseButton:" destination="xHG-SO-PWF" eventType="touchUpInside" id="BKO-Bk-NmB"/>
-                                                            <action selector="EraseButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="CIQ-ZU-Km4"/>
-                                                            <action selector="EraseButton:" destination="0pS-hM-e0C" eventType="touchUpInside" id="Ie3-9c-yIj"/>
-                                                            <action selector="EraseButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="j4X-YH-Uy2"/>
                                                             <outletCollection property="gestureRecognizers" destination="ksk-3w-u0E" appends="YES" id="jmG-h1-EW0"/>
                                                         </connections>
                                                     </button>
@@ -7492,12 +7234,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="4Bi-f0-HpY"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="Edn-lh-BSe"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="Kw9-8A-8B4"/>
                                                                             <action selector="NumberButtons:" destination="xHG-SO-PWF" eventType="touchUpInside" id="P4T-4v-ufH"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="Vu8-i1-e9r"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="uMZ-9Y-SW7"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7IM-TN-p4F">
@@ -7509,12 +7246,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="3bi-k2-tyO"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="8VL-aQ-Gq1"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="8vV-M1-cc9"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="AVd-hX-ZO4"/>
                                                                             <action selector="NumberButtons:" destination="xHG-SO-PWF" eventType="touchUpInside" id="Rik-lv-rcE"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="UwF-j7-rzK"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -7531,12 +7263,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="3xh-K4-Iz9"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="6oP-0T-QJx"/>
                                                                             <action selector="NumberButtons:" destination="xHG-SO-PWF" eventType="touchUpInside" id="Abf-vD-l6i"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="Er8-dK-StP"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="YjD-RZ-jvr"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="rPl-Yy-GA6"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9t-6a-rvl">
@@ -7548,12 +7275,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="3pI-JQ-xxs"/>
                                                                             <action selector="NumberButtons:" destination="xHG-SO-PWF" eventType="touchUpInside" id="FLH-FQ-Qrz"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="RKZ-2b-qdg"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="RU4-xL-keF"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="Rcv-cv-hzZ"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="nz4-xN-rsU"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -7575,12 +7297,7 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="1SF-iu-654"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="NEs-hh-Ia3"/>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="arZ-qh-KUO"/>
                                                                             <action selector="NumberButtons:" destination="xHG-SO-PWF" eventType="touchUpInside" id="cHU-hE-tjF"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="pkN-DA-LiW"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="zkB-8f-EnW"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZH-RY-6Cx">
@@ -7592,11 +7309,6 @@
                                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="26G-BP-KvU"/>
-                                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="7Af-qS-4m3"/>
-                                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="Gog-nD-7cw"/>
-                                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="dKd-Pm-ytV"/>
-                                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="ej3-6c-gyA"/>
                                                                             <action selector="NumberButtons:" destination="xHG-SO-PWF" eventType="touchUpInside" id="iX5-5b-BoC"/>
                                                                         </connections>
                                                                     </button>
@@ -7615,12 +7327,7 @@
                                                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="ChangeUnitButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="CCU-f4-gO3"/>
-                                                                    <action selector="ChangeUnitButton:" destination="0pS-hM-e0C" eventType="touchUpInside" id="DJQ-ns-YYc"/>
-                                                                    <action selector="ChangeUnitButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="ZWf-6S-WLF"/>
                                                                     <action selector="ChangeUnitButton:" destination="xHG-SO-PWF" eventType="touchUpInside" id="gFP-Pc-67Q"/>
-                                                                    <action selector="ChangeUnitButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="w0c-RO-fLP"/>
-                                                                    <action selector="ChangeUnitButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="wSD-cZ-MpW"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -7643,12 +7350,7 @@
                                                             <color key="baseBackgroundColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="NumberButtons:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="CPj-9H-fIu"/>
-                                                            <action selector="NumberButtons:" destination="0pS-hM-e0C" eventType="touchUpInside" id="fRk-cR-vQO"/>
-                                                            <action selector="NumberButtons:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="gTU-tI-kSS"/>
                                                             <action selector="NumberButtons:" destination="xHG-SO-PWF" eventType="touchUpInside" id="myx-SF-uOE"/>
-                                                            <action selector="NumberButtons:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="xIA-P8-SCU"/>
-                                                            <action selector="NumberButtons:" destination="1b7-xe-wTy" eventType="touchUpInside" id="xQK-es-x82"/>
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="PRr-Cv-e8U">
@@ -7664,11 +7366,6 @@
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="DecimalButton:" destination="xHG-SO-PWF" eventType="touchUpInside" id="Lo4-4a-4xI"/>
-                                                                    <action selector="DecimalButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="ODG-UH-eBr"/>
-                                                                    <action selector="DecimalButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="pbJ-wv-5ke"/>
-                                                                    <action selector="DecimalButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="rTb-MS-iUY"/>
-                                                                    <action selector="DecimalButton:" destination="0pS-hM-e0C" eventType="touchUpInside" id="wbc-VX-Z3j"/>
-                                                                    <action selector="DecimalButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="ynJ-H6-MYe"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="9" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGr-ys-xhi" userLabel="Clear">
@@ -7681,11 +7378,6 @@
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="AllClearButton:" destination="xHG-SO-PWF" eventType="touchUpInside" id="2v9-b4-rdw"/>
-                                                                    <action selector="AllClearButton:" destination="0pS-hM-e0C" eventType="touchUpInside" id="JIa-Ip-awS"/>
-                                                                    <action selector="AllClearButton:" destination="Zwt-oM-jV9" eventType="touchUpInside" id="LF3-Xl-rTs"/>
-                                                                    <action selector="AllClearButton:" destination="RRf-Ch-6pj" eventType="touchUpInside" id="cGj-ai-C3E"/>
-                                                                    <action selector="AllClearButton:" destination="1b7-xe-wTy" eventType="touchUpInside" id="dva-Zh-dj9"/>
-                                                                    <action selector="AllClearButton:" destination="bhq-G1-hFJ" eventType="touchUpInside" id="eNI-J7-mWz"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -7764,10 +7456,10 @@
             </objects>
             <point key="canvasLocation" x="16120" y="841"/>
         </scene>
-        <!--Basic History-->
+        <!--Data History-->
         <scene sceneID="BZw-l4-BaN">
             <objects>
-                <viewController id="rmy-TG-qhV" userLabel="Basic History" customClass="DataHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rmy-TG-qhV" userLabel="Data History" customClass="DataHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="yQl-AW-O6D">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7913,10 +7605,10 @@
             </objects>
             <point key="canvasLocation" x="12557" y="3340"/>
         </scene>
-        <!--Basic History-->
+        <!--Resolution History-->
         <scene sceneID="F5n-h5-1WD">
             <objects>
-                <viewController id="l0n-7K-oZK" userLabel="Basic History" customClass="BasicHistoryController" customModule="Better_Calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="l0n-7K-oZK" userLabel="Resolution History" customClass="ResolutionHistoryController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="MUP-zC-loh">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -88,8 +88,8 @@
 		659C6A692D58F074007995D5 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		659EE3492C93690600B39776 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		65A98AB52D822663002B76B9 /* LengthHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthHistoryController.swift; sourceTree = "<group>"; };
+		65AD668E2D9D99DA0000C562 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
 		65B288172D4A8E4B00A84FC7 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		65B288192D4A93B900A84FC7 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
 		65B2881A2D4A93BA00A84FC7 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		65B2881B2D4A94B800A84FC7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		65B2881C2D4A94B800A84FC7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -539,7 +539,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				65DFA3EB2C5A9B6A0090F4CE /* Base */,
-				65B288192D4A93B900A84FC7 /* uk */,
 				65B2881B2D4A94B800A84FC7 /* fr */,
 				65B2881D2D4A94BC00A84FC7 /* de */,
 				65B2881F2D4A94C600A84FC7 /* it */,
@@ -553,6 +552,7 @@
 				65B288312D4A95C900A84FC7 /* ko */,
 				65B288352D4A961800A84FC7 /* tr */,
 				65B288392D4A964400A84FC7 /* en */,
+				65AD668E2D9D99DA0000C562 /* uk */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

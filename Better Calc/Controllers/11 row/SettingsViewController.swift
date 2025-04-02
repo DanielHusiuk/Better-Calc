@@ -434,7 +434,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         switch section {
         case 2:
-            return 10
+            return 8
         default:
             return 35
         }
@@ -493,8 +493,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if selectedIndexPath == indexPath {
             collectionCell.borderView.layer.borderWidth = 2
             collectionCell.borderView.layer.borderColor = #colorLiteral(red: 0.9000000358, green: 0.9000000358, blue: 0.9000000358, alpha: 1)
+            collectionCell.borderView.alpha = 0.9
         } else {
             collectionCell.borderView.layer.borderWidth = 0
+            collectionCell.borderView.alpha = 0
         }
         
         collectionCell.button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -696,7 +698,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ])
         
         let chevronIcon = UIImageView()
-        chevronIcon.image = UIImage(systemName: "chevron.right")
+        chevronIcon.image = UIImage(systemName: "chevron.up.chevron.down")
         chevronIcon.image?.withRenderingMode(.alwaysOriginal)
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             chevronIcon.tintColor = selectedTintColor
@@ -705,8 +707,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.contentView.addSubview(chevronIcon)
         
         NSLayoutConstraint.activate([
-            chevronIcon.widthAnchor.constraint(equalToConstant: 14),
-            chevronIcon.heightAnchor.constraint(equalToConstant: 20),
+            chevronIcon.widthAnchor.constraint(equalToConstant: 16),
+            chevronIcon.heightAnchor.constraint(equalToConstant: 22),
             chevronIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             chevronIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
         ])
@@ -792,10 +794,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.contentView.addSubview(chevronIcon)
         
         NSLayoutConstraint.activate([
-            chevronIcon.widthAnchor.constraint(equalToConstant: 14),
-            chevronIcon.heightAnchor.constraint(equalToConstant: 20),
+            chevronIcon.widthAnchor.constraint(equalToConstant: 12),
+            chevronIcon.heightAnchor.constraint(equalToConstant: 18),
             chevronIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-            chevronIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
+            chevronIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -20)
         ])
     }
     
@@ -922,8 +924,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         //git image
         let developerImage = UIImageView()
-        developerImage.image = UIImage(named: "GitHubIcon_Dark.png")
-//        developerImage.image = UIImage(named: "GitHubIcon.png")
+//        developerImage.image = UIImage(named: "GitHubIcon_Dark.png")
+        developerImage.image = UIImage(named: "GitHubIcon.png")
         print(String(describing: isDarkTheme))
         developerImage.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(developerImage)

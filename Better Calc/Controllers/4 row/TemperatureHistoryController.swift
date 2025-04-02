@@ -29,6 +29,7 @@ class TemperatureHistoryController: UIViewController, UITableViewDelegate, UITab
         loadHistory()
         blurBackground()
         toolBar(UIToolbar.init())
+        dismissSwipe()
         
         HistoryTableView.delegate = self
         HistoryTableView.dataSource = self
@@ -115,6 +116,19 @@ class TemperatureHistoryController: UIViewController, UITableViewDelegate, UITab
             if UserDefaults.standard.bool(forKey: "HapticState") {
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
             }
+        }
+    }
+    
+    func dismissSwipe() {
+        let edgeSwipe = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipedRight(_:)))
+        edgeSwipe.edges = .left
+        view.addGestureRecognizer(edgeSwipe)
+    }
+    
+    @objc func swipedRight(_ gesture: UIScreenEdgePanGestureRecognizer) {
+        if gesture.state == .recognized {
+            self.dismiss(animated: true, completion: nil)
+            print("swipe right \n\n\n")
         }
     }
     

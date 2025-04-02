@@ -227,21 +227,40 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func tipLabel() {
         let tipText = UILabel()
-        tipText.text = NSLocalizedString("Tip:\nLong Press the button to rearrange them like you want", comment: "")
-        tipText.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        tipText.text = NSLocalizedString("Tip_long_press_rearrange", comment: "")
+        tipText.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         tipText.textColor = #colorLiteral(red: 0.3789286613, green: 0.3789286017, blue: 0.3789286613, alpha: 1)
         tipText.textAlignment = .center
-        tipText.numberOfLines = 2
+        tipText.numberOfLines = 3
         tipText.adjustsFontSizeToFitWidth = true
         tipText.minimumScaleFactor = 0.6
         tipText.translatesAutoresizingMaskIntoConstraints = false
         
+        let screenHeight = UIScreen.main.bounds.height
+        var bottomConstant = CGFloat()
+        switch screenHeight {
+        case ..<737:
+            bottomConstant = 950
+        case 811..<845:
+            bottomConstant = 1030
+        case 850..<890:
+            bottomConstant = 1050
+        case 895..<927:
+            bottomConstant = 1080
+        case 931..<933:
+            bottomConstant = 1100
+        case 935...:
+            bottomConstant = 1150
+        default:
+            break
+        }
+        
         collectionView!.addSubview(tipText)
         NSLayoutConstraint.activate([
-            tipText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            tipText.bottomAnchor.constraint(equalTo: collectionView!.bottomAnchor, constant: 1010)
+            tipText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            tipText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            tipText.bottomAnchor.constraint(equalTo: collectionView!.bottomAnchor, constant: bottomConstant)
         ])
+        
     }
-    
-    //Tip: Long Press the button to rearrange them like you want
 }

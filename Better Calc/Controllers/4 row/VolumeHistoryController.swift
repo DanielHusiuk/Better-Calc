@@ -29,6 +29,7 @@ class VolumeHistoryController: UIViewController, UITableViewDelegate, UITableVie
         loadHistory()
         blurBackground()
         toolBar(UIToolbar.init())
+        dismissSwipe()
         
         HistoryTableView.delegate = self
         HistoryTableView.dataSource = self
@@ -75,6 +76,19 @@ class VolumeHistoryController: UIViewController, UITableViewDelegate, UITableVie
     
     func saveConverterState() {
         executeExternalFunction(VolumeViewController.self) { $0.saveViewState() }
+    }
+    
+    func dismissSwipe() {
+        let edgeSwipe = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipedRight(_:)))
+        edgeSwipe.edges = .left
+        view.addGestureRecognizer(edgeSwipe)
+    }
+    
+    @objc func swipedRight(_ gesture: UIScreenEdgePanGestureRecognizer) {
+        if gesture.state == .recognized {
+            self.dismiss(animated: true, completion: nil)
+            print("swipe right \n\n\n")
+        }
     }
     
     
