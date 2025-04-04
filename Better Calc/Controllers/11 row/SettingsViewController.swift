@@ -42,12 +42,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private var tintModel = TintModel()
     private var selectedTintId: Int64 = 1
-    var isDarkTheme: Bool?
+    var isDarkTheme: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updatePreferences()
         loadTableView()
+        isDarkTheme = UserDefaults.standard.bool(forKey: "isSystemDarkTheme")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +66,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - Update
     
     func updatePreferences() {
+        NotificationCenter.default.addObserver(self, selector: #selector(userThemeDidChange(_:)), name: Notification.Name("DarkThemeNotification"), object: nil)
         let savedIndex = UserDefaults.standard.integer(forKey: "selectedTintID")
         let indexToUse = savedIndex
         selectedIndexPath = IndexPath(row: indexToUse, section: 0)
@@ -78,14 +80,20 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func updateTheme( scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = (scene as? UIWindowScene) else { return }
-        NotificationCenter.default.addObserver(self, selector: #selector(userThemeDidChange), name: UserDefaults.didChangeNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(userThemeDidChange), name: UIAccessibility.darkerSystemColorsStatusDidChangeNotification, object: nil)
+    @objc func userThemeDidChange(_ notification: Notification) {
+        let isSystemDarkMode = UserDefaults.standard.bool(forKey: "isSystemDarkTheme")
+        if isDarkTheme != isSystemDarkMode {
+            isDarkTheme = isSystemDarkMode
+        }
+        
+        if self.tableView != nil {
+            UIView.transition(with: collectionView!, duration: 0.25, options: .transitionCrossDissolve, animations: {self.collectionView!.reloadData()}, completion: nil)
+            tableView.reloadRows(at: [IndexPath(row: 0, section: 5)], with: .fade)
+        }
     }
     
-    @objc func userThemeDidChange() {
-        isDarkTheme = true
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("DarkThemeNotification"), object: nil)
     }
     
     
@@ -487,7 +495,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             return UICollectionViewCell()
         }
         let buttonRow = iconModel.icons[indexPath.row]
-        collectionCell.configure(with: buttonRow.text, image: buttonRow.image)
+        let image = isDarkTheme ? buttonRow.darkImage : buttonRow.image
+        collectionCell.configure(with: buttonRow.text, image: image)
         collectionCell.button.tag = indexPath.row
         
         if selectedIndexPath == indexPath {
@@ -515,6 +524,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         selectedTintId = Int64(tintModel.tints[sender.tag].id)
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             UserDefaults.standard.setColor(selectedTintColor, forKey: "selectedTintColor")
+            if selectedTintId == 7 {
+                NotificationCenter.default.post(name: Notification.Name("GrayTheme"), object: nil)
+            } else {
+                NotificationCenter.default.post(name: Notification.Name("ThemeChanged"), object: nil)
+            }
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -531,48 +545,48 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - Open With Launch
     
     func pickerHeader(in cell: UITableViewCell) {
-         let CalcTextLabel = UILabel()
-         CalcTextLabel.text = NSLocalizedString("settings_o_w_l_calculator", comment: "")
-         CalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-         CalcTextLabel.textColor = .white
-         CalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
-         cell.contentView.addSubview(CalcTextLabel)
-         
-         NSLayoutConstraint.activate([
-             CalcTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-             CalcTextLabel.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18)
-         ])
-         
-         let choosedCalcTextLabel = UILabel()
-         choosedCalcTextLabel.text = selectedPickerText
-         choosedCalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
-             choosedCalcTextLabel.textColor = selectedTintColor
-         }
-         choosedCalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
-         cell.contentView.addSubview(choosedCalcTextLabel)
-         
-         NSLayoutConstraint.activate([
-             choosedCalcTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-             choosedCalcTextLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40)
-         ])
-         
-         let choosedCalcIcon = UIImageView()
+        let CalcTextLabel = UILabel()
+        CalcTextLabel.text = NSLocalizedString("settings_o_w_l_calculator", comment: "")
+        CalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        CalcTextLabel.textColor = .white
+        CalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(CalcTextLabel)
+        
+        NSLayoutConstraint.activate([
+            CalcTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            CalcTextLabel.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18)
+        ])
+        
+        let choosedCalcTextLabel = UILabel()
+        choosedCalcTextLabel.text = selectedPickerText
+        choosedCalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+            choosedCalcTextLabel.textColor = selectedTintColor
+        }
+        choosedCalcTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(choosedCalcTextLabel)
+        
+        NSLayoutConstraint.activate([
+            choosedCalcTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            choosedCalcTextLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40)
+        ])
+        
+        let choosedCalcIcon = UIImageView()
         choosedCalcIcon.image = UIImage(systemName: "chevron.up.chevron.down")
-         choosedCalcIcon.image?.withRenderingMode(.alwaysOriginal)
-         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
-             choosedCalcIcon.tintColor = selectedTintColor
-         }
-         choosedCalcIcon.translatesAutoresizingMaskIntoConstraints = false
-         cell.contentView.addSubview(choosedCalcIcon)
-         
-         NSLayoutConstraint.activate([
-             choosedCalcIcon.widthAnchor.constraint(equalToConstant: 16),
-             choosedCalcIcon.heightAnchor.constraint(equalToConstant: 22),
-             choosedCalcIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-             choosedCalcIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
-         ])
-     }
+        choosedCalcIcon.image?.withRenderingMode(.alwaysOriginal)
+        if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
+            choosedCalcIcon.tintColor = selectedTintColor
+        }
+        choosedCalcIcon.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(choosedCalcIcon)
+        
+        NSLayoutConstraint.activate([
+            choosedCalcIcon.widthAnchor.constraint(equalToConstant: 15),
+            choosedCalcIcon.heightAnchor.constraint(equalToConstant: 22),
+            choosedCalcIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            choosedCalcIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
+        ])
+    }
     
     func pickerDetail(in cell: UITableViewCell) {
         pickerView = UIPickerView()
@@ -707,7 +721,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.contentView.addSubview(chevronIcon)
         
         NSLayoutConstraint.activate([
-            chevronIcon.widthAnchor.constraint(equalToConstant: 16),
+            chevronIcon.widthAnchor.constraint(equalToConstant: 15),
             chevronIcon.heightAnchor.constraint(equalToConstant: 22),
             chevronIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             chevronIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
@@ -924,9 +938,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         //git image
         let developerImage = UIImageView()
-//        developerImage.image = UIImage(named: "GitHubIcon_Dark.png")
-        developerImage.image = UIImage(named: "GitHubIcon.png")
-        print(String(describing: isDarkTheme))
+        if isDarkTheme == false {
+            developerImage.image = UIImage(named: "GitHubIcon.png")
+        } else if isDarkTheme == true {
+            developerImage.image = UIImage(named: "GitHubIcon_Dark.png")
+        }
+        print("..\(String(describing: isDarkTheme))")
         developerImage.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(developerImage)
         NSLayoutConstraint.activate([
@@ -938,8 +955,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         //app image
         let appImage = UIImageView()
-        if let selectedImageRow = tintModel.tints.first(where: { $0.id == selectedTintId }) {
-            appImage.image = selectedImageRow.image
+        if isDarkTheme == false {
+            if let selectedImageRow = tintModel.tints.first(where: { $0.id == selectedTintId }) {
+                appImage.image = selectedImageRow.image
+            }
+        } else if isDarkTheme == true {
+            if let selectedImageRow = tintModel.tints.first(where: { $0.id == selectedTintId }) {
+                appImage.image = selectedImageRow.darkImage
+            }
         }
         appImage.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(appImage)

@@ -12,13 +12,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var ButtonsViewOutlet: UIView!
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     var originalAppearance: UINavigationBarAppearance?
     private var collectionView: UICollectionView?
     
     private var model = ButtonsModel()
     var pickerModel = PickerModel()
-    
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -244,7 +244,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         case 811..<845:
             bottomConstant = 1030
         case 850..<890:
-            bottomConstant = 1050
+            bottomConstant = 1060
         case 895..<927:
             bottomConstant = 1080
         case 931..<933:

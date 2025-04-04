@@ -18,25 +18,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         guard let _ = (scene as? UIWindowScene) else { return }
-        applyTheme()
-        NotificationCenter.default.addObserver(self, selector: #selector(userThemeDidChange), name: UserDefaults.didChangeNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(userThemeDidChange), name: UIAccessibility.darkerSystemColorsStatusDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateThemeBasedOnSystem), name: Notification.Name("ThemeChanged"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleThemeChange), name: Notification.Name("GrayTheme"), object: nil)
+        updateThemeBasedOnSystem()
     }
     
-    @objc func userThemeDidChange() {
-        applyTheme()
+    @objc func updateThemeBasedOnSystem() {
+        window?.overrideUserInterfaceStyle = .unspecified
+        if let window = window {
+            let isSystemDarkMode = window.traitCollection.userInterfaceStyle == .dark
+            UserDefaults.standard.set(isSystemDarkMode, forKey: "isSystemDarkTheme")
+            
+            DispatchQueue.main.async {
+                if self.settingsVC.isDarkTheme != isSystemDarkMode {
+                    self.settingsVC.isDarkTheme = isSystemDarkMode
+                    NotificationCenter.default.post(name: Notification.Name("DarkThemeNotification"), object: isSystemDarkMode)
+                }
+            }
+        }
     }
     
-    func applyTheme() {
-        let selectedTintID = UserDefaults.standard.integer(forKey: "selectedTintID")
-        let isDarkMode = (selectedTintID == 7)
-        
-        if isDarkMode {
+    @objc func handleThemeChange() {
+        if window?.overrideUserInterfaceStyle != .dark {
             window?.overrideUserInterfaceStyle = .dark
             settingsVC.isDarkTheme = true
-        } else {
-            window?.overrideUserInterfaceStyle = .unspecified
-            settingsVC.isDarkTheme = false
+            UserDefaults.standard.set(true, forKey: "isSystemDarkTheme")
+            NotificationCenter.default.post(name: Notification.Name("DarkThemeNotification"), object: true)
         }
     }
     
@@ -45,12 +52,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+        NotificationCenter.default.removeObserver(self)
     }
     
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-        applyTheme()
+        updateThemeBasedOnSystem()
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
@@ -61,6 +69,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        updateThemeBasedOnSystem()
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -72,5 +81,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
     
+}
+
+extension UIWindow {
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if previousTraitCollection?.userInterfaceStyle != traitCollection.userInterfaceStyle {
+            
+            let isSystemDarkMode = traitCollection.userInterfaceStyle == .dark
+            UserDefaults.standard.set(isSystemDarkMode, forKey: "isSystemDarkTheme")
+            NotificationCenter.default.post(name: Notification.Name("ThemeChanged"), object: nil)
+        }
+    }
 }
 
