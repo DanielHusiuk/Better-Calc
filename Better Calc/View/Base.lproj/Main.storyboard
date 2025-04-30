@@ -155,7 +155,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="ead-SH-Mgm" userLabel="Workings Label" customClass="PasteLabel" customModule="Better_Calc" customModuleProvider="target">
-                                                <rect key="frame" x="267" y="16" width="19.333333333333314" height="69.666666666666671"/>
+                                                <rect key="frame" x="267" y="30" width="19.333333333333314" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                                 <color key="textColor" white="0.69999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -191,6 +191,7 @@
                                             <constraint firstAttribute="trailing" secondItem="u5n-jp-eme" secondAttribute="trailing" constant="39.666666666666686" id="GTv-XW-zd7"/>
                                             <constraint firstAttribute="trailing" secondItem="Fxx-80-6Cx" secondAttribute="trailing" id="I5D-Iz-TMy"/>
                                             <constraint firstItem="Fxx-80-6Cx" firstAttribute="leading" secondItem="ead-SH-Mgm" secondAttribute="trailing" constant="3.6666666666666856" id="IYj-8J-chD"/>
+                                            <constraint firstItem="u5n-jp-eme" firstAttribute="height" secondItem="ead-SH-Mgm" secondAttribute="height" multiplier="1.39815" id="Ikg-oH-45T"/>
                                             <constraint firstAttribute="bottom" secondItem="PYf-E3-bwT" secondAttribute="bottom" id="KPE-4I-bj5"/>
                                             <constraint firstAttribute="bottom" secondItem="dTY-XG-eKk" secondAttribute="bottom" id="Kgo-Pk-cYf"/>
                                             <constraint firstItem="u5n-jp-eme" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dTY-XG-eKk" secondAttribute="trailing" constant="8" symbolic="YES" id="PF6-Fl-kA6"/>
@@ -199,9 +200,8 @@
                                             <constraint firstAttribute="trailing" secondItem="ead-SH-Mgm" secondAttribute="trailing" constant="43.670000000000002" id="SiI-Rl-dUD"/>
                                             <constraint firstItem="Fxx-80-6Cx" firstAttribute="width" secondItem="dTY-XG-eKk" secondAttribute="width" id="bE3-Os-xwh"/>
                                             <constraint firstAttribute="bottom" secondItem="Fxx-80-6Cx" secondAttribute="bottom" id="dO4-mp-bb9"/>
-                                            <constraint firstItem="ead-SH-Mgm" firstAttribute="top" secondItem="fCr-Jd-HBA" secondAttribute="top" constant="16" id="lkL-f4-AHE"/>
+                                            <constraint firstItem="ead-SH-Mgm" firstAttribute="top" secondItem="fCr-Jd-HBA" secondAttribute="top" constant="30" id="lkL-f4-AHE"/>
                                             <constraint firstItem="PYf-E3-bwT" firstAttribute="top" secondItem="fCr-Jd-HBA" secondAttribute="top" id="oSp-pJ-rSa"/>
-                                            <constraint firstItem="u5n-jp-eme" firstAttribute="top" secondItem="ead-SH-Mgm" secondAttribute="bottom" constant="12" id="oaQ-Ow-Y3t"/>
                                             <constraint firstAttribute="trailing" secondItem="PYf-E3-bwT" secondAttribute="trailing" id="rhY-C3-Rcp"/>
                                             <constraint firstItem="u5n-jp-eme" firstAttribute="centerX" secondItem="ead-SH-Mgm" secondAttribute="centerX" id="tZ4-HR-JeW"/>
                                             <constraint firstItem="PYf-E3-bwT" firstAttribute="leading" secondItem="fCr-Jd-HBA" secondAttribute="leading" id="x0a-4a-pD8"/>
@@ -1150,6 +1150,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CalculatorImageOutlet" destination="yjF-WP-GOL" id="wyb-sJ-3AS"/>
+                        <outlet property="CalculatorViewOutlet" destination="Pjj-Vw-CCt" id="csQ-Jd-IWz"/>
                         <outlet property="FromButtonOutlet" destination="8ff-o6-FfH" id="u3Y-CI-Ybv"/>
                         <outlet property="FromLabelOutlet" destination="vhM-Gm-Mcs" id="pos-Ua-Smp"/>
                         <outlet property="FromNumberImageOutlet" destination="qti-Dx-Ogk" id="bXe-3U-B0B"/>
@@ -1432,7 +1433,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="157.33333333333334"/>
                                                                 <subviews>
                                                                     <button opaque="NO" tag="4" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhq-NP-w90">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="72"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="72.333333333333329"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="filled" title="4" cornerStyle="large">
                                                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="28"/>
@@ -1444,7 +1445,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5l-3i-2Ms">
-                                                                        <rect key="frame" x="0.0" y="85" width="72.666666666666671" height="72.333333333333314"/>
+                                                                        <rect key="frame" x="0.0" y="85.333333333333371" width="72.666666666666671" height="72"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="filled" title="1" cornerStyle="large">
                                                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="28"/>
@@ -1461,7 +1462,7 @@
                                                                 <rect key="frame" x="85.666666666666671" y="0.0" width="73.000000000000014" height="157.33333333333334"/>
                                                                 <subviews>
                                                                     <button opaque="NO" tag="5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21K-7x-ZhZ">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="72"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="72.333333333333329"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="filled" title="5" cornerStyle="large">
                                                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="28"/>
@@ -1473,7 +1474,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjA-vd-H7I">
-                                                                        <rect key="frame" x="0.0" y="85" width="73" height="72.333333333333314"/>
+                                                                        <rect key="frame" x="0.0" y="85.333333333333371" width="73" height="72"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="filled" title="2" cornerStyle="large">
                                                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="28"/>
@@ -1495,7 +1496,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="157.33333333333334"/>
                                                                 <subviews>
                                                                     <button opaque="NO" tag="6" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Llc-So-XwC">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="72"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="72.333333333333329"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="filled" title="6" cornerStyle="large">
                                                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="28"/>
@@ -1507,7 +1508,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Z4-qA-7sS">
-                                                                        <rect key="frame" x="0.0" y="85" width="72.666666666666671" height="72.333333333333314"/>
+                                                                        <rect key="frame" x="0.0" y="85.333333333333371" width="72.666666666666671" height="72"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="filled" title="3" cornerStyle="large">
                                                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="28"/>
@@ -1594,6 +1595,9 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="m3Q-4c-gLj" firstAttribute="height" secondItem="mS3-hb-CLl" secondAttribute="height" id="kXp-du-0go"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1632,6 +1636,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CalculatorImageOutlet" destination="zmN-xm-Csw" id="59U-OG-JCN"/>
+                        <outlet property="CalculatorViewOutlet" destination="ygS-9s-4do" id="zgv-Hg-rTu"/>
                         <outlet property="FromButtonOutlet" destination="xOW-Zd-zs3" id="g6N-Uq-1fQ"/>
                         <outlet property="FromLabelOutlet" destination="ZpE-7j-gnM" id="EwB-mO-yLm"/>
                         <outlet property="FromNumberImageOutlet" destination="MsC-pX-bLg" id="QNw-sY-gq3"/>
@@ -2108,6 +2113,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CalculatorImageOutlet" destination="3CD-9V-RYy" id="cCY-TK-J8K"/>
+                        <outlet property="CalculatorViewOutlet" destination="oWL-EM-uWi" id="3ZW-aO-NHq"/>
                         <outlet property="FromButtonOutlet" destination="b5k-N1-Fez" id="XfD-bJ-JR0"/>
                         <outlet property="FromLabelOutlet" destination="cDO-Wv-tdH" id="MWd-nj-ci7"/>
                         <outlet property="FromNumberImageOutlet" destination="qeV-da-gUD" id="X0d-HJ-Qhz"/>
@@ -2584,6 +2590,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CalculatorImageOutlet" destination="CRd-fB-QCs" id="GQZ-Ko-Oz7"/>
+                        <outlet property="CalculatorViewOutlet" destination="vzJ-cE-kuZ" id="cNZ-Y6-cQs"/>
                         <outlet property="FromButtonOutlet" destination="9pH-uM-dIu" id="9Xb-8d-fCa"/>
                         <outlet property="FromLabelOutlet" destination="ZdH-mD-Ttb" id="Hg7-ga-P6z"/>
                         <outlet property="FromNumberImageOutlet" destination="7dU-Hb-vY6" id="sPL-Hp-XBV"/>
@@ -3083,6 +3090,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CalculatorImageOutlet" destination="33k-wl-6nl" id="tuC-P7-dUQ"/>
+                        <outlet property="CalculatorViewOutlet" destination="1zv-4S-oZC" id="nQD-Df-73V"/>
                         <outlet property="FromButtonOutlet" destination="6gv-bQ-aTa" id="JeP-Jm-G2L"/>
                         <outlet property="FromLabelOutlet" destination="pXH-ls-s8g" id="fhh-aq-3dj"/>
                         <outlet property="FromNumberImageOutlet" destination="LYl-Lg-43E" id="emg-Rc-CtU"/>
@@ -3559,6 +3567,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CalculatorImageOutlet" destination="O25-KN-IeR" id="m5V-cq-Dui"/>
+                        <outlet property="CalculatorViewOutlet" destination="Bfl-qN-ru5" id="DLU-BD-evh"/>
                         <outlet property="FromButtonOutlet" destination="W0M-cN-s6x" id="9Bu-ua-vQv"/>
                         <outlet property="FromLabelOutlet" destination="ArJ-bD-SIE" id="kf7-dc-MWC"/>
                         <outlet property="FromNumberImageOutlet" destination="tEl-tx-4Jy" id="aeu-qG-NZh"/>
@@ -4065,6 +4074,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CalculatorImageOutlet" destination="S5W-LY-ijM" id="bO7-EI-ruj"/>
+                        <outlet property="CalculatorViewOutlet" destination="7Od-ff-C8a" id="nZE-ha-lrt"/>
                         <outlet property="FromButtonOutlet" destination="2pL-KS-Grg" id="IOi-p4-WfO"/>
                         <outlet property="FromLabelOutlet" destination="GGP-iC-H7m" id="gWV-Dq-NuR"/>
                         <outlet property="FromNumberImageOutlet" destination="Ufq-WT-Y9o" id="kUL-f7-Wou"/>
@@ -4693,15 +4703,12 @@
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" style="editor" id="dWV-Px-nIf">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="m5P-PF-uoX">
+                        <barButtonItem key="rightBarButtonItem" image="exclamationmark.arrow.trianglehead.counterclockwise.rotate.90" id="m5P-PF-uoX">
                             <connections>
-                                <action selector="ResetSettingsButtonOutlet:" destination="Rts-4A-0tP" id="sMT-fO-Q86"/>
+                                <action selector="ResetSettingsButtonOutlet:" destination="Rts-4A-0tP" id="VRv-RW-0is"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="RightNavBarButton" destination="m5P-PF-uoX" id="TbX-X6-C1t"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bC3-ES-1sv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="rKv-l7-h2P" userLabel="Erase Long Gesture">
@@ -7423,6 +7430,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CalculatorImageOutlet" destination="xdt-Mg-vAS" id="zo2-bP-CJo"/>
+                        <outlet property="CalculatorViewOutlet" destination="3fR-RM-vk7" id="Szz-kc-vld"/>
                         <outlet property="FromButtonOutlet" destination="5uy-72-eie" id="zEZ-UF-8Wa"/>
                         <outlet property="FromLabelOutlet" destination="aG1-gw-5Pj" id="gQO-PV-81X"/>
                         <outlet property="FromNumberImageOutlet" destination="qXU-uI-t9l" id="lld-me-3hX"/>
@@ -7739,6 +7747,7 @@
         <image name="delete.left.fill" catalog="system" width="128" height="102"/>
         <image name="divide" catalog="system" width="128" height="101"/>
         <image name="equal" catalog="system" width="128" height="73"/>
+        <image name="exclamationmark.arrow.trianglehead.counterclockwise.rotate.90" width="27.634599685668945" height="22.91309928894043"/>
         <image name="list.clipboard" catalog="system" width="98" height="128"/>
         <image name="minus" catalog="system" width="128" height="26"/>
         <image name="multiply" catalog="system" width="128" height="111"/>

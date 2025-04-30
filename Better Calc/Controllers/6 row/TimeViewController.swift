@@ -10,6 +10,7 @@ import CoreData
 
 class TimeViewController: UIViewController {
     
+    @IBOutlet var CalculatorViewOutlet: UIView!
     @IBOutlet weak var CalculatorImageOutlet: UIImageView!
     @IBOutlet var ShadowButtonsOutlet: [UIButton]!
     @IBOutlet weak var HistoryButtonOutlet: UIBarButtonItem!
@@ -24,6 +25,7 @@ class TimeViewController: UIViewController {
     
     let coreData = CoreDataManager.shared
     let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")!
+    let screenHeight = UIScreen.main.bounds.height
     private var eraseTimer: Timer?
     
     var selectedUnits: [UIButton: UnitDuration] = [:]
@@ -33,6 +35,7 @@ class TimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updatePreferences()
+        isSmallScreen()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +59,7 @@ class TimeViewController: UIViewController {
     }
     
     
-    //MARK: - View preferences
+    //MARK: - View Preferences
     
     func updatePreferences() {
         overrideUserInterfaceStyle = .dark
@@ -82,6 +85,15 @@ class TimeViewController: UIViewController {
         let insetBounds = view.bounds.insetBy(dx: -5, dy: -5)
         let shadowPath = UIBezierPath(roundedRect: insetBounds, cornerRadius: cornerRadius)
         view.layer.shadowPath = shadowPath.cgPath
+    }
+    
+    func isSmallScreen() {
+        if screenHeight < 737 {
+            CalculatorViewOutlet.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            NSLayoutConstraint.activate([
+                CalculatorViewOutlet.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -10)
+            ])
+        }
     }
     
     

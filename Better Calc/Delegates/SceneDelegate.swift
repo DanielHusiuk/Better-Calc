@@ -24,6 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     @objc func updateThemeBasedOnSystem() {
+        let isGrayTheme = UserDefaults.standard.bool(forKey: "isGrayTheme")
+        if isGrayTheme {
+            return
+        }
+        
         window?.overrideUserInterfaceStyle = .unspecified
         if let window = window {
             let isSystemDarkMode = window.traitCollection.userInterfaceStyle == .dark
@@ -41,7 +46,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     @objc func handleThemeChange() {
         if window?.overrideUserInterfaceStyle != .dark {
             window?.overrideUserInterfaceStyle = .dark
-            settingsVC.isDarkTheme = true
             UserDefaults.standard.set(true, forKey: "isSystemDarkTheme")
             NotificationCenter.default.post(name: Notification.Name("DarkThemeNotification"), object: true)
         }
@@ -86,13 +90,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension UIWindow {
     override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
+        let isGrayTheme = UserDefaults.standard.bool(forKey: "isGrayTheme")
+        if isGrayTheme {
+            return
+        }
         
         if previousTraitCollection?.userInterfaceStyle != traitCollection.userInterfaceStyle {
-            
             let isSystemDarkMode = traitCollection.userInterfaceStyle == .dark
             UserDefaults.standard.set(isSystemDarkMode, forKey: "isSystemDarkTheme")
             NotificationCenter.default.post(name: Notification.Name("ThemeChanged"), object: nil)
         }
+        
     }
 }
 

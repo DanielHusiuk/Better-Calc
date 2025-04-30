@@ -37,7 +37,7 @@ class NavigationController: UINavigationController {
     
     func didSelectTintColor() {
         if let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor") {
-            navigationBar.tintColor = selectedTintColor
+            UIView.transition(with: navigationBar, duration: 0.3, options: .transitionCrossDissolve, animations: {self.navigationBar.tintColor = selectedTintColor})
         }
     }
     

@@ -29,7 +29,7 @@ class AreaHistoryController: UIViewController, UITableViewDelegate, UITableViewD
         loadHistory()
         blurBackground()
         toolBar(UIToolbar.init())
-        dismissSwipe()
+        GestureManager.dismissSwipe(to: self)
         
         HistoryTableView.delegate = self
         HistoryTableView.dataSource = self
@@ -55,7 +55,7 @@ class AreaHistoryController: UIViewController, UITableViewDelegate, UITableViewD
         HistoryTableView.tintColor = selectedTintColor
     }
     
-    func toolBar(_ sender:UIToolbar) {
+    func toolBar(_ sender: UIToolbar) {
         navigationController?.isToolbarHidden = true
         let deleteAll = UIBarButtonItem(title: NSLocalizedString("history_delete_all", comment: ""), style: .plain, target: self, action: #selector(deleteAll))
         deleteAll.tintColor = .systemRed
@@ -78,19 +78,6 @@ class AreaHistoryController: UIViewController, UITableViewDelegate, UITableViewD
         executeExternalFunction(AreaViewController.self) { $0.saveViewState() }
     }
     
-    func dismissSwipe() {
-        let edgeSwipe = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipedRight(_:)))
-        edgeSwipe.edges = .left
-        view.addGestureRecognizer(edgeSwipe)
-    }
-    
-    @objc func swipedRight(_ gesture: UIScreenEdgePanGestureRecognizer) {
-        if gesture.state == .recognized {
-            self.dismiss(animated: true, completion: nil)
-            print("swipe right \n\n\n")
-        }
-    }
-    
     
     //MARK: - IB Actions
     
@@ -109,9 +96,6 @@ class AreaHistoryController: UIViewController, UITableViewDelegate, UITableViewD
             
             HistoryTableView.contentInset.bottom = 0
             HistoryTableView.verticalScrollIndicatorInsets.bottom = 0
-            UIView.animate(withDuration: 0.3, animations: {
-                self.CloseBarButton.isEnabled = true
-            })
         } else {
             navigationController?.setToolbarHidden(false, animated: true)
             HistoryTableView.setEditing(true, animated: true)
@@ -122,9 +106,6 @@ class AreaHistoryController: UIViewController, UITableViewDelegate, UITableViewD
             let toolbarHeight = navigationController?.toolbar.frame.size.height
             HistoryTableView.contentInset.bottom = toolbarHeight!
             HistoryTableView.verticalScrollIndicatorInsets.bottom = toolbarHeight!
-            UIView.animate(withDuration: 0.3, animations: {
-                self.CloseBarButton.isEnabled = false
-            })
             
             if UserDefaults.standard.bool(forKey: "HapticState") {
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()

@@ -26,8 +26,6 @@ enum RowItem: Hashable {
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var RightNavBarButton: UIBarButtonItem!
-    
     var tableView: UITableView!
     var choosedCalcTextLabel: UILabel?
     var selectedPickerText: String = NSLocalizedString("settings_none", comment: "")
@@ -53,7 +51,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        RightNavBarButton.image = UIImage(named: "exclamationmark.arrow.trianglehead.counterclockwise.rotate.90.svg")
         loadSavePicker()
         loadNavBar()
     }
@@ -66,6 +63,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - Update
     
     func updatePreferences() {
+        navigationController?.navigationBar.tintAdjustmentMode = .normal
+        view.tintAdjustmentMode = .normal
+        
         NotificationCenter.default.addObserver(self, selector: #selector(userThemeDidChange(_:)), name: Notification.Name("DarkThemeNotification"), object: nil)
         let savedIndex = UserDefaults.standard.integer(forKey: "selectedTintID")
         let indexToUse = savedIndex
@@ -87,7 +87,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         if self.tableView != nil {
-            UIView.transition(with: collectionView!, duration: 0.25, options: .transitionCrossDissolve, animations: {self.collectionView!.reloadData()}, completion: nil)
+            if let collectionView = self.collectionView {
+                UIView.transition(with: collectionView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.collectionView?.reloadData()}, completion: nil)
+            }
             tableView.reloadRows(at: [IndexPath(row: 0, section: 5)], with: .fade)
         }
     }
@@ -382,6 +384,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         switch indexPath.section {
         case 1:
             if indexPath.row == 0 {
+                NotificationCenter.default.post(name: Notification.Name("ChoosedCalcIconAnimation"), object: nil)
                 if expandedSections.contains(indexPath.section) {
                     expandedSections.remove(indexPath.section)
                 } else {
@@ -393,6 +396,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 3:
             switch indexPath.row {
             case 0:
+                NotificationCenter.default.post(name: Notification.Name("ChevronIconAnimation"), object: nil)
                 autoDeleteFunc()
             case 1:
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
@@ -525,13 +529,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             UserDefaults.standard.setColor(selectedTintColor, forKey: "selectedTintColor")
             if selectedTintId == 7 {
+                UserDefaults.standard.set(true, forKey: "isGrayTheme")
                 NotificationCenter.default.post(name: Notification.Name("GrayTheme"), object: nil)
+                NotificationCenter.default.post(name: Notification.Name("DarkThemeNotification"), object: nil)
             } else {
+                UserDefaults.standard.set(false, forKey: "isGrayTheme")
                 NotificationCenter.default.post(name: Notification.Name("ThemeChanged"), object: nil)
+                NotificationCenter.default.post(name: Notification.Name("DarkThemeNotification"), object: nil)
             }
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.async {
             (self.navigationController as? NavigationController)?.didSelectTintColor()
         }
         
@@ -544,7 +552,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK: - Open With Launch
     
+    let choosenCalcIcon = UIImageView()
+    
     func pickerHeader(in cell: UITableViewCell) {
+        //label
         let CalcTextLabel = UILabel()
         CalcTextLabel.text = NSLocalizedString("settings_o_w_l_calculator", comment: "")
         CalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -557,6 +568,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             CalcTextLabel.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18)
         ])
         
+        //label
         let choosedCalcTextLabel = UILabel()
         choosedCalcTextLabel.text = selectedPickerText
         choosedCalcTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -571,21 +583,25 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             choosedCalcTextLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40)
         ])
         
-        let choosedCalcIcon = UIImageView()
-        choosedCalcIcon.image = UIImage(systemName: "chevron.up.chevron.down")
-        choosedCalcIcon.image?.withRenderingMode(.alwaysOriginal)
+        //icon
+        choosenCalcIcon.image = UIImage(systemName: "chevron.up.chevron.down")
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
-            choosedCalcIcon.tintColor = selectedTintColor
+            choosenCalcIcon.tintColor = selectedTintColor
         }
-        choosedCalcIcon.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(choosedCalcIcon)
+        choosenCalcIcon.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(choosenCalcIcon)
+        NotificationCenter.default.addObserver(self, selector: #selector(choosenCalcIconAnimation), name: Notification.Name("ChoosedCalcIconAnimation"), object: nil)
         
         NSLayoutConstraint.activate([
-            choosedCalcIcon.widthAnchor.constraint(equalToConstant: 15),
-            choosedCalcIcon.heightAnchor.constraint(equalToConstant: 22),
-            choosedCalcIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-            choosedCalcIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
+            choosenCalcIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            choosenCalcIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
         ])
+    }
+    
+    @objc func choosenCalcIconAnimation() {
+        if #available(iOS 17.0, *) {
+            choosenCalcIcon.addSymbolEffect(.bounce)
+        }
     }
     
     func pickerDetail(in cell: UITableViewCell) {
@@ -678,6 +694,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - Preferences 2
     
     //autodelete
+    let chevronIcon = UIImageView()
+    
     func autoDelete(in cell: UITableViewCell) {
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         
@@ -711,7 +729,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             settingsTextLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40)
         ])
         
-        let chevronIcon = UIImageView()
         chevronIcon.image = UIImage(systemName: "chevron.up.chevron.down")
         chevronIcon.image?.withRenderingMode(.alwaysOriginal)
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
@@ -719,13 +736,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         chevronIcon.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(chevronIcon)
+        NotificationCenter.default.addObserver(self, selector: #selector(chevronIconAnimation), name: Notification.Name("ChevronIconAnimation"), object: nil)
         
         NSLayoutConstraint.activate([
-            chevronIcon.widthAnchor.constraint(equalToConstant: 15),
-            chevronIcon.heightAnchor.constraint(equalToConstant: 22),
             chevronIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             chevronIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
         ])
+    }
+    
+    @objc func chevronIconAnimation() {
+        if #available(iOS 17.0, *) {
+            chevronIcon.addSymbolEffect(.bounce)
+        }
     }
     
     func autoDeleteFunc() {
