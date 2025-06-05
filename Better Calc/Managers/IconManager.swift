@@ -43,10 +43,7 @@ func setIcon(_ appIcon: AppIcon, completion: ((Bool) -> Void)? = nil) {
     guard current != appIcon, UIApplication.shared.supportsAlternateIcons
     else { return }
     
-    guard UIApplication.shared.supportsAlternateIcons else {
-        print("Device does not support alternate icons.")
-        return
-    }
+    guard UIApplication.shared.supportsAlternateIcons else { return }
     
     UIApplication.shared.setAlternateIconName(appIcon.name) { error in
         if let error = error {

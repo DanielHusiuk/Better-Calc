@@ -80,7 +80,6 @@ class PasteLabel: UILabel {
                             if let navigVC = findExternalController(NavigationController.self) {
                                 navigVC.cannotPasteError()
                             }
-                            print("Cannot paste")
                             return
                         } else {
                             self.text = workingText + normalizedText
@@ -92,7 +91,6 @@ class PasteLabel: UILabel {
                             if let navigVC = findExternalController(NavigationController.self) {
                                 navigVC.cannotPasteError()
                             }
-                            print("Cannot paste")
                             return
                         } else {
                             self.text = workingText + normalizedText
@@ -116,7 +114,6 @@ class PasteLabel: UILabel {
                 if let navigVC = findExternalController(NavigationController.self) {
                     navigVC.cannotPasteError()
                 }
-                print("Cannot paste")
                 return
             }
         }

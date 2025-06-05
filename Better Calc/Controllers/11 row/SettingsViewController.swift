@@ -185,7 +185,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("Row \(row) selected")
         let selectedItem = pickersModel.pickers[row].0
         selectedPickerText = selectedItem
         
@@ -198,11 +197,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func loadSavePicker() {
         let savedRow = UserDefaults.standard.integer(forKey: "SelectedPickerRow")
-        print("Loaded row: \(savedRow)")
-        
         let savedSegue = UserDefaults.standard.string(forKey: "SelectedPickerString")
         let unwrappedSavedSegue = savedSegue.map { String(describing: $0) } ?? ""
-        print("Loaded segue: \(unwrappedSavedSegue)")
         
         if savedRow >= 0 && savedRow < pickersModel.pickers.count {
             pickerView?.selectRow(savedRow, inComponent: 0, animated: false)
@@ -266,12 +262,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         switch section {
-        case 2:
-            return " "
         case 5:
-            return "© Better Calc  v\(String(describing: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""))"
+            return footerSectionView()
         default:
             return nil
         }
@@ -435,18 +429,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = UIColor.darkGray
     }
     
-    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-        (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = UIColor.darkGray
-        (view as? UITableViewHeaderFooterView)?.textLabel?.textAlignment = .center
-        if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.textLabel?.font = UIFont.boldSystemFont(ofSize: headerView.textLabel?.font.pointSize ?? 17)
-        }
-    }
-    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         switch section {
         case 2:
             return 8
+        case 5:
+            return 40
         default:
             return 35
         }
@@ -965,7 +953,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         } else if isDarkTheme == true {
             developerImage.image = UIImage(named: "GitHubIcon_Dark.png")
         }
-        print("..\(String(describing: isDarkTheme))")
         developerImage.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(developerImage)
         NSLayoutConstraint.activate([
@@ -1010,6 +997,39 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         confirmAction.setValue(selectedTintColor, forKey: "titleTextColor")
         alert.addAction(confirmAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func footerSectionView() -> UIView {
+        let footerView = UIView()
+        footerView.backgroundColor = .clear
+        
+        let footerText = UILabel()
+        footerText.textColor = UIColor.darkGray
+        footerText.textAlignment = .center
+        footerText.font = UIFont.boldSystemFont(ofSize: 12)
+        footerText.translatesAutoresizingMaskIntoConstraints = false
+        footerText.text = "• © Better Calc  v\(String(describing: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?")) •"
+        footerView.addSubview(footerText)
+        NSLayoutConstraint.activate([
+            footerText.centerYAnchor.constraint(equalTo: footerView.centerYAnchor),
+            footerText.centerXAnchor.constraint(equalTo: footerView.centerXAnchor)
+        ])
+        
+        
+        let footerImage = UIImageView(image: UIImage(named: "calc_icon.png"))
+        footerImage.tintColor =  UIColor.darkGray
+        footerImage.translatesAutoresizingMaskIntoConstraints = false
+        footerImage.contentMode = .scaleAspectFit
+        footerImage.contentScaleFactor = 1
+        footerView.addSubview(footerImage)
+        NSLayoutConstraint.activate([
+            footerImage.widthAnchor.constraint(equalToConstant: 25),
+            footerImage.heightAnchor.constraint(equalToConstant: 25),
+            footerImage.centerYAnchor.constraint(equalTo: footerView.centerYAnchor, constant: 30),
+            footerImage.centerXAnchor.constraint(equalTo: footerView.centerXAnchor)
+        ])
+        
+        return footerView
     }
     
 }

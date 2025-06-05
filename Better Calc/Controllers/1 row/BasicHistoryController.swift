@@ -149,10 +149,10 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
             }
             return
         }
-        let sortedSelectedRows = selectedRows.sorted(by: { $0.item > $1.item })
-        print("Rows to delete: \(sortedSelectedRows)")
         
+        let sortedSelectedRows = selectedRows.sorted(by: { $0.item > $1.item })
         HistoryTableView.beginUpdates()
+        
         for indexPath in sortedSelectedRows {
             let key = sortedSectionKeys[indexPath.section]
             if var group = groupedHistory[key] {
@@ -234,11 +234,7 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let today = Date.now
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
-        
         dateFormatter.dateFormat = "d MMM, yyyy"
-        print("today date: \(dateFormatter.string(from: today))")
-        print("yesterday date: \(dateFormatter.string(from: yesterday))")
-        print("sortedSectionKeys: \(sortedSectionKeys[section])")
         
         if sortedSectionKeys[section] == dateFormatter.string(from: today) {
             return NSLocalizedString("today", comment: "")
@@ -308,8 +304,6 @@ class BasicHistoryController: UIViewController, UITableViewDelegate, UITableView
                         basicVC.checkPasteButton()
                     }
                 }
-            } else {
-                print("Previous Controller not found")
             }
             self.dismiss(animated: true, completion: nil)
         }

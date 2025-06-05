@@ -167,22 +167,16 @@ class MassViewController: UIViewController {
                 let fromUnits = sortedUnits[Int(state.fromUnit)]
                 selectedUnits[FromButtonOutlet] = fromUnits
                 FromButtonOutlet.setTitle("\(fromUnits.symbol) ", for: .normal)
-                print(fromUnits.symbol)
             }
             if sortedUnits.indices.contains(Int(state.toUnit)) {
                 let toUnits = sortedUnits[Int(state.toUnit)]
                 selectedUnits[ToButtonOutlet] = toUnits
                 ToButtonOutlet.setTitle("\(toUnits.symbol) ", for: .normal)
-                print(toUnits.symbol)
             }
             
             UnitMenu(in: FromButtonOutlet)
             UnitMenu(in: ToButtonOutlet)
             convertFunc()
-            
-            print("View state loaded.")
-        } else {
-            print("No saved view state found.")
         }
     }
     
@@ -226,7 +220,6 @@ class MassViewController: UIViewController {
             
             historyButton()
         }
-        print(String(describing: CoreDataManager.shared.fetchConverterObjects(with: converterId)))
     }
     
     
@@ -342,7 +335,6 @@ class MassViewController: UIViewController {
                     }
                     self.UnitMenu(in: self.FromButtonOutlet)
                     self.UnitMenu(in: self.ToButtonOutlet)
-                    print("Selected index: \(index)")
                     
                     if UserDefaults.standard.bool(forKey: "HapticState") {
                         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()

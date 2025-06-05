@@ -128,9 +128,6 @@ class BasicViewController: UIViewController {
             } else {
                 checkPasteButton()
             }
-            print("View state loaded.")
-        } else {
-            print("No saved view state found.")
         }
     }
     
@@ -253,10 +250,7 @@ class BasicViewController: UIViewController {
         if (WorkingsLabelOutlet.text == "0") {
             return
         } else {
-            guard let operation = Operation(rawValue: sender.tag) else {
-                print("Operation button pressed but tag is not valid")
-                return
-            }
+            guard let operation = Operation(rawValue: sender.tag) else { return }
             
             if let lastDot = WorkingsLabelOutlet.text, lastDot.last == "." {
                 return

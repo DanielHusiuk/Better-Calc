@@ -226,7 +226,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
             
             performSegue(withIdentifier: buttonSegue, sender: self)
-            print("\(buttonRow.text) Button Pressed")
         }
     }
     
