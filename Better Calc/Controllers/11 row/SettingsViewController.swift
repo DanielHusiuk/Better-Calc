@@ -137,10 +137,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func resetUserSettings() {
+        print(String(describing: UserDefaults.standard.object(forKey: "SelectedPickerString")))
+        
         if UserDefaults.standard.color(forKey: "selectedTintColor") == tintModel.tints[1].color,
            UserDefaults.standard.integer(forKey: "selectedTintID") == 1,
            UserDefaults.standard.integer(forKey: "SelectedPickerRow") == 0,
-           UserDefaults.standard.object(forKey: "SelectedPickerString") == nil,
+           UserDefaults.standard.string(forKey: "SelectedPickerString") == "None",
            UserDefaults.standard.bool(forKey: "HapticState") == true,
            UserDefaults.standard.bool(forKey: "KeepState") == true {
             (self.navigationController as? NavigationController)?.resetError()
@@ -148,10 +150,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             let secondTintColor = tintModel.tints[1].color
             UserDefaults.standard.setColor(secondTintColor, forKey: "selectedTintColor")
             UserDefaults.standard.set(1, forKey: "selectedTintID")
-            UserDefaults.standard.removeObject(forKey: "SelectedPickerRow")
-            UserDefaults.standard.removeObject(forKey: "SelectedPickerString")
-            UserDefaults.standard.removeObject(forKey: "HapticState")
-            UserDefaults.standard.removeObject(forKey: "KeepState")
+            UserDefaults.standard.set(0, forKey: "SelectedPickerRow")
+            UserDefaults.standard.set("None", forKey: "SelectedPickerString")
+            UserDefaults.standard.set(true, forKey: "HapticState")
+            UserDefaults.standard.set(true, forKey: "KeepState")
             loadSavePicker()
             loadNavBar()
             setIcon(.icon1)
@@ -199,7 +201,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let savedRow = UserDefaults.standard.integer(forKey: "SelectedPickerRow")
         let savedSegue = UserDefaults.standard.string(forKey: "SelectedPickerString")
         let unwrappedSavedSegue = savedSegue.map { String(describing: $0) } ?? ""
-        
+        print(unwrappedSavedSegue)
         if savedRow >= 0 && savedRow < pickersModel.pickers.count {
             pickerView?.selectRow(savedRow, inComponent: 0, animated: false)
             selectedPickerText = pickersModel.pickers[savedRow].0
@@ -390,7 +392,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 3:
             switch indexPath.row {
             case 0:
-                NotificationCenter.default.post(name: Notification.Name("ChevronIconAnimation"), object: nil)
                 autoDeleteFunc()
             case 1:
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
@@ -434,9 +435,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 2:
             return 8
         case 5:
-            return 40
+            return 45
         default:
-            return 35
+            return 20
         }
     }
     
@@ -464,7 +465,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         collectionView?.backgroundColor = .clear
         collectionView?.isScrollEnabled = false
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(collectionView!)
+        
+        if collectionView?.superview == nil {
+            cell.contentView.addSubview(collectionView!)
+        }
         
         NSLayoutConstraint.activate([
             collectionView!.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
@@ -538,9 +542,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    //MARK: - Open With Launch
-    
-    let choosenCalcIcon = UIImageView()
+    //MARK: - Open After Launch
     
     func pickerHeader(in cell: UITableViewCell) {
         //label
@@ -572,24 +574,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ])
         
         //icon
+        let choosenCalcIcon = UIImageView()
         choosenCalcIcon.image = UIImage(systemName: "chevron.up.chevron.down")
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             choosenCalcIcon.tintColor = selectedTintColor
         }
         choosenCalcIcon.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(choosenCalcIcon)
-        NotificationCenter.default.addObserver(self, selector: #selector(choosenCalcIconAnimation), name: Notification.Name("ChoosedCalcIconAnimation"), object: nil)
-        
         NSLayoutConstraint.activate([
+            choosenCalcIcon.widthAnchor.constraint(equalToConstant: 16),
+            choosenCalcIcon.heightAnchor.constraint(equalToConstant: 22),
             choosenCalcIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             choosenCalcIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
         ])
-    }
-    
-    @objc func choosenCalcIconAnimation() {
-        if #available(iOS 17.0, *) {
-            choosenCalcIcon.addSymbolEffect(.bounce)
-        }
     }
     
     func pickerDetail(in cell: UITableViewCell) {
@@ -597,8 +594,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         pickerView?.dataSource = self
         pickerView?.delegate = self
         pickerView?.backgroundColor = .clear
-        cell.contentView.addSubview(pickerView!)
         pickerView?.translatesAutoresizingMaskIntoConstraints = false
+        
+        if pickerView?.superview == nil {
+            cell.contentView.addSubview(pickerView!)
+        }
+        
         NSLayoutConstraint.activate([
             pickerView!.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 8),
             pickerView!.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -8),
@@ -610,9 +611,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK: - Preferences
     
+    let hapticSwitch = UISwitch()
+    let hapticText = UILabel()
+    
+    let keepSwitch = UISwitch()
+    let keepDataText = UILabel()
+    
     //haptic
     func hapticButton(in cell: UITableViewCell) {
-        let hapticSwitch = UISwitch()
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             hapticSwitch.onTintColor = selectedTintColor
         }
@@ -620,14 +626,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         hapticSwitch.addTarget(self, action: #selector(hapticSwitchChanged(_:)), for: .valueChanged)
         cell.accessoryView = hapticSwitch
         
-        let hapticText = UILabel()
         hapticText.text = NSLocalizedString("settings_p_haptic_feedback", comment: "")
         hapticText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         hapticText.textColor = .white
         hapticText.adjustsFontSizeToFitWidth = true
         hapticText.minimumScaleFactor = 0.6
         hapticText.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(hapticText)
+        
+        if hapticText.superview == nil {
+            cell.contentView.addSubview(hapticText)
+        }
+        
         NSLayoutConstraint.activate([
             hapticText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             hapticText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
@@ -645,7 +654,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     //keep
     func keepData(in cell: UITableViewCell) {
-        let keepSwitch = UISwitch()
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             keepSwitch.onTintColor = selectedTintColor
         }
@@ -653,14 +661,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         keepSwitch.addTarget(self, action: #selector(keepSwitchChanged(_:)), for: .valueChanged)
         cell.accessoryView = keepSwitch
         
-        let keepDataText = UILabel()
         keepDataText.text = NSLocalizedString("settings_p_keep_data_after_close", comment: "")
         keepDataText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         keepDataText.textColor = .white
         keepDataText.adjustsFontSizeToFitWidth = true
         keepDataText.minimumScaleFactor = 0.6
         keepDataText.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(keepDataText)
+        
+        if keepDataText.superview == nil {
+            cell.contentView.addSubview(keepDataText)
+        }
+        
         NSLayoutConstraint.activate([
             keepDataText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             keepDataText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
@@ -681,9 +692,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK: - Preferences 2
     
-    //autodelete
-    let chevronIcon = UIImageView()
+
+
+
     
+    //autodelete
     func autoDelete(in cell: UITableViewCell) {
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         
@@ -694,48 +707,55 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         changeLangText.adjustsFontSizeToFitWidth = true
         changeLangText.minimumScaleFactor = 0.6
         changeLangText.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(changeLangText)
+        
+        if changeLangText.superview == nil {
+            cell.contentView.addSubview(changeLangText)
+        }
+        
         NSLayoutConstraint.activate([
             changeLangText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             changeLangText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
             changeLangText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -140)
         ])
         
-        let settingsTextLabel = UILabel()
-        settingsTextLabel.text = selectedAutoDeleteText
-        settingsTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        let delTextLabel = UILabel()
+        delTextLabel.text = selectedAutoDeleteText
+        delTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
-            settingsTextLabel.textColor = selectedTintColor
+            delTextLabel.textColor = selectedTintColor
         }
-        settingsTextLabel.adjustsFontSizeToFitWidth = true
-        settingsTextLabel.minimumScaleFactor = 0.6
-        settingsTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(settingsTextLabel)
+        delTextLabel.adjustsFontSizeToFitWidth = true
+        delTextLabel.minimumScaleFactor = 0.6
+        delTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        if delTextLabel.superview == nil {
+            cell.contentView.addSubview(delTextLabel)
+        }
         
         NSLayoutConstraint.activate([
-            settingsTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-            settingsTextLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40)
+            delTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            delTextLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40)
         ])
         
+        //chevron icon
+        let chevronIcon = UIImageView()
         chevronIcon.image = UIImage(systemName: "chevron.up.chevron.down")
         chevronIcon.image?.withRenderingMode(.alwaysOriginal)
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             chevronIcon.tintColor = selectedTintColor
         }
         chevronIcon.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(chevronIcon)
-        NotificationCenter.default.addObserver(self, selector: #selector(chevronIconAnimation), name: Notification.Name("ChevronIconAnimation"), object: nil)
+        
+        if chevronIcon.superview == nil {
+            cell.contentView.addSubview(chevronIcon)
+        }
         
         NSLayoutConstraint.activate([
+            chevronIcon.widthAnchor.constraint(equalToConstant: 16),
+            chevronIcon.heightAnchor.constraint(equalToConstant: 22),
             chevronIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             chevronIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
         ])
-    }
-    
-    @objc func chevronIconAnimation() {
-        if #available(iOS 17.0, *) {
-            chevronIcon.addSymbolEffect(.bounce)
-        }
     }
     
     func autoDeleteFunc() {
@@ -778,50 +798,63 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         present(alert, animated: true, completion: nil)
     }
     
+    let changeLangText2 = UILabel()
+    let settingsTextLabel = UILabel()
+    let chevronIcon2 = UIImageView()
+    
     //language
     func changeLanguage(in cell: UITableViewCell) {
-        let changeLangText = UILabel()
-        changeLangText.text = NSLocalizedString("settings_p_change_language", comment: "")
-        changeLangText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        changeLangText.textColor = .white
-        changeLangText.adjustsFontSizeToFitWidth = true
-        changeLangText.minimumScaleFactor = 0.6
-        changeLangText.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(changeLangText)
+        changeLangText2.text = NSLocalizedString("settings_p_change_language", comment: "")
+        changeLangText2.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        changeLangText2.textColor = .white
+        changeLangText2.adjustsFontSizeToFitWidth = true
+        changeLangText2.minimumScaleFactor = 0.6
+        changeLangText2.translatesAutoresizingMaskIntoConstraints = false
+        
+        if changeLangText2.superview == nil {
+            cell.contentView.addSubview(changeLangText2)
+        }
+        
         NSLayoutConstraint.activate([
-            changeLangText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-            changeLangText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
-            changeLangText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -100)
+            changeLangText2.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            changeLangText2.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 18),
+            changeLangText2.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -100)
         ])
         
-        let settingsTextLabel = UILabel()
+        //settings label
         settingsTextLabel.text = NSLocalizedString("button_settings", comment: "")
         settingsTextLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             settingsTextLabel.textColor = selectedTintColor
         }
         settingsTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(settingsTextLabel)
+        
+        if settingsTextLabel.superview == nil {
+            cell.contentView.addSubview(settingsTextLabel)
+        }
         
         NSLayoutConstraint.activate([
             settingsTextLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             settingsTextLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40)
         ])
         
-        let chevronIcon = UIImageView()
-        chevronIcon.image = UIImage(systemName: "chevron.right")
-        chevronIcon.image?.withRenderingMode(.alwaysOriginal)
+        //chevron icon
+        chevronIcon2.image = UIImage(systemName: "chevron.right")
+        chevronIcon2.image?.withRenderingMode(.alwaysOriginal)
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
-            chevronIcon.tintColor = selectedTintColor
+            chevronIcon2.tintColor = selectedTintColor
         }
-        chevronIcon.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(chevronIcon)
+        chevronIcon2.translatesAutoresizingMaskIntoConstraints = false
+        
+        if chevronIcon2.superview == nil {
+            cell.contentView.addSubview(chevronIcon2)
+        }
         
         NSLayoutConstraint.activate([
-            chevronIcon.widthAnchor.constraint(equalToConstant: 12),
-            chevronIcon.heightAnchor.constraint(equalToConstant: 18),
-            chevronIcon.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-            chevronIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -20)
+            chevronIcon2.widthAnchor.constraint(equalToConstant: 12),
+            chevronIcon2.heightAnchor.constraint(equalToConstant: 18),
+            chevronIcon2.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            chevronIcon2.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -20)
         ])
     }
     
@@ -829,10 +862,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - Data
     
     var coreData = CoreDataManager.shared
+    let resetText = UILabel()
+    let deleteText = UILabel()
     
     //reset
     func resetMenu(in cell: UITableViewCell) {
-        let resetText = UILabel()
         resetText.text = NSLocalizedString("settings_d_reset_menu_buttons_positions", comment: "")
         resetText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         resetText.translatesAutoresizingMaskIntoConstraints = false
@@ -842,7 +876,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {
             resetText.textColor = selectedTintColor
         }
-        cell.contentView.addSubview(resetText)
+        
+        if resetText.superview == nil {
+            cell.contentView.addSubview(resetText)
+        }
+        
         NSLayoutConstraint.activate([
             resetText.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
             resetText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
@@ -865,7 +903,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     //delete
     func deleteHistory(in cell: UITableViewCell) {
-        let deleteText = UILabel()
         deleteText.text = NSLocalizedString("settings_d_delete_all_history", comment: "")
         deleteText.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         deleteText.textColor = .systemRed
@@ -873,7 +910,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         deleteText.adjustsFontSizeToFitWidth = true
         deleteText.minimumScaleFactor = 0.6
         deleteText.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(deleteText)
+        
+        if deleteText.superview == nil {
+            cell.contentView.addSubview(deleteText)
+        }
+        
         NSLayoutConstraint.activate([
             deleteText.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
             deleteText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
@@ -923,16 +964,27 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK: - Info
     
+    let createdText = UILabel()
+    let developerImage = UIImageView()
+    let appImage = UIImageView()
+    
+    let footerView = UIView()
+    let footerText = UILabel()
+    let footerImage = UIImageView(image: UIImage(named: "calc_icon.png"))
+    
     func developerInfo(in cell: UITableViewCell) {
         //text
-        let createdText = UILabel()
         createdText.numberOfLines = 1
         createdText.textColor = .white
         createdText.textAlignment = .center
         createdText.adjustsFontSizeToFitWidth = true
         createdText.minimumScaleFactor = 0.6
         createdText.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(createdText)
+        
+        if createdText.superview == nil {
+            cell.contentView.addSubview(createdText)
+        }
+        
         NSLayoutConstraint.activate([
             createdText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
             createdText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 50),
@@ -947,14 +999,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         createdText.attributedText = attributedString
         
         //git image
-        let developerImage = UIImageView()
         if isDarkTheme == false {
             developerImage.image = UIImage(named: "GitHubIcon.png")
         } else if isDarkTheme == true {
             developerImage.image = UIImage(named: "GitHubIcon_Dark.png")
         }
         developerImage.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(developerImage)
+        
+        if developerImage.superview == nil {
+            cell.contentView.addSubview(developerImage)
+        }
+        
         NSLayoutConstraint.activate([
             developerImage.widthAnchor.constraint(equalToConstant: 44),
             developerImage.heightAnchor.constraint(equalToConstant: 44),
@@ -963,7 +1018,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ])
         
         //app image
-        let appImage = UIImageView()
         if isDarkTheme == false {
             if let selectedImageRow = tintModel.tints.first(where: { $0.id == selectedTintId }) {
                 appImage.image = selectedImageRow.image
@@ -974,7 +1028,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
         appImage.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(appImage)
+        
+        if appImage.superview == nil {
+            cell.contentView.addSubview(appImage)
+        }
+        
         NSLayoutConstraint.activate([
             appImage.widthAnchor.constraint(equalToConstant: 44),
             appImage.heightAnchor.constraint(equalToConstant: 44),
@@ -1000,32 +1058,36 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func footerSectionView() -> UIView {
-        let footerView = UIView()
         footerView.backgroundColor = .clear
-        
-        let footerText = UILabel()
         footerText.textColor = UIColor.darkGray
         footerText.textAlignment = .center
         footerText.font = UIFont.boldSystemFont(ofSize: 12)
         footerText.translatesAutoresizingMaskIntoConstraints = false
         footerText.text = "• © Better Calc  v\(String(describing: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?")) •"
-        footerView.addSubview(footerText)
+        
+        if footerText.superview == nil {
+            footerView.addSubview(footerText)
+        }
+        
         NSLayoutConstraint.activate([
             footerText.centerYAnchor.constraint(equalTo: footerView.centerYAnchor),
             footerText.centerXAnchor.constraint(equalTo: footerView.centerXAnchor)
         ])
         
-        
-        let footerImage = UIImageView(image: UIImage(named: "calc_icon.png"))
+        //footer calc image
         footerImage.tintColor =  UIColor.darkGray
         footerImage.translatesAutoresizingMaskIntoConstraints = false
         footerImage.contentMode = .scaleAspectFit
         footerImage.contentScaleFactor = 1
-        footerView.addSubview(footerImage)
+        
+        if footerImage.superview == nil {
+            footerView.addSubview(footerImage)
+        }
+        
         NSLayoutConstraint.activate([
-            footerImage.widthAnchor.constraint(equalToConstant: 25),
-            footerImage.heightAnchor.constraint(equalToConstant: 25),
-            footerImage.centerYAnchor.constraint(equalTo: footerView.centerYAnchor, constant: 30),
+            footerImage.widthAnchor.constraint(equalToConstant: 20),
+            footerImage.heightAnchor.constraint(equalToConstant: 20),
+            footerImage.centerYAnchor.constraint(equalTo: footerView.centerYAnchor, constant: 25),
             footerImage.centerXAnchor.constraint(equalTo: footerView.centerXAnchor)
         ])
         

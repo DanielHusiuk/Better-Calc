@@ -152,7 +152,7 @@ class BasicViewController: UIViewController {
     }
     
     func checkEraseButton() {
-        if WorkingsLabelOutlet.text != "0" {
+        if WorkingsLabelOutlet.text != "0" && EraseButtonOutlet.isHidden == true {
             EraseButtonOutlet.alpha = 0.0
             EraseButtonOutlet.isHidden = false
             UIView.animate(withDuration: 0.1, animations: {
@@ -162,7 +162,7 @@ class BasicViewController: UIViewController {
     }
     
     func checkPasteButton() {
-        if ResultsLabelOutlet.text != "0" {
+        if ResultsLabelOutlet.text != "0" && PasteResultButtonOutlet.isHidden == true {
             PasteResultButtonOutlet.alpha = 0.0
             PasteResultButtonOutlet.isHidden = false
             UIView.animate(withDuration: 0.1, animations: {

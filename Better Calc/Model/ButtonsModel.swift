@@ -39,4 +39,29 @@ struct ButtonsModel {
 //        Button( id: 21,   text: NSLocalizedString("button_bmi", comment: ""),          image: UIImage(named: "heart.text.square.svg")!,         segue: "BmiSegue"),
         Button( id: 22,   text: NSLocalizedString("button_settings", comment: ""),      image: UIImage(named: "gear.svg")!,                    segue: "SettingsSegue")
     ]
+    
+    private(set) var filteredButtons: [Button] = []
+}
+
+//MARK: - Search Extensions
+
+extension ButtonsModel {
+    
+    public func inSearchMode(_ searchController: UISearchController) -> Bool {
+        let isActive = searchController.isActive
+        let searchText = searchController.searchBar.text ?? ""
+        
+        return isActive && !searchText.isEmpty
+    }
+    
+    public mutating func updateSearchController(searchBarText: String?) {
+        self.filteredButtons = buttons
+        
+        if let searchText = searchBarText?.lowercased(), !searchText.isEmpty {
+            self.filteredButtons = self.filteredButtons.filter({ $0.text.lowercased().trimmingCharacters(in: .whitespacesAndNewlines).localizedCaseInsensitiveContains(searchText.trimmingCharacters(in: .whitespacesAndNewlines)) })
+        } else {
+            self.filteredButtons = buttons
+        }
+    }
+    
 }

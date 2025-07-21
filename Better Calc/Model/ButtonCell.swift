@@ -9,22 +9,26 @@ import UIKit
 
 class ButtonCell: UICollectionViewCell {
     
+    var cornerRadius: CGFloat {
+        UIScreen.main.bounds.height >= 895 ? 35 : 25
+    }
+    
     //MARK: - Cell objects
     
-    let button: UIButton = {
+    lazy var button: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)
-        button.layer.cornerRadius = 25
+        button.layer.cornerRadius = cornerRadius
         button.layer.masksToBounds = false
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    let innerView: UIView = {
+    lazy var innerView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = false
-        view.layer.cornerRadius = 25
+        view.layer.cornerRadius = cornerRadius
         view.layer.masksToBounds = false
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -74,7 +78,7 @@ class ButtonCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        shadowView.layer.cornerRadius = 25
+        shadowView.layer.cornerRadius = cornerRadius
     }
     
     
@@ -92,9 +96,13 @@ class ButtonCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         innerView.addSubview(imageView)
         
+        var textFontSize: CGFloat {
+            UIScreen.main.bounds.height >= 895 ? 18 : 16
+        }
+        
         let titleLabel = UILabel()
         titleLabel.text = buttonText
-        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        titleLabel.font = UIFont.systemFont(ofSize: textFontSize, weight: .semibold)
         titleLabel.textColor = .white
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .center
@@ -115,7 +123,7 @@ class ButtonCell: UICollectionViewCell {
             titleLabel.trailingAnchor.constraint(equalTo: innerView.trailingAnchor, constant: -10)
         ])
         
-        innerView.layer.cornerRadius = 25
+        innerView.layer.cornerRadius = cornerRadius
         innerView.layer.masksToBounds = false
     }
 }

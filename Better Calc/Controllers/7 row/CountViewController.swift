@@ -15,10 +15,12 @@ class CountViewController: UIViewController {
 //    @IBOutlet weak var HistoryButtonOutlet: UIBarButtonItem!
 //    
 //    @IBOutlet weak var FromNumberImageOutlet: UIImageView!
+//    @IBOutlet weak var FromTextOutlet: UILabel!
 //    @IBOutlet weak var FromLabelOutlet: UILabel!
 //    @IBOutlet weak var FromButtonOutlet: UIButton!
 //    
 //    @IBOutlet weak var ToNumberImageOutlet: UIImageView!
+//    @IBOutlet weak var ToTextOutlet: UILabel!
 //    @IBOutlet weak var ToLabelOutlet: UILabel!
 //    @IBOutlet weak var ToButtonOutlet: UIButton!
 //    
@@ -70,6 +72,8 @@ class CountViewController: UIViewController {
 //        
 //        UnitMenu(in: FromButtonOutlet)
 //        UnitMenu(in: ToButtonOutlet)
+//        FromTextOutlet.text = NSLocalizedString("from_text", comment: "")
+//        ToTextOutlet.text = NSLocalizedString("to_text", comment: "")
 //    }
 //    
 //    func applyShadowWithInsets(to view: UIView, cornerRadius: CGFloat) {

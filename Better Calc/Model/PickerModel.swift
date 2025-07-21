@@ -15,7 +15,7 @@ class PickerModel: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     var selectedSegueIdentifier: String?
     
     lazy var pickers: [(String, String)] = {
-        var allPickers: [(String, String)] = [(NSLocalizedString("settings_none", comment: ""), "")]
+        var allPickers: [(String, String)] = [(NSLocalizedString("settings_none", comment: ""), "None")]
         let dynamicPickers = modelButtons.map { ($0.text, $0.segue) }
         allPickers.append(contentsOf: dynamicPickers)
         allPickers.removeLast()

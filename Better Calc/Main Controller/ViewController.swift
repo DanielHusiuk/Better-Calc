@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, UISearchResultsUpdating {
     
     @IBOutlet weak var ButtonsViewOutlet: UIView!
     
@@ -16,9 +16,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var originalAppearance: UINavigationBarAppearance?
     private var collectionView: UICollectionView?
+    let searchController = UISearchController(searchResultsController: nil)
     
-    private var model = ButtonsModel()
-    var pickerModel = PickerModel()
+    var model = ButtonsModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             loadPickerSegue()
             appDelegate.hasPerformedSegue = true
         }
+        setupSearchController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +49,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navBarAppear()
+        searchController.isActive = false
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
     
     func enablePopGesture() {
@@ -86,7 +92,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let savedSegue = UserDefaults.standard.string(forKey: "SelectedPickerString")
         let unwrappedSavedSegue = savedSegue.map { String(describing: $0) } ?? ""
         
-        if unwrappedSavedSegue.isEmpty { return }
+        if unwrappedSavedSegue.isEmpty || unwrappedSavedSegue == "None" { return }
         performSegue(withIdentifier: unwrappedSavedSegue, sender: self)
     }
     
@@ -111,6 +117,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             navigationController?.navigationBar.standardAppearance = originalAppearance
             navigationController?.navigationBar.setNeedsLayout()
         }
+    }
+    
+    //MARK: - Search Bar
+        
+    func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = NSLocalizedString( "search", comment: "")
+        searchController.searchBar.searchTextField.leftView?.tintColor = .gray
+        searchController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.1607843137, blue: 0.1607843137, alpha: 1)
+        searchController.searchBar.barStyle = .black
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+        definesPresentationContext = false
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        self.model.updateSearchController(searchBarText: searchController.searchBar.text)
+        collectionView?.reloadData()
     }
     
     
@@ -158,7 +185,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.buttons.count
+        let inSearchMode = self.model.inSearchMode(searchController)
+        return inSearchMode ? self.model.filteredButtons.count : self.model.buttons.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -166,7 +194,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             return UICollectionViewCell()
         }
         
-        let buttonRow = model.buttons[indexPath.row]
+        let inSearchMode = self.model.inSearchMode(searchController)
+        let buttonRow = inSearchMode ? self.model.filteredButtons[indexPath.row] : self.model.buttons[indexPath.row]
+        
         cell.configure(with: buttonRow.text, image: buttonRow.image)
         cell.button.tag = indexPath.row
         cell.button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -182,8 +212,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let spacing: CGFloat = 20
-        return UIEdgeInsets(top: 30, left: spacing, bottom: 10, right: spacing)
+        return UIEdgeInsets(top: 10, left: 20, bottom: 20, right: 20)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -214,7 +243,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let buttonPosition = sender.convert(sender.bounds.origin, to: collectionView)
         
         if let indexPath = collectionView.indexPathForItem(at: buttonPosition) {
-            let buttonRow = model.buttons[indexPath.row]
+            let inSearchMode = self.model.inSearchMode(searchController)
+            let buttonRow = inSearchMode ? self.model.filteredButtons[indexPath.row] : self.model.buttons[indexPath.row]
             let buttonSegue = buttonRow.segue
             let originalColor = sender.backgroundColor
             
@@ -256,8 +286,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func tipLabel() {
         let tipText = UILabel()
+        
         tipText.text = NSLocalizedString("Tip_long_press_rearrange", comment: "")
-        tipText.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        tipText.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         tipText.textColor = #colorLiteral(red: 0.3789286613, green: 0.3789286017, blue: 0.3789286613, alpha: 1)
         tipText.textAlignment = .center
         tipText.numberOfLines = 3
@@ -265,30 +296,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         tipText.minimumScaleFactor = 0.6
         tipText.translatesAutoresizingMaskIntoConstraints = false
         
-        let screenHeight = UIScreen.main.bounds.height
-        var bottomConstant = CGFloat()
-        switch screenHeight {
-        case ..<737:
-            bottomConstant = 970
-        case 811..<845:
-            bottomConstant = 1030
-        case 850..<890:
-            bottomConstant = 1060
-        case 895..<927:
-            bottomConstant = 1080
-        case 931..<933:
-            bottomConstant = 1100
-        case 935...:
-            bottomConstant = 1150
-        default:
-            break
+        collectionView?.layoutIfNeeded()
+        let bottomY = collectionView?.contentSize.height
+        let inSearchMode = self.model.inSearchMode(searchController)
+        if inSearchMode {
+            return
+        } else {
+            collectionView!.addSubview(tipText)
         }
         
-        collectionView!.addSubview(tipText)
         NSLayoutConstraint.activate([
-            tipText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            tipText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            tipText.bottomAnchor.constraint(equalTo: collectionView!.bottomAnchor, constant: bottomConstant)
+            tipText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            tipText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            tipText.bottomAnchor.constraint(equalTo: collectionView!.bottomAnchor, constant: bottomY! + 85)
         ])
         
     }
