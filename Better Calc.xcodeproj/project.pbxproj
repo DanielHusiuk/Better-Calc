@@ -32,6 +32,7 @@
 		65A98AB62D822663002B76B9 /* LengthHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A98AB52D822663002B76B9 /* LengthHistoryController.swift */; };
 		65B288182D4A8E4B00A84FC7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 65B288172D4A8E4B00A84FC7 /* Localizable.xcstrings */; };
 		65B2883C2D4ABB3300A84FC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3EA2C5A9B6A0090F4CE /* Main.storyboard */; };
+		65B5FCAA2E3166CF00F060C3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 65B288172D4A8E4B00A84FC7 /* Localizable.xcstrings */; };
 		65B689512C620FFD005259E7 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689502C620FFD005259E7 /* BasicViewController.swift */; };
 		65B689532C6246EF005259E7 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689522C6246EF005259E7 /* NavigationController.swift */; };
 		65B689562C628140005259E7 /* ScientificViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689552C628140005259E7 /* ScientificViewController.swift */; };
@@ -574,6 +575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65FDD8F52DB11CEF00A1A6E3 /* Assets.xcassets in Resources */,
+				65B5FCAA2E3166CF00F060C3 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

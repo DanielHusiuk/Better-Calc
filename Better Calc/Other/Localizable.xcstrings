@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "auto_delete_1_month" : {
       "localizations" : {
         "de" : {
@@ -264,6 +267,9 @@
           }
         }
       }
+    },
+    "Better Calc" : {
+
     },
     "better_orange" : {
       "localizations" : {
@@ -18306,6 +18312,16 @@
         }
       }
     },
+    "Unsupported" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unsupported"
+          }
+        }
+      }
+    },
     "very_lime" : {
       "localizations" : {
         "de" : {
@@ -18390,6 +18406,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "非常酸橙"
+          }
+        }
+      }
+    },
+    "widget_description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open BetterCalc using widgets"
           }
         }
       }

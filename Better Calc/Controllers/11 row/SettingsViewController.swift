@@ -90,7 +90,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             if let collectionView = self.collectionView {
                 UIView.transition(with: collectionView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.collectionView?.reloadData()}, completion: nil)
             }
-            tableView.reloadRows(at: [IndexPath(row: 0, section: 5)], with: .fade)
+            tableView.reloadRows(at: [IndexPath(row: 0, section: 5)], with: .none)
         }
     }
     
@@ -981,9 +981,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         createdText.minimumScaleFactor = 0.6
         createdText.translatesAutoresizingMaskIntoConstraints = false
         
-        if createdText.superview == nil {
+
             cell.contentView.addSubview(createdText)
-        }
+        
         
         NSLayoutConstraint.activate([
             createdText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
@@ -1006,9 +1006,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         developerImage.translatesAutoresizingMaskIntoConstraints = false
         
-        if developerImage.superview == nil {
             cell.contentView.addSubview(developerImage)
-        }
+        
         
         NSLayoutConstraint.activate([
             developerImage.widthAnchor.constraint(equalToConstant: 44),
@@ -1029,9 +1028,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         appImage.translatesAutoresizingMaskIntoConstraints = false
         
-        if appImage.superview == nil {
+    
             cell.contentView.addSubview(appImage)
-        }
+        
         
         NSLayoutConstraint.activate([
             appImage.widthAnchor.constraint(equalToConstant: 44),

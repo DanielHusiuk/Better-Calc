@@ -10,8 +10,8 @@ import AppIntents
 
 @available(iOS 18.0, *)
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
-    static var title: LocalizedStringResource { "Configurationj" }
-    static var description: IntentDescription { "This is an example widgetj." }
+    static var title: LocalizedStringResource { "Configuration" }
+    static var description: IntentDescription { "Better Calc widget" }
     
     static var openAppWhenRun: Bool { true }
 
