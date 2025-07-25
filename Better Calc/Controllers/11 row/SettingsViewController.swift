@@ -296,13 +296,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         switch indexPath.section {
         case 0:
             return 360
-        case 1:
-            switch indexPath.row {
-            case 1:
-                return 145
-            default:
-                return 44
-            }
         case 2, 3, 4, 5:
             return 44
         default:

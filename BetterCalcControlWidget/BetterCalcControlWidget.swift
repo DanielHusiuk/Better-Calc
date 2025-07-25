@@ -19,9 +19,8 @@ struct Provider: AppIntentTimelineProvider {
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
         var entries: [SimpleEntry] = []
-        
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
+        
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
             let entry = SimpleEntry(date: entryDate)
@@ -58,575 +57,1258 @@ struct BetterCalcControlWidgetEntryView : View {
     }
 }
 
+//MARK: - Small Widget
+
 struct SmallWidgetView: View {
     var entry: Provider.Entry
+    @Environment(\.widgetRenderingMode) var renderingMode
     
     var body: some View {
-        ZStack() {
-            VStack() {
-                
-                //top stack
-                HStack() {
+        ZStack {
+            switch renderingMode {
+            case .fullColor:
+                VStack(spacing: 10) {
                     
-                    //basic
-                    Button() {
-                        print("basic button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "plus.forwardslash.minus")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 12)
-                                .padding(.bottom, 2)
-                            
-                            Text(NSLocalizedString("button_basic", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 5)
-                        }
+                    //top stack
+                    HStack(spacing: 10) {
                         
+                        //basic
+                        Button() {
+                            print("basic button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "plus.forwardslash.minus")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_basic", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .cornerRadius(12)
+                        
+                        //length
+                        Button() {
+                            print("length button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "ruler")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 18)
+                                    .padding(.bottom, 5)
+                                
+                                Text(NSLocalizedString("button_length", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .cornerRadius(12)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
                     
-                    //length
-                    Button() {
-                        print("length button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "ruler")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 19)
-                                .padding(.bottom, 7)
-                            
-                            Text(NSLocalizedString("button_length", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 5)
-                        }
+                    //bottom stack
+                    HStack(spacing: 10) {
                         
+                        //area
+                        Button() {
+                            print("area button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "arrow.down.left.and.arrow.up.right.square")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 14)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_area", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .cornerRadius(12)
+                        
+                        //volume
+                        Button() {
+                            print("cube button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "cube")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 10)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_volume", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .cornerRadius(12)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
+                    
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-                //bottom stack
-                HStack() {
-                    
-                    //area
-                    Button() {
-                        print("area button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "arrow.down.left.and.arrow.up.right.square")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 14)
-                                .padding(.bottom, 2)
-                            
-                            Text(NSLocalizedString("button_area", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 5)
+            case .accented:
+                VStack(spacing: 10) {
+                    HStack(spacing: 10) {
+                        Button {
+                            print("basic button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "plus.forwardslash.minus")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color(#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_basic", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .cornerRadius(12)
                         
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
-                    
-                    //volume
-                    Button() {
-                        print("cube button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "cube")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 12)
-                                .padding(.bottom, 2)
-                            
-                            Text(NSLocalizedString("button_volume", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 5)
+                        Button {
+                            print("length button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "ruler")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color(#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 18)
+                                    .padding(.bottom, 5)
+                                
+                                Text(NSLocalizedString("button_length", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
                         }
-                        
-                        
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .cornerRadius(12)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
                     
+                    HStack(spacing: 10) {
+                        Button {
+                            print("area button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "arrow.down.left.and.arrow.up.right.square")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color(#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 14)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_area", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .cornerRadius(12)
+                        
+                        Button {
+                            print("cube button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "cube")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color(#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 10)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_volume", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .cornerRadius(12)
+                    }
                 }
-                
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            default:
+                Text("Unsupported")
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .padding(-8)
+        .padding(-6)
     }
 }
+
+//MARK: - Medium Widget
 
 struct MediumWidgetView: View {
     var entry: Provider.Entry
+    @Environment(\.widgetRenderingMode) var renderingMode
     
     var body: some View {
         ZStack() {
-            VStack() {
-                
-                //top stack
-                HStack() {
+            switch renderingMode {
+            case .fullColor:
+                VStack(spacing: 10) {
                     
-                    //basic
-                    Button() {
-                        print("basic button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "plus.forwardslash.minus")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 12)
-                                .padding(.bottom, 2)
-                            
-                            Text(NSLocalizedString("button_basic", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 5)
-                        }
+                    //top stack
+                    HStack(spacing: 10) {
                         
+                        //basic
+                        Button() {
+                            print("basic button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "plus.forwardslash.minus")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_basic", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        
+                        //length
+                        Button() {
+                            print("length button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "ruler")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 19)
+                                    .padding(.bottom, 7)
+                                
+                                Text(NSLocalizedString("button_length", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        
+                        //area
+                        Button() {
+                            print("area button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "arrow.down.left.and.arrow.up.right.square")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 14)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_area", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
                     
-                    //length
-                    Button() {
-                        print("length button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "ruler")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 19)
-                                .padding(.bottom, 7)
-                            
-                            Text(NSLocalizedString("button_length", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 5)
-                        }
-                        
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
                     
-                    //area
-                    Button() {
-                        print("area button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "arrow.down.left.and.arrow.up.right.square")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 14)
-                                .padding(.bottom, 2)
-                            
-                            Text(NSLocalizedString("button_area", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 5)
-                        }
+                    //bottom stack
+                    HStack(spacing: 10) {
                         
+                        //volume
+                        Button() {
+                            print("cube button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "cube")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_volume", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        
+                        //temperature
+                        Button() {
+                            print("temperature button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "thermometer.medium")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_temperature", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        
+                        //time
+                        Button() {
+                            print("time button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "clock")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 4)
+                                
+                                Text(NSLocalizedString("button_time", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
+                    
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-                
-                //bottom stack
-                HStack() {
+            case .accented:
+                VStack(spacing: 10) {
                     
-                    //volume
-                    Button() {
-                        print("cube button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "cube")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 12)
-                                .padding(.bottom, 2)
+                    //top stack
+                    HStack(spacing: 10) {
+                        
+                        //basic
+                        Button() {
+                            print("basic button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "plus.forwardslash.minus")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_basic", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
                             
-                            Text(NSLocalizedString("button_volume", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 5)
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
                         
+                        //length
+                        Button() {
+                            print("length button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "ruler")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 19)
+                                    .padding(.bottom, 7)
+                                
+                                Text(NSLocalizedString("button_length", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
                         
+                        //area
+                        Button() {
+                            print("area button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "arrow.down.left.and.arrow.up.right.square")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 14)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_area", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
                     
-                    //temperature
-                    Button() {
-                        print("temperature button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "thermometer.medium")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 12)
-                                .padding(.bottom, 2)
-                            
-                            Text(NSLocalizedString("button_temperature", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 5)
-                        }
-                        
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
                     
-                    //time
-                    Button() {
-                        print("time button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "clock")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 12)
-                                .padding(.bottom, 4)
-                            
-                            Text(NSLocalizedString("button_time", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 5)
-                        }
+                    //bottom stack
+                    HStack(spacing: 10) {
                         
+                        //volume
+                        Button() {
+                            print("cube button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "cube")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_volume", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        
+                        //temperature
+                        Button() {
+                            print("temperature button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "thermometer.medium")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_temperature", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        
+                        //time
+                        Button() {
+                            print("time button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "clock")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 4)
+                                
+                                Text(NSLocalizedString("button_time", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
+                    
                 }
-                
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            default:
+                Text("Unsupported")
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+
         }
-        .padding(-8)
+        .padding(-6)
     }
 }
 
+//MARK: - Large Widget
+
 struct LargeWidgetView: View {
     var entry: Provider.Entry
+    @Environment(\.widgetRenderingMode) var renderingMode
     
     var body: some View {
         ZStack() {
-            VStack() {
-                
-                //top stack
-                HStack() {
+            switch renderingMode {
+            case .fullColor:
+                VStack(spacing: 12) {
                     
-                    //basic
-                    Button() {
-                        print("basic button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "plus.forwardslash.minus")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 24)
-                                .padding(.bottom, 14)
-                            
-                            Text(NSLocalizedString("button_basic", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 8)
-                        }
+                    //top stack
+                    HStack(spacing: 12) {
                         
+                        //basic
+                        Button() {
+                            print("basic button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "plus.forwardslash.minus")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 24)
+                                    .padding(.bottom, 14)
+                                
+                                Text(NSLocalizedString("button_basic", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //length
+                        Button() {
+                            print("length button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "ruler")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 34)
+                                    .padding(.bottom, 18)
+                                
+                                Text(NSLocalizedString("button_length", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //area
+                        Button() {
+                            print("area button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "arrow.down.left.and.arrow.up.right.square")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 24)
+                                    .padding(.bottom, 12)
+                                
+                                Text(NSLocalizedString("button_area", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
                     
-                    //length
-                    Button() {
-                        print("length button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "ruler")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 34)
-                                .padding(.bottom, 18)
-                            
-                            Text(NSLocalizedString("button_length", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 8)
-                        }
-                        
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
                     
-                    //area
-                    Button() {
-                        print("area button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "arrow.down.left.and.arrow.up.right.square")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 24)
-                                .padding(.bottom, 12)
-                            
-                            Text(NSLocalizedString("button_area", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 8)
-                        }
+                    //middle stack
+                    HStack(spacing: 12) {
                         
+                        //volume
+                        Button() {
+                            print("volume button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "cube")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 22)
+                                    .padding(.bottom, 12)
+                                
+                                Text(NSLocalizedString("button_volume", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //temperature
+                        Button() {
+                            print("temperature button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "thermometer.medium")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 24)
+                                    .padding(.bottom, 12)
+                                
+                                Text(NSLocalizedString("button_temperature", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //time
+                        Button() {
+                            print("time button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "clock")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 22)
+                                    .padding(.bottom, 14)
+                                
+                                Text(NSLocalizedString("button_time", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
+                    
+                    
+                    //bottom stack
+                    HStack(spacing: 12) {
+                        
+                        //speed
+                        Button() {
+                            print("speed button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "gauge.open.with.lines.needle.33percent")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 26)
+                                    .padding(.bottom, 14)
+                                
+                                Text(NSLocalizedString("button_speed", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //mass
+                        Button() {
+                            print("mass button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "scalemass")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 22)
+                                    .padding(.bottom, 14)
+                                
+                                Text(NSLocalizedString("button_mass", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //data size
+                        Button() {
+                            print("data size button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "externaldrive")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 28)
+                                    .padding(.bottom, 15)
+                                
+                                Text(NSLocalizedString("button_data", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                    }
+                    
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-                
-                //middle stack
-                HStack() {
+            case .accented:
+                VStack(spacing: 12) {
                     
-                    //volume
-                    Button() {
-                        print("volume button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "cube")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 22)
-                                .padding(.bottom, 12)
+                    //top stack
+                    HStack(spacing: 12) {
+                        
+                        //basic
+                        Button() {
+                            print("basic button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "plus.forwardslash.minus")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 24)
+                                    .padding(.bottom, 14)
+                                
+                                Text(NSLocalizedString("button_basic", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
                             
-                            Text(NSLocalizedString("button_volume", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 8)
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
                         
+                        //length
+                        Button() {
+                            print("length button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "ruler")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 34)
+                                    .padding(.bottom, 18)
+                                
+                                Text(NSLocalizedString("button_length", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
                         
+                        //area
+                        Button() {
+                            print("area button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "arrow.down.left.and.arrow.up.right.square")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 24)
+                                    .padding(.bottom, 12)
+                                
+                                Text(NSLocalizedString("button_area", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
                     
-                    //temperature
-                    Button() {
-                        print("temperature button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "thermometer.medium")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 24)
-                                .padding(.bottom, 12)
-                            
-                            Text(NSLocalizedString("button_temperature", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 8)
-                        }
-                        
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
                     
-                    //time
-                    Button() {
-                        print("time button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "clock")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 22)
-                                .padding(.bottom, 14)
-                            
-                            Text(NSLocalizedString("button_time", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 8)
-                        }
+                    //middle stack
+                    HStack(spacing: 12) {
                         
+                        //volume
+                        Button() {
+                            print("volume button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "cube")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 22)
+                                    .padding(.bottom, 12)
+                                
+                                Text(NSLocalizedString("button_volume", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //temperature
+                        Button() {
+                            print("temperature button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "thermometer.medium")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 24)
+                                    .padding(.bottom, 12)
+                                
+                                Text(NSLocalizedString("button_temperature", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //time
+                        Button() {
+                            print("time button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "clock")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 22)
+                                    .padding(.bottom, 14)
+                                
+                                Text(NSLocalizedString("button_time", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
+                    
+                    
+                    //bottom stack
+                    HStack(spacing: 12) {
+                        
+                        //speed
+                        Button() {
+                            print("speed button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "gauge.open.with.lines.needle.33percent")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 26)
+                                    .padding(.bottom, 14)
+                                
+                                Text(NSLocalizedString("button_speed", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //mass
+                        Button() {
+                            print("mass button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "scalemass")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 22)
+                                    .padding(.bottom, 14)
+                                
+                                Text(NSLocalizedString("button_mass", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //data size
+                        Button() {
+                            print("data size button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "externaldrive")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 28)
+                                    .padding(.bottom, 15)
+                                
+                                Text(NSLocalizedString("button_data", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(.fill.secondary.opacity(0.35))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                    }
+                    
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-                
-                //bottom stack
-                HStack() {
-                    
-                    //speed
-                    Button() {
-                        print("speed button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "gauge.open.with.lines.needle.33percent")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 26)
-                                .padding(.bottom, 14)
-                            
-                            Text(NSLocalizedString("button_speed", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 8)
-                        }
-                        
-                        
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
-                    
-                    //mass
-                    Button() {
-                        print("mass button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "scalemass")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 22)
-                                .padding(.bottom, 14)
-                            
-                            Text(NSLocalizedString("button_mass", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 8)
-                        }
-                        
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
-                    
-                    //data size
-                    Button() {
-                        print("data size button pressed")
-                    } label: {
-                        VStack(spacing: 8) {
-                            Image(systemName: "externaldrive")
-                                .resizable()
-                                .widgetAccentable()
-                                .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.top, 28)
-                                .padding(.bottom, 15)
-                            
-                            Text(NSLocalizedString("button_data", comment: ""))
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 8)
-                        }
-                        
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .buttonStyle(.plain)
-                    .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
-                }
-                
+            default:
+                Text("Unsupported")
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+
         }
-        .padding(-8)
+        .padding(-4)
     }
 }
 
