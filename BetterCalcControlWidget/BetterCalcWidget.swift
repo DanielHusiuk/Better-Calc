@@ -1,12 +1,13 @@
 //
-//  BetterCalcControlWidget.swift
-//  BetterCalcControlWidget
+//  BetterCalcWidget.swift
+//  BetterCalcWidget
 //
 //  Created by Daniel Husiuk on 17.04.2025.
 //
 
 import WidgetKit
 import SwiftUI
+import AppIntents
 
 struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
@@ -39,7 +40,7 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
 }
 
-struct BetterCalcControlWidgetEntryView : View {
+struct BetterCalcWidgetEntryView : View {
     var entry: Provider.Entry
     @Environment(\.widgetFamily) var family
     
@@ -56,6 +57,7 @@ struct BetterCalcControlWidgetEntryView : View {
         }
     }
 }
+
 
 //MARK: - Small Widget
 
@@ -304,7 +306,134 @@ struct SmallWidgetView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
+                
+            case .vibrant:
+                VStack(spacing: 10) {
+                    
+                    //top stack
+                    HStack(spacing: 10) {
+                        
+                        //basic
+                        Button() {
+                            print("basic button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "plus.forwardslash.minus")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_basic", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .cornerRadius(12)
+                        
+                        //length
+                        Button() {
+                            print("length button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "ruler")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 18)
+                                    .padding(.bottom, 5)
+                                
+                                Text(NSLocalizedString("button_length", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .cornerRadius(12)
+                    }
+                    
+                    //bottom stack
+                    HStack(spacing: 10) {
+                        
+                        //area
+                        Button() {
+                            print("area button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "arrow.down.left.and.arrow.up.right.square")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 14)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_area", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .cornerRadius(12)
+                        
+                        //volume
+                        Button() {
+                            print("cube button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "cube")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 10)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_volume", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .cornerRadius(12)
+                    }
+                    
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
             default:
                 Text("Unsupported")
             }
@@ -312,6 +441,7 @@ struct SmallWidgetView: View {
         .padding(-6)
     }
 }
+
 
 //MARK: - Medium Widget
 
@@ -701,14 +831,205 @@ struct MediumWidgetView: View {
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+            case .vibrant:
+                VStack(spacing: 10) {
+                    
+                    //top stack
+                    HStack(spacing: 10) {
+                        
+                        //basic
+                        Button() {
+                            print("basic button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "plus.forwardslash.minus")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_basic", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        
+                        //length
+                        Button() {
+                            print("length button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "ruler")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 19)
+                                    .padding(.bottom, 7)
+                                
+                                Text(NSLocalizedString("button_length", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        
+                        //area
+                        Button() {
+                            print("area button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "arrow.down.left.and.arrow.up.right.square")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 14)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_area", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                    }
+                    
+                    
+                    //bottom stack
+                    HStack(spacing: 10) {
+                        
+                        //volume
+                        Button() {
+                            print("cube button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "cube")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_volume", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        
+                        //temperature
+                        Button() {
+                            print("temperature button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "thermometer.medium")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 2)
+                                
+                                Text(NSLocalizedString("button_temperature", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        
+                        //time
+                        Button() {
+                            print("time button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "clock")
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 4)
+                                
+                                Text(NSLocalizedString("button_time", comment: ""))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 5)
+                                    .padding(.leading, 3)
+                                    .padding(.trailing, 3)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                    }
+                    
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             default:
                 Text("Unsupported")
             }
-
+            
         }
         .padding(-6)
     }
 }
+
 
 //MARK: - Large Widget
 
@@ -1303,21 +1624,313 @@ struct LargeWidgetView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
+            case .vibrant:
+                VStack(spacing: 12) {
+                    
+                    //top stack
+                    HStack(spacing: 12) {
+                        
+                        //basic
+                        Button() {
+                            print("basic button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "plus.forwardslash.minus")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 24)
+                                    .padding(.bottom, 14)
+                                
+                                Text(NSLocalizedString("button_basic", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //length
+                        Button() {
+                            print("length button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "ruler")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 34)
+                                    .padding(.bottom, 18)
+                                
+                                Text(NSLocalizedString("button_length", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //area
+                        Button() {
+                            print("area button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "arrow.down.left.and.arrow.up.right.square")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 24)
+                                    .padding(.bottom, 12)
+                                
+                                Text(NSLocalizedString("button_area", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                    }
+                    
+                    
+                    //middle stack
+                    HStack(spacing: 12) {
+                        
+                        //volume
+                        Button() {
+                            print("volume button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "cube")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 22)
+                                    .padding(.bottom, 12)
+                                
+                                Text(NSLocalizedString("button_volume", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //temperature
+                        Button() {
+                            print("temperature button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "thermometer.medium")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 24)
+                                    .padding(.bottom, 12)
+                                
+                                Text(NSLocalizedString("button_temperature", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //time
+                        Button() {
+                            print("time button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "clock")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 22)
+                                    .padding(.bottom, 14)
+                                
+                                Text(NSLocalizedString("button_time", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                    }
+                    
+                    
+                    //bottom stack
+                    HStack(spacing: 12) {
+                        
+                        //speed
+                        Button() {
+                            print("speed button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "gauge.open.with.lines.needle.33percent")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 26)
+                                    .padding(.bottom, 14)
+                                
+                                Text(NSLocalizedString("button_speed", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //mass
+                        Button() {
+                            print("mass button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "scalemass")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 22)
+                                    .padding(.bottom, 14)
+                                
+                                Text(NSLocalizedString("button_mass", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                        
+                        //data size
+                        Button() {
+                            print("data size button pressed")
+                        } label: {
+                            VStack(spacing: 8) {
+                                Image(systemName: "externaldrive")
+                                    .resizable()
+                                    .widgetAccentable()
+                                    .foregroundColor(Color.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.top, 28)
+                                    .padding(.bottom, 15)
+                                
+                                Text(NSLocalizedString("button_data", comment: ""))
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom, 8)
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 5)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .buttonStyle(.plain)
+                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                    }
+                    
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
             default:
                 Text("Unsupported")
             }
-
+            
         }
         .padding(-4)
     }
 }
 
-struct BetterCalcControlWidget: Widget {
-    let kind: String = "BetterCalcControlWidget"
+struct BetterCalcWidget: Widget {
+    let kind: String = "BetterCalcWidget"
     
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            BetterCalcControlWidgetEntryView(entry: entry)
+            BetterCalcWidgetEntryView(entry: entry)
                 .containerBackground(Color(#colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 1)), for: .widget)
         }
         .configurationDisplayName("Better Calc")
@@ -1326,12 +1939,291 @@ struct BetterCalcControlWidget: Widget {
     }
 }
 
-extension ConfigurationAppIntent {
+
+//MARK: - Control Widget
+
+//app
+struct BetterCalcControlWidgetIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Better Calc"
+    
+    static var isDiscoverable: Bool = false
+    static var openAppWhenRun: Bool = true
+    
+    func perform() async throws -> some IntentResult & OpensIntent {
+        print("djlgdogndnduibdnibnfibn_______________")
+        return .result(opensIntent: OpenURLIntent(URL(string: "bettercalc://")!))
+    }
     
 }
 
+@available(iOS 18.0, *)
+struct BetterCalcControlWidget: ControlWidget {
+    let kind: String = "BetterCalcControlWidget"
+    static var icon5: String? { "calc.icon" }
+    
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: kind) {
+            ControlWidgetButton(action: BetterCalcControlWidgetIntent()) {
+                Label("Open Better Calc", image: BetterCalcControlWidget.icon5!)
+            }
+        }
+    }
+}
+
+//basic
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetBasicIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Better Calc"
+    
+    static var isDiscoverable: Bool = false
+    static var openAppWhenRun: Bool = false
+    
+    func perform() async throws -> some IntentResult & OpensIntent {
+        let url = URL(string: "bettercalc://")!
+        return .result(opensIntent: OpenURLIntent(url))
+    }
+    
+}
+
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetBasic: ControlWidget {
+    let kind: String = "BetterCalcControlWidgetBasic"
+    
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: kind) {
+            ControlWidgetButton(action: BetterCalcControlWidgetBasicIntent()) {
+                Label("Open Basic calculator", systemImage: "plus.forwardslash.minus")
+            }
+        }
+    }
+}
+
+//length
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetLengthIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Better Calc"
+    
+    static var isDiscoverable: Bool = false
+    static var openAppWhenRun: Bool = false
+    
+    func perform() async throws -> some IntentResult & OpensIntent {
+        let url = URL(string: "bettercalc://")!
+        return .result(opensIntent: OpenURLIntent(url))
+    }
+    
+}
+
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetLength: ControlWidget {
+    let kind: String = "BetterCalcControlWidgetLength"
+    
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: kind) {
+            ControlWidgetButton(action: BetterCalcControlWidgetLengthIntent()) {
+                Label("Open Length converter", systemImage: "ruler")
+            }
+        }
+    }
+}
+
+//area
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetAreaIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Better Calc"
+    
+    static var isDiscoverable: Bool = false
+    static var openAppWhenRun: Bool = false
+    
+    func perform() async throws -> some IntentResult & OpensIntent {
+        let url = URL(string: "bettercalc://")!
+        return .result(opensIntent: OpenURLIntent(url))
+    }
+    
+}
+
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetArea: ControlWidget {
+    let kind: String = "BetterCalcControlWidgetArea"
+    
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: kind) {
+            ControlWidgetButton(action: BetterCalcControlWidgetAreaIntent()) {
+                Label("Open Area converter", systemImage: "arrow.down.left.and.arrow.up.right.square")
+            }
+        }
+    }
+}
+
+//volume
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetVolumeIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Better Calc"
+    
+    static var isDiscoverable: Bool = false
+    static var openAppWhenRun: Bool = false
+    
+    func perform() async throws -> some IntentResult & OpensIntent {
+        let url = URL(string: "bettercalc://")!
+        return .result(opensIntent: OpenURLIntent(url))
+    }
+    
+}
+
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetVolume: ControlWidget {
+    let kind: String = "BetterCalcControlWidgetVolume"
+    
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: kind) {
+            ControlWidgetButton(action: BetterCalcControlWidgetVolumeIntent()) {
+                Label("Open Volume converter", systemImage: "cube")
+            }
+        }
+    }
+}
+
+//temperature
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetTemperatureIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Better Calc"
+    
+    static var isDiscoverable: Bool = false
+    static var openAppWhenRun: Bool = false
+    
+    func perform() async throws -> some IntentResult & OpensIntent {
+        let url = URL(string: "bettercalc://")!
+        return .result(opensIntent: OpenURLIntent(url))
+    }
+    
+}
+
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetTemperature: ControlWidget {
+    let kind: String = "BetterCalcControlWidgetTemperature"
+    
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: kind) {
+            ControlWidgetButton(action: BetterCalcControlWidgetTemperatureIntent()) {
+                Label("Open Temperature converter", systemImage: "thermometer.medium")
+            }
+        }
+    }
+}
+
+//time
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetTimeIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Better Calc"
+    
+    static var isDiscoverable: Bool = false
+    static var openAppWhenRun: Bool = false
+    
+    func perform() async throws -> some IntentResult & OpensIntent {
+        let url = URL(string: "bettercalc://")!
+        return .result(opensIntent: OpenURLIntent(url))
+    }
+    
+}
+
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetTime: ControlWidget {
+    let kind: String = "BetterCalcControlWidgetTime"
+    
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: kind) {
+            ControlWidgetButton(action: BetterCalcControlWidgetTimeIntent()) {
+                Label("Open Time converter", systemImage: "clock")
+            }
+        }
+    }
+}
+
+//speed
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetSpeedIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Better Calc"
+    
+    static var isDiscoverable: Bool = false
+    static var openAppWhenRun: Bool = false
+    
+    func perform() async throws -> some IntentResult & OpensIntent {
+        let url = URL(string: "bettercalc://")!
+        return .result(opensIntent: OpenURLIntent(url))
+    }
+    
+}
+
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetSpeed: ControlWidget {
+    let kind: String = "BetterCalcControlWidgetSpeed"
+    
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: kind) {
+            ControlWidgetButton(action: BetterCalcControlWidgetSpeedIntent()) {
+                Label("Open Speed converter", systemImage: "gauge.open.with.lines.needle.33percent")
+            }
+        }
+    }
+}
+
+//mass
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetMassIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Better Calc"
+    
+    static var isDiscoverable: Bool = false
+    static var openAppWhenRun: Bool = false
+    
+    func perform() async throws -> some IntentResult & OpensIntent {
+        let url = URL(string: "bettercalc://")!
+        return .result(opensIntent: OpenURLIntent(url))
+    }
+    
+}
+
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetMass: ControlWidget {
+    let kind: String = "BetterCalcControlWidgetMass"
+    
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: kind) {
+            ControlWidgetButton(action: BetterCalcControlWidgetMassIntent()) {
+                Label("Open Mass converter", systemImage: "scalemass")
+            }
+        }
+    }
+}
+
+//data size
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetDataIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Better Calc"
+    
+    static var isDiscoverable: Bool = false
+    static var openAppWhenRun: Bool = false
+    
+    func perform() async throws -> some IntentResult & OpensIntent {
+        let url = URL(string: "bettercalc://")!
+        return .result(opensIntent: OpenURLIntent(url))
+    }
+    
+}
+
+@available(iOS 18.0, *)
+struct BetterCalcControlWidgetData: ControlWidget {
+    let kind: String = "BetterCalcControlWidgetData"
+    
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: kind) {
+            ControlWidgetButton(action: BetterCalcControlWidgetDataIntent()) {
+                Label("Open Data Size converter", systemImage: "externaldrive")
+            }
+        }
+    }
+}
+
 #Preview(as: .systemSmall) {
-    BetterCalcControlWidget()
+    BetterCalcWidget()
 } timeline: {
     SimpleEntry(date: .now)
 }
