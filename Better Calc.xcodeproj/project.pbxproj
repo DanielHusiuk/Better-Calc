@@ -32,7 +32,6 @@
 		65A98AB62D822663002B76B9 /* LengthHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A98AB52D822663002B76B9 /* LengthHistoryController.swift */; };
 		65B288182D4A8E4B00A84FC7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 65B288172D4A8E4B00A84FC7 /* Localizable.xcstrings */; };
 		65B2883C2D4ABB3300A84FC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3EA2C5A9B6A0090F4CE /* Main.storyboard */; };
-		65B5FCAA2E3166CF00F060C3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 65B288172D4A8E4B00A84FC7 /* Localizable.xcstrings */; };
 		65B689512C620FFD005259E7 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689502C620FFD005259E7 /* BasicViewController.swift */; };
 		65B689532C6246EF005259E7 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689522C6246EF005259E7 /* NavigationController.swift */; };
 		65B689562C628140005259E7 /* ScientificViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B689552C628140005259E7 /* ScientificViewController.swift */; };
@@ -63,33 +62,34 @@
 		65DFA3EF2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65DFA3ED2C5A9B6A0090F4CE /* Better_Calc.xcdatamodeld */; };
 		65DFA3F12C5A9B6B0090F4CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3F02C5A9B6B0090F4CE /* Assets.xcassets */; };
 		65DFA3F42C5A9B6B0090F4CE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3F32C5A9B6B0090F4CE /* Base */; };
+		65EA82272E45F3F4002BC854 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FDD8DA2DB1095800A1A6E3 /* WidgetKit.framework */; };
+		65EA82282E45F3F4002BC854 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FDD8DC2DB1095800A1A6E3 /* SwiftUI.framework */; };
+		65EA82392E45F3F6002BC854 /* BetterCalcWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 65EA82262E45F3F4002BC854 /* BetterCalcWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		65EA823F2E45F4C4002BC854 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 65B288172D4A8E4B00A84FC7 /* Localizable.xcstrings */; };
+		65EA82402E45F4DF002BC854 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3F02C5A9B6B0090F4CE /* Assets.xcassets */; };
 		65EE7A312D95A521006F2F84 /* TemperatureHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EE7A302D95A521006F2F84 /* TemperatureHistoryController.swift */; };
 		65F119BA2D95472500B2EDB7 /* AreaHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F119B92D95472500B2EDB7 /* AreaHistoryController.swift */; };
 		65F119BC2D95A0E400B2EDB7 /* VolumeHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F119BB2D95A0E400B2EDB7 /* VolumeHistoryController.swift */; };
-		65FDD8DB2DB1095800A1A6E3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FDD8DA2DB1095800A1A6E3 /* WidgetKit.framework */; };
-		65FDD8DD2DB1095800A1A6E3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FDD8DC2DB1095800A1A6E3 /* SwiftUI.framework */; };
-		65FDD8EE2DB1095900A1A6E3 /* BetterCalcControlWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 65FDD8D82DB1095800A1A6E3 /* BetterCalcControlWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		65FDD8F52DB11CEF00A1A6E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65DFA3F02C5A9B6B0090F4CE /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		65FDD8EC2DB1095900A1A6E3 /* PBXContainerItemProxy */ = {
+		65EA82372E45F3F6002BC854 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65DFA3D92C5A9B6A0090F4CE /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 65FDD8D72DB1095800A1A6E3;
-			remoteInfo = BetterCalcControlWidgetExtension;
+			remoteGlobalIDString = 65EA82252E45F3F4002BC854;
+			remoteInfo = BetterCalcWidgetExtension;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		65FDD8EF2DB1095900A1A6E3 /* Embed Foundation Extensions */ = {
+		65EA823E2E45F3F6002BC854 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				65FDD8EE2DB1095900A1A6E3 /* BetterCalcControlWidgetExtension.appex in Embed Foundation Extensions */,
+				65EA82392E45F3F6002BC854 /* BetterCalcWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,26 +180,33 @@
 		65DFA3F02C5A9B6B0090F4CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65DFA3F32C5A9B6B0090F4CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65DFA3F52C5A9B6B0090F4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65EA82262E45F3F4002BC854 /* BetterCalcWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BetterCalcWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		65EE7A302D95A521006F2F84 /* TemperatureHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureHistoryController.swift; sourceTree = "<group>"; };
 		65F119B92D95472500B2EDB7 /* AreaHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaHistoryController.swift; sourceTree = "<group>"; };
 		65F119BB2D95A0E400B2EDB7 /* VolumeHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeHistoryController.swift; sourceTree = "<group>"; };
-		65FDD8D82DB1095800A1A6E3 /* BetterCalcControlWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BetterCalcControlWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FDD8DA2DB1095800A1A6E3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		65FDD8DC2DB1095800A1A6E3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		65FDD8F22DB1095900A1A6E3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		65EA823A2E45F3F6002BC854 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 65FDD8D72DB1095800A1A6E3 /* BetterCalcControlWidgetExtension */;
+			target = 65EA82252E45F3F4002BC854 /* BetterCalcWidgetExtension */;
+		};
+		65FBF3612E46106700885570 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				BetterCalcWidgetControl.swift,
+			);
+			target = 65DFA3E02C5A9B6A0090F4CE /* Better Calc */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		65FDD8DE2DB1095800A1A6E3 /* BetterCalcControlWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (65FDD8F22DB1095900A1A6E3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = BetterCalcControlWidget; sourceTree = "<group>"; };
+		65EA82292E45F3F4002BC854 /* BetterCalcWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (65FBF3612E46106700885570 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 65EA823A2E45F3F6002BC854 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = BetterCalcWidget; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,12 +219,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		65FDD8D52DB1095800A1A6E3 /* Frameworks */ = {
+		65EA82232E45F3F4002BC854 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65FDD8DD2DB1095800A1A6E3 /* SwiftUI.framework in Frameworks */,
-				65FDD8DB2DB1095800A1A6E3 /* WidgetKit.framework in Frameworks */,
+				65EA82282E45F3F4002BC854 /* SwiftUI.framework in Frameworks */,
+				65EA82272E45F3F4002BC854 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +428,7 @@
 			children = (
 				650816442D7BA686000F8B68 /* Settings.bundle */,
 				65DFA3E32C5A9B6A0090F4CE /* Better Calc */,
-				65FDD8DE2DB1095800A1A6E3 /* BetterCalcControlWidget */,
+				65EA82292E45F3F4002BC854 /* BetterCalcWidget */,
 				65FDD8D92DB1095800A1A6E3 /* Frameworks */,
 				65DFA3E22C5A9B6A0090F4CE /* Products */,
 			);
@@ -431,7 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				65DFA3E12C5A9B6A0090F4CE /* Better Calc.app */,
-				65FDD8D82DB1095800A1A6E3 /* BetterCalcControlWidgetExtension.appex */,
+				65EA82262E45F3F4002BC854 /* BetterCalcWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -470,38 +477,38 @@
 				65DFA3DD2C5A9B6A0090F4CE /* Sources */,
 				65DFA3DE2C5A9B6A0090F4CE /* Frameworks */,
 				65DFA3DF2C5A9B6A0090F4CE /* Resources */,
-				65FDD8EF2DB1095900A1A6E3 /* Embed Foundation Extensions */,
+				65EA823E2E45F3F6002BC854 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				65FDD8ED2DB1095900A1A6E3 /* PBXTargetDependency */,
+				65EA82382E45F3F6002BC854 /* PBXTargetDependency */,
 			);
 			name = "Better Calc";
 			productName = "Better Calc";
 			productReference = 65DFA3E12C5A9B6A0090F4CE /* Better Calc.app */;
 			productType = "com.apple.product-type.application";
 		};
-		65FDD8D72DB1095800A1A6E3 /* BetterCalcControlWidgetExtension */ = {
+		65EA82252E45F3F4002BC854 /* BetterCalcWidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65FDD8F32DB1095900A1A6E3 /* Build configuration list for PBXNativeTarget "BetterCalcControlWidgetExtension" */;
+			buildConfigurationList = 65EA823B2E45F3F6002BC854 /* Build configuration list for PBXNativeTarget "BetterCalcWidgetExtension" */;
 			buildPhases = (
-				65FDD8D42DB1095800A1A6E3 /* Sources */,
-				65FDD8D52DB1095800A1A6E3 /* Frameworks */,
-				65FDD8D62DB1095800A1A6E3 /* Resources */,
+				65EA82222E45F3F4002BC854 /* Sources */,
+				65EA82232E45F3F4002BC854 /* Frameworks */,
+				65EA82242E45F3F4002BC854 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				65FDD8DE2DB1095800A1A6E3 /* BetterCalcControlWidget */,
+				65EA82292E45F3F4002BC854 /* BetterCalcWidget */,
 			);
-			name = BetterCalcControlWidgetExtension;
+			name = BetterCalcWidgetExtension;
 			packageProductDependencies = (
 			);
-			productName = BetterCalcControlWidgetExtension;
-			productReference = 65FDD8D82DB1095800A1A6E3 /* BetterCalcControlWidgetExtension.appex */;
+			productName = BetterCalcWidgetExtension;
+			productReference = 65EA82262E45F3F4002BC854 /* BetterCalcWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -511,14 +518,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					65DFA3E02C5A9B6A0090F4CE = {
 						CreatedOnToolsVersion = 15.4;
 					};
-					65FDD8D72DB1095800A1A6E3 = {
-						CreatedOnToolsVersion = 16.2;
+					65EA82252E45F3F4002BC854 = {
+						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
@@ -552,7 +559,7 @@
 			projectRoot = "";
 			targets = (
 				65DFA3E02C5A9B6A0090F4CE /* Better Calc */,
-				65FDD8D72DB1095800A1A6E3 /* BetterCalcControlWidgetExtension */,
+				65EA82252E45F3F4002BC854 /* BetterCalcWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -570,12 +577,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		65FDD8D62DB1095800A1A6E3 /* Resources */ = {
+		65EA82242E45F3F4002BC854 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65FDD8F52DB11CEF00A1A6E3 /* Assets.xcassets in Resources */,
-				65B5FCAA2E3166CF00F060C3 /* Localizable.xcstrings in Resources */,
+				65EA823F2E45F4C4002BC854 /* Localizable.xcstrings in Resources */,
+				65EA82402E45F4DF002BC854 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,7 +647,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		65FDD8D42DB1095800A1A6E3 /* Sources */ = {
+		65EA82222E45F3F4002BC854 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -650,10 +657,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		65FDD8ED2DB1095900A1A6E3 /* PBXTargetDependency */ = {
+		65EA82382E45F3F6002BC854 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 65FDD8D72DB1095800A1A6E3 /* BetterCalcControlWidgetExtension */;
-			targetProxy = 65FDD8EC2DB1095900A1A6E3 /* PBXContainerItemProxy */;
+			target = 65EA82252E45F3F4002BC854 /* BetterCalcWidgetExtension */;
+			targetProxy = 65EA82372E45F3F6002BC854 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -906,7 +913,7 @@
 			};
 			name = Release;
 		};
-		65FDD8F02DB1095900A1A6E3 /* Debug */ = {
+		65EA823C2E45F3F6002BC854 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -915,17 +922,17 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SVFF6W5Y6W;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BetterCalcControlWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = BetterCalcControlWidget;
+				INFOPLIST_FILE = BetterCalcWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BetterCalcWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.danielhusiuk.Better-Calc.BetterCalcControlWidget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.danielhusiuk.Better-Calc.BetterCalcWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -934,7 +941,7 @@
 			};
 			name = Debug;
 		};
-		65FDD8F12DB1095900A1A6E3 /* Release */ = {
+		65EA823D2E45F3F6002BC854 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -943,17 +950,17 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SVFF6W5Y6W;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BetterCalcControlWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = BetterCalcControlWidget;
+				INFOPLIST_FILE = BetterCalcWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BetterCalcWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.danielhusiuk.Better-Calc.BetterCalcControlWidget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.danielhusiuk.Better-Calc.BetterCalcWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -983,11 +990,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		65FDD8F32DB1095900A1A6E3 /* Build configuration list for PBXNativeTarget "BetterCalcControlWidgetExtension" */ = {
+		65EA823B2E45F3F6002BC854 /* Build configuration list for PBXNativeTarget "BetterCalcWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				65FDD8F02DB1095900A1A6E3 /* Debug */,
-				65FDD8F12DB1095900A1A6E3 /* Release */,
+				65EA823C2E45F3F6002BC854 /* Debug */,
+				65EA823D2E45F3F6002BC854 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

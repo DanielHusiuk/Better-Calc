@@ -2,7 +2,7 @@
 //  BetterCalcWidget.swift
 //  BetterCalcWidget
 //
-//  Created by Daniel Husiuk on 17.04.2025.
+//  Created by Daniel Husiuk on 08.08.2025.
 //
 
 import WidgetKit
@@ -13,7 +13,7 @@ struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date())
     }
-    
+
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
         SimpleEntry(date: Date())
     }
@@ -27,13 +27,9 @@ struct Provider: AppIntentTimelineProvider {
             let entry = SimpleEntry(date: entryDate)
             entries.append(entry)
         }
-        
+
         return Timeline(entries: entries, policy: .atEnd)
     }
-    
-    //    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {
-    //        // Generate a list containing the contexts this widget is relevant in.
-    //    }
 }
 
 struct SimpleEntry: TimelineEntry {
@@ -1925,6 +1921,9 @@ struct LargeWidgetView: View {
     }
 }
 
+
+//MARK: - Configuration
+
 struct BetterCalcWidget: Widget {
     let kind: String = "BetterCalcWidget"
     
@@ -1936,289 +1935,6 @@ struct BetterCalcWidget: Widget {
         .configurationDisplayName("Better Calc")
         .description(NSLocalizedString("widget_description", comment: ""))
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
-    }
-}
-
-
-//MARK: - Control Widget
-
-//app
-struct BetterCalcControlWidgetIntent: AppIntent {
-    static var title: LocalizedStringResource = "Open Better Calc"
-    
-    static var isDiscoverable: Bool = false
-    static var openAppWhenRun: Bool = true
-    
-    func perform() async throws -> some IntentResult & OpensIntent {
-        print("djlgdogndnduibdnibnfibn_______________")
-        return .result(opensIntent: OpenURLIntent(URL(string: "bettercalc://")!))
-    }
-    
-}
-
-@available(iOS 18.0, *)
-struct BetterCalcControlWidget: ControlWidget {
-    let kind: String = "BetterCalcControlWidget"
-    static var icon5: String? { "calc.icon" }
-    
-    var body: some ControlWidgetConfiguration {
-        StaticControlConfiguration(kind: kind) {
-            ControlWidgetButton(action: BetterCalcControlWidgetIntent()) {
-                Label("Open Better Calc", image: BetterCalcControlWidget.icon5!)
-            }
-        }
-    }
-}
-
-//basic
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetBasicIntent: AppIntent {
-    static var title: LocalizedStringResource = "Open Better Calc"
-    
-    static var isDiscoverable: Bool = false
-    static var openAppWhenRun: Bool = false
-    
-    func perform() async throws -> some IntentResult & OpensIntent {
-        let url = URL(string: "bettercalc://")!
-        return .result(opensIntent: OpenURLIntent(url))
-    }
-    
-}
-
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetBasic: ControlWidget {
-    let kind: String = "BetterCalcControlWidgetBasic"
-    
-    var body: some ControlWidgetConfiguration {
-        StaticControlConfiguration(kind: kind) {
-            ControlWidgetButton(action: BetterCalcControlWidgetBasicIntent()) {
-                Label("Open Basic calculator", systemImage: "plus.forwardslash.minus")
-            }
-        }
-    }
-}
-
-//length
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetLengthIntent: AppIntent {
-    static var title: LocalizedStringResource = "Open Better Calc"
-    
-    static var isDiscoverable: Bool = false
-    static var openAppWhenRun: Bool = false
-    
-    func perform() async throws -> some IntentResult & OpensIntent {
-        let url = URL(string: "bettercalc://")!
-        return .result(opensIntent: OpenURLIntent(url))
-    }
-    
-}
-
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetLength: ControlWidget {
-    let kind: String = "BetterCalcControlWidgetLength"
-    
-    var body: some ControlWidgetConfiguration {
-        StaticControlConfiguration(kind: kind) {
-            ControlWidgetButton(action: BetterCalcControlWidgetLengthIntent()) {
-                Label("Open Length converter", systemImage: "ruler")
-            }
-        }
-    }
-}
-
-//area
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetAreaIntent: AppIntent {
-    static var title: LocalizedStringResource = "Open Better Calc"
-    
-    static var isDiscoverable: Bool = false
-    static var openAppWhenRun: Bool = false
-    
-    func perform() async throws -> some IntentResult & OpensIntent {
-        let url = URL(string: "bettercalc://")!
-        return .result(opensIntent: OpenURLIntent(url))
-    }
-    
-}
-
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetArea: ControlWidget {
-    let kind: String = "BetterCalcControlWidgetArea"
-    
-    var body: some ControlWidgetConfiguration {
-        StaticControlConfiguration(kind: kind) {
-            ControlWidgetButton(action: BetterCalcControlWidgetAreaIntent()) {
-                Label("Open Area converter", systemImage: "arrow.down.left.and.arrow.up.right.square")
-            }
-        }
-    }
-}
-
-//volume
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetVolumeIntent: AppIntent {
-    static var title: LocalizedStringResource = "Open Better Calc"
-    
-    static var isDiscoverable: Bool = false
-    static var openAppWhenRun: Bool = false
-    
-    func perform() async throws -> some IntentResult & OpensIntent {
-        let url = URL(string: "bettercalc://")!
-        return .result(opensIntent: OpenURLIntent(url))
-    }
-    
-}
-
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetVolume: ControlWidget {
-    let kind: String = "BetterCalcControlWidgetVolume"
-    
-    var body: some ControlWidgetConfiguration {
-        StaticControlConfiguration(kind: kind) {
-            ControlWidgetButton(action: BetterCalcControlWidgetVolumeIntent()) {
-                Label("Open Volume converter", systemImage: "cube")
-            }
-        }
-    }
-}
-
-//temperature
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetTemperatureIntent: AppIntent {
-    static var title: LocalizedStringResource = "Open Better Calc"
-    
-    static var isDiscoverable: Bool = false
-    static var openAppWhenRun: Bool = false
-    
-    func perform() async throws -> some IntentResult & OpensIntent {
-        let url = URL(string: "bettercalc://")!
-        return .result(opensIntent: OpenURLIntent(url))
-    }
-    
-}
-
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetTemperature: ControlWidget {
-    let kind: String = "BetterCalcControlWidgetTemperature"
-    
-    var body: some ControlWidgetConfiguration {
-        StaticControlConfiguration(kind: kind) {
-            ControlWidgetButton(action: BetterCalcControlWidgetTemperatureIntent()) {
-                Label("Open Temperature converter", systemImage: "thermometer.medium")
-            }
-        }
-    }
-}
-
-//time
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetTimeIntent: AppIntent {
-    static var title: LocalizedStringResource = "Open Better Calc"
-    
-    static var isDiscoverable: Bool = false
-    static var openAppWhenRun: Bool = false
-    
-    func perform() async throws -> some IntentResult & OpensIntent {
-        let url = URL(string: "bettercalc://")!
-        return .result(opensIntent: OpenURLIntent(url))
-    }
-    
-}
-
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetTime: ControlWidget {
-    let kind: String = "BetterCalcControlWidgetTime"
-    
-    var body: some ControlWidgetConfiguration {
-        StaticControlConfiguration(kind: kind) {
-            ControlWidgetButton(action: BetterCalcControlWidgetTimeIntent()) {
-                Label("Open Time converter", systemImage: "clock")
-            }
-        }
-    }
-}
-
-//speed
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetSpeedIntent: AppIntent {
-    static var title: LocalizedStringResource = "Open Better Calc"
-    
-    static var isDiscoverable: Bool = false
-    static var openAppWhenRun: Bool = false
-    
-    func perform() async throws -> some IntentResult & OpensIntent {
-        let url = URL(string: "bettercalc://")!
-        return .result(opensIntent: OpenURLIntent(url))
-    }
-    
-}
-
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetSpeed: ControlWidget {
-    let kind: String = "BetterCalcControlWidgetSpeed"
-    
-    var body: some ControlWidgetConfiguration {
-        StaticControlConfiguration(kind: kind) {
-            ControlWidgetButton(action: BetterCalcControlWidgetSpeedIntent()) {
-                Label("Open Speed converter", systemImage: "gauge.open.with.lines.needle.33percent")
-            }
-        }
-    }
-}
-
-//mass
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetMassIntent: AppIntent {
-    static var title: LocalizedStringResource = "Open Better Calc"
-    
-    static var isDiscoverable: Bool = false
-    static var openAppWhenRun: Bool = false
-    
-    func perform() async throws -> some IntentResult & OpensIntent {
-        let url = URL(string: "bettercalc://")!
-        return .result(opensIntent: OpenURLIntent(url))
-    }
-    
-}
-
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetMass: ControlWidget {
-    let kind: String = "BetterCalcControlWidgetMass"
-    
-    var body: some ControlWidgetConfiguration {
-        StaticControlConfiguration(kind: kind) {
-            ControlWidgetButton(action: BetterCalcControlWidgetMassIntent()) {
-                Label("Open Mass converter", systemImage: "scalemass")
-            }
-        }
-    }
-}
-
-//data size
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetDataIntent: AppIntent {
-    static var title: LocalizedStringResource = "Open Better Calc"
-    
-    static var isDiscoverable: Bool = false
-    static var openAppWhenRun: Bool = false
-    
-    func perform() async throws -> some IntentResult & OpensIntent {
-        let url = URL(string: "bettercalc://")!
-        return .result(opensIntent: OpenURLIntent(url))
-    }
-    
-}
-
-@available(iOS 18.0, *)
-struct BetterCalcControlWidgetData: ControlWidget {
-    let kind: String = "BetterCalcControlWidgetData"
-    
-    var body: some ControlWidgetConfiguration {
-        StaticControlConfiguration(kind: kind) {
-            ControlWidgetButton(action: BetterCalcControlWidgetDataIntent()) {
-                Label("Open Data Size converter", systemImage: "externaldrive")
-            }
-        }
     }
 }
 

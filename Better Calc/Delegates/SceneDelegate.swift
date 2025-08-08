@@ -85,6 +85,46 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
     
+    
+    //MARK: - URL Configuration
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else { return }
+        print(url)
+        print(url.scheme ?? "nil")
+        print(url.host ?? "nil")
+        
+        guard url.scheme == "bettercalc" else { return }
+        handleURL(url)
+    }
+    
+    private func handleURL(_ url: URL) {
+        guard let host = url.host else { return }
+        
+        
+        switch host {
+        case "basic":
+            ViewController().navigateToBasic()
+        case "length":
+            ViewController().navigateToLength()
+        case "area":
+            ViewController().navigateToArea()
+        case "volume":
+            ViewController().navigateToVolume()
+        case "temperature":
+            ViewController().navigateToTemperature()
+        case "time":
+            ViewController().navigateToTime()
+        case "speed":
+            ViewController().navigateToSpeed()
+        case "mass":
+            ViewController().navigateToMass()
+        case "data":
+            ViewController().navigateToData()
+        default:
+            return
+        }
+    }
 }
 
 extension UIWindow {

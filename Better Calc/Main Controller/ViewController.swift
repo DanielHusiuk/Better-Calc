@@ -86,6 +86,63 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
+    //MARK: - URL Segue
+    
+   func navigateToBasic() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "BasicSegue", sender: self)
+        }
+    }
+    
+   func navigateToLength() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "LengthSegue", sender: self)
+        }
+    }
+    
+   func navigateToArea() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "AreaSegue", sender: self)
+        }
+    }
+    
+   func navigateToVolume() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "VolumeSegue", sender: self)
+        }
+    }
+    
+   func navigateToTemperature() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "TemperatureSegue", sender: self)
+        }
+    }
+    
+   func navigateToTime() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "TimeSegue", sender: self)
+        }
+    }
+    
+   func navigateToSpeed() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "SpeedSegue", sender: self)
+        }
+    }
+    
+   func navigateToMass() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "MassSegue", sender: self)
+        }
+    }
+    
+   func navigateToData() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "DataSegue", sender: self)
+        }
+    }
+    
+    
     //MARK: - Picker Segue
     
     func loadPickerSegue() {

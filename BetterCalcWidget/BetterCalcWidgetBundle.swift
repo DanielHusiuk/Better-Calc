@@ -2,7 +2,7 @@
 //  BetterCalcWidgetBundle.swift
 //  BetterCalcWidget
 //
-//  Created by Daniel Husiuk on 17.04.2025.
+//  Created by Daniel Husiuk on 08.08.2025.
 //
 
 import WidgetKit
@@ -12,15 +12,19 @@ import SwiftUI
 struct BetterCalcWidgetBundle: WidgetBundle {
     var body: some Widget {
         BetterCalcWidget()
-        BetterCalcControlWidget()
         
+        BetterCalcControlWidget()
         BetterCalcControlWidgetBasic()
+        
         BetterCalcControlWidgetLength()
         BetterCalcControlWidgetArea()
+        
         BetterCalcControlWidgetVolume()
         BetterCalcControlWidgetTemperature()
+        
         BetterCalcControlWidgetTime()
         BetterCalcControlWidgetSpeed()
+        
         BetterCalcControlWidgetMass()
         BetterCalcControlWidgetData()
     }
