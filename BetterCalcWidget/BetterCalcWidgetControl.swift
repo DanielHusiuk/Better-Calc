@@ -20,6 +20,7 @@ struct BetterCalcControlWidgetIntent: AppIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult & OpensIntent {
+        UserDefaults.standard.set("Menu", forKey: "SelectedURLString")
         let url = URL(string: "bettercalc://")!
         return .result(opensIntent: OpenURLIntent(url))
     }
@@ -52,6 +53,7 @@ struct BetterCalcControlWidgetBasicIntent: AppIntent {
     static var openAppWhenRun: Bool = true
     
     func perform() async throws -> some IntentResult & OpensIntent {
+        UserDefaults.standard.set("BasicSegue", forKey: "SelectedURLString")
         let url = URL(string: "bettercalc://basic")!
         return .result(opensIntent: OpenURLIntent(url))
     }
@@ -83,6 +85,7 @@ struct BetterCalcControlWidgetLengthIntent: AppIntent {
     static var openAppWhenRun: Bool = true
     
     func perform() async throws -> some IntentResult & OpensIntent {
+        UserDefaults.standard.set("LengthSegue", forKey: "SelectedURLString")
         let url = URL(string: "bettercalc://length")!
         return .result(opensIntent: OpenURLIntent(url))
     }
@@ -114,6 +117,7 @@ struct BetterCalcControlWidgetAreaIntent: AppIntent {
     static var openAppWhenRun: Bool = true
     
     func perform() async throws -> some IntentResult & OpensIntent {
+        UserDefaults.standard.set("AreaSegue", forKey: "SelectedURLString")
         let url = URL(string: "bettercalc://area")!
         return .result(opensIntent: OpenURLIntent(url))
     }
@@ -145,6 +149,7 @@ struct BetterCalcControlWidgetVolumeIntent: AppIntent {
     static var openAppWhenRun: Bool = true
     
     func perform() async throws -> some IntentResult & OpensIntent {
+        UserDefaults.standard.set("VolumeSegue", forKey: "SelectedURLString")
         let url = URL(string: "bettercalc://volume")!
         return .result(opensIntent: OpenURLIntent(url))
     }
@@ -176,6 +181,7 @@ struct BetterCalcControlWidgetTemperatureIntent: AppIntent {
     static var openAppWhenRun: Bool = true
     
     func perform() async throws -> some IntentResult & OpensIntent {
+        UserDefaults.standard.set("TemperatureSegue", forKey: "SelectedURLString")
         let url = URL(string: "bettercalc://temperature")!
         return .result(opensIntent: OpenURLIntent(url))
     }
@@ -207,6 +213,7 @@ struct BetterCalcControlWidgetTimeIntent: AppIntent {
     static var openAppWhenRun: Bool = true
     
     func perform() async throws -> some IntentResult & OpensIntent {
+        UserDefaults.standard.set("TimeSegue", forKey: "SelectedURLString")
         let url = URL(string: "bettercalc://time")!
         return .result(opensIntent: OpenURLIntent(url))
     }
@@ -238,6 +245,7 @@ struct BetterCalcControlWidgetSpeedIntent: AppIntent {
     static var openAppWhenRun: Bool = true
     
     func perform() async throws -> some IntentResult & OpensIntent {
+        UserDefaults.standard.set("SpeedSegue", forKey: "SelectedURLString")
         let url = URL(string: "bettercalc://speed")!
         return .result(opensIntent: OpenURLIntent(url))
     }
@@ -269,6 +277,7 @@ struct BetterCalcControlWidgetMassIntent: AppIntent {
     static var openAppWhenRun: Bool = true
     
     func perform() async throws -> some IntentResult & OpensIntent {
+        UserDefaults.standard.set("MassSegue", forKey: "SelectedURLString")
         let url = URL(string: "bettercalc://mass")!
         return .result(opensIntent: OpenURLIntent(url))
     }
@@ -300,6 +309,7 @@ struct BetterCalcControlWidgetDataIntent: AppIntent {
     static var openAppWhenRun: Bool = true
     
     func perform() async throws -> some IntentResult & OpensIntent {
+        UserDefaults.standard.set("DataSegue", forKey: "SelectedURLString")
         let url = URL(string: "bettercalc://data")!
         return .result(opensIntent: OpenURLIntent(url))
     }

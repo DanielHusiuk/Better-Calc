@@ -364,5 +364,5 @@ class MassViewController: UIViewController {
         let formattedResult = String(describing: convertValue).components(separatedBy: " ").first ?? "0"
         ToLabelOutlet.text = LabelFormattingManager().formatNumber(Double(formattedResult) ?? 0)
     }
-
+    
 }

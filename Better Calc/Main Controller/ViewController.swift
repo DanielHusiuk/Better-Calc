@@ -12,12 +12,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var ButtonsViewOutlet: UIView!
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
     var originalAppearance: UINavigationBarAppearance?
     private var collectionView: UICollectionView?
     let searchController = UISearchController(searchResultsController: nil)
-    
     var model = ButtonsModel()
     
     override func viewDidLoad() {
@@ -31,10 +28,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !appDelegate.hasPerformedSegue {
-            loadPickerSegue()
-            appDelegate.hasPerformedSegue = true
-        }
         setupSearchController()
     }
     
@@ -52,9 +45,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         searchController.isActive = false
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
+    
+    //MARK: - Swipe Gesture
     
     func enablePopGesture() {
         guard let navigationController = self.navigationController,
@@ -86,74 +78,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
-    //MARK: - URL Segue
-    
-   func navigateToBasic() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "BasicSegue", sender: self)
-        }
-    }
-    
-   func navigateToLength() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "LengthSegue", sender: self)
-        }
-    }
-    
-   func navigateToArea() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "AreaSegue", sender: self)
-        }
-    }
-    
-   func navigateToVolume() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "VolumeSegue", sender: self)
-        }
-    }
-    
-   func navigateToTemperature() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "TemperatureSegue", sender: self)
-        }
-    }
-    
-   func navigateToTime() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "TimeSegue", sender: self)
-        }
-    }
-    
-   func navigateToSpeed() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "SpeedSegue", sender: self)
-        }
-    }
-    
-   func navigateToMass() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "MassSegue", sender: self)
-        }
-    }
-    
-   func navigateToData() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "DataSegue", sender: self)
-        }
-    }
-    
-    
-    //MARK: - Picker Segue
-    
-    func loadPickerSegue() {
-        let savedSegue = UserDefaults.standard.string(forKey: "SelectedPickerString")
-        let unwrappedSavedSegue = savedSegue.map { String(describing: $0) } ?? ""
-        
-        if unwrappedSavedSegue.isEmpty || unwrappedSavedSegue == "None" { return }
-        performSegue(withIdentifier: unwrappedSavedSegue, sender: self)
-    }
-    
-    
     //MARK: - Navigation Bar and Title
     
     func loadNavBar() {
@@ -177,7 +101,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     //MARK: - Search Bar
-        
+    
     func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false

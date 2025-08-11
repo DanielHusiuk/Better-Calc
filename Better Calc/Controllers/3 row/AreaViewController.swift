@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class AreaViewController: UIViewController {
-
+    
     @IBOutlet var CalculatorViewOutlet: UIView!
     @IBOutlet weak var CalculatorImageOutlet: UIImageView!
     @IBOutlet var ShadowButtonsOutlet: [UIButton]!
@@ -364,5 +364,5 @@ class AreaViewController: UIViewController {
         let formattedResult = String(describing: convertValue).components(separatedBy: " ").first ?? "0"
         ToLabelOutlet.text = LabelFormattingManager().formatNumber(Double(formattedResult) ?? 0)
     }
-
+    
 }

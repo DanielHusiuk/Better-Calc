@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class TemperatureHistoryController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var HistoryTableView: UITableView!
     @IBOutlet weak var CloseBarButton: UIBarButtonItem!
     @IBOutlet weak var EditBarButton: UIBarButtonItem!

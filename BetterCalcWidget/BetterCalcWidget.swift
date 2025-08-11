@@ -13,7 +13,7 @@ struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date())
     }
-
+    
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
         SimpleEntry(date: Date())
     }
@@ -27,7 +27,7 @@ struct Provider: AppIntentTimelineProvider {
             let entry = SimpleEntry(date: entryDate)
             entries.append(entry)
         }
-
+        
         return Timeline(entries: entries, policy: .atEnd)
     }
 }
@@ -71,121 +71,118 @@ struct SmallWidgetView: View {
                     HStack(spacing: 10) {
                         
                         //basic
-                        Button() {
-                            print("basic button pressed")
-                        } label: {
-                            VStack(spacing: 8) {
-                                Image(systemName: "plus.forwardslash.minus")
-                                    .widgetAccentable()
-                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                    .aspectRatio(contentMode: .fit)
-                                    .padding(.top, 12)
-                                    .padding(.bottom, 2)
-                                
-                                Text(NSLocalizedString("button_basic", comment: ""))
-                                    .font(.system(size: 12, weight: .semibold))
-                                    .foregroundColor(.white)
-                                    .scaledToFit()
-                                    .minimumScaleFactor(0.5)
-                                    .padding(.bottom, 5)
-                                    .padding(.leading, 3)
-                                    .padding(.trailing, 3)
+                        Link(destination: URL(string: "bettercalc://basic")!) {
+                            Button() { } label: {
+                                VStack(spacing: 8) {
+                                    Image(systemName: "plus.forwardslash.minus")
+                                        .widgetAccentable()
+                                        .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                        .aspectRatio(contentMode: .fit)
+                                        .padding(.top, 12)
+                                        .padding(.bottom, 2)
+                                    
+                                    Text(NSLocalizedString("button_basic", comment: ""))
+                                        .font(.system(size: 12, weight: .semibold))
+                                        .foregroundColor(.white)
+                                        .scaledToFit()
+                                        .minimumScaleFactor(0.5)
+                                        .padding(.bottom, 5)
+                                        .padding(.leading, 3)
+                                        .padding(.trailing, 3)
+                                }
                             }
-                            
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                            .buttonStyle(.plain)
+                            .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                            .cornerRadius(12)
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                        .buttonStyle(.plain)
-                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                        .cornerRadius(12)
                         
                         //length
-                        Button() {
-                            print("length button pressed")
-                        } label: {
-                            VStack(spacing: 8) {
-                                Image(systemName: "ruler")
-                                    .widgetAccentable()
-                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                    .aspectRatio(contentMode: .fit)
-                                    .padding(.top, 18)
-                                    .padding(.bottom, 5)
+                        Link(destination: URL(string: "bettercalc://length")!) {
+                            Button() { } label: {
+                                VStack(spacing: 8) {
+                                    Image(systemName: "ruler")
+                                        .widgetAccentable()
+                                        .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                        .aspectRatio(contentMode: .fit)
+                                        .padding(.top, 18)
+                                        .padding(.bottom, 5)
+                                    
+                                    Text(NSLocalizedString("button_length", comment: ""))
+                                        .font(.system(size: 12, weight: .semibold))
+                                        .foregroundColor(.white)
+                                        .scaledToFit()
+                                        .minimumScaleFactor(0.5)
+                                        .padding(.bottom, 5)
+                                        .padding(.leading, 3)
+                                        .padding(.trailing, 3)
+                                }
                                 
-                                Text(NSLocalizedString("button_length", comment: ""))
-                                    .font(.system(size: 12, weight: .semibold))
-                                    .foregroundColor(.white)
-                                    .scaledToFit()
-                                    .minimumScaleFactor(0.5)
-                                    .padding(.bottom, 5)
-                                    .padding(.leading, 3)
-                                    .padding(.trailing, 3)
                             }
-                            
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                            .buttonStyle(.plain)
+                            .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                            .cornerRadius(12)
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                        .buttonStyle(.plain)
-                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                        .cornerRadius(12)
                     }
                     
                     //bottom stack
                     HStack(spacing: 10) {
                         
                         //area
-                        Button() {
-                            print("area button pressed")
-                        } label: {
-                            VStack(spacing: 8) {
-                                Image(systemName: "arrow.down.left.and.arrow.up.right.square")
-                                    .widgetAccentable()
-                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                    .aspectRatio(contentMode: .fit)
-                                    .padding(.top, 14)
-                                    .padding(.bottom, 2)
+                        Link(destination: URL(string: "bettercalc://area")!) {
+                            Button() { } label: {
+                                VStack(spacing: 8) {
+                                    Image(systemName: "arrow.down.left.and.arrow.up.right.square")
+                                        .widgetAccentable()
+                                        .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                        .aspectRatio(contentMode: .fit)
+                                        .padding(.top, 14)
+                                        .padding(.bottom, 2)
+                                    
+                                    Text(NSLocalizedString("button_area", comment: ""))
+                                        .font(.system(size: 12, weight: .semibold))
+                                        .foregroundColor(.white)
+                                        .scaledToFit()
+                                        .minimumScaleFactor(0.5)
+                                        .padding(.bottom, 5)
+                                        .padding(.leading, 3)
+                                        .padding(.trailing, 3)
+                                }
                                 
-                                Text(NSLocalizedString("button_area", comment: ""))
-                                    .font(.system(size: 12, weight: .semibold))
-                                    .foregroundColor(.white)
-                                    .scaledToFit()
-                                    .minimumScaleFactor(0.5)
-                                    .padding(.bottom, 5)
-                                    .padding(.leading, 3)
-                                    .padding(.trailing, 3)
                             }
-                            
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                            .buttonStyle(.plain)
+                            .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                            .cornerRadius(12)
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                        .buttonStyle(.plain)
-                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                        .cornerRadius(12)
                         
                         //volume
-                        Button() {
-                            print("cube button pressed")
-                        } label: {
-                            VStack(spacing: 8) {
-                                Image(systemName: "cube")
-                                    .widgetAccentable()
-                                    .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
-                                    .aspectRatio(contentMode: .fit)
-                                    .padding(.top, 10)
-                                    .padding(.bottom, 2)
-                                
-                                Text(NSLocalizedString("button_volume", comment: ""))
-                                    .font(.system(size: 12, weight: .semibold))
-                                    .foregroundColor(.white)
-                                    .scaledToFit()
-                                    .minimumScaleFactor(0.5)
-                                    .padding(.bottom, 5)
-                                    .padding(.leading, 3)
-                                    .padding(.trailing, 3)
+                        Link(destination: URL(string: "bettercalc://volume")!) {
+                            Button() { } label: {
+                                VStack(spacing: 8) {
+                                    Image(systemName: "cube")
+                                        .widgetAccentable()
+                                        .foregroundColor(Color (#colorLiteral(red: 0.8156862745, green: 0.537254902, blue: 0.3294117647, alpha: 1)))
+                                        .aspectRatio(contentMode: .fit)
+                                        .padding(.top, 10)
+                                        .padding(.bottom, 2)
+                                    
+                                    Text(NSLocalizedString("button_volume", comment: ""))
+                                        .font(.system(size: 12, weight: .semibold))
+                                        .foregroundColor(.white)
+                                        .scaledToFit()
+                                        .minimumScaleFactor(0.5)
+                                        .padding(.bottom, 5)
+                                        .padding(.leading, 3)
+                                        .padding(.trailing, 3)
+                                }
                             }
-                            
-                            
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                            .buttonStyle(.plain)
+                            .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
+                            .cornerRadius(12)
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                        .buttonStyle(.plain)
-                        .background(Color (#colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)))
-                        .cornerRadius(12)
                     }
                     
                 }

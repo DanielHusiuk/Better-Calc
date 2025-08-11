@@ -11,9 +11,9 @@ import AppIntents
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource { "Configuration" }
     static var description: IntentDescription { "Better Calc widget" }
-
+    
     static var openAppWhenRun: Bool { true }
-
+    
     func perform() async throws -> some IntentResult & OpensIntent {
         .result()
     }

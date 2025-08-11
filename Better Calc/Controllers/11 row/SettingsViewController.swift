@@ -41,6 +41,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     private var tintModel = TintModel()
     private var selectedTintId: Int64 = 1
     var isDarkTheme: Bool = false
+    var currentAlert: UIAlertController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         origAppear()
+        currentAlert?.dismiss(animated: false)
     }
     
     //MARK: - Update
@@ -90,7 +92,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             if let collectionView = self.collectionView {
                 UIView.transition(with: collectionView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.collectionView?.reloadData()}, completion: nil)
             }
-            tableView.reloadRows(at: [IndexPath(row: 0, section: 5)], with: .none)
         }
     }
     
@@ -122,15 +123,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func ResetSettingsButtonOutlet(_ sender: UIBarButtonItem) {
         let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
-        let alert = UIAlertController(title: NSLocalizedString("settings_reset_settings", comment: ""), message: NSLocalizedString("settings_this_will_reset_all_parameters_to_default", comment: ""), preferredStyle: .alert)
+        let resetSettingsAlert = UIAlertController(
+            title: NSLocalizedString("settings_reset_settings", comment: ""),
+            message: NSLocalizedString("settings_this_will_reset_all_parameters_to_default", comment: ""),
+            preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil)
         cancelAction.setValue(selectedTintColor, forKey: "titleTextColor")
-        alert.addAction(cancelAction)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("settings_reset", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
+        resetSettingsAlert.addAction(cancelAction)
+        resetSettingsAlert.addAction(UIAlertAction(title: NSLocalizedString("settings_reset", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             self?.resetUserSettings()
         }))
-        present(alert, animated: true, completion: nil)
-        
+        self.currentAlert = resetSettingsAlert
+        present(resetSettingsAlert, animated: true, completion: nil)
         if UserDefaults.standard.bool(forKey: "HapticState") {
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
@@ -296,10 +300,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         switch indexPath.section {
         case 0:
             return 360
-        case 2, 3, 4, 5:
-            return 44
+        case 1:
+            if indexPath.row == 0 {
+                return 44
+            } else {
+                return UITableView.automaticDimension
+            }
         default:
-            return UITableView.automaticDimension
+            return 44
         }
     }
     
@@ -684,11 +692,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     //MARK: - Preferences 2
-    
-
-
-
-    
+        
     //autodelete
     func autoDelete(in cell: UITableViewCell) {
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
@@ -751,36 +755,38 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ])
     }
     
+    
+    
     func autoDeleteFunc() {
         let indexPath = IndexPath(row: 0, section: 3)
         let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
-        let alert = UIAlertController(title: "\(NSLocalizedString("settings_p_auto_delete", comment: "")):", message: nil, preferredStyle: .actionSheet)
+        let autoDeleteAlert = UIAlertController(title: "\(NSLocalizedString("settings_p_auto_delete", comment: "")):", message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel)
         cancelAction.setValue(selectedTintColor, forKey: "titleTextColor")
-        alert.addAction(cancelAction)
+        autoDeleteAlert.addAction(cancelAction)
         
-        alert.addAction(UIAlertAction(title: NSLocalizedString("older_than_1_week", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
+        autoDeleteAlert.addAction(UIAlertAction(title: NSLocalizedString("older_than_1_week", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             self!.selectedAutoDeleteText = NSLocalizedString("auto_delete_1_week", comment: "")
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self!.tableView.reloadRows(at: [indexPath], with: .none)
             }
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("older_than_1_month", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
+        autoDeleteAlert.addAction(UIAlertAction(title: NSLocalizedString("older_than_1_month", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             self!.selectedAutoDeleteText = NSLocalizedString("auto_delete_1_month", comment: "")
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self!.tableView.reloadRows(at: [indexPath], with: .none)
             }
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("older_than_3_months", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
+        autoDeleteAlert.addAction(UIAlertAction(title: NSLocalizedString("older_than_3_months", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             self!.selectedAutoDeleteText = NSLocalizedString("auto_delete_3_months", comment: "")
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self!.tableView.reloadRows(at: [indexPath], with: .none)
             }
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("never", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
+        autoDeleteAlert.addAction(UIAlertAction(title: NSLocalizedString("never", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             self!.selectedAutoDeleteText = NSLocalizedString("never", comment: "")
             DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -788,7 +794,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }))
         
-        present(alert, animated: true, completion: nil)
+        self.currentAlert = autoDeleteAlert
+        present(autoDeleteAlert, animated: true, completion: nil)
     }
     
     let changeLangText2 = UILabel()
@@ -918,18 +925,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func deleteHistoryFunc() {
         let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
-        let alert = UIAlertController(title: "\(NSLocalizedString("settings_delete_history_in_all_calculators", comment: ""))\n\(NSLocalizedString("this_action_is_irreversible", comment: ""))", message: nil, preferredStyle: .actionSheet)
+        let deleteHistoryAlert = UIAlertController(title: "\(NSLocalizedString("settings_delete_history_in_all_calculators", comment: ""))\n\(NSLocalizedString("this_action_is_irreversible", comment: ""))", message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel)
         cancelAction.setValue(selectedTintColor, forKey: "titleTextColor")
-        alert.addAction(cancelAction)
+        deleteHistoryAlert.addAction(cancelAction)
         
-        alert.addAction(UIAlertAction(title: NSLocalizedString("confirm", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
+        deleteHistoryAlert.addAction(UIAlertAction(title: NSLocalizedString("confirm", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             self?.deleteHistoryFetch(entityName: "CalculatorHistoryItem", context: context)
             self?.deleteHistoryFetch(entityName: "ConverterHistoryItem", context: context)
         }))
-        present(alert, animated: true, completion: nil)
+        self.currentAlert = deleteHistoryAlert
+        present(deleteHistoryAlert, animated: true, completion: nil)
     }
     
     func deleteHistoryFetch(entityName: String, context: NSManagedObjectContext) {
@@ -974,9 +982,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         createdText.minimumScaleFactor = 0.6
         createdText.translatesAutoresizingMaskIntoConstraints = false
         
-
+        if createdText.superview == nil {
             cell.contentView.addSubview(createdText)
-        
+        }
         
         NSLayoutConstraint.activate([
             createdText.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
@@ -999,8 +1007,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         developerImage.translatesAutoresizingMaskIntoConstraints = false
         
+        if developerImage.superview == nil {
             cell.contentView.addSubview(developerImage)
-        
+        }
         
         NSLayoutConstraint.activate([
             developerImage.widthAnchor.constraint(equalToConstant: 44),
@@ -1021,9 +1030,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         appImage.translatesAutoresizingMaskIntoConstraints = false
         
-    
+        if appImage.superview == nil {
             cell.contentView.addSubview(appImage)
-        
+        }
         
         NSLayoutConstraint.activate([
             appImage.widthAnchor.constraint(equalToConstant: 44),
@@ -1035,8 +1044,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func devGitFunc() {
         let selectedTintColor = UserDefaults.standard.color(forKey: "selectedTintColor")
-        let alert = UIAlertController(title: NSLocalizedString("open_developer_github", comment: ""), message: "https://github.com/DanielHusiuk", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil))
+        let gitAlert = UIAlertController(title: NSLocalizedString("open_developer_github", comment: ""), message: "https://github.com/DanielHusiuk", preferredStyle: .alert)
+        gitAlert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil))
         let confirmAction = UIAlertAction(title: NSLocalizedString("confirm", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             
@@ -1045,8 +1054,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             }
         })
         confirmAction.setValue(selectedTintColor, forKey: "titleTextColor")
-        alert.addAction(confirmAction)
-        present(alert, animated: true, completion: nil)
+        gitAlert.addAction(confirmAction)
+        self.currentAlert = gitAlert
+        present(gitAlert, animated: true, completion: nil)
     }
     
     func footerSectionView() -> UIView {

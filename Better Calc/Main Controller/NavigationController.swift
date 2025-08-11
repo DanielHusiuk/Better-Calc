@@ -53,7 +53,7 @@ class NavigationController: UINavigationController {
                     pill.completedTask(state: state)
                     activePills.append(pill)
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
                         queue.async(flags: .barrier) {
                             activePills.removeAll { $0 === pill }
                         }
