@@ -9,7 +9,7 @@ import AppIntents
 import SwiftUI
 import WidgetKit
 
-//MARK: - App
+    //MARK: - App
 
 @available(iOS 18.0, *)
 struct BetterCalcControlWidgetIntent: AppIntent {
@@ -43,7 +43,7 @@ struct BetterCalcControlWidget: ControlWidget {
 }
 
 
-//MARK: - Basic
+    //MARK: - Basic
 
 @available(iOS 18.0, *)
 struct BetterCalcControlWidgetBasicIntent: AppIntent {
@@ -75,7 +75,7 @@ struct BetterCalcControlWidgetBasic: ControlWidget {
 }
 
 
-//MARK: - Length
+    //MARK: - Length
 
 @available(iOS 18.0, *)
 struct BetterCalcControlWidgetLengthIntent: AppIntent {
@@ -107,7 +107,7 @@ struct BetterCalcControlWidgetLength: ControlWidget {
 }
 
 
-//MARK: - Area
+    //MARK: - Area
 
 @available(iOS 18.0, *)
 struct BetterCalcControlWidgetAreaIntent: AppIntent {
@@ -139,7 +139,7 @@ struct BetterCalcControlWidgetArea: ControlWidget {
 }
 
 
-//MARK: - Volume
+    //MARK: - Volume
 
 @available(iOS 18.0, *)
 struct BetterCalcControlWidgetVolumeIntent: AppIntent {
@@ -171,7 +171,7 @@ struct BetterCalcControlWidgetVolume: ControlWidget {
 }
 
 
-//MARK: - Temperature
+    //MARK: - Temperature
 
 @available(iOS 18.0, *)
 struct BetterCalcControlWidgetTemperatureIntent: AppIntent {
@@ -203,7 +203,7 @@ struct BetterCalcControlWidgetTemperature: ControlWidget {
 }
 
 
-//MARK: - Time
+    //MARK: - Time
 
 @available(iOS 18.0, *)
 struct BetterCalcControlWidgetTimeIntent: AppIntent {
@@ -235,7 +235,7 @@ struct BetterCalcControlWidgetTime: ControlWidget {
 }
 
 
-//MARK: - Speed
+    //MARK: - Speed
 
 @available(iOS 18.0, *)
 struct BetterCalcControlWidgetSpeedIntent: AppIntent {
@@ -267,7 +267,7 @@ struct BetterCalcControlWidgetSpeed: ControlWidget {
 }
 
 
-//MARK: - Mass
+    //MARK: - Mass
 
 @available(iOS 18.0, *)
 struct BetterCalcControlWidgetMassIntent: AppIntent {
@@ -299,7 +299,7 @@ struct BetterCalcControlWidgetMass: ControlWidget {
 }
 
 
-//MARK: - Data Size
+    //MARK: - Data Size
 
 @available(iOS 18.0, *)
 struct BetterCalcControlWidgetDataIntent: AppIntent {

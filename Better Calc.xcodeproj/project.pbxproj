@@ -182,6 +182,8 @@
 		65DFA3F52C5A9B6B0090F4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65EA82262E45F3F4002BC854 /* BetterCalcWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BetterCalcWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		65EE7A302D95A521006F2F84 /* TemperatureHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureHistoryController.swift; sourceTree = "<group>"; };
+		65EFB6252E4CDB980003FF93 /* Better Calc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Better Calc.entitlements"; sourceTree = "<group>"; };
+		65EFB6262E4CDBA20003FF93 /* BetterCalcWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BetterCalcWidgetExtension.entitlements; sourceTree = "<group>"; };
 		65F119B92D95472500B2EDB7 /* AreaHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaHistoryController.swift; sourceTree = "<group>"; };
 		65F119BB2D95A0E400B2EDB7 /* VolumeHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeHistoryController.swift; sourceTree = "<group>"; };
 		65FDD8DA2DB1095800A1A6E3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -196,7 +198,7 @@
 			);
 			target = 65EA82252E45F3F4002BC854 /* BetterCalcWidgetExtension */;
 		};
-		65FBF3612E46106700885570 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		65EFB6242E4CD9320003FF93 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				BetterCalcWidgetControl.swift,
@@ -206,7 +208,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		65EA82292E45F3F4002BC854 /* BetterCalcWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (65FBF3612E46106700885570 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 65EA823A2E45F3F6002BC854 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = BetterCalcWidget; sourceTree = "<group>"; };
+		65EA82292E45F3F4002BC854 /* BetterCalcWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (65EFB6242E4CD9320003FF93 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 65EA823A2E45F3F6002BC854 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = BetterCalcWidget; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,6 +428,7 @@
 		65DFA3D82C5A9B6A0090F4CE = {
 			isa = PBXGroup;
 			children = (
+				65EFB6262E4CDBA20003FF93 /* BetterCalcWidgetExtension.entitlements */,
 				650816442D7BA686000F8B68 /* Settings.bundle */,
 				65DFA3E32C5A9B6A0090F4CE /* Better Calc */,
 				65EA82292E45F3F4002BC854 /* BetterCalcWidget */,
@@ -446,6 +449,7 @@
 		65DFA3E32C5A9B6A0090F4CE /* Better Calc */ = {
 			isa = PBXGroup;
 			children = (
+				65EFB6252E4CDB980003FF93 /* Better Calc.entitlements */,
 				654EB3362D5F922F00BA2C3A /* Managers */,
 				654EB3372D5F924100BA2C3A /* Delegates */,
 				65195E812C5BCA4A00D4BE8B /* Main Controller */,
@@ -841,6 +845,7 @@
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Better Calc/Better Calc.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SVFF6W5Y6W;
@@ -880,6 +885,7 @@
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Better Calc/Better Calc.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SVFF6W5Y6W;
@@ -918,6 +924,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BetterCalcWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SVFF6W5Y6W;
@@ -946,6 +953,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BetterCalcWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SVFF6W5Y6W;

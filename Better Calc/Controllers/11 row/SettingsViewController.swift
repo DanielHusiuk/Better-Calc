@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import WidgetKit
 
 var selectedSegueIdentifier: String?
 
@@ -42,6 +43,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     private var selectedTintId: Int64 = 1
     var isDarkTheme: Bool = false
     var currentAlert: UIAlertController?
+    let appGroup = UserDefaults(suiteName: "group.com.danielhusiuk.bettercalc")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,6 +171,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             collectionView?.reloadData()
             UIView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
             updatePreferences()
+            
+            appGroup?.set(1, forKey: "selectedTintInt")
+            WidgetCenter.shared.reloadAllTimelines()
             
             let generator = UIImpactFeedbackGenerator(style: .heavy)
             generator.impactOccurred()
@@ -517,6 +522,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         UserDefaults.standard.set(sender.tag, forKey: "selectedTintID")
         NotificationCenter.default.post(name: UserDefaults.didChangeNotification, object: nil)
         collectionView?.reloadData()
+        
+        appGroup?.set(sender.tag, forKey: "selectedTintInt")
+        WidgetCenter.shared.reloadAllTimelines()
         
         selectedTintId = Int64(tintModel.tints[sender.tag].id)
         if let selectedTintColor = tintModel.tints.first(where: { $0.id == selectedTintId })?.color {

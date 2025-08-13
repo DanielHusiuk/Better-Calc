@@ -10,6 +10,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    var pendingURL: Set<UIOpenURLContext>?
+    
     let settingsVC = SettingsViewController()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -37,11 +39,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         updateThemeBasedOnSystem()
         
+        if let contexts = pendingURL {
+            loadWidgetURLSegue(contexts)
+            pendingURL = nil
+            return
+        }
+        
+        loadURLSegue()
+        
         if !appDelegate.hasPerformedSegue {
             loadPickerSegue()
             appDelegate.hasPerformedSegue = true
         }
-        loadURLSegue()
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
@@ -105,6 +114,50 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         mainVC?.performSegue(withIdentifier: unwrappedURLSegue, sender: self)
         UserDefaults.standard.set("None", forKey: "SelectedURLString")
+    }
+    
+    //MARK: - Home Widget Segue
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        pendingURL = URLContexts
+    }
+    
+    func loadWidgetURLSegue(_ contexts: Set<UIOpenURLContext>) {
+        guard let url = contexts.first?.url else { return }
+        
+        if url.scheme == "bettercalc" {
+            switch url.host {
+            case "basic":
+                UserDefaults.standard.set("BasicSegue", forKey: "SelectedURLString")
+                loadURLSegue()
+            case "length":
+                UserDefaults.standard.set("LengthSegue", forKey: "SelectedURLString")
+                loadURLSegue()
+            case "area":
+                UserDefaults.standard.set("AreaSegue", forKey: "SelectedURLString")
+                loadURLSegue()
+            case "volume":
+                UserDefaults.standard.set("VolumeSegue", forKey: "SelectedURLString")
+                loadURLSegue()
+            case "temperature":
+                UserDefaults.standard.set("TemperatureSegue", forKey: "SelectedURLString")
+                loadURLSegue()
+            case "time":
+                UserDefaults.standard.set("TimeSegue", forKey: "SelectedURLString")
+                loadURLSegue()
+            case "speed":
+                UserDefaults.standard.set("SpeedSegue", forKey: "SelectedURLString")
+                loadURLSegue()
+            case "mass":
+                UserDefaults.standard.set("MassSegue", forKey: "SelectedURLString")
+                loadURLSegue()
+            case "data":
+                UserDefaults.standard.set("DataSegue", forKey: "SelectedURLString")
+                loadURLSegue()
+            default:
+                return
+            }
+        }
     }
     
     
