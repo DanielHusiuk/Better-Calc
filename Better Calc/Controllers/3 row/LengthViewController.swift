@@ -65,6 +65,7 @@ class LengthViewController: UIViewController {
     
     func updatePreferences() {
         overrideUserInterfaceStyle = .dark
+        GestureManager.popSwipeGesture(to: self)
         
         if selectedUnits[FromButtonOutlet] == nil {
             selectedUnits[FromButtonOutlet] = .kilometers
@@ -234,9 +235,11 @@ class LengthViewController: UIViewController {
             if !text.isEmpty {
                 text.removeLast()
             }
-            
             FromLabelOutlet.text = text
+            let lastVisibleChar = FromLabelOutlet.text?.last ?? "0"
+            
             if text.isEmpty {
+                FromLabelOutlet.text = String(lastVisibleChar)
                 AnimationManager().animateTextSlide(label: FromLabelOutlet, newText: "0")
                 AnimationManager().animateTextSlide(label: ToLabelOutlet, newText: "0")
                 if coreData.fetchConverterObjects(with: converterId).count == 0 {

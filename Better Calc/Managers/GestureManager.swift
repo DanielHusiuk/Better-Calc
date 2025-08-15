@@ -17,6 +17,15 @@ class GestureManager {
         gesture.edges = edge
         viewController.view.addGestureRecognizer(gesture)
     }
+    
+    static func popSwipeGesture(to viewController: UIViewController) {
+        let popGestureRecognizer = viewController.navigationController?.interactivePopGestureRecognizer
+        if let targets = popGestureRecognizer?.value(forKey: "targets") as? NSMutableArray {
+            let gestureRecognizer = UIPanGestureRecognizer()
+            gestureRecognizer.setValue(targets, forKey: "targets")
+            viewController.view.addGestureRecognizer(gestureRecognizer)
+        }
+    }
 }
 
 extension UIViewController {

@@ -22,7 +22,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         layoutCollection()
         loadButtons()
         tipLabel()
-        enablePopGesture()
         overrideUserInterfaceStyle = .dark
     }
     
@@ -43,38 +42,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewWillDisappear(animated)
         navBarAppear()
         searchController.isActive = false
-    }
-    
-    
-    //MARK: - Swipe Gesture
-    
-    func enablePopGesture() {
-        guard let navigationController = self.navigationController,
-              let gestureRecognizer = navigationController.interactivePopGestureRecognizer,
-              let gestureView = gestureRecognizer.view else { return }
-        
-        gestureView.gestureRecognizers?.forEach { recognizer in
-            if recognizer is UIScreenEdgePanGestureRecognizer {
-                gestureView.removeGestureRecognizer(recognizer)
-            }
-        }
-        
-        let pan = UIPanGestureRecognizer()
-        pan.maximumNumberOfTouches = 1
-        pan.delegate = self
-        
-        if let targets = gestureRecognizer.value(forKey: "_targets") as? [NSObject],
-           let targetObj = targets.first,
-           let target = targetObj.value(forKey: "target"),
-           let action = Selector(("handleNavigationTransition:")) as Selector? {
-            pan.addTarget(target, action: action)
-            gestureView.addGestureRecognizer(pan)
-        }
-    }
-    
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        guard let navigationController = self.navigationController else { return false }
-        return navigationController.viewControllers.count > 1
     }
     
     

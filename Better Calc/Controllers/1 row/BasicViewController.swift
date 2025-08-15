@@ -48,6 +48,7 @@ class BasicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
+        GestureManager.popSwipeGesture(to: self)
         checkEraseButton()
         checkPasteButton()
         isSmallScreen()
@@ -123,11 +124,8 @@ class BasicViewController: UIViewController {
             currentOperation = Operation(rawValue: Int(state.currentOperation))
             
             checkEraseButton()
-            if let results = ResultsLabelOutlet.text, results.contains("e") {
-                return
-            } else {
-                checkPasteButton()
-            }
+            checkPasteButton()
+            
         }
     }
     
@@ -342,12 +340,9 @@ class BasicViewController: UIViewController {
         
         if let result = result {
             ResultsLabelOutlet.text = LabelFormattingManager().formatNumber(result)
-            
             isTypingNumber = false
             
-            if let resultText = ResultsLabelOutlet.text, resultText.contains("e") {
-                return
-            } else if PasteResultButtonOutlet.isHidden {
+            if PasteResultButtonOutlet.isHidden {
                 checkPasteButton()
             }
             
@@ -400,14 +395,14 @@ class BasicViewController: UIViewController {
                 text = String(text.dropLast(2))
                 currentOperation = nil
                 isTypingNumber = true
-                saveViewState()
             } else {
                 text = String(text.dropLast())
-                saveViewState()
             }
             WorkingsLabelOutlet.text = text
+            let lastVisibleChar = WorkingsLabelOutlet.text?.last ?? "0"
             
             if text.isEmpty {
+                WorkingsLabelOutlet.text = String(lastVisibleChar)
                 AnimationManager().animateTextSlide(label: WorkingsLabelOutlet, newText: "0")
                 
                 if ResultsLabelOutlet.text != "0" {
@@ -423,8 +418,8 @@ class BasicViewController: UIViewController {
                     self.PasteResultButtonOutlet.isHidden = true
                     self.EraseButtonOutlet.isHidden = true
                 }
-                saveViewState()
             }
+            saveViewState()
             if UserDefaults.standard.bool(forKey: "HapticState") {
                 UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
             }
@@ -475,7 +470,7 @@ class BasicViewController: UIViewController {
     
     @IBAction func pasteResult(_ sender: UIButton) {
         if let resultText = ResultsLabelOutlet.text, resultText != "0" {
-            WorkingsLabelOutlet.text = resultText
+            AnimationManager().animateTextSlide(label: WorkingsLabelOutlet, newText: resultText)
             AnimationManager().animateTextSlide(label: ResultsLabelOutlet, newText: "0")
             firstOperand = nil
             currentOperation = nil

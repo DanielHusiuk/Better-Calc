@@ -69,6 +69,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func updatePreferences() {
         navigationController?.navigationBar.tintAdjustmentMode = .normal
         view.tintAdjustmentMode = .normal
+        GestureManager.popSwipeGesture(to: self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(userThemeDidChange(_:)), name: Notification.Name("DarkThemeNotification"), object: nil)
         let savedIndex = UserDefaults.standard.integer(forKey: "selectedTintID")
@@ -762,8 +763,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             chevronIcon.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -18)
         ])
     }
-    
-    
     
     func autoDeleteFunc() {
         let indexPath = IndexPath(row: 0, section: 3)

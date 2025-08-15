@@ -132,6 +132,18 @@ public final class CoreDataManager: NSObject {
         deleteHaptics()
     }
     
+    public func deleteCalculatorObjectDate(with date: Date) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CalculatorHistoryItem")
+        guard let cutoffDate = Calendar.current.date(byAdding: .month, value: -3, to: date) else { return }
+        fetchRequest.predicate = NSPredicate(format: "timestamp < %@", cutoffDate as NSDate)
+        do {
+            let objects = try? context.fetch(fetchRequest) as? [CalculatorHistoryItem]
+            objects?.forEach{context.delete($0)}
+        }
+        appDelegate.saveContext()
+        deleteHaptics()
+    }
+    
     public func deleteAllCalculatorHistory() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CalculatorHistoryItem")
         do {
