@@ -132,10 +132,11 @@ public final class CoreDataManager: NSObject {
         deleteHaptics()
     }
     
-    public func deleteCalculatorObjectDate(with date: Date) {
+    public func deleteCalculatorObjectDate(with date: Date, value: Int) {
+        guard !value.description.isEmpty, value != 0 else { print("core data date value is empty"); return }
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CalculatorHistoryItem")
-        guard let cutoffDate = Calendar.current.date(byAdding: .month, value: -3, to: date) else { return }
-        fetchRequest.predicate = NSPredicate(format: "timestamp < %@", cutoffDate as NSDate)
+        guard let cutoffDate = Calendar.current.date(byAdding: .day, value: value, to: date) else { return }
+        fetchRequest.predicate = NSPredicate(format: "date < %@", cutoffDate as NSDate)
         do {
             let objects = try? context.fetch(fetchRequest) as? [CalculatorHistoryItem]
             objects?.forEach{context.delete($0)}
@@ -235,6 +236,19 @@ public final class CoreDataManager: NSObject {
         } catch {
             print("Failed to delete object directly: \(error)")
         }
+        deleteHaptics()
+    }
+    
+    public func deleteConverterObjectDate(with date: Date, value: Int) {
+        guard !value.description.isEmpty, value != 0 else { print("converter core data date value is empty"); return }
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ConverterHistoryItem")
+        guard let cutoffDate = Calendar.current.date(byAdding: .day, value: value, to: date) else { return }
+        fetchRequest.predicate = NSPredicate(format: "date < %@", cutoffDate as NSDate)
+        do {
+            let objects = try? context.fetch(fetchRequest) as? [ConverterHistoryItem]
+            objects?.forEach{context.delete($0)}
+        }
+        appDelegate.saveContext()
         deleteHaptics()
     }
     

@@ -30,7 +30,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     var tableView: UITableView!
     var choosedCalcTextLabel: UILabel?
     var selectedPickerText: String = NSLocalizedString("settings_none", comment: "")
-    var selectedAutoDeleteText: String = NSLocalizedString("never", comment: "")
+    var selectedAutoDeleteText: String = UserDefaults.standard.string(forKey: "autoDeleteText") ?? NSLocalizedString("never", comment: "")
     
     var pickerView: UIPickerView?
     let pickersModel = PickerModel()
@@ -38,6 +38,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private var model = ButtonsModel()
     private var mainView = ViewController()
+    let coreData = CoreDataManager.shared
     
     private var tintModel = TintModel()
     private var selectedTintId: Int64 = 1
@@ -144,14 +145,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func resetUserSettings() {
-        print(String(describing: UserDefaults.standard.object(forKey: "SelectedPickerString")))
-        
         if UserDefaults.standard.color(forKey: "selectedTintColor") == tintModel.tints[1].color,
            UserDefaults.standard.integer(forKey: "selectedTintID") == 1,
            UserDefaults.standard.integer(forKey: "SelectedPickerRow") == 0,
            UserDefaults.standard.string(forKey: "SelectedPickerString") == "None",
            UserDefaults.standard.bool(forKey: "HapticState") == true,
-           UserDefaults.standard.bool(forKey: "KeepState") == true {
+           UserDefaults.standard.bool(forKey: "KeepState") == true,
+           UserDefaults.standard.integer(forKey: "autoDeleteValue") == 0,
+           UserDefaults.standard.string(forKey: "autoDeleteText") == NSLocalizedString("never", comment: "") {
             (self.navigationController as? NavigationController)?.resetError()
         } else {
             let secondTintColor = tintModel.tints[1].color
@@ -161,10 +162,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             UserDefaults.standard.set("None", forKey: "SelectedPickerString")
             UserDefaults.standard.set(true, forKey: "HapticState")
             UserDefaults.standard.set(true, forKey: "KeepState")
+            UserDefaults.standard.set(0, forKey: "autoDeleteValue")
+            UserDefaults.standard.set(NSLocalizedString("never", comment: ""), forKey: "autoDeleteText")
             loadSavePicker()
             loadNavBar()
             setIcon(.icon1)
             mainView.resetMenuFunc()
+            selectedAutoDeleteText = UserDefaults.standard.string(forKey: "autoDeleteText") ?? NSLocalizedString("never", comment: "")
             
             (self.navigationController as? NavigationController)?.didSelectTintColor()
             (self.navigationController as? NavigationController)?.resButtonPill()
@@ -775,29 +779,52 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         autoDeleteAlert.addAction(UIAlertAction(title: NSLocalizedString("older_than_1_week", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             self!.selectedAutoDeleteText = NSLocalizedString("auto_delete_1_week", comment: "")
+            UserDefaults.standard.setValue(self!.selectedAutoDeleteText, forKey: "autoDeleteText")
+            
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self!.tableView.reloadRows(at: [indexPath], with: .none)
+                UserDefaults.standard.setValue(-7, forKey: "autoDeleteValue")
+                self!.coreData.deleteCalculatorObjectDate(with: Date.now, value: UserDefaults.standard.integer(forKey: "autoDeleteValue"))
+                self!.coreData.deleteConverterObjectDate(with: Date.now, value: UserDefaults.standard.integer(forKey: "autoDeleteValue"))
             }
         }))
+        
         autoDeleteAlert.addAction(UIAlertAction(title: NSLocalizedString("older_than_1_month", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             self!.selectedAutoDeleteText = NSLocalizedString("auto_delete_1_month", comment: "")
+            UserDefaults.standard.setValue(self!.selectedAutoDeleteText, forKey: "autoDeleteText")
+            
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self!.tableView.reloadRows(at: [indexPath], with: .none)
+                UserDefaults.standard.setValue(-30, forKey: "autoDeleteValue")
+                self!.coreData.deleteCalculatorObjectDate(with: Date.now, value: UserDefaults.standard.integer(forKey: "autoDeleteValue"))
+                self!.coreData.deleteConverterObjectDate(with: Date.now, value: UserDefaults.standard.integer(forKey: "autoDeleteValue"))
             }
         }))
+        
         autoDeleteAlert.addAction(UIAlertAction(title: NSLocalizedString("older_than_3_months", comment: ""), style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             self!.selectedAutoDeleteText = NSLocalizedString("auto_delete_3_months", comment: "")
+            UserDefaults.standard.setValue(self!.selectedAutoDeleteText, forKey: "autoDeleteText")
+            
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self!.tableView.reloadRows(at: [indexPath], with: .none)
+                UserDefaults.standard.setValue(-90, forKey: "autoDeleteValue")
+                self!.coreData.deleteCalculatorObjectDate(with: Date.now, value: UserDefaults.standard.integer(forKey: "autoDeleteValue"))
+                self!.coreData.deleteConverterObjectDate(with: Date.now, value: UserDefaults.standard.integer(forKey: "autoDeleteValue"))
             }
         }))
+        
         autoDeleteAlert.addAction(UIAlertAction(title: NSLocalizedString("never", comment: ""), style: .destructive, handler: { [weak self] (action: UIAlertAction!) in
             guard self != nil else { return }
             self!.selectedAutoDeleteText = NSLocalizedString("never", comment: "")
+            UserDefaults.standard.setValue(self!.selectedAutoDeleteText, forKey: "autoDeleteText")
+            
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self!.tableView.reloadRows(at: [indexPath], with: .none)
+                UserDefaults.standard.setValue(0, forKey: "autoDeleteValue")
+                self!.coreData.deleteCalculatorObjectDate(with: Date.now, value: UserDefaults.standard.integer(forKey: "autoDeleteValue"))
+                self!.coreData.deleteConverterObjectDate(with: Date.now, value: UserDefaults.standard.integer(forKey: "autoDeleteValue"))
             }
         }))
         
@@ -868,7 +895,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK: - Data
     
-    var coreData = CoreDataManager.shared
     let resetText = UILabel()
     let deleteText = UILabel()
     

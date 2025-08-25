@@ -12,6 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var pendingURL: Set<UIOpenURLContext>?
     
+    let coreData = CoreDataManager.shared
     let settingsVC = SettingsViewController()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -37,6 +38,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        coreData.deleteCalculatorObjectDate(with: Date.now, value: UserDefaults.standard.integer(forKey: "autoDeleteValue"))
+        coreData.deleteConverterObjectDate(with: Date.now, value: UserDefaults.standard.integer(forKey: "autoDeleteValue"))
         updateThemeBasedOnSystem()
         
         if let contexts = pendingURL {
@@ -44,7 +47,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             pendingURL = nil
             return
         }
-        
         loadURLSegue()
         
         if !appDelegate.hasPerformedSegue {
@@ -90,6 +92,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
+    
     //MARK: - Control Widget Segue
     
     func loadURLSegue() {
@@ -115,6 +118,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         mainVC?.performSegue(withIdentifier: unwrappedURLSegue, sender: self)
         UserDefaults.standard.set("None", forKey: "SelectedURLString")
     }
+    
     
     //MARK: - Home Widget Segue
     
@@ -208,4 +212,3 @@ extension UIWindow {
         
     }
 }
-
